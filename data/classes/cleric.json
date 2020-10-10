@@ -1,0 +1,8 @@
+{
+    "name":"cleric",
+    "playable":true,
+    "main_stats":["wisdom","intelligence"],
+    "proficiency":{"mace":1,"shield":1,"light_armor":1,"heavy_armor":1,"light_magic":1,"restoration_magic":1,"shielding_magic":1,"fire_magic":1},
+    "equipment":["robe","buckler","mace","book_of_restoration"],
+    "inventory":[["silver_coins",100],["small_mana_potion",2],["supplies",50]]
+}

@@ -1,0 +1,8 @@
+{
+    "name":"wizard",
+    "playable":true,
+    "main_stats":["intelligence","wisdom"],
+    "proficiency":{"staff":1,"light_armor":1,"arcane_magic":1,"fire_magic":1,"ice_magic":1,"shielding_magic":1},
+    "equipment":["robe","staff","book_of_conjuration"],
+    "inventory":[["silver_coins",100],["small_mana_potion",2],["supplies",50]]
+}

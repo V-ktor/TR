@@ -1,0 +1,21 @@
+Badlands.png, FireTemple.png:
+Copyright: Justin Nichol
+License: CC-BY-SA 3.0
+
+sk5.jpg:
+Copyright: Sergei Churbanov, aka CatBlack
+Contributor: William.Thompsonj
+License: CC-BY 4.0
+
+environment_forest_evening.png:
+Copyright: Tamara Ramsay http://vectorgurl.com/
+License: CC-BY-SA 3.0
+
+battleback1.png, battleback3.png, battleback10.png:
+Copyright: Nidhoggn
+License: CC0
+
+cloudsinthedesert.png, coldmountain.png, wizardtower.png:
+Copyright: JAP
+License: CC0
+

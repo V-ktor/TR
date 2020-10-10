@@ -1,0 +1,2063 @@
+[gd_scene load_steps=37 format=2]
+
+[ext_resource path="res://scripts/main/menu.gd" type="Script" id=1]
+[ext_resource path="res://fonts/Play-Bold.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="StyleBoxFlat" id=28]
+bg_color = Color( 0.12549, 0.12549, 0.12549, 0.25098 )
+
+[sub_resource type="StyleBoxFlat" id=29]
+bg_color = Color( 0.25098, 0.25098, 0.25098, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=30]
+bg_color = Color( 0.886275, 0.690196, 0.341176, 1 )
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.878431, 0.878431, 1, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=31]
+bg_color = Color( 0.921569, 0.768627, 0.403922, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=32]
+bg_color = Color( 0.886275, 0.690196, 0.341176, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=33]
+bg_color = Color( 0.717647, 0.490196, 0.2, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=34]
+bg_color = Color( 0.886275, 0.690196, 0.341176, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=35]
+bg_color = Color( 0.921569, 0.768627, 0.403922, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=36]
+bg_color = Color( 0.717647, 0.490196, 0.2, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=37]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.372549, 0.180392, 0.0745098, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=38]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.372549, 0.180392, 0.0745098, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=39]
+content_margin_left = 2.0
+content_margin_right = 2.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color( 0.921569, 0.768627, 0.403922, 1 )
+
+[sub_resource type="StyleBoxFlat" id=40]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.372549, 0.180392, 0.0745098, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.878431, 0.878431, 1, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=41]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.372549, 0.180392, 0.0745098, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=42]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.870588, 0.792157, 0.701961, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=43]
+bg_color = Color( 0.870588, 0.792157, 0.701961, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.372549, 0.180392, 0.0745098, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=44]
+bg_color = Color( 0, 0, 0, 1 )
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.921569, 0.768627, 0.403922, 1 )
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id=45]
+bg_color = Color( 0.12549, 0.12549, 0.12549, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.372549, 0.180392, 0.0745098, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=46]
+bg_color = Color( 0.886275, 0.690196, 0.341176, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=47]
+bg_color = Color( 0.921569, 0.768627, 0.403922, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=48]
+bg_color = Color( 0.717647, 0.490196, 0.2, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=49]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.372549, 0.180392, 0.0745098, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+
+[sub_resource type="StyleBoxFlat" id=50]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.372549, 0.180392, 0.0745098, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+
+[sub_resource type="DynamicFont" id=51]
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=52]
+default_font = SubResource( 51 )
+Button/colors/font_color = Color( 0.12549, 0.12549, 0.12549, 1 )
+Button/colors/font_color_disabled = Color( 0.12549, 0.12549, 0.12549, 0.25098 )
+Button/colors/font_color_hover = Color( 0.25098, 0.25098, 0.25098, 1 )
+Button/colors/font_color_pressed = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = SubResource( 29 )
+Button/styles/focus = SubResource( 30 )
+Button/styles/hover = SubResource( 31 )
+Button/styles/normal = SubResource( 32 )
+Button/styles/pressed = SubResource( 33 )
+HScrollBar/icons/decrement = null
+HScrollBar/icons/decrement_highlight = null
+HScrollBar/icons/increment = null
+HScrollBar/icons/increment_highlight = null
+HScrollBar/styles/grabber = SubResource( 34 )
+HScrollBar/styles/grabber_highlight = SubResource( 35 )
+HScrollBar/styles/grabber_pressed = SubResource( 36 )
+HScrollBar/styles/scroll = SubResource( 37 )
+HScrollBar/styles/scroll_focus = SubResource( 38 )
+HSeparator/constants/separation = 4
+HSeparator/styles/separator = SubResource( 39 )
+Label/colors/font_color = Color( 0.12549, 0.12549, 0.12549, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0.12549 )
+Label/colors/font_outline_modulate = Color( 0.886275, 0.690196, 0.341176, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = null
+Label/styles/normal = null
+LineEdit/colors/clear_button_color = Color( 0.88, 0.88, 0.88, 1 )
+LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
+LineEdit/colors/cursor_color = Color( 0.94, 0.94, 0.94, 1 )
+LineEdit/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+LineEdit/colors/font_color_selected = Color( 0.12549, 0.12549, 0.12549, 1 )
+LineEdit/colors/font_color_uneditable = Color( 0.0627451, 0.0627451, 0.0627451, 0.501961 )
+LineEdit/colors/selection_color = Color( 0.921569, 0.768627, 0.403922, 1 )
+LineEdit/constants/minimum_spaces = 12
+LineEdit/fonts/font = null
+LineEdit/icons/clear = null
+LineEdit/styles/focus = SubResource( 40 )
+LineEdit/styles/normal = SubResource( 41 )
+LineEdit/styles/read_only = SubResource( 42 )
+Panel/styles/panel = SubResource( 43 )
+PopupMenu/colors/font_color = Color( 0.12549, 0.12549, 0.12549, 1 )
+PopupMenu/colors/font_color_accel = Color( 0.188235, 0.188235, 0.188235, 0.8 )
+PopupMenu/colors/font_color_disabled = Color( 0.0627451, 0.0627451, 0.0627451, 0.8 )
+PopupMenu/colors/font_color_hover = Color( 0.25098, 0.25098, 0.25098, 1 )
+PopupMenu/constants/hseparation = 4
+PopupMenu/constants/vseparation = 4
+PopupMenu/fonts/font = null
+PopupMenu/icons/checked = null
+PopupMenu/icons/radio_checked = null
+PopupMenu/icons/radio_unchecked = null
+PopupMenu/icons/submenu = null
+PopupMenu/icons/unchecked = null
+PopupMenu/styles/hover = SubResource( 44 )
+PopupMenu/styles/labeled_separator_left = null
+PopupMenu/styles/labeled_separator_right = null
+PopupMenu/styles/panel = SubResource( 43 )
+PopupMenu/styles/panel_disabled = SubResource( 45 )
+PopupMenu/styles/separator = SubResource( 39 )
+SpinBox/icons/updown = null
+TextEdit/colors/background_color = Color( 0, 0, 0, 0 )
+TextEdit/colors/bookmark_color = Color( 0.08, 0.49, 0.98, 1 )
+TextEdit/colors/brace_mismatch_color = Color( 1, 0.2, 0.2, 1 )
+TextEdit/colors/breakpoint_color = Color( 0.8, 0.8, 0.4, 0.2 )
+TextEdit/colors/caret_background_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/caret_color = Color( 0.88, 0.88, 0.88, 1 )
+TextEdit/colors/code_folding_color = Color( 0.8, 0.8, 0.8, 0.8 )
+TextEdit/colors/completion_background_color = Color( 0.17, 0.16, 0.2, 1 )
+TextEdit/colors/completion_existing_color = Color( 0.87, 0.87, 0.87, 0.13 )
+TextEdit/colors/completion_font_color = Color( 0.67, 0.67, 0.67, 1 )
+TextEdit/colors/completion_scroll_color = Color( 1, 1, 1, 1 )
+TextEdit/colors/completion_selected_color = Color( 0.26, 0.26, 0.27, 1 )
+TextEdit/colors/current_line_color = Color( 0.25, 0.25, 0.26, 0.8 )
+TextEdit/colors/executing_line_color = Color( 0.2, 0.8, 0.2, 0.4 )
+TextEdit/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+TextEdit/colors/font_color_readonly = Color( 0.88, 0.88, 0.88, 0.5 )
+TextEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
+TextEdit/colors/function_color = Color( 0.4, 0.64, 0.81, 1 )
+TextEdit/colors/line_number_color = Color( 0.67, 0.67, 0.67, 0.4 )
+TextEdit/colors/mark_color = Color( 1, 0.4, 0.4, 0.4 )
+TextEdit/colors/member_variable_color = Color( 0.9, 0.31, 0.35, 1 )
+TextEdit/colors/number_color = Color( 0.92, 0.58, 0.2, 1 )
+TextEdit/colors/safe_line_number_color = Color( 0.67, 0.78, 0.67, 0.6 )
+TextEdit/colors/selection_color = Color( 0.49, 0.49, 0.49, 1 )
+TextEdit/colors/symbol_color = Color( 0.94, 0.94, 0.94, 1 )
+TextEdit/colors/word_highlighted_color = Color( 0.8, 0.9, 0.9, 0.15 )
+TextEdit/constants/completion_lines = 7
+TextEdit/constants/completion_max_width = 50
+TextEdit/constants/completion_scroll_width = 3
+TextEdit/constants/line_spacing = 4
+TextEdit/fonts/font = null
+TextEdit/icons/fold = null
+TextEdit/icons/folded = null
+TextEdit/icons/space = null
+TextEdit/icons/tab = null
+TextEdit/styles/completion = null
+TextEdit/styles/focus = SubResource( 40 )
+TextEdit/styles/normal = SubResource( 41 )
+TextEdit/styles/read_only = SubResource( 42 )
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/styles/grabber = SubResource( 46 )
+VScrollBar/styles/grabber_highlight = SubResource( 47 )
+VScrollBar/styles/grabber_pressed = SubResource( 48 )
+VScrollBar/styles/scroll = SubResource( 49 )
+VScrollBar/styles/scroll_focus = SubResource( 50 )
+VSeparator/constants/separation = 4
+VSeparator/styles/separator = SubResource( 39 )
+
+[sub_resource type="StyleBoxFlat" id=53]
+bg_color = Color( 0.0627451, 0.12549, 0.188235, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.372549, 0.180392, 0.0745098, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=27]
+content_margin_left = 2.0
+content_margin_right = 2.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color( 0.372549, 0.180392, 0.0745098, 1 )
+
+[sub_resource type="ButtonGroup" id=54]
+
+[sub_resource type="ButtonGroup" id=55]
+
+[sub_resource type="StyleBoxFlat" id=56]
+bg_color = Color( 0.886275, 0.690196, 0.341176, 1 )
+draw_center = false
+border_width_left = 20
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.886275, 0.690196, 0.341176, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0, 0, 0, 0.25098 )
+shadow_size = 2
+
+[sub_resource type="ButtonGroup" id=57]
+
+[sub_resource type="ButtonGroup" id=58]
+
+[sub_resource type="ButtonGroup" id=59]
+
+[sub_resource type="DynamicFont" id=60]
+size = 12
+font_data = ExtResource( 2 )
+
+[node name="Menu" type="CanvasLayer"]
+layer = 100
+script = ExtResource( 1 )
+
+[node name="BG" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 28 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -96.0
+margin_top = -128.0
+margin_right = 96.0
+margin_bottom = 128.0
+theme = SubResource( 52 )
+custom_styles/panel = SubResource( 53 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Button6" type="Button" parent="Panel/VBoxContainer"]
+margin_right = 184.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "CONTINUE"
+
+[node name="Button1" type="Button" parent="Panel/VBoxContainer"]
+margin_top = 36.0
+margin_right = 184.0
+margin_bottom = 68.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "NEW_GAME"
+
+[node name="Button2" type="Button" parent="Panel/VBoxContainer"]
+margin_top = 72.0
+margin_right = 184.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "LOAD"
+
+[node name="Button7" type="Button" parent="Panel/VBoxContainer"]
+margin_top = 108.0
+margin_right = 184.0
+margin_bottom = 140.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "SAVE"
+
+[node name="Button3" type="Button" parent="Panel/VBoxContainer"]
+margin_top = 144.0
+margin_right = 184.0
+margin_bottom = 176.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "OPTIONS"
+
+[node name="Button5" type="Button" parent="Panel/VBoxContainer"]
+margin_top = 180.0
+margin_right = 184.0
+margin_bottom = 212.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "CREDITS"
+
+[node name="Button4" type="Button" parent="Panel/VBoxContainer"]
+margin_top = 216.0
+margin_right = 184.0
+margin_bottom = 248.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "QUIT"
+
+[node name="NewChar" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+theme = SubResource( 52 )
+custom_styles/panel = SubResource( 53 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator1" type="HSeparator" parent="NewChar"]
+anchor_right = 1.0
+margin_left = 4.0
+margin_top = 40.0
+margin_right = -4.0
+margin_bottom = 48.0
+mouse_filter = 1
+custom_styles/separator = SubResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="HSeparator2" type="HSeparator" parent="NewChar"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -48.0
+margin_right = -4.0
+margin_bottom = -40.0
+mouse_filter = 1
+custom_styles/separator = SubResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Top" type="HBoxContainer" parent="NewChar"]
+anchor_right = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = 40.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonRace" type="Button" parent="NewChar/Top"]
+margin_left = 174.0
+margin_right = 334.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 160, 0 )
+toggle_mode = true
+pressed = true
+group = SubResource( 54 )
+text = "RACE"
+
+[node name="ButtonClass" type="Button" parent="NewChar/Top"]
+margin_left = 338.0
+margin_right = 498.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 160, 0 )
+toggle_mode = true
+group = SubResource( 54 )
+text = "CLASS"
+
+[node name="ButtonAppearance" type="Button" parent="NewChar/Top"]
+margin_left = 502.0
+margin_right = 662.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 160, 0 )
+toggle_mode = true
+group = SubResource( 54 )
+text = "APPEARANCE"
+
+[node name="ButtonName" type="Button" parent="NewChar/Top"]
+margin_left = 666.0
+margin_right = 826.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 160, 0 )
+toggle_mode = true
+group = SubResource( 54 )
+text = "NAME"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NewChar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 48.0
+margin_right = -8.0
+margin_bottom = -48.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 4
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Races" type="ScrollContainer" parent="NewChar/HBoxContainer"]
+margin_right = 325.0
+margin_bottom = 496.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NewChar/HBoxContainer/Races"]
+margin_right = 325.0
+margin_bottom = 496.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="NewChar/HBoxContainer/Races/VBoxContainer"]
+visible = false
+margin_right = 50.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+toggle_mode = true
+group = SubResource( 55 )
+text = "RACE"
+
+[node name="Classes" type="ScrollContainer" parent="NewChar/HBoxContainer"]
+visible = false
+margin_right = 243.0
+margin_bottom = 496.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NewChar/HBoxContainer/Classes"]
+margin_right = 243.0
+margin_bottom = 496.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="NewChar/HBoxContainer/Classes/VBoxContainer"]
+visible = false
+margin_right = 50.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+toggle_mode = true
+group = SubResource( 55 )
+text = "RACE"
+
+[node name="Appearance" type="ScrollContainer" parent="NewChar/HBoxContainer"]
+visible = false
+margin_right = 325.0
+margin_bottom = 496.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NewChar/HBoxContainer/Appearance"]
+margin_right = 325.0
+margin_bottom = 496.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Cat0" type="Panel" parent="NewChar/HBoxContainer/Appearance/VBoxContainer"]
+margin_right = 325.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 0, 28 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 56 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NewChar/HBoxContainer/Appearance/VBoxContainer/Cat0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 22.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = -6.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="NewChar/HBoxContainer/Appearance/VBoxContainer/Cat0/VBoxContainer"]
+margin_right = 297.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 24 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "TYPE"
+
+[node name="Button0" type="CheckBox" parent="NewChar/HBoxContainer/Appearance/VBoxContainer/Cat0/VBoxContainer"]
+margin_top = 28.0
+margin_right = 297.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 0, 32 )
+group = SubResource( 57 )
+text = "TRAIT"
+
+[node name="Name" type="VBoxContainer" parent="NewChar/HBoxContainer"]
+visible = false
+margin_left = 221.0
+margin_right = 540.0
+margin_bottom = 496.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LabelFirstName" type="Label" parent="NewChar/HBoxContainer/Name"]
+margin_right = 319.0
+margin_bottom = 19.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "FIRST_NAME"
+
+[node name="FirstName" type="LineEdit" parent="NewChar/HBoxContainer/Name"]
+margin_top = 23.0
+margin_right = 319.0
+margin_bottom = 50.0
+placeholder_text = "FIRST_NAME"
+
+[node name="HSeparator1" type="HSeparator" parent="NewChar/HBoxContainer/Name"]
+margin_top = 54.0
+margin_right = 319.0
+margin_bottom = 58.0
+custom_styles/separator = SubResource( 27 )
+
+[node name="LabelLastName" type="Label" parent="NewChar/HBoxContainer/Name"]
+margin_top = 62.0
+margin_right = 319.0
+margin_bottom = 81.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "LAST_NAME"
+
+[node name="LastName" type="LineEdit" parent="NewChar/HBoxContainer/Name"]
+margin_top = 85.0
+margin_right = 319.0
+margin_bottom = 112.0
+placeholder_text = "LAST_NAME"
+
+[node name="HSeparator2" type="HSeparator" parent="NewChar/HBoxContainer/Name"]
+margin_top = 116.0
+margin_right = 319.0
+margin_bottom = 120.0
+custom_styles/separator = SubResource( 27 )
+
+[node name="LabelPronouns" type="Label" parent="NewChar/HBoxContainer/Name"]
+margin_top = 124.0
+margin_right = 319.0
+margin_bottom = 143.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "PRONOUNS"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NewChar/HBoxContainer/Name"]
+margin_top = 147.0
+margin_right = 319.0
+margin_bottom = 174.0
+
+[node name="CheckBox1" type="CheckBox" parent="NewChar/HBoxContainer/Name/HBoxContainer"]
+margin_right = 88.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+pressed = true
+group = SubResource( 58 )
+text = "HE_HIM"
+
+[node name="CheckBox2" type="CheckBox" parent="NewChar/HBoxContainer/Name/HBoxContainer"]
+margin_left = 92.0
+margin_right = 192.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+group = SubResource( 58 )
+text = "SHE_HER"
+
+[node name="CheckBox3" type="CheckBox" parent="NewChar/HBoxContainer/Name/HBoxContainer"]
+margin_left = 196.0
+margin_right = 319.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+group = SubResource( 58 )
+text = "THEY_THEM"
+
+[node name="VSeparator1" type="VSeparator" parent="NewChar/HBoxContainer"]
+margin_left = 329.0
+margin_right = 333.0
+margin_bottom = 496.0
+mouse_filter = 1
+custom_styles/separator = SubResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description" type="RichTextLabel" parent="NewChar/HBoxContainer"]
+margin_left = 337.0
+margin_right = 662.0
+margin_bottom = 496.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Summary" type="ScrollContainer" parent="NewChar/HBoxContainer"]
+visible = false
+margin_left = 502.0
+margin_right = 745.0
+margin_bottom = 496.0
+rect_clip_content = false
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NewChar/HBoxContainer/Summary"]
+margin_right = 243.0
+margin_bottom = 496.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NewChar/HBoxContainer/Summary/VBoxContainer"]
+visible = false
+margin_right = 325.0
+margin_bottom = 20.0
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+fit_content_height = true
+
+[node name="HSeparator1" type="HSeparator" parent="NewChar/HBoxContainer/Summary/VBoxContainer"]
+visible = false
+margin_right = 325.0
+margin_bottom = 4.0
+mouse_filter = 1
+custom_styles/separator = SubResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="LabelTraits" type="Label" parent="NewChar/HBoxContainer/Summary/VBoxContainer"]
+visible = false
+margin_right = 325.0
+margin_bottom = 19.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "TRAITS"
+
+[node name="Traits" type="GridContainer" parent="NewChar/HBoxContainer/Summary/VBoxContainer"]
+visible = false
+margin_top = 23.0
+margin_right = 325.0
+margin_bottom = 51.0
+columns = 2
+
+[node name="Trait0" type="Panel" parent="NewChar/HBoxContainer/Summary/VBoxContainer/Traits"]
+margin_right = 162.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 0, 28 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 56 )
+
+[node name="Label" type="Label" parent="NewChar/HBoxContainer/Summary/VBoxContainer/Traits/Trait0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "TRAIT"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator2" type="HSeparator" parent="NewChar/HBoxContainer/Summary/VBoxContainer"]
+visible = false
+margin_right = 325.0
+margin_bottom = 4.0
+mouse_filter = 1
+custom_styles/separator = SubResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="LabelStats" type="Label" parent="NewChar/HBoxContainer/Summary/VBoxContainer"]
+margin_right = 243.0
+margin_bottom = 19.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "STATS"
+
+[node name="LabelStatPoints" type="Label" parent="NewChar/HBoxContainer/Summary/VBoxContainer"]
+margin_top = 23.0
+margin_right = 243.0
+margin_bottom = 42.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "POINTS_LEFT"
+
+[node name="Stats" type="GridContainer" parent="NewChar/HBoxContainer/Summary/VBoxContainer"]
+margin_top = 46.0
+margin_right = 243.0
+margin_bottom = 46.0
+
+[node name="Stat0" type="Panel" parent="NewChar/HBoxContainer/Summary/VBoxContainer/Stats"]
+visible = false
+margin_right = 243.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 0, 36 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 56 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NewChar/HBoxContainer/Summary/VBoxContainer/Stats/Stat0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="NewChar/HBoxContainer/Summary/VBoxContainer/Stats/Stat0/HBoxContainer"]
+margin_right = 107.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "STAT"
+valign = 1
+
+[node name="SpinBox" type="SpinBox" parent="NewChar/HBoxContainer/Summary/VBoxContainer/Stats/Stat0/HBoxContainer"]
+margin_left = 111.0
+margin_right = 219.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+min_value = 5.0
+max_value = 15.0
+value = 10.0
+align = 1
+
+[node name="HSeparator3" type="HSeparator" parent="NewChar/HBoxContainer/Summary/VBoxContainer"]
+visible = false
+margin_top = 50.0
+margin_right = 325.0
+margin_bottom = 54.0
+mouse_filter = 1
+custom_styles/separator = SubResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="LabelProf" type="Label" parent="NewChar/HBoxContainer/Summary/VBoxContainer"]
+visible = false
+margin_top = 58.0
+margin_right = 325.0
+margin_bottom = 77.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "PROFICIENCIES"
+
+[node name="LabelProfPoints" type="Label" parent="NewChar/HBoxContainer/Summary/VBoxContainer"]
+visible = false
+margin_top = 81.0
+margin_right = 325.0
+margin_bottom = 100.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "POINTS_LEFT"
+
+[node name="Proficiencies" type="GridContainer" parent="NewChar/HBoxContainer/Summary/VBoxContainer"]
+visible = false
+margin_top = 104.0
+margin_right = 325.0
+margin_bottom = 104.0
+
+[node name="Skill0" type="Panel" parent="NewChar/HBoxContainer/Summary/VBoxContainer/Proficiencies"]
+visible = false
+margin_right = 325.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 0, 36 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 56 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NewChar/HBoxContainer/Summary/VBoxContainer/Proficiencies/Skill0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="NewChar/HBoxContainer/Summary/VBoxContainer/Proficiencies/Skill0/HBoxContainer"]
+margin_right = 105.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "PROFICIENCY"
+valign = 1
+
+[node name="Level" type="Label" parent="NewChar/HBoxContainer/Summary/VBoxContainer/Proficiencies/Skill0/HBoxContainer"]
+margin_left = 109.0
+margin_right = 197.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "NOVICE"
+align = 2
+valign = 1
+
+[node name="ButtonDec" type="Button" parent="NewChar/HBoxContainer/Summary/VBoxContainer/Proficiencies/Skill0/HBoxContainer"]
+margin_left = 201.0
+margin_right = 249.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 48, 0 )
+text = "-"
+
+[node name="ButtonInc" type="Button" parent="NewChar/HBoxContainer/Summary/VBoxContainer/Proficiencies/Skill0/HBoxContainer"]
+margin_left = 253.0
+margin_right = 301.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 48, 0 )
+text = "+"
+
+[node name="HSeparator4" type="HSeparator" parent="NewChar/HBoxContainer/Summary/VBoxContainer"]
+visible = false
+margin_top = 180.0
+margin_right = 325.0
+margin_bottom = 184.0
+mouse_filter = 1
+custom_styles/separator = SubResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="LabelEquipment" type="Label" parent="NewChar/HBoxContainer/Summary/VBoxContainer"]
+visible = false
+margin_top = 180.0
+margin_right = 325.0
+margin_bottom = 199.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "EQUIPMENT"
+
+[node name="Equipment" type="GridContainer" parent="NewChar/HBoxContainer/Summary/VBoxContainer"]
+visible = false
+margin_top = 180.0
+margin_right = 325.0
+margin_bottom = 208.0
+columns = 2
+
+[node name="Equipment0" type="Panel" parent="NewChar/HBoxContainer/Summary/VBoxContainer/Equipment"]
+margin_right = 162.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 0, 28 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 56 )
+
+[node name="Label" type="Label" parent="NewChar/HBoxContainer/Summary/VBoxContainer/Equipment/Equipment0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "EQUIPMENT"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator5" type="HSeparator" parent="NewChar/HBoxContainer/Summary/VBoxContainer"]
+visible = false
+margin_top = 180.0
+margin_right = 325.0
+margin_bottom = 184.0
+mouse_filter = 1
+custom_styles/separator = SubResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="LabelSpells" type="Label" parent="NewChar/HBoxContainer/Summary/VBoxContainer"]
+visible = false
+margin_top = 180.0
+margin_right = 325.0
+margin_bottom = 199.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "SPELLS"
+
+[node name="Spells" type="GridContainer" parent="NewChar/HBoxContainer/Summary/VBoxContainer"]
+visible = false
+margin_top = 180.0
+margin_right = 325.0
+margin_bottom = 208.0
+columns = 2
+
+[node name="Spell0" type="Panel" parent="NewChar/HBoxContainer/Summary/VBoxContainer/Spells"]
+margin_right = 162.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 0, 28 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 56 )
+
+[node name="Label" type="Label" parent="NewChar/HBoxContainer/Summary/VBoxContainer/Spells/Spell0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "SPELL"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSeparator2" type="VSeparator" parent="NewChar/HBoxContainer"]
+margin_left = 666.0
+margin_right = 670.0
+margin_bottom = 496.0
+mouse_filter = 1
+custom_styles/separator = SubResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Preview" type="ScrollContainer" parent="NewChar/HBoxContainer"]
+margin_left = 674.0
+margin_right = 1000.0
+margin_bottom = 496.0
+rect_clip_content = false
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NewChar/HBoxContainer/Preview"]
+margin_right = 326.0
+margin_bottom = 496.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LabelDescription" type="Label" parent="NewChar/HBoxContainer/Preview/VBoxContainer"]
+margin_right = 326.0
+margin_bottom = 19.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "TEXT"
+
+[node name="HSeparator6" type="HSeparator" parent="NewChar/HBoxContainer/Preview/VBoxContainer"]
+margin_top = 23.0
+margin_right = 326.0
+margin_bottom = 27.0
+mouse_filter = 1
+custom_styles/separator = SubResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="LabelTraits" type="Label" parent="NewChar/HBoxContainer/Preview/VBoxContainer"]
+margin_top = 31.0
+margin_right = 326.0
+margin_bottom = 50.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "TRAITS"
+
+[node name="Traits" type="VBoxContainer" parent="NewChar/HBoxContainer/Preview/VBoxContainer"]
+margin_top = 54.0
+margin_right = 326.0
+margin_bottom = 86.0
+
+[node name="Trait0" type="Panel" parent="NewChar/HBoxContainer/Preview/VBoxContainer/Traits"]
+margin_right = 326.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 56 )
+
+[node name="Label" type="Label" parent="NewChar/HBoxContainer/Preview/VBoxContainer/Traits/Trait0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "TRAIT"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator1" type="HSeparator" parent="NewChar/HBoxContainer/Preview/VBoxContainer"]
+margin_top = 90.0
+margin_right = 326.0
+margin_bottom = 94.0
+mouse_filter = 1
+custom_styles/separator = SubResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="LabelStats" type="Label" parent="NewChar/HBoxContainer/Preview/VBoxContainer"]
+margin_top = 98.0
+margin_right = 326.0
+margin_bottom = 117.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "STATS"
+
+[node name="Stats" type="GridContainer" parent="NewChar/HBoxContainer/Preview/VBoxContainer"]
+margin_top = 121.0
+margin_right = 326.0
+margin_bottom = 153.0
+
+[node name="Stat0" type="Panel" parent="NewChar/HBoxContainer/Preview/VBoxContainer/Stats"]
+margin_right = 326.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 56 )
+
+[node name="Label" type="Label" parent="NewChar/HBoxContainer/Preview/VBoxContainer/Stats/Stat0"]
+margin_left = 20.0
+margin_top = 4.0
+margin_right = 322.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "STAT"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator2" type="HSeparator" parent="NewChar/HBoxContainer/Preview/VBoxContainer"]
+margin_top = 157.0
+margin_right = 326.0
+margin_bottom = 161.0
+mouse_filter = 1
+custom_styles/separator = SubResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="LabelProf" type="Label" parent="NewChar/HBoxContainer/Preview/VBoxContainer"]
+margin_top = 165.0
+margin_right = 326.0
+margin_bottom = 184.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "PROFICIENCIES"
+
+[node name="Proficiencies" type="VBoxContainer" parent="NewChar/HBoxContainer/Preview/VBoxContainer"]
+margin_top = 188.0
+margin_right = 326.0
+margin_bottom = 220.0
+
+[node name="Skill0" type="Panel" parent="NewChar/HBoxContainer/Preview/VBoxContainer/Proficiencies"]
+margin_right = 326.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 56 )
+
+[node name="Label" type="Label" parent="NewChar/HBoxContainer/Preview/VBoxContainer/Proficiencies/Skill0"]
+margin_left = 20.0
+margin_top = 4.0
+margin_right = 322.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "PROFICIENCY"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator3" type="HSeparator" parent="NewChar/HBoxContainer/Preview/VBoxContainer"]
+margin_top = 224.0
+margin_right = 326.0
+margin_bottom = 228.0
+mouse_filter = 1
+custom_styles/separator = SubResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="LabelSpells" type="Label" parent="NewChar/HBoxContainer/Preview/VBoxContainer"]
+margin_top = 232.0
+margin_right = 326.0
+margin_bottom = 251.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "SPELLS"
+
+[node name="Spells" type="VBoxContainer" parent="NewChar/HBoxContainer/Preview/VBoxContainer"]
+margin_top = 255.0
+margin_right = 326.0
+margin_bottom = 287.0
+
+[node name="Spell0" type="Panel" parent="NewChar/HBoxContainer/Preview/VBoxContainer/Spells"]
+margin_right = 326.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 56 )
+
+[node name="Label" type="Label" parent="NewChar/HBoxContainer/Preview/VBoxContainer/Spells/Spell0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "SPELL"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator4" type="HSeparator" parent="NewChar/HBoxContainer/Preview/VBoxContainer"]
+margin_top = 291.0
+margin_right = 326.0
+margin_bottom = 295.0
+mouse_filter = 1
+custom_styles/separator = SubResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="LabelEquipment" type="Label" parent="NewChar/HBoxContainer/Preview/VBoxContainer"]
+margin_top = 299.0
+margin_right = 326.0
+margin_bottom = 318.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "EQUIPMENT"
+
+[node name="Equipment" type="VBoxContainer" parent="NewChar/HBoxContainer/Preview/VBoxContainer"]
+margin_top = 322.0
+margin_right = 326.0
+margin_bottom = 354.0
+
+[node name="Equipment0" type="Panel" parent="NewChar/HBoxContainer/Preview/VBoxContainer/Equipment"]
+margin_right = 326.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 56 )
+
+[node name="Label" type="Label" parent="NewChar/HBoxContainer/Preview/VBoxContainer/Equipment/Equipment0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "EQUIPMENT"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator5" type="HSeparator" parent="NewChar/HBoxContainer/Preview/VBoxContainer"]
+margin_top = 358.0
+margin_right = 326.0
+margin_bottom = 362.0
+mouse_filter = 1
+custom_styles/separator = SubResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="LabelInventory" type="Label" parent="NewChar/HBoxContainer/Preview/VBoxContainer"]
+margin_top = 366.0
+margin_right = 326.0
+margin_bottom = 385.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "INVENTORY"
+
+[node name="Inventory" type="VBoxContainer" parent="NewChar/HBoxContainer/Preview/VBoxContainer"]
+margin_top = 389.0
+margin_right = 326.0
+margin_bottom = 421.0
+
+[node name="Item0" type="Panel" parent="NewChar/HBoxContainer/Preview/VBoxContainer/Inventory"]
+margin_right = 326.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 56 )
+
+[node name="Label" type="Label" parent="NewChar/HBoxContainer/Preview/VBoxContainer/Inventory/Item0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "ITEM"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NewChar"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 48.0
+margin_right = -8.0
+margin_bottom = -8.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="NewChar/VBoxContainer"]
+margin_right = 1000.0
+margin_bottom = 452.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 10
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="NewChar/VBoxContainer/HBoxContainer2"]
+margin_right = 326.0
+margin_bottom = 452.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label1" type="Label" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1"]
+margin_right = 326.0
+margin_bottom = 19.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "FIRST_NAME"
+
+[node name="FirstName" type="LineEdit" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1"]
+margin_top = 23.0
+margin_right = 326.0
+margin_bottom = 50.0
+placeholder_text = "FIRST_NAME"
+
+[node name="HSeparator1" type="HSeparator" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1"]
+margin_top = 54.0
+margin_right = 326.0
+margin_bottom = 58.0
+custom_styles/separator = SubResource( 27 )
+
+[node name="Label2" type="Label" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1"]
+margin_top = 62.0
+margin_right = 326.0
+margin_bottom = 81.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "LAST_NAME"
+
+[node name="LastName" type="LineEdit" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1"]
+margin_top = 85.0
+margin_right = 326.0
+margin_bottom = 112.0
+placeholder_text = "LAST_NAME"
+
+[node name="HSeparator2" type="HSeparator" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1"]
+margin_top = 116.0
+margin_right = 326.0
+margin_bottom = 120.0
+custom_styles/separator = SubResource( 27 )
+
+[node name="Label5" type="Label" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1"]
+margin_top = 124.0
+margin_right = 326.0
+margin_bottom = 143.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "GENDER"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1"]
+margin_top = 147.0
+margin_right = 326.0
+margin_bottom = 174.0
+
+[node name="CheckBox1" type="CheckBox" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1/HBoxContainer"]
+margin_right = 95.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+pressed = true
+group = SubResource( 59 )
+text = "HE_HIM"
+
+[node name="CheckBox2" type="CheckBox" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1/HBoxContainer"]
+margin_left = 99.0
+margin_right = 199.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+group = SubResource( 59 )
+text = "SHE_HER"
+
+[node name="CheckBox3" type="CheckBox" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1/HBoxContainer"]
+margin_left = 203.0
+margin_right = 326.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+group = SubResource( 59 )
+text = "THEY_THEM"
+
+[node name="HSeparator3" type="HSeparator" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1"]
+margin_top = 178.0
+margin_right = 326.0
+margin_bottom = 182.0
+custom_styles/separator = SubResource( 27 )
+
+[node name="Label3" type="Label" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1"]
+margin_top = 186.0
+margin_right = 326.0
+margin_bottom = 205.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "RACE"
+
+[node name="Race" type="OptionButton" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1"]
+margin_top = 209.0
+margin_right = 326.0
+margin_bottom = 236.0
+
+[node name="HSeparator4" type="HSeparator" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1"]
+margin_top = 240.0
+margin_right = 326.0
+margin_bottom = 244.0
+custom_styles/separator = SubResource( 27 )
+
+[node name="Label4" type="Label" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1"]
+margin_top = 248.0
+margin_right = 326.0
+margin_bottom = 267.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "CLASS"
+
+[node name="Class" type="OptionButton" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1"]
+margin_top = 271.0
+margin_right = 326.0
+margin_bottom = 298.0
+
+[node name="HSeparator5" type="HSeparator" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1"]
+margin_top = 302.0
+margin_right = 326.0
+margin_bottom = 306.0
+custom_styles/separator = SubResource( 27 )
+
+[node name="Space" type="Control" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1"]
+margin_top = 310.0
+margin_right = 326.0
+margin_bottom = 416.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonRNG" type="Button" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1"]
+margin_top = 420.0
+margin_right = 326.0
+margin_bottom = 452.0
+rect_min_size = Vector2( 0, 32 )
+text = "RANDOMIZE"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="NewChar/VBoxContainer/HBoxContainer2"]
+margin_left = 336.0
+margin_right = 662.0
+margin_bottom = 452.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Trait" type="VBoxContainer" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer3"]
+visible = false
+margin_right = 330.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 48 )
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer3/Trait"]
+margin_right = 330.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "TRAIT"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer3/Trait"]
+margin_top = 18.0
+margin_right = 330.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 0, 24 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonLeft" type="Button" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer3/Trait/HBoxContainer"]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 0 )
+size_flags_vertical = 3
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer3/Trait/HBoxContainer"]
+margin_left = 28.0
+margin_right = 302.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonRight" type="Button" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer3/Trait/HBoxContainer"]
+margin_left = 306.0
+margin_right = 330.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 0 )
+size_flags_vertical = 3
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator" type="HSeparator" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer3/Trait"]
+margin_top = 46.0
+margin_right = 330.0
+margin_bottom = 50.0
+custom_styles/separator = SubResource( 27 )
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="NewChar/VBoxContainer/HBoxContainer2"]
+margin_left = 672.0
+margin_right = 1000.0
+margin_bottom = 452.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer2"]
+margin_right = 328.0
+margin_bottom = 416.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonStart" type="Button" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer2"]
+margin_top = 420.0
+margin_right = 328.0
+margin_bottom = 452.0
+rect_min_size = Vector2( 0, 32 )
+text = "START"
+
+[node name="HBoxContainer" type="VBoxContainer" parent="NewChar/VBoxContainer"]
+margin_top = 456.0
+margin_right = 1000.0
+margin_bottom = 536.0
+rect_min_size = Vector2( 0, 80 )
+
+[node name="HSeparator" type="HSeparator" parent="NewChar/VBoxContainer/HBoxContainer"]
+margin_right = 1000.0
+margin_bottom = 4.0
+custom_styles/separator = SubResource( 27 )
+
+[node name="Label" type="Label" parent="NewChar/VBoxContainer/HBoxContainer"]
+margin_top = 8.0
+margin_right = 1000.0
+margin_bottom = 27.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "STATS"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NewChar/VBoxContainer/HBoxContainer"]
+margin_top = 31.0
+margin_right = 1000.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Stat0" type="VBoxContainer" parent="NewChar/VBoxContainer/HBoxContainer/HBoxContainer"]
+visible = false
+margin_right = 504.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="NewChar/VBoxContainer/HBoxContainer/HBoxContainer/Stat0"]
+margin_right = 504.0
+margin_bottom = 14.0
+mouse_filter = 0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "STAT"
+align = 1
+valign = 1
+
+[node name="SpinBox" type="SpinBox" parent="NewChar/VBoxContainer/HBoxContainer/HBoxContainer/Stat0"]
+margin_top = 18.0
+margin_right = 504.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+min_value = 5.0
+max_value = 15.0
+value = 5.0
+align = 1
+
+[node name="Points" type="VBoxContainer" parent="NewChar/VBoxContainer/HBoxContainer/HBoxContainer"]
+margin_right = 1000.0
+margin_bottom = 49.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="NewChar/VBoxContainer/HBoxContainer/HBoxContainer/Points"]
+margin_right = 1000.0
+margin_bottom = 19.0
+mouse_filter = 0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "POINTS_LEFT"
+align = 1
+valign = 1
+
+[node name="Number" type="Label" parent="NewChar/VBoxContainer/HBoxContainer/HBoxContainer/Points"]
+margin_top = 23.0
+margin_right = 1000.0
+margin_bottom = 49.0
+mouse_filter = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="Bottom" type="HBoxContainer" parent="NewChar"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -40.0
+margin_right = -8.0
+margin_bottom = -8.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonBack" type="Button" parent="NewChar/Bottom"]
+margin_right = 160.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 160, 0 )
+text = "CANCEL"
+
+[node name="Control" type="Control" parent="NewChar/Bottom"]
+margin_left = 164.0
+margin_right = 672.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonRandomize" type="Button" parent="NewChar/Bottom"]
+margin_left = 676.0
+margin_right = 836.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 160, 0 )
+text = "RANDOMIZE"
+
+[node name="ButtonContinue" type="Button" parent="NewChar/Bottom"]
+margin_left = 840.0
+margin_right = 1000.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 160, 0 )
+text = "NEXT"
+
+[node name="Files" type="Panel" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -256.0
+margin_top = -256.0
+margin_right = 256.0
+margin_bottom = 256.0
+theme = SubResource( 52 )
+custom_styles/panel = SubResource( 53 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Files"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -192.0
+margin_top = -36.0
+margin_bottom = -4.0
+custom_styles/panel = SubResource( 53 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Files/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -32.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "LOAD"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Files/Panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -32.0
+text = "X"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Files"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+follow_focus = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Files/ScrollContainer"]
+margin_right = 496.0
+margin_bottom = 496.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="New" type="HBoxContainer" parent="Files/ScrollContainer/VBoxContainer"]
+margin_right = 496.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+
+[node name="LineEdit" type="LineEdit" parent="Files/ScrollContainer/VBoxContainer/New"]
+margin_right = 442.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+clear_button_enabled = true
+placeholder_text = "FILE_NAME"
+
+[node name="ButtonConfirm" type="Button" parent="Files/ScrollContainer/VBoxContainer/New"]
+margin_left = 446.0
+margin_right = 496.0
+margin_bottom = 32.0
+text = "SAVE"
+
+[node name="Button0" type="Button" parent="Files/ScrollContainer/VBoxContainer"]
+margin_top = 36.0
+margin_right = 496.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 0, 48 )
+
+[node name="GridContainer" type="GridContainer" parent="Files/ScrollContainer/VBoxContainer/Button0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 4.0
+margin_right = -6.0
+margin_bottom = -4.0
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelName" type="Label" parent="Files/ScrollContainer/VBoxContainer/Button0/GridContainer"]
+margin_right = 158.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "NAME"
+valign = 1
+
+[node name="LabelClass" type="Label" parent="Files/ScrollContainer/VBoxContainer/Button0/GridContainer"]
+margin_left = 162.0
+margin_right = 320.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "CLASS"
+align = 1
+valign = 1
+
+[node name="LabelDate" type="Label" parent="Files/ScrollContainer/VBoxContainer/Button0/GridContainer"]
+margin_left = 324.0
+margin_right = 482.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "DATE"
+align = 2
+valign = 1
+
+[node name="LabelFilename" type="Label" parent="Files/ScrollContainer/VBoxContainer/Button0/GridContainer"]
+margin_top = 23.0
+margin_right = 158.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 60 )
+custom_colors/font_color = Color( 0.12549, 0.12549, 0.12549, 0.752941 )
+text = "FILENAME"
+valign = 1
+
+[node name="LabelVersion" type="Label" parent="Files/ScrollContainer/VBoxContainer/Button0/GridContainer"]
+margin_left = 162.0
+margin_top = 23.0
+margin_right = 320.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 60 )
+custom_colors/font_color = Color( 0.12549, 0.12549, 0.12549, 0.752941 )
+text = "VERSION"
+align = 1
+valign = 1

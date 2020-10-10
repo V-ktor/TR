@@ -1,0 +1,30 @@
+,en
+SHY,shy
+BOLD,bold
+RECKLESS,reckless
+CYNICAL,cynical
+CURIOUS,curious
+CHEERFUL,cheerful
+YOUNG,young
+OLD,old
+LAWFUL,lawful
+CHAOTIC,chaotic
+EVIL,evil
+VERSATILE,versatile
+VERSATILE_TOOLTIP,"Gain additional proficiency points on level up."
+RESILIANT,resiliant
+RESILIANT_TOOLTIP,"Increase armor by 1."
+STARTLING,startling
+STARTLING_TOOLTIP,"People may react violent in your presence."
+INTIMIDATING,intimidating
+INTIMIDATING_TOOLTIP,"You can intimidate others easier."
+CLAWS_TOOLTIP,"Grants an unarmed attack that can cause the target to bleed."
+HORNS_TOOLTIP,"Grants an unarmed attack that can confuse the target."
+UNDEAD,undead
+LIQUID,liquid
+GASEOUS,gaseous
+TOXIC,toxic
+CORROSIVE,corrosive
+CRYO,cryo
+PYRO,pyro
+

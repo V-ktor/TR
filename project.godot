@@ -1,0 +1,51 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[  ]
+_global_script_class_icons={
+
+}
+
+[application]
+
+config/name="TR"
+config/description="Text-based RPG/adventure game made with Godot."
+run/main_scene="res://scenes/main/loading.tscn"
+config/use_custom_user_dir=true
+config/icon="res://icon.png"
+
+[autoload]
+
+Characters="*res://scripts/main/characters.gd"
+Main="*res://scenes/main/main.tscn"
+Game="*res://scripts/main/game.gd"
+Names="*res://scripts/main/names.gd"
+Menu="*res://scenes/main/menu.tscn"
+Items="*res://scripts/main/items.gd"
+Map="*res://scripts/main/world.gd"
+Events="*res://scripts/main/events.gd"
+Effects="*res://scripts/main/effects.gd"
+Spells="*res://scripts/main/spells.gd"
+
+[debug]
+
+gdscript/warnings/return_value_discarded=false
+
+[locale]
+
+translations=PoolStringArray( "res://translations/combat.en.translation", "res://translations/menu.en.translation", "res://translations/stats.en.translation", "res://translations/log.en.translation", "res://translations/locations.en.translation", "res://translations/races.en.translation", "res://translations/events.en.translation", "res://translations/items.en.translation", "res://translations/enhancements.en.translation", "res://translations/enemy.en.translation", "res://translations/effects.en.translation", "res://translations/traits.en.translation", "res://translations/spells.en.translation", "res://translations/classes.en.translation", "res://translations/city_descriptions.en.translation" )
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_clear_color=Color( 0, 0, 0, 1 )
+environment/default_environment="res://default_env.tres"

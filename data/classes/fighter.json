@@ -1,0 +1,8 @@
+{
+    "name":"fighter",
+    "playable":true,
+    "main_stats":["strength","dexterity"],
+    "proficiency":{"two-hander":1,"axe":1,"light_armor":1,"heavy_armor":1,"unarmed":1},
+    "equipment":["leather_armor","axe","great_sword"],
+    "inventory":[["silver_coins",100],["small_health_potion",2],["supplies",50]]
+}

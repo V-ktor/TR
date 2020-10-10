@@ -1,0 +1,9 @@
+{
+    "type":"city",
+	"race":"elf",
+	"num_cities":11,
+	"pos":[152.0,0.0],
+	"spread":112.0,
+	"traits":["xenophobic"],
+	"terrain":["forest"]
+}

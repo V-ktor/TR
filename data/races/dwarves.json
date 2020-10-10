@@ -1,0 +1,14 @@
+{
+	"name":"dwarf",
+	"traits":["resiliant"],
+	"stats":{"constitution":2,"dexterity":-1,"agility":-1},
+	"proficiency":{"axe":1,"mace":1,"heavy_armor":1,"crossbow":1,"bargaining":1,"earth_magic":1,"shielding_magic":1},
+	"playable":true,
+	"no_female":true,
+	"phrase_male":["ard","ol","tis","til","th","as","ai","dur","us","go","hat"],
+	"phrase_female":["ak","uth"],
+	"first_name_male":["aigaithas","dulatus","gomatas","nardurol","pelatis","trithatil"],
+	"last_name":["goldmining","crafty","resourceful","avarice"],
+	"appearance":{"skin":"default","head":"bearded","hair":"default","hair_color":"default","eyes":"default","body":"small"},
+	"relations":{"elf":-10.0}
+}

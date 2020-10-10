@@ -1,0 +1,12 @@
+{
+	"name":"buckler",
+	"type":"shield",
+	"slot":"hand",
+	"proficiency":"shield",
+	"use_stat":"strength",
+	"block":[4,6],
+	"weight":3.0,
+	"price":70,
+    "grade":1,
+    "enhancements":["armor","shield"]
+}

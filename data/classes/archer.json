@@ -1,0 +1,8 @@
+{
+    "name":"archer",
+    "playable":true,
+    "main_stats":["dexterity","agility"],
+    "proficiency":{"bow":1,"crossbow":1,"light_armor":1},
+    "equipment":["leather_armor","bow"],
+    "inventory":[["silver_coins",125],["small_health_potion",2],["supplies",75]]
+}

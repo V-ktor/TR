@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/main/button.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+draw_center = false
+border_width_left = 4
+border_color = Color( 0.752941, 0.878431, 1, 1 )
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id=2]
+draw_center = false
+border_width_left = 4
+border_color = Color( 0.25098, 0.501961, 0.627451, 1 )
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id=3]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.501961, 0.752941, 0.878431, 1 )
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id=4]
+draw_center = false
+border_width_left = 4
+border_color = Color( 0.12549, 0.0627451, 0.0627451, 1 )
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id=5]
+draw_center = false
+border_width_left = 4
+border_color = Color( 0.501961, 0.752941, 0.878431, 1 )
+corner_detail = 1
+
+[node name="Button" type="HBoxContainer"]
+margin_top = 18.0
+margin_right = 481.0
+margin_bottom = 34.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_right = 58.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 0, 16 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+text = "BUTTON"
+align = 0
+
+[node name="Chance" type="Label" parent="."]
+visible = false
+margin_left = 62.0
+margin_top = 1.0
+margin_right = 70.0
+margin_bottom = 15.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "[]"
+
+[node name="Dots" type="Label" parent="."]
+visible = false
+margin_left = 74.0
+margin_top = 1.0
+margin_right = 74.0
+margin_bottom = 15.0
+
+[node name="Status" type="Label" parent="."]
+visible = false
+margin_left = 74.0
+margin_top = 1.0
+margin_right = 121.0
+margin_bottom = 15.0
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "STATUS"

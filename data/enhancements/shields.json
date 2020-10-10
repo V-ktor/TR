@@ -1,0 +1,44 @@
+{
+    "name":"reinforced",
+    "type":"shield",
+    "minor":true,
+    "block":1,
+    "frequency":8,
+    "price":30,
+    "grade":1
+}
+{
+    "name":"quick",
+    "type":"shield",
+    "minor":true,
+    "agility":1,
+    "frequency":5,
+    "price":40,
+    "grade":1
+}
+{
+    "name":"durable",
+    "type":"shield",
+    "minor":true,
+    "constitution":1,
+    "frequency":5,
+    "price":40,
+    "grade":1
+}
+{
+    "name":"of_endurance",
+    "type":"shield",
+    "constitution":2,
+    "frequency":2,
+    "price":100,
+    "grade":1
+}
+{
+    "name":"broken",
+    "type":"shield",
+    "minor":true,
+    "block":-1,
+    "frequency":8,
+    "price":-40,
+    "grade":-1
+}

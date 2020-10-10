@@ -1,0 +1,17 @@
+{
+	"name":"vampiric_bat",
+    "race":"bat",
+	"traits":["flying"],
+    "expirience":7,
+	"stats":{"strength":[4,8],"constitution":[4,8],"dexterity":[10,15],"agility":[10,15],"intelligence":[4,8],"wisdom":[4,8],"cunning":[4,8],"charisma":[4,8]},
+	"appearance":{"body":"bat"},
+	"equipment":[{
+    	"name":"vampiric_teeth",
+	    "type":"weapon",
+    	"proficiency":"melee",
+    	"use_stat":"strength",
+    	"min_dam":1,
+    	"max_dam":3,
+    	"life_steal":0.5}],
+    "proficiency":{"unarmed":[1,3]}
+}

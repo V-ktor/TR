@@ -1,0 +1,25 @@
+{
+	"name":"alligator",
+    "race":"alligator",
+	"traits":[],
+    "expirience":14,
+	"stats":{"strength":[10,15],"constitution":[10,15],"dexterity":[6,12],"agility":[6,12],"intelligence":[5,10],"wisdom":[5,10],"cunning":[5,10],"charisma":[5,10]},
+	"appearance":{"body":"alligator"},
+	"equipment":[{
+    	"name":"sharp_teeth",
+	    "type":"weapon",
+    	"proficiency":"melee",
+    	"use_stat":"strength",
+    	"min_dam":2,
+    	"max_dam":6,
+    	"afflict":["Bleeding",{"chance":0.33,"duration":3,"amount":1}]},
+    	{
+    	"name":"scales",
+	    "type":"armor",
+    	"proficiency":"light_armor",
+	    "armor":2,
+        "grade":1}],
+    "proficiency":{"unarmed":[2,3],"light_armor":[1,3]},
+    "drop_rate":0.75,
+    "drops":["leather"]
+}

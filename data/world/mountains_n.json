@@ -1,0 +1,14 @@
+{
+    "type":"terrain",
+    "name":"mountains",
+    "traits":["mining"],
+	"travel_time":1.0,
+	"encounters":[
+		{"script":"battle_northern_mountains","base_chance":0.1}
+	],
+	"tile":"mountains",
+    "amount":6,
+	"pos":[64.0,-224.0],
+	"spread":128.0,
+	"size":[16.0,48.0]
+}

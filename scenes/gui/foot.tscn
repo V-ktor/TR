@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://images/gui/foot.png" type="Texture" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "fade_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 0.05, 0.05 ), Vector2( 0.25, 0.25 ), Vector2( 0.25, 0.25 ), Vector2( 0.33, 0.33 ) ]
+}
+
+[node name="Foot" type="Sprite"]
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "fade_out"
+anims/fade_out = SubResource( 1 )

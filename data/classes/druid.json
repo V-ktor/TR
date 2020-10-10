@@ -1,0 +1,8 @@
+{
+    "name":"druid",
+    "playable":true,
+    "main_stats":["wisdom","cunning"],
+    "proficiency":{"staff":1,"light_armor":1,"nature_magic":1,"earth_magic":1,"wind_magic":1,"restoration_magic":1},
+    "equipment":["robe","staff","book_of_nature"],
+    "inventory":[["silver_coins",100],["small_mana_potion",2],["supplies",50]]
+}

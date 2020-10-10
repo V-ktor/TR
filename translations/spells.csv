@@ -1,0 +1,20 @@
+,en
+MAGIC_MISSILE,Magic Missile
+MAGIC_MISSILE_TOOLTIP,"Fire a projectile of arcane energy at the target with a high chance of success."
+COMBUSTION,Combustion
+COMBUSTION_TOOLTIP,"Set the target ablaze doing high damage over time."
+FREEZE,Freeze
+FREEZE_TOOLTIP,"Encase the target in ice slowing it down and possibly restricting its movement."
+FLASH,Flash
+FLASH_TOOLTIP,"Blind the target with a bright flash of light."
+MINOR_HEAL,Minor Heal
+MINOR_HEAL_TOOLTIP,"Heal the target for a small amount of health or instead remove all bleeding and poison effects if the target is bleeding or poisoned."
+SAND_BLAST,Sand Blast
+SAND_BLAST_TOOLTIP,"Blast the target with ambient sand or dust doing variable damage and possibly blinding the target."
+VINES,Vines
+VINES_TOOLTIP,"Entangle the target in poisonous vines, pinning it down."
+MAGIC_SHIELD,Magic Shield
+MAGIC_SHIELD_TOOLTIP,"Errect a shield that absorbs all incomming damage up to a certain limit."
+CLEANSING_WIND,Cleansing Wind
+CLEANSING_WIND_TOOLTIP,"Conjure a gust of wind clearing fog or similar area effects and possibly affecting flying targets."
+

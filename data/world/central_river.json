@@ -1,0 +1,14 @@
+{
+    "type":"terrain",
+    "name":"river",
+    "traits":["no_cities"],
+	"travel_time":2.0,
+	"encounters":[],
+	"tile":"water",
+	"amount":1,
+    "start_pos":[224,-192],
+    "end_pos":[-300,64],
+    "spread":48.0,
+    "variation":5.0,
+    "width":1
+}

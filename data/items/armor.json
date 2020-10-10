@@ -1,0 +1,44 @@
+{
+	"name":"robe",
+	"type":"armor",
+	"slot":"body",
+	"proficiency":"light_armor",
+	"armor":0,
+	"weight":3.0,
+	"price":30,
+    "grade":1,
+    "enhancements":["armor"]
+}
+{
+	"name":"leather_armor",
+	"type":"armor",
+	"slot":"body",
+	"proficiency":"light_armor",
+	"armor":[1,2],
+	"weight":5.0,
+	"price":120,
+    "grade":1,
+    "enhancements":["armor"]
+}
+{
+	"name":"chain_mail",
+	"type":"armor",
+	"slot":"body",
+	"proficiency":"heavy_armor",
+	"armor":[3,4],
+	"weight":15.0,
+	"price":240,
+    "grade":1,
+    "enhancements":["armor"]
+}
+{
+	"name":"plate_armor",
+	"type":"armor",
+	"slot":"body",
+	"proficiency":"heavy_armor",
+	"armor":[5,6],
+	"weight":20.0,
+	"price":325,
+    "grade":1,
+    "enhancements":["armor"]
+}

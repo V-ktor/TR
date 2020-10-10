@@ -1,0 +1,117 @@
+,en
+NEXT,Next
+BACK,Back
+CONFIRM,Confirm
+CANCEL,Cancel
+CONTINUE,Continue
+MENU,Menu
+NEW_GAME,New Game
+LOAD,Load
+SAVE,Save
+OPTIONS,Options
+CREDITS,Credits
+QUIT,Quit
+RANDOMIZE,Randomize
+NAME,Name
+FIRST_NAME,First Name
+LAST_NAME,Last Name
+GENDER,Gender
+MALE,Male
+FEMALE,Female
+PRONOUNS,Pronouns
+RACE,Race
+CLASS,Class
+STATS,Stats
+POINTS_LEFT,"Points left:"
+IMPORTANT_STATS,"Most important stats:"
+FILE_NAME,file name
+START,Start
+LOAD,Load
+SAVE,Save
+POPULATION,Population
+FACILITIES,Facilities
+DISTANCE,Distance
+TRAVEL_TIME,Travel time
+FUEL_CONSUMPTION,Fuel consumption
+GOTO,Go to
+NONE,none
+HEALTH,Health
+HEALTH0,unconscious
+HEALTH1,critical
+HEALTH2,injured
+HEALTH3,fine
+HEALTH4,healthy
+STAMINA,Stamina
+STAMINA0,exhausted
+STAMINA1,tired
+STAMINA2,strained
+STAMINA3,sturdy
+STAMINA4,rested
+MANA,Mana
+MANA0,exhausted
+MANA1,tired
+MANA2,strained
+MANA3,rested
+MANA4,powerful
+EXPIRIENCE,Expirience
+CHANCE,chance
+CHANCE0,very good
+CHANCE1,good
+CHANCE2,medium
+CHANCE3,low
+CHANCE4,very low
+CHANCE5,impossible
+DISASTER,disaster
+FAILED,failed
+SUCCESS,success
+GREAT,great
+PERFECT,perfect
+LOG,Log
+INVENTORY,Inventory
+CHARACTERS,Characters
+EQUIPMENT,Equipment
+MAP,Map
+USED,used
+LVL,"Lvl."
+STATUS,Status
+SKILLS,Skills
+TRAITS,Traits
+APPEARANCE,Appearance
+PROFICIENCIES,Proficiencies
+SPELLS,Spells
+SHOW_STATUS,Show status
+SHOW_SKILLS,Show skills
+SHOW_TRAITS,Show traits
+TIME,Time
+TIME_FORMAT,"{hour}:{minute} {day}.{month}.{year}"
+PROF_LEVEL0,Untrained
+PROF_LEVEL1,Novice
+PROF_LEVEL2,Advanced
+PROF_LEVEL3,Expert
+PROF_LEVEL4,Master
+COMMODITY_PRICES,Commodity prices
+RELATION,Relation
+HE_HIM,"he/him"
+SHE_HER,"she/her"
+THEY_THEM,"they/them"
+HE,he
+HIS,his
+HIM,him
+SHE,she
+HER,her
+THEY,they
+THEIR,their
+THEM,them
+IS,is
+ARE,are
+HIRED,hired
+PAY,Pay
+PAYMENT_PER_DAY,"Payment: {amount} {currency} per day"
+DEBTS,Debts
+ENCUMBRANCE,Encumbrance
+PAYMENT_TOOLTIP,"Payment: {amount} {currency} per day"
+HIRED_UNTIL_TOOLTIP,"Hired until: {time}"
+SUPPLIES_REQUIRED,Supplies required
+MIN,min
+H,h
+

@@ -1,0 +1,44 @@
+,en
+COUNTER_ATTACK,Counter Attack
+RIPOSTE,Riposte
+HIDDEN,Hidden
+DISTRACTED,Distracted
+CONFUSED,Confused
+CORROSION,Corrosion
+POISONED,Poisoned
+BURNING,Burning
+FROZEN,Frozen
+BLEEDING,Bleeding
+BLIND,Blind
+PINNED,Pinned
+WET,Wet
+POISONOUS_CLOUDS,Poisonous Clouds
+MAGIC_SHIELD,Magic Shield
+STATUS_HIDDEN,"{actor} blends in with the shadows."
+STATUS_HIDDEN_STOP,"{actor} was spotted!"
+STATUS_BLEEDING,"{actor} is bleeding!"
+STATUS_BLEEDING_STOP,"{actor} stopped bleeding."
+STATUS_POISONED,"{actor} was poisoned!"
+STATUS_POISONED_STOP,"{actor} is no longer affected by poison."
+STATUS_POISON_RESISTED,"{actor} is immune to the poison."
+STATUS_CONFUSED,"{actor} is confused!"
+STATUS_CONFUSED_STOP,"{actor} is no longer confused."
+STATUS_STUNNED,"{actor} was stunned!"
+STATUS_DISTRACTED,"{actor} was distracted."
+STATUS_CORROSION,"{actor}'s armor corrodes."
+STATUS_CORROSION_STOP,"{actor}'s armor is no longer affected by corrosion."
+STATUS_FROZEN,"{actor} is encased by ice!"
+STATUS_FROZEN_STOP,"{actor} is melting."
+STATUS_BURNING,"{actor} bursts into flames!"
+STATUS_BURNING_STOP,"{actor} was extinguished."
+STATUS_BLIND,"{actor} is blind!"
+STATUS_BLIND_STOP,"{actor} is no longer blind."
+STATUS_PINNED,"{actor} is unable to move!"
+STATUS_PINNED_STOP,"{actor} is free."
+STATUS_WET,"{actor} is wet."
+STATUS_WET_STOP,"{actor} is no longer wet."
+STATUS_MAGIC_SHIELD,"{actor} is protected by a magical shield."
+STATUS_MAGIC_SHIELD_STOP,"{actor}'s magical shield crumbles."
+AREA_POISONOUS_CLOUDS,"The battle field is surrounded by poisonous clouds!"
+AREA_POISONOUS_CLOUDS_STOP,"The poisonous clouds dissipate."
+

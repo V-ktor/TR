@@ -1,0 +1,59 @@
+,en
+GARBAGE,garbage
+NORMAL,normal
+RARE,rare
+EPIC,epic
+LEGENDARY,legendary
+TYPE,Type
+ARMOR,Armor
+WEAPON,Weapon
+SHIELD,Shield
+SPELLBOOK,Spell Book
+TRINKET,Trinket
+MISC,Misc
+CURRENCY,Currency
+COMMODITIES,Commodities
+POTION,Potion
+FUEL,Fuel
+SLOT,Slot
+BODY,Body
+HAND,Hand
+WEIGHT,Weight
+PRICE,Price
+USE_STAT,uses
+MIN_DAM,Min. Damage
+MAX_DAM,Max. Damage
+GOLD_COINS,Gold Coins
+SILVER_COINS,Silver Coins
+COPPER_COINS,Copper Coins
+BLOCK,Block
+ROBE,Robe
+GREAT_SWORD,Great Sword
+LONG_SWORD,Long Sword
+DAGGER,Dagger
+MACE,Mace
+STAFF,Staff
+SPEAR,Spear
+CLAWS,Claws
+BOW,Bow
+BUCKLER,Buckler
+LEATHER_ARMOR,Leather Armor
+CHAIN_MAIL,Chain Mail
+PLATE_ARMOR,Plate Armor
+BOOK_OF_CONJURATION,Book of Conjuration
+BOOK_OF_RESTORATION,Book of Restoration
+BOOK_OF_NATURE,Book of Nature
+SUPPLIES,Supplies
+FOOD,food
+WOOD,wood
+METALS,metals
+MEDICAL_SUPPLIES,medical supplies
+LUXURY_GOODS,luxury goods
+SMALL_HEALTH_POTION,Small Health Potion
+SMALL_MANA_POTION,Small Mana Potion
+GOO,goo
+FUR,fur
+LEATHER,leather
+IMP_LEATHER,imp leather
+TROLL_HIDE,troll hide
+

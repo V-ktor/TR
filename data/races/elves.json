@@ -1,0 +1,14 @@
+{
+	"name":"elf",
+	"stats":{"intelligence":2,"dexterity":2,"strength":-2,"constitution":-2},
+	"proficiency":{"blade":1,"staff":1,"bow":1,"light_armor":1,"arcane_magic":1,"nature_magic":1,"restoration_magic":1},
+	"playable":true,
+	"phrase_male":["amá","egé","len","ar","rid","ril","vón","or","thr","ónd","óld"],
+	"phrase_female":["amé","cle","ria","ndë","adë","ith","ódi","nón","ili","ól","niel"],
+	"vovels":["á","é","ë","ó"],
+	"first_name_male":["kalenz","landar","ameldor","belomir","elandil","garion","thrion"],
+	"first_name_female":["cleodil","amorith","elondra","falinde","salinde","vithraniel"],
+	"last_name":["tinithrathiel","galolinde","porfiwien","anithranduil","amadrieriand"],
+	"appearance":{"skin":"bright","head":"elven","hair":"default","hair_color":"bright","eyes":"default","body":"default"},
+	"relations":{"dwarf":-10.0,"orc":-50.0}
+}

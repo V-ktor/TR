@@ -1,0 +1,10 @@
+{
+	"name":"undead",
+	"traits":["undead","poison_resistance"],
+	"phrase_male":["mal","bal","ice","tor","thur"],
+	"phrase_female":["mal","bal","ark","cy","dis"],
+	"first_name_male":["necromancer","skeleton","ghoul","lich"],
+	"first_name_female":["necromancer","skeleton","ghoul","lich"],
+	"last_name":["malice","decay","death","undead"],
+	"appearance":{"skin":"undead","head":"undead","eyes":"red","body":"undead","arms":"undead","legs":"undead","tail":["none","undead"]}
+}

@@ -1,0 +1,9 @@
+{
+    "type":"city",
+	"race":"dwarf",
+	"num_cities":9,
+	"pos":[-32.0,-192.0],
+	"spread":256.0,
+	"terrain":["mountains"],
+	"city_size":1
+}

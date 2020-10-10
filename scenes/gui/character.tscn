@@ -1,0 +1,1296 @@
+[gd_scene load_steps=36 format=2]
+
+[ext_resource path="res://fonts/Play-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/gui/character.gd" type="Script" id=2]
+[ext_resource path="res://scripts/gui/stats.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.25098, 0.25098, 0.25098, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.886275, 0.690196, 0.341176, 1 )
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.878431, 0.878431, 1, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.921569, 0.768627, 0.403922, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.886275, 0.690196, 0.341176, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.717647, 0.490196, 0.2, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.886275, 0.690196, 0.341176, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.921569, 0.768627, 0.403922, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.717647, 0.490196, 0.2, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=9]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.372549, 0.180392, 0.0745098, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=10]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.372549, 0.180392, 0.0745098, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=11]
+content_margin_left = 2.0
+content_margin_right = 2.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color( 0.921569, 0.768627, 0.403922, 1 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.372549, 0.180392, 0.0745098, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.878431, 0.878431, 1, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=13]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.372549, 0.180392, 0.0745098, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=14]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.870588, 0.792157, 0.701961, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0.870588, 0.792157, 0.701961, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.372549, 0.180392, 0.0745098, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0, 0, 0, 1 )
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.921569, 0.768627, 0.403922, 1 )
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0.12549, 0.12549, 0.12549, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.372549, 0.180392, 0.0745098, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0.886275, 0.690196, 0.341176, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0.921569, 0.768627, 0.403922, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.717647, 0.490196, 0.2, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=21]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.372549, 0.180392, 0.0745098, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+
+[sub_resource type="StyleBoxFlat" id=22]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.372549, 0.180392, 0.0745098, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+
+[sub_resource type="DynamicFont" id=23]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=24]
+default_font = SubResource( 23 )
+Button/colors/font_color = Color( 0.12549, 0.12549, 0.12549, 1 )
+Button/colors/font_color_disabled = Color( 0.12549, 0.12549, 0.12549, 0.25098 )
+Button/colors/font_color_hover = Color( 0.25098, 0.25098, 0.25098, 1 )
+Button/colors/font_color_pressed = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = SubResource( 1 )
+Button/styles/focus = SubResource( 2 )
+Button/styles/hover = SubResource( 3 )
+Button/styles/normal = SubResource( 4 )
+Button/styles/pressed = SubResource( 5 )
+HScrollBar/icons/decrement = null
+HScrollBar/icons/decrement_highlight = null
+HScrollBar/icons/increment = null
+HScrollBar/icons/increment_highlight = null
+HScrollBar/styles/grabber = SubResource( 6 )
+HScrollBar/styles/grabber_highlight = SubResource( 7 )
+HScrollBar/styles/grabber_pressed = SubResource( 8 )
+HScrollBar/styles/scroll = SubResource( 9 )
+HScrollBar/styles/scroll_focus = SubResource( 10 )
+HSeparator/constants/separation = 4
+HSeparator/styles/separator = SubResource( 11 )
+Label/colors/font_color = Color( 0.12549, 0.12549, 0.12549, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0.12549 )
+Label/colors/font_outline_modulate = Color( 0.886275, 0.690196, 0.341176, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = null
+Label/styles/normal = null
+LineEdit/colors/clear_button_color = Color( 0.88, 0.88, 0.88, 1 )
+LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
+LineEdit/colors/cursor_color = Color( 0.94, 0.94, 0.94, 1 )
+LineEdit/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+LineEdit/colors/font_color_selected = Color( 0.12549, 0.12549, 0.12549, 1 )
+LineEdit/colors/font_color_uneditable = Color( 0.0627451, 0.0627451, 0.0627451, 0.501961 )
+LineEdit/colors/selection_color = Color( 0.921569, 0.768627, 0.403922, 1 )
+LineEdit/constants/minimum_spaces = 12
+LineEdit/fonts/font = null
+LineEdit/icons/clear = null
+LineEdit/styles/focus = SubResource( 12 )
+LineEdit/styles/normal = SubResource( 13 )
+LineEdit/styles/read_only = SubResource( 14 )
+Panel/styles/panel = SubResource( 15 )
+PopupMenu/colors/font_color = Color( 0.12549, 0.12549, 0.12549, 1 )
+PopupMenu/colors/font_color_accel = Color( 0.188235, 0.188235, 0.188235, 0.8 )
+PopupMenu/colors/font_color_disabled = Color( 0.0627451, 0.0627451, 0.0627451, 0.8 )
+PopupMenu/colors/font_color_hover = Color( 0.25098, 0.25098, 0.25098, 1 )
+PopupMenu/constants/hseparation = 4
+PopupMenu/constants/vseparation = 4
+PopupMenu/fonts/font = null
+PopupMenu/icons/checked = null
+PopupMenu/icons/radio_checked = null
+PopupMenu/icons/radio_unchecked = null
+PopupMenu/icons/submenu = null
+PopupMenu/icons/unchecked = null
+PopupMenu/styles/hover = SubResource( 16 )
+PopupMenu/styles/labeled_separator_left = null
+PopupMenu/styles/labeled_separator_right = null
+PopupMenu/styles/panel = SubResource( 15 )
+PopupMenu/styles/panel_disabled = SubResource( 17 )
+PopupMenu/styles/separator = SubResource( 11 )
+SpinBox/icons/updown = null
+TextEdit/colors/background_color = Color( 0, 0, 0, 0 )
+TextEdit/colors/bookmark_color = Color( 0.08, 0.49, 0.98, 1 )
+TextEdit/colors/brace_mismatch_color = Color( 1, 0.2, 0.2, 1 )
+TextEdit/colors/breakpoint_color = Color( 0.8, 0.8, 0.4, 0.2 )
+TextEdit/colors/caret_background_color = Color( 0, 0, 0, 1 )
+TextEdit/colors/caret_color = Color( 0.88, 0.88, 0.88, 1 )
+TextEdit/colors/code_folding_color = Color( 0.8, 0.8, 0.8, 0.8 )
+TextEdit/colors/completion_background_color = Color( 0.17, 0.16, 0.2, 1 )
+TextEdit/colors/completion_existing_color = Color( 0.87, 0.87, 0.87, 0.13 )
+TextEdit/colors/completion_font_color = Color( 0.67, 0.67, 0.67, 1 )
+TextEdit/colors/completion_scroll_color = Color( 1, 1, 1, 1 )
+TextEdit/colors/completion_selected_color = Color( 0.26, 0.26, 0.27, 1 )
+TextEdit/colors/current_line_color = Color( 0.25, 0.25, 0.26, 0.8 )
+TextEdit/colors/executing_line_color = Color( 0.2, 0.8, 0.2, 0.4 )
+TextEdit/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+TextEdit/colors/font_color_readonly = Color( 0.88, 0.88, 0.88, 0.5 )
+TextEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
+TextEdit/colors/function_color = Color( 0.4, 0.64, 0.81, 1 )
+TextEdit/colors/line_number_color = Color( 0.67, 0.67, 0.67, 0.4 )
+TextEdit/colors/mark_color = Color( 1, 0.4, 0.4, 0.4 )
+TextEdit/colors/member_variable_color = Color( 0.9, 0.31, 0.35, 1 )
+TextEdit/colors/number_color = Color( 0.92, 0.58, 0.2, 1 )
+TextEdit/colors/safe_line_number_color = Color( 0.67, 0.78, 0.67, 0.6 )
+TextEdit/colors/selection_color = Color( 0.49, 0.49, 0.49, 1 )
+TextEdit/colors/symbol_color = Color( 0.94, 0.94, 0.94, 1 )
+TextEdit/colors/word_highlighted_color = Color( 0.8, 0.9, 0.9, 0.15 )
+TextEdit/constants/completion_lines = 7
+TextEdit/constants/completion_max_width = 50
+TextEdit/constants/completion_scroll_width = 3
+TextEdit/constants/line_spacing = 4
+TextEdit/fonts/font = null
+TextEdit/icons/fold = null
+TextEdit/icons/folded = null
+TextEdit/icons/space = null
+TextEdit/icons/tab = null
+TextEdit/styles/completion = null
+TextEdit/styles/focus = SubResource( 12 )
+TextEdit/styles/normal = SubResource( 13 )
+TextEdit/styles/read_only = SubResource( 14 )
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/styles/grabber = SubResource( 18 )
+VScrollBar/styles/grabber_highlight = SubResource( 19 )
+VScrollBar/styles/grabber_pressed = SubResource( 20 )
+VScrollBar/styles/scroll = SubResource( 21 )
+VScrollBar/styles/scroll_focus = SubResource( 22 )
+VSeparator/constants/separation = 4
+VSeparator/styles/separator = SubResource( 11 )
+
+[sub_resource type="StyleBoxFlat" id=25]
+bg_color = Color( 0.878431, 0.0627451, 0.0627451, 0.501961 )
+draw_center = false
+border_width_left = 20
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.878431, 0.0627451, 0.0627451, 0.501961 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0, 0, 0, 0.25098 )
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id=26]
+bg_color = Color( 0.752941, 0.627451, 0.12549, 0.501961 )
+draw_center = false
+border_width_left = 20
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.752941, 0.627451, 0.12549, 0.501961 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0, 0, 0, 0.25098 )
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id=27]
+bg_color = Color( 0.0627451, 0.501961, 0.878431, 0.501961 )
+draw_center = false
+border_width_left = 20
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.0627451, 0.501961, 0.878431, 0.501961 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0, 0, 0, 0.25098 )
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id=28]
+bg_color = Color( 0.12549, 0.752941, 0.0627451, 0.501961 )
+draw_center = false
+border_width_left = 20
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.12549, 0.752941, 0.0627451, 0.501961 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0, 0, 0, 0.25098 )
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id=29]
+bg_color = Color( 0.752941, 0.752941, 0.752941, 0.501961 )
+draw_center = false
+border_width_left = 20
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.752941, 0.752941, 0.752941, 0.501961 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0, 0, 0, 0.25098 )
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id=30]
+bg_color = Color( 0.0627451, 0.12549, 0.188235, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.372549, 0.180392, 0.0745098, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=31]
+bg_color = Color( 0.886275, 0.690196, 0.341176, 1 )
+draw_center = false
+border_width_left = 20
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.886275, 0.690196, 0.341176, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0, 0, 0, 0.25098 )
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id=32]
+bg_color = Color( 0.886275, 0.690196, 0.341176, 1 )
+draw_center = false
+border_width_left = 4
+border_width_top = 20
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.886275, 0.690196, 0.341176, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color( 0, 0, 0, 0.25098 )
+shadow_size = 2
+
+[node name="Character" type="Panel"]
+anchor_right = 1.0
+rect_min_size = Vector2( 0, 320 )
+theme = SubResource( 24 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Status" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+rect_min_size = Vector2( 0, 80 )
+custom_constants/separation = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainerName" type="HBoxContainer" parent="Status"]
+margin_right = 1016.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 0, 24 )
+size_flags_horizontal = 3
+
+[node name="Name" type="Label" parent="Status/HBoxContainerName"]
+margin_right = 336.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "NAME"
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="Class" type="Label" parent="Status/HBoxContainerName"]
+margin_left = 340.0
+margin_right = 676.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "CLASS"
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="ButtonSkills" type="Button" parent="Status/HBoxContainerName"]
+margin_left = 680.0
+margin_right = 1016.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "SHOW_SKILLS"
+clip_text = true
+
+[node name="HBoxContainerStatus" type="HBoxContainer" parent="Status"]
+margin_top = 29.0
+margin_right = 1016.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 0, 28 )
+size_flags_horizontal = 3
+
+[node name="Health" type="Panel" parent="Status/HBoxContainerStatus"]
+margin_right = 251.0
+margin_bottom = 28.0
+hint_tooltip = "HEALTH"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 25 )
+
+[node name="Label" type="Label" parent="Status/HBoxContainerStatus/Health"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "HEALTH"
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stamina" type="Panel" parent="Status/HBoxContainerStatus"]
+margin_left = 255.0
+margin_right = 506.0
+margin_bottom = 28.0
+hint_tooltip = "STAMINA"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 26 )
+
+[node name="Label" type="Label" parent="Status/HBoxContainerStatus/Stamina"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "STAMINA"
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mana" type="Panel" parent="Status/HBoxContainerStatus"]
+margin_left = 510.0
+margin_right = 761.0
+margin_bottom = 28.0
+hint_tooltip = "MANA"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 27 )
+
+[node name="Label" type="Label" parent="Status/HBoxContainerStatus/Mana"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "MANA"
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exp" type="Panel" parent="Status/HBoxContainerStatus"]
+margin_left = 765.0
+margin_right = 1016.0
+margin_bottom = 28.0
+hint_tooltip = "EXPIRIENCE"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 28 )
+
+[node name="Label" type="Label" parent="Status/HBoxContainerStatus/Exp"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "EXP"
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Status"]
+margin_top = 59.0
+margin_right = 1016.0
+margin_bottom = 312.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Status/HBoxContainer"]
+margin_right = 748.0
+margin_bottom = 253.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainerEffects" type="GridContainer" parent="Status/HBoxContainer/VBoxContainer"]
+margin_right = 748.0
+margin_bottom = 109.0
+rect_min_size = Vector2( 0, 16 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="Hired" type="Panel" parent="Status/HBoxContainer/VBoxContainer/HBoxContainerEffects"]
+visible = false
+modulate = Color( 1, 0.25, 0.25, 1 )
+margin_right = 372.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+hint_tooltip = "EXPIRIENCE"
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 29 )
+
+[node name="Label" type="Label" parent="Status/HBoxContainer/VBoxContainer/HBoxContainerEffects/Hired"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0.25098, 0.25098, 0.25098, 1 )
+text = "HIRED"
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Status0" type="Panel" parent="Status/HBoxContainer/VBoxContainer/HBoxContainerEffects"]
+visible = false
+margin_right = 374.0
+margin_bottom = 107.0
+rect_min_size = Vector2( 0, 32 )
+hint_tooltip = "EXPIRIENCE"
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 29 )
+
+[node name="Label" type="Label" parent="Status/HBoxContainer/VBoxContainer/HBoxContainerEffects/Status0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0.25098, 0.25098, 0.25098, 1 )
+text = "EXP"
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator1" type="HSeparator" parent="Status/HBoxContainer/VBoxContainer"]
+margin_top = 113.0
+margin_right = 748.0
+margin_bottom = 117.0
+
+[node name="LabelEquipment" type="Label" parent="Status/HBoxContainer/VBoxContainer"]
+margin_top = 121.0
+margin_right = 748.0
+margin_bottom = 140.0
+text = "EQUIPMENT"
+
+[node name="GridContainer" type="GridContainer" parent="Status/HBoxContainer/VBoxContainer"]
+margin_top = 144.0
+margin_right = 748.0
+margin_bottom = 253.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 12
+custom_constants/hseparation = 12
+columns = 2
+
+[node name="Button0" type="OptionButton" parent="Status/HBoxContainer/VBoxContainer/GridContainer"]
+margin_right = 374.0
+margin_bottom = 109.0
+rect_min_size = Vector2( 0, 24 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "EQUIPMENT"
+clip_text = true
+
+[node name="VSeparator" type="VSeparator" parent="Status/HBoxContainer"]
+margin_left = 752.0
+margin_right = 756.0
+margin_bottom = 253.0
+
+[node name="Control" type="Panel" parent="Status/HBoxContainer"]
+margin_left = 760.0
+margin_right = 1016.0
+margin_bottom = 253.0
+rect_min_size = Vector2( 256, 0 )
+custom_styles/panel = SubResource( 30 )
+script = ExtResource( 3 )
+
+[node name="Skills" type="VBoxContainer" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+rect_min_size = Vector2( 0, 80 )
+custom_constants/separation = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainerName" type="HBoxContainer" parent="Skills"]
+margin_right = 1016.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 0, 24 )
+size_flags_horizontal = 3
+
+[node name="Name" type="Label" parent="Skills/HBoxContainerName"]
+margin_right = 336.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "NAME"
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="Class" type="Label" parent="Skills/HBoxContainerName"]
+margin_left = 340.0
+margin_right = 676.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "CLASS"
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="ButtonTraits" type="Button" parent="Skills/HBoxContainerName"]
+margin_left = 680.0
+margin_right = 1016.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "SHOW_TRAITS"
+clip_text = true
+
+[node name="LabelPoints" type="Label" parent="Skills"]
+margin_top = 29.0
+margin_right = 1016.0
+margin_bottom = 49.0
+rect_min_size = Vector2( 0, 20 )
+mouse_filter = 0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "POINTS_LEFT"
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Skills"]
+margin_top = 51.0
+margin_right = 1016.0
+margin_bottom = 167.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="GridContainer" parent="Skills/ScrollContainer"]
+margin_right = 1016.0
+margin_bottom = 116.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+
+[node name="Skill0" type="Panel" parent="Skills/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 338.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 0, 36 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 31 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Skills/ScrollContainer/VBoxContainer/Skill0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Skills/ScrollContainer/VBoxContainer/Skill0/HBoxContainer"]
+margin_right = 105.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "PROFICIENCY"
+valign = 1
+
+[node name="Level" type="Label" parent="Skills/ScrollContainer/VBoxContainer/Skill0/HBoxContainer"]
+margin_left = 109.0
+margin_right = 210.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "NOVICE"
+align = 2
+valign = 1
+
+[node name="ButtonDec" type="Button" parent="Skills/ScrollContainer/VBoxContainer/Skill0/HBoxContainer"]
+margin_left = 214.0
+margin_right = 262.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 48, 0 )
+text = "-"
+
+[node name="ButtonInc" type="Button" parent="Skills/ScrollContainer/VBoxContainer/Skill0/HBoxContainer"]
+margin_left = 266.0
+margin_right = 314.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 48, 0 )
+text = "+"
+
+[node name="Value" type="SpinBox" parent="Skills/ScrollContainer/VBoxContainer/Skill0/HBoxContainer"]
+visible = false
+margin_left = 510.0
+margin_right = 1016.0
+margin_bottom = 92.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+align = 1
+
+[node name="HSeparator1" type="HSeparator" parent="Skills"]
+margin_top = 169.0
+margin_right = 1016.0
+margin_bottom = 173.0
+
+[node name="LabelStats" type="Label" parent="Skills"]
+margin_top = 175.0
+margin_right = 1016.0
+margin_bottom = 194.0
+text = "STATS"
+
+[node name="HBoxContainerStats" type="HBoxContainer" parent="Skills"]
+margin_top = 196.0
+margin_right = 1016.0
+margin_bottom = 312.0
+rect_min_size = Vector2( 0, 48 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Stat0" type="Panel" parent="Skills/HBoxContainerStats"]
+visible = false
+margin_right = 506.0
+margin_bottom = 111.0
+rect_min_size = Vector2( 0, 36 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 32 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Skills/HBoxContainerStats/Stat0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 20.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Skills/HBoxContainerStats/Stat0/VBoxContainer"]
+margin_right = 498.0
+margin_bottom = 41.0
+mouse_filter = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "STAT"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="Value" type="SpinBox" parent="Skills/HBoxContainerStats/Stat0/VBoxContainer"]
+margin_top = 45.0
+margin_right = 498.0
+margin_bottom = 87.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+align = 1
+
+[node name="Points" type="VBoxContainer" parent="Skills/HBoxContainerStats"]
+margin_right = 1016.0
+margin_bottom = 116.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Skills/HBoxContainerStats/Points"]
+margin_right = 1016.0
+margin_bottom = 56.0
+mouse_filter = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "POINTS_LEFT"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="Number" type="Label" parent="Skills/HBoxContainerStats/Points"]
+margin_top = 60.0
+margin_right = 1016.0
+margin_bottom = 116.0
+mouse_filter = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "0"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="Traits" type="VBoxContainer" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+rect_min_size = Vector2( 0, 80 )
+custom_constants/separation = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainerName" type="HBoxContainer" parent="Traits"]
+margin_right = 1016.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 0, 24 )
+size_flags_horizontal = 3
+
+[node name="Name" type="Label" parent="Traits/HBoxContainerName"]
+margin_right = 336.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "NAME"
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="Class" type="Label" parent="Traits/HBoxContainerName"]
+margin_left = 340.0
+margin_right = 676.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "CLASS"
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="ButtonStatus" type="Button" parent="Traits/HBoxContainerName"]
+margin_left = 680.0
+margin_right = 1016.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "SHOW_STATUS"
+clip_text = true
+
+[node name="LabelTraits" type="Label" parent="Traits"]
+margin_top = 29.0
+margin_right = 1016.0
+margin_bottom = 48.0
+text = "TRAITS"
+
+[node name="Traits" type="GridContainer" parent="Traits"]
+margin_top = 50.0
+margin_right = 1016.0
+margin_bottom = 98.0
+rect_min_size = Vector2( 0, 48 )
+size_flags_horizontal = 3
+columns = 3
+
+[node name="Trait0" type="Panel" parent="Traits/Traits"]
+visible = false
+margin_right = 338.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 31 )
+
+[node name="Label" type="Label" parent="Traits/Traits/Trait0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "TRAIT"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator2" type="HSeparator" parent="Traits"]
+margin_top = 100.0
+margin_right = 1016.0
+margin_bottom = 104.0
+
+[node name="LabelSpells" type="Label" parent="Traits"]
+margin_top = 106.0
+margin_right = 1016.0
+margin_bottom = 125.0
+text = "SPELLS"
+
+[node name="Spells" type="ScrollContainer" parent="Traits"]
+margin_top = 127.0
+margin_right = 1016.0
+margin_bottom = 205.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="Traits/Spells"]
+margin_right = 1016.0
+margin_bottom = 78.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 8
+custom_constants/hseparation = 8
+columns = 3
+
+[node name="Spell0" type="Panel" parent="Traits/Spells/GridContainer"]
+visible = false
+margin_right = 338.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 31 )
+
+[node name="Label" type="Label" parent="Traits/Spells/GridContainer/Spell0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+mouse_filter = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "SPELL"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator1" type="HSeparator" parent="Traits"]
+margin_top = 207.0
+margin_right = 1016.0
+margin_bottom = 211.0
+
+[node name="LabelApp" type="Label" parent="Traits"]
+margin_top = 213.0
+margin_right = 1016.0
+margin_bottom = 232.0
+text = "APPEARANCE"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Traits"]
+margin_top = 234.0
+margin_right = 1016.0
+margin_bottom = 312.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="Traits/ScrollContainer"]
+margin_right = 1016.0
+margin_bottom = 78.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 8
+custom_constants/hseparation = 8
+columns = 3
+
+[node name="Trait0" type="Panel" parent="Traits/ScrollContainer/GridContainer"]
+visible = false
+margin_right = 338.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 31 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Traits/ScrollContainer/GridContainer/Trait0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Traits/ScrollContainer/GridContainer/Trait0/HBoxContainer"]
+margin_right = 155.0
+margin_bottom = 24.0
+mouse_filter = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+valign = 1
+
+[node name="Type" type="Label" parent="Traits/ScrollContainer/GridContainer/Trait0/HBoxContainer"]
+margin_left = 159.0
+margin_right = 314.0
+margin_bottom = 24.0
+mouse_filter = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+valign = 1

@@ -1,0 +1,30 @@
+{
+	"name":"book_of_conjuration",
+	"type":"spellbook",
+	"slot":"trinket",
+	"knowledge":["magic_missile","combustion","freeze"],
+	"weight":1.0,
+	"price":250,
+    "grade":1,
+    "enhancements":["spellbook"]
+}
+{
+	"name":"book_of_restoration",
+	"type":"spellbook",
+	"slot":"trinket",
+	"knowledge":["combustion","flash","minor_heal"],
+	"weight":1.0,
+	"price":250,
+    "grade":1,
+    "enhancements":["spellbook"]
+}
+{
+	"name":"book_of_nature",
+	"type":"spellbook",
+	"slot":"trinket",
+	"knowledge":["sand_blast","vines","cleansing_wind"],
+	"weight":1.0,
+	"price":250,
+    "grade":1,
+    "enhancements":["spellbook"]
+}

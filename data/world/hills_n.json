@@ -1,0 +1,12 @@
+{
+    "type":"terrain",
+    "name":"hills",
+    "traits":["mining"],
+	"travel_time":0.4,
+	"encounters":[],
+	"tile":"hills",
+    "amount":4,
+	"pos":[-32.0,-192.0],
+	"spread":128.0,
+	"size":[24.0,48.0]
+}

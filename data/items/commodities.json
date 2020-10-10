@@ -1,0 +1,35 @@
+{
+	"name":"food",
+	"type":"commodities",
+	"weight":1.0,
+	"price":4,
+    "grade":1
+}
+{
+	"name":"medical_supplies",
+	"type":"commodities",
+	"weight":1.0,
+	"price":8,
+    "grade":1
+}
+{
+	"name":"wood",
+	"type":"commodities",
+	"weight":1.0,
+	"price":6,
+    "grade":1
+}
+{
+	"name":"metals",
+	"type":"commodities",
+	"weight":1.0,
+	"price":8,
+    "grade":1
+}
+{
+	"name":"luxury_goods",
+	"type":"commodities",
+	"weight":1.0,
+	"price":16,
+    "grade":1
+}

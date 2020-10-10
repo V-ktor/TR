@@ -1,0 +1,12 @@
+{
+	"name":"beast",
+	"stats":{"intelligence":-2,"wisdom":-2,"charisma":3,"strength":1},
+	"proficiency":{"unarmed":1,"two-hander":1,"spear":1,"knife":1,"sling":1,"nature_magic":1},
+	"playable":false,
+	"phrase_male":["nya","she","xe","krr","ucc","ish","owo"],
+	"phrase_female":["nya","mia","au","ioa","you","la","sha","uwu"],
+	"first_name_male":["leo","klaus","charles","akim","azat"],
+	"first_name_female":["alice","kitty","cat","kira","yasmin"],
+	"last_name":["sunlight","warmth","yarn","sleep","cozy","nightly"],
+	"appearance":{"skin":["default","beast"],"head":"beast","hair":"default","hair_color":"default","eyes":"beast","body":"default","arms":["default","beast"],"legs":["default","beast"],"tail":["none","beast"]}
+}

@@ -1,0 +1,75 @@
+,en
+STRENGTH,Strength
+STRENGTH_TOOLTIP,"Strength improves the damage of melee attacks."
+CONSTITUTION,Constitution
+CONSTITUTION_TOOLTIP,"Constitution improves the maximum health of a character."
+DEXTERITY,Dexterity
+DEXTERITY_TOOLTIP,"Dexterity improves the chance to hit a target in combat."
+AGILITY,Agility
+AGILITY_TOOLTIP,"Agility improves the chance to avoid attacks."
+INTELLIGENCE,Intelligence
+INTELLIGENCE_TOOLTIP,"Intelligence"
+WISDOM,Wisdom
+WISDOM_TOOLTIP,"Wisdom"
+CUNNING,Cunning
+CUNNING_TOOLTIP,"Cunning"
+CHARISMA,Charisma
+CHARISMA_TOOLTIP,"Charisma"
+PROFICIENCY,Proficiency
+UNARMED,Unarmed combat
+UNARMED_TOOLTIP,"Allows you to attack with your bare fists."
+TWO-HANDER,Two-hander
+TWO-HANDER_TOOLTIP,"Allows you to wield two-handed weapons."
+BLADE,Blade
+BLADE_TOOLTIP,"Allows you to effectively use small and medium sized swords."
+KNIFE,Knife
+KNIFE_TOOLTIP,"Allows you to effectively use knifes and daggers."
+AXE,Axe
+AXE_TOOLTIP,"Allows you to wield axes."
+MACE,Mace
+MACE_TOOLTIP,"Allows you to wield maces and other blunt weapons."
+SPEAR,Spear
+SPEAR_TOOLTIP,"Allows you to wield spears while adding defensive boni."
+STAFF,Staff
+STAFF_TOOLTIP,"Allows you to wield two-handed staves."
+SHIELD,Shield
+SHIELD_TOOLTIP,"Allows you to wield shields to block attacks."
+LIGHT_ARMOR,Light Armor
+LIGHT_ARMOR_TOOLTIP,"Allows you to wear light armor."
+HEAVY_ARMOR,Heavy Armor
+HEAVY_ARMOR_TOOLTIP,"Allows you to wear heavy armor."
+BOW,Bow
+BOW_TOOLTIP,"Allows you to use bows."
+CROSSBOW,Bow
+CROSSBOW_TOOLTIP,"Allows you to use crossbows."
+SLING,Sling
+SLING_TOOLTIP,"Allows you to use slings."
+STEALTH,Stealth
+STEALTH_TOOLTIP,"Blend in with the shadows."
+LOCK_PICKING,Lock Picking
+LOCK_PICKING_TOOLTIP,"Allows you to pick locks."
+BARGAINING,Bargaining
+BARGAINING_TOOLTIP,"Allows you to negotiate better prices when trading."
+ALCHEMY,Alchemy
+ALCHEMY_TOOLTIP,""
+SURVIVAL,Survival
+SURVIVAL_TOOLTIP,""
+ARCANE_MAGIC,"Magic: Arcane"
+ARCANE_MAGIC_TOOLTIP,"Allows you to use arcane magic."
+FIRE_MAGIC,"Magic: Fire"
+FIRE_MAGIC_TOOLTIP,"Allows you to use destructive fire magic."
+ICE_MAGIC,"Magic: Ice"
+ICE_MAGIC_TOOLTIP,"Allows you to use ice magic."
+WIND_MAGIC,"Magic: Wind"
+WIND_MAGIC_TOOLTIP,"Allows you to use wind magic."
+EARTH_MAGIC,"Magic: Earth"
+EARTH_MAGIC_TOOLTIP,"Allows you to use earth magic."
+LIGHT_MAGIC,"Magic: Light"
+LIGHT_MAGIC_TOOLTIP,"Allows you to use light magic."
+NATURE_MAGIC,"Magic: Nature"
+NATURE_MAGIC_TOOLTIP,"Allows you to use the magic of nature."
+RESTORATION_MAGIC,"Magic: Restoration"
+RESTORATION_MAGIC_TOOLTIP,"Allows you to use restoration magic."
+SHIELDING_MAGIC,"Magic: Shielding"
+SHIELDING_MAGIC_TOOLTIP,"Allows you to use protective magic."
+

@@ -1,0 +1,14 @@
+{
+    "type":"terrain",
+    "name":"desert",
+    "traits":["dry"],
+    "travel_time":0.0,
+    "encounters":[
+		{"script":"battle_sands","base_chance":0.15}
+	],
+	"tile":"desert",
+    "amount":4,
+    "pos":[-96.0,256.0],
+    "spread":128.0,
+    "size":[32.0,64.0]
+}

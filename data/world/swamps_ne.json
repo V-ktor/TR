@@ -1,0 +1,14 @@
+{
+    "type":"terrain",
+    "name":"swamp",
+    "traits":["scarce"],
+	"travel_time":1.5,
+	"encounters":[
+		{"script":"battle_swamp","base_chance":0.4}
+	],
+	"tile":"swamp",
+    "amount":4,
+	"pos":[96.0,-128.0],
+	"spread":96.0,
+	"size":[16.0,24.0]
+}

@@ -1,0 +1,71 @@
+{
+    "name":"powerful",
+    "type":"ranged",
+    "minor":true,
+    "max_dam":1,
+    "frequency":10,
+    "price":20,
+    "grade":1
+}
+{
+    "name":"precise",
+    "type":"ranged",
+    "minor":true,
+    "min_dam":1,
+    "frequency":6,
+    "price":25,
+    "grade":1
+}
+{
+    "name":"light",
+    "type":"ranged",
+    "minor":true,
+    "weight":-0.5,
+    "frequency":10,
+    "price":10,
+    "grade":1
+}
+{
+    "name":"cunning",
+    "type":"ranged",
+    "minor":true,
+    "cunning":1,
+    "frequency":5,
+    "price":40,
+    "grade":1
+}
+{
+    "name":"of_destruction",
+    "type":"ranged",
+    "min_dam":1,
+    "max_dam":2,
+    "frequency":4,
+    "price":75,
+    "grade":1
+}
+{
+    "name":"of_precision",
+    "type":"ranged",
+    "min_dam":2,
+    "dexterity":1,
+    "frequency":2,
+    "price":110,
+    "grade":1
+}
+{
+    "name":"of_dexterity",
+    "type":"ranged",
+    "dexterity":2,
+    "frequency":2,
+    "price":100,
+    "grade":1
+}
+{
+    "name":"unreliable",
+    "type":"ranged",
+    "minor":true,
+    "min_dam":-1,
+    "frequency":15,
+    "price":-25,
+    "grade":-1
+}

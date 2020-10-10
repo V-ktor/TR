@@ -1,0 +1,14 @@
+{
+	"name":"gold_coins",
+	"type":"currency",
+	"weight":0.01,
+	"price":10,
+    "grade":1
+}
+{
+	"name":"silver_coins",
+	"type":"currency",
+	"weight":0.005,
+	"price":1,
+    "grade":1
+}

@@ -1,0 +1,20 @@
+{
+	"name":"small_health_potion",
+	"type":"potion",
+	"method":"health_potion",
+	"target":"ally",
+	"args":[8],
+	"weight":0.05,
+	"price":10,
+    "grade":1
+}
+{
+	"name":"small_mana_potion",
+	"type":"potion",
+	"method":"mana_potion",
+	"target":"ally",
+	"args":[6],
+	"weight":0.05,
+	"price":10,
+    "grade":1
+}

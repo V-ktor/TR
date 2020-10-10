@@ -1,0 +1,12 @@
+{
+    "type":"terrain",
+    "name":"sea",
+    "traits":["no_cities"],
+	"travel_time":2.0,
+	"encounters":[],
+	"tile":"water",
+    "amount":6,
+	"pos":[-288.0,128.0],
+	"spread":192.0,
+	"size":[48.0,96.0]
+}

@@ -1,0 +1,44 @@
+{
+	"name":"bow",
+	"type":"weapon",
+	"slot":"hand",
+	"2h":true,
+	"range":"ranged",
+	"proficiency":"bow",
+	"use_stat":"strength",
+	"min_dam":[3,5],
+	"max_dam":[9,11],
+	"weight":4.0,
+	"price":150,
+    "grade":1,
+    "enhancements":["ranged"]
+}
+{
+	"name":"crossbow",
+	"type":"weapon",
+	"slot":"hand",
+	"2h":true,
+	"range":"ranged",
+	"proficiency":"crossbow",
+	"use_stat":"dexterity",
+	"min_dam":[4,6],
+	"max_dam":[9,11],
+	"weight":5.0,
+	"price":200,
+    "grade":1,
+    "enhancements":["ranged"]
+}
+{
+	"name":"sling",
+	"type":"weapon",
+	"slot":"hand",
+	"range":"ranged",
+	"proficiency":"sling",
+	"use_stat":"cunning",
+	"min_dam":[3,5],
+	"max_dam":[6,8],
+	"weight":1.0,
+	"price":50,
+    "grade":1,
+    "enhancements":["ranged"]
+}

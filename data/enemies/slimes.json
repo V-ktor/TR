@@ -1,0 +1,76 @@
+{
+	"name":"corrosive_slime",
+    "race":"slime",
+	"traits":["liquid","corrosive","poison_resistance"],
+    "expirience":7,
+	"stats":{"strength":[3,6],"constitution":[3,6],"dexterity":[3,6],"agility":[5,10],"intelligence":[3,6],"wisdom":[3,6],"cunning":[3,6],"charisma":[3,6]},
+	"appearance":{"body":"slime","skin":"green"},
+	"equipment":[{
+    	"name":"slime",
+	    "type":"weapon",
+    	"proficiency":"unarmed",
+    	"use_stat":"strength",
+    	"min_dam":1,
+    	"max_dam":3,
+    	"afflict":["Corrosion",{"chance":0.5,"duration":2,"armor_inc":-1}]}],
+    "proficiency":{"unarmed":[1,3]},
+    "drop_rate":0.75,
+    "drops":["goo"]
+}
+{
+	"name":"cryo_slime",
+    "race":"slime",
+	"traits":["liquid","cryo","poison_resistance"],
+    "expirience":8,
+	"stats":{"strength":[3,6],"constitution":[3,6],"dexterity":[3,6],"agility":[5,10],"intelligence":[3,6],"wisdom":[3,6],"cunning":[3,6],"charisma":[3,6]},
+	"appearance":{"body":"slime","skin":"blue"},
+	"equipment":[{
+    	"name":"slime",
+	    "type":"weapon",
+    	"proficiency":"unarmed",
+    	"use_stat":"strength",
+    	"min_dam":1,
+    	"max_dam":3,
+    	"afflict":["Frozen",{"chance":0.5,"duration":2,"stats_inc":{"agility":-4,"dexterity":-4}}]}],
+    "proficiency":{"unarmed":[1,3]},
+    "drop_rate":0.75,
+    "drops":["goo"]
+}
+{
+	"name":"pyro_slime",
+    "race":"slime",
+	"traits":["liquid","pyro","poison_resistance"],
+    "expirience":9,
+	"stats":{"strength":[3,6],"constitution":[3,6],"dexterity":[3,6],"agility":[5,10],"intelligence":[3,6],"wisdom":[3,6],"cunning":[3,6],"charisma":[3,6]},
+	"appearance":{"body":"slime","skin":"red"},
+	"equipment":[{
+    	"name":"slime",
+	    "type":"weapon",
+    	"proficiency":"unarmed",
+    	"use_stat":"strength",
+    	"min_dam":1,
+    	"max_dam":3,
+    	"afflict":["Burning",{"chance":0.5,"duration":2,"amount":1}]}],
+    "proficiency":{"unarmed":[1,3]},
+    "drop_rate":0.75,
+    "drops":["goo"]
+}
+{
+	"name":"toxic_slime",
+    "race":"slime",
+	"traits":["liquid","toxic","poison_resistance"],
+    "expirience":10,
+	"stats":{"strength":[3,6],"constitution":[3,6],"dexterity":[3,6],"agility":[5,10],"intelligence":[3,6],"wisdom":[3,6],"cunning":[3,6],"charisma":[3,6]},
+	"appearance":{"body":"slime","skin":"green"},
+	"equipment":[{
+    	"name":"slime",
+	    "type":"weapon",
+    	"proficiency":"unarmed",
+    	"use_stat":"strength",
+    	"min_dam":1,
+    	"max_dam":3,
+    	"afflict":["Poisoned",{"chance":0.5,"duration":3,"amount":1}]}],
+    "proficiency":{"unarmed":[1,3]},
+    "drop_rate":0.75,
+    "drops":["goo"]
+}

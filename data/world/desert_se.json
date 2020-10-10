@@ -1,0 +1,17 @@
+{
+    "type":"terrain",
+    "name":"desert",
+    "traits":["dry"],
+    "travel_time":0.0,
+    "encounters":[
+		{"script":"battle_sands","base_chance":0.15}
+	],
+	"tile":"desert",
+	"color":[0.9,0.8,0.3],
+	"texture":"cactus.png",
+	"density":0.5,
+    "amount":6,
+    "pos":[224.0,320.0],
+    "spread":192.0,
+    "size":[32.0,80.0]
+}

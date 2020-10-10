@@ -1,0 +1,8 @@
+{
+    "name":"knight",
+    "playable":true,
+    "main_stats":["constitution","strength"],
+    "proficiency":{"blade":1,"mace":1,"shield":1,"heavy_armor":1,"unarmed":1},
+    "equipment":["chain_mail","buckler","long_sword"],
+    "inventory":[["silver_coins",100],["small_health_potion",2],["supplies",50]]
+}

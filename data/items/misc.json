@@ -1,0 +1,35 @@
+{
+	"name":"goo",
+	"type":"misc",
+	"weight":0.1,
+	"price":5,
+    "grade":0
+}
+{
+	"name":"fur",
+	"type":"misc",
+	"weight":0.25,
+	"price":10,
+    "grade":0
+}
+{
+	"name":"leather",
+	"type":"misc",
+	"weight":0.25,
+	"price":16,
+    "grade":0
+}
+{
+	"name":"imp_leather",
+	"type":"misc",
+	"weight":0.25,
+	"price":30,
+    "grade":0
+}
+{
+	"name":"troll_hide",
+	"type":"misc",
+	"weight":1.0,
+	"price":80,
+    "grade":0
+}

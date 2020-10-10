@@ -1,0 +1,105 @@
+{
+    "name":"hardened",
+    "type":"armor",
+    "minor":true,
+    "armor":1,
+    "frequency":10,
+    "price":30,
+    "grade":1
+}
+{
+    "name":"lightweight",
+    "type":"armor",
+    "minor":true,
+    "weight":-1.0,
+    "frequency":10,
+    "price":20,
+    "grade":1
+}
+{
+    "name":"durable",
+    "type":"armor",
+    "minor":true,
+    "constitution":1,
+    "frequency":5,
+    "price":40,
+    "grade":1
+}
+{
+    "name":"enlightening",
+    "type":"armor",
+    "minor":true,
+    "intelligence":1,
+    "frequency":5,
+    "price":50,
+    "grade":1
+}
+{
+    "name":"cunning",
+    "type":"armor",
+    "minor":true,
+    "cunning":1,
+    "frequency":5,
+    "price":50,
+    "grade":1
+}
+{
+    "name":"strengthening",
+    "type":"armor",
+    "minor":true,
+    "strength":1,
+    "frequency":5,
+    "price":55,
+    "grade":1
+}
+{
+    "name":"of_implacability",
+    "type":"armor",
+    "armor":2,
+    "frequency":4,
+    "price":70,
+    "grade":1
+}
+{
+    "name":"of_magery",
+    "type":"armor",
+    "intelligence":1,
+    "wisdom":1,
+    "frequency":2,
+    "price":100,
+    "grade":1
+}
+{
+    "name":"of_endurance",
+    "type":"armor",
+    "constitution":2,
+    "frequency":2,
+    "price":100,
+    "grade":1
+}
+{
+    "name":"of_strength",
+    "type":"armor",
+    "strength":1,
+    "constitution":1,
+    "frequency":2,
+    "price":100,
+    "grade":1
+}
+{
+    "name":"of_agility",
+    "type":"armor",
+    "agility":2,
+    "frequency":2,
+    "price":110,
+    "grade":1
+}
+{
+    "name":"damaged",
+    "type":"armor",
+    "minor":true,
+    "armor":-1,
+    "frequency":20,
+    "price":-25,
+    "grade":-1
+}

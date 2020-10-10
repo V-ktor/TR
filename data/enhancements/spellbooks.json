@@ -1,0 +1,45 @@
+{
+    "name":"arcanisters",
+    "type":"spellbook",
+    "minor":true,
+    "knowledge":["magic_missile","magic_shield"],
+    "frequency":10,
+    "price":100,
+    "grade":1
+}
+{
+    "name":"pyromancers",
+    "type":"spellbook",
+    "minor":true,
+    "knowledge":["combustion","flash"],
+    "frequency":10,
+    "price":100,
+    "grade":1
+}
+{
+    "name":"cryomancers",
+    "type":"spellbook",
+    "minor":true,
+    "knowledge":["freeze","cleansing_wind"],
+    "frequency":10,
+    "price":100,
+    "grade":1
+}
+{
+    "name":"geomancers",
+    "type":"spellbook",
+    "minor":true,
+    "knowledge":["sand_blast","vines"],
+    "frequency":10,
+    "price":100,
+    "grade":1
+}
+{
+    "name":"druids",
+    "type":"spellbook",
+    "minor":true,
+    "knowledge":["vines","minor_heal"],
+    "frequency":10,
+    "price":100,
+    "grade":1
+}

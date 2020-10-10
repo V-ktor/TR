@@ -1,0 +1,16 @@
+,en
+FIGHTER,Fighter
+FIGHTER_TOOLTIP,"Fighters are trained in physical combat. They specialize on offence using melee weapons."
+KNIGHT,Knight
+KNIGHT_TOOLTIP,"Knights specialize in combat with weapon and shield. They wear heavy armor protecting them from melee attacks."
+ARCHER,Archer
+ARCHER_TOOLTIP,"Archers are ranged fighters that attack their targets from afar using bows or crossbows."
+ROGUE,Rogue
+ROGUE_TOOLTIP,"Rogues are masters of tricks. They remain unnoticed until stabbing their target in the back."
+WIZARD,Wizard
+WIZARD_TOOLTIP,"Wizards wield arcane powers and are able of casting powerful, destructive spells."
+CLERIC,Cleric
+CLERIC_TOOLTIP,"A spell caster that uses it's powers for defensive purpose. For combat they rely on blunt weapons."
+DRUID,Druid
+DRUID_TOOLTIP,"Druids harness the power of nature for their spells. They are capable of casting offensive spells as well as defensive spells."
+

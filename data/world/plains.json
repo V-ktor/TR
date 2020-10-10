@@ -1,0 +1,14 @@
+{
+    "type":"terrain",
+    "name":"plains",
+    "traits":["farming"],
+    "travel_time":0.0,
+    "encounters":[
+        {"script":"battle_plains","base_chance":0.05}
+    ],
+    "tile":"farm",
+    "amount":6,
+    "pos":[0.0,0.0],
+    "spread":256.0,
+    "size":[32.0,64.0]
+}

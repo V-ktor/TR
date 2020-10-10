@@ -1,0 +1,12 @@
+{
+	"name":"human",
+	"traits":["versatile"],
+	"proficiency":{"blade":1,"axe":1,"knife":1,"spear":1,"crossbow":1,"sling":1,"shield":1,"arcane_magic":1},
+	"playable":true,
+	"phrase_male":["cer","re","ice","er","bu","cade","dan","or","ex","us"],
+	"phrase_female":["ra","ey","arc","dia","ria","ave","ise","ex","ia","as"],
+	"first_name_male":["curly","billy","isaac","harry","raymond","julian"],
+	"first_name_female":["curly","kitty","brandy","kaylee","shakira","lyra"],
+	"last_name":["test","chandra","unknown","power","useless","largeand","incharge"],
+	"appearance":{"skin":"default","head":"default","hair":"default","hair_color":"default","eyes":"default","body":"default"}
+}

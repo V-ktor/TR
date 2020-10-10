@@ -1,0 +1,14 @@
+{
+    "type":"terrain",
+    "name":"hills",
+    "traits":["mining"],
+	"travel_time":0.4,
+	"encounters":[
+		{"script":"battle_hills","base_chance":0.1}
+	],
+	"tile":"hills",
+    "amount":6,
+	"pos":[128.0,0.0],
+	"spread":256.0,
+	"size":[24.0,48.0]
+}

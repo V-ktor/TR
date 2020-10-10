@@ -1,0 +1,12 @@
+{
+    "type":"terrain",
+    "name":"vulcanos",
+    "traits":["vulcano"],
+	"travel_time":1.5,
+	"encounters":[],
+	"tile":"vulcano",
+    "amount":2,
+	"pos":[-32.0,-192.0],
+	"spread":64.0,
+	"size":[8.0,16.0]
+}

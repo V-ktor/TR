@@ -1,0 +1,12 @@
+{
+    "type":"terrain",
+    "name":"vulcanos",
+    "traits":["farming","vulcano"],
+	"travel_time":1.5,
+	"encounters":[],
+	"tile":"vulcano",
+    "amount":3,
+	"pos":[64.0,224.0],
+	"spread":128.0,
+	"size":[16.0,48.0]
+}

@@ -1,0 +1,78 @@
+,en
+HUMAN,Human
+HUMNA_PLURAL,Humans
+HUMAN_TOOLTIP,""
+HUMAN_DESCRIPTION,"Insert a proper description here."
+ELF,Elf
+ELF_PLURAL,Elves
+ELF_TOOLTIP,"Forest dwellers with pointy ears."
+ELF_DESCRIPTION,"Insert a proper description here."
+BEAST,Beast
+BEAST_PLURAL,Beasts
+BEAST_TOOLTIP,""
+BEAST_DESCRIPTION,"Insert a proper description here."
+ORC,Orc
+ORC_PLURAL,Orcs
+ORC_TOOLTIP,"Violent semi-nomadic humanoids."
+ORC_DESCRIPTION,"Insert a proper description here."
+DWARF,Dwarf
+DWARD_PLURAL,Dwarves
+DWARF_TOOLTIP,"Sturdy cave dwellers of small stature."
+DWARF_DESCRIPTION,"Insert a proper description here."
+SKIN,Skin
+HEAD,Head
+EYES,Eyes
+BODY,Body
+ARMS,Arms
+HANDS,Hands
+LEGS,Legs
+FEET,Feet
+HAIR,Hair
+HAIR_COLOR,Hair Color
+TAIL,Tail
+DEFAULT,default
+NONE,none
+BEARDED,bearded
+ELVEN_EARS,elven ears
+CAT_EARS,cat ears
+WOLF_EARS,wolf ears
+ELVEN_EARS,elven ears
+BALD,bald
+SHORT,short
+LONG,long
+BLACK,black
+BROWN,brown
+BLOND,blond
+GREY,grey
+WHITE,white
+RED,red
+ORANGE,orange
+PINK,pink
+PURPLE,purple
+CYAN,cyan
+BLUE,blue
+GREEN,green
+YELLOW,yellow
+PALE,pale
+FAIR,fair
+OLIVE,olive
+TANNED,tanned
+FUR,fur
+SCALES,scales
+AVERAGE,average
+SMALL,small
+TALL,tall
+CLAWS,claws
+HORNS,horns
+HOOVES,hooves
+CAT_TAIL,cat tail
+WOLF_TAIL,wolf tail
+LIZZARD_TAIL,lizzard tail
+ROTTING,rotting
+SKULL,skull
+BONES,bones
+MAN,man
+WOMAN,woman
+GIRL,girl
+PERSON,person
+

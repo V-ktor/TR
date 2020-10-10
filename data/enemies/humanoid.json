@@ -1,0 +1,133 @@
+{
+	"name":"goblin_knife",
+    "race":"goblin",
+	"traits":[],
+    "expirience":12,
+	"stats":{"strength":[5,10],"constitution":[5,10],"dexterity":[5,10],"agility":[5,10],"intelligence":[5,10],"wisdom":[5,10],"cunning":[5,10],"charisma":[5,10]},
+	"appearance":{"body":"small"},
+	"equipment":["dagger","dagger","robe"],
+    "proficiency":{"knife":[1,2],"light_armor":[1,2]},
+    "drop_rate":0.1,
+    "drops":["knife"]
+}
+{
+	"name":"goblin_mace",
+    "race":"goblin",
+	"traits":[],
+    "expirience":12,
+	"stats":{"strength":[5,10],"constitution":[5,10],"dexterity":[5,10],"agility":[5,10],"intelligence":[5,10],"wisdom":[5,10],"cunning":[5,10],"charisma":[5,10]},
+	"appearance":{"body":"small"},
+	"equipment":["buckler","mace","robe"],
+    "proficiency":{"mace":[1,2],"light_armor":[1,2]},
+    "drop_rate":0.1,
+    "drops":["mace","buckler"]
+}
+{
+	"name":"goblin_spear",
+    "race":"goblin",
+	"traits":[],
+    "expirience":12,
+	"stats":{"strength":[5,10],"constitution":[5,10],"dexterity":[5,10],"agility":[5,10],"intelligence":[5,10],"wisdom":[5,10],"cunning":[5,10],"charisma":[5,10]},
+	"appearance":{"body":"small"},
+	"equipment":["spear","robe"],
+    "proficiency":{"spear":[1,2],"light_armor":[1,2]},
+    "drop_rate":0.1,
+    "drops":["spear"]
+}
+{
+	"name":"goblin_slinger",
+    "race":"goblin",
+	"traits":[],
+    "expirience":13,
+	"stats":{"strength":[5,10],"constitution":[5,10],"dexterity":[5,10],"agility":[5,10],"intelligence":[5,10],"wisdom":[5,10],"cunning":[5,10],"charisma":[5,10]},
+	"appearance":{"body":"small"},
+	"equipment":["dagger","sling","robe"],
+    "proficiency":{"knife":[1,2],"sling":[1,2],"light_armor":[1,2]},
+    "drop_rate":0.1,
+    "drops":["dagger","sling"]
+}
+{
+	"name":"goblin_shaman",
+    "race":"goblin",
+	"traits":[],
+    "expirience":16,
+	"stats":{"strength":[5,10],"constitution":[5,10],"dexterity":[5,10],"agility":[5,10],"intelligence":[5,10],"wisdom":[5,10],"cunning":[5,10],"charisma":[5,10]},
+	"appearance":{"body":"small"},
+	"equipment":["staff","robe"],
+	"knowledge":["combustion","minor_heal"],
+    "proficiency":{"staff":[1,2],"light_armor":[1,2],"fire_magic":[1,2],"restoration_magic":[1,2]},
+    "drop_rate":0.1,
+    "drops":["staff","robe"]
+}
+{
+	"name":"hobgoblin",
+    "race":"goblin",
+	"traits":[],
+    "expirience":23,
+	"stats":{"strength":[10,15],"constitution":[10,15],"dexterity":[6,12],"agility":[6,12],"intelligence":[6,12],"wisdom":[6,12],"cunning":[6,12],"charisma":[6,12]},
+	"appearance":{"body":"average"},
+	"equipment":["long_sword","axe","leather_armor"],
+    "proficiency":{"blade":[2,3],"axe":[2,3],"unarmed":[2,3],"light_armor":[2,3]},
+    "drop_rate":0.1,
+    "drops":["long_sword","axe","leather_armor"]
+}
+{
+	"name":"gnoll_blade",
+    "race":"goblin",
+	"traits":[],
+    "expirience":16,
+	"stats":{"strength":[6,12],"constitution":[6,12],"dexterity":[6,12],"agility":[6,12],"intelligence":[6,12],"wisdom":[6,12],"cunning":[6,12],"charisma":[6,12]},
+	"appearance":{"body":"small"},
+	"equipment":["long_sword","dagger","leather_armor"],
+    "proficiency":{"blade":[2,3],"knife":[1,3],"light_armor":[1,3]},
+    "drop_rate":0.1,
+    "drops":["long_sword","dagger","leather_armor"]
+}
+{
+	"name":"gnoll_spear",
+    "race":"goblin",
+	"traits":[],
+    "expirience":16,
+	"stats":{"strength":[6,12],"constitution":[6,12],"dexterity":[6,12],"agility":[6,12],"intelligence":[6,12],"wisdom":[6,12],"cunning":[6,12],"charisma":[6,12]},
+	"appearance":{"body":"small"},
+	"equipment":["spear","leather_armor"],
+    "proficiency":{"spear":[2,3],"light_armor":[1,3]},
+    "drop_rate":0.1,
+    "drops":["spear","leather_armor"]
+}
+{
+	"name":"gnoll_slinger",
+    "race":"goblin",
+	"traits":[],
+    "expirience":16,
+	"stats":{"strength":[6,12],"constitution":[6,12],"dexterity":[6,12],"agility":[6,12],"intelligence":[6,12],"wisdom":[6,12],"cunning":[6,12],"charisma":[6,12]},
+	"appearance":{"body":"small"},
+	"equipment":["sling","dagger","leather_armor"],
+    "proficiency":{"sling":[2,3],"knife":[1,3],"light_armor":[1,3]},
+    "drop_rate":0.1,
+    "drops":["sling","dagger","leather_armor"]
+}
+{
+	"name":"gnoll_shaman",
+    "race":"goblin",
+	"traits":[],
+    "expirience":19,
+	"stats":{"strength":[6,12],"constitution":[6,12],"dexterity":[6,12],"agility":[6,12],"intelligence":[6,12],"wisdom":[6,12],"cunning":[6,12],"charisma":[6,12]},
+	"appearance":{"body":"small"},
+	"equipment":["staff","robe"],
+    "proficiency":{"staff":[2,3],"light_armor":[1,2],"fire_magic":[2,3],"nature_magic":[1,2],"restoration_magic":[1,2]},
+    "drop_rate":0.1,
+    "drops":["staff","robe"]
+}
+{
+	"name":"troll",
+    "race":"troll",
+	"traits":["regeneration"],
+    "expirience":26,
+	"stats":{"strength":[15,20],"constitution":15,"dexterity":[5,10],"agility":[5,10],"intelligence":[6,12],"wisdom":[6,12],"cunning":[6,12],"charisma":[6,12]},
+	"appearance":{"body":"tall"},
+	"equipment":["great_sword","chain_mail"],
+    "proficiency":{"two-hander":[2,3],"unarmed":[2,3],"heavy_armor":[1,3]},
+    "drop_rate":0.75,
+    "drops":["troll_hide"]
+}

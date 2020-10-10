@@ -1,0 +1,8 @@
+{
+    "name":"rogue",
+    "playable":true,
+    "main_stats":["dexterity","cunning"],
+    "proficiency":{"knife":1,"light_armor":1,"stealth":1,"lock_picking":1,"unarmed":1},
+    "equipment":["leather_armor","dagger"],
+    "inventory":[["silver_coins",100],["small_health_potion",2],["supplies",50]]
+}

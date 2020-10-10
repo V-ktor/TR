@@ -1,0 +1,157 @@
+{
+	"name":"wolf",
+    "race":"wolf",
+	"traits":["claws"],
+    "expirience":13,
+	"stats":{"strength":[10,15],"constitution":[10,15],"dexterity":[5,10],"agility":[5,10],"intelligence":[5,10],"wisdom":[5,10],"cunning":[5,10],"charisma":[5,10]},
+	"appearance":{"body":"wolf"},
+	"equipment":[{
+    	"name":"teeth",
+	    "type":"weapon",
+    	"proficiency":"knife",
+    	"use_stat":"strength",
+    	"min_dam":2,
+    	"max_dam":4,
+    	"afflict":["Bleeding",{"chance":0.25,"duration":3,"amount":1}]}],
+    "proficiency":{"knife":[1,3],"unarmed":[2,3],"light_armor":[1,2]},
+    "drop_rate":0.75,
+    "drops":["fur"]
+}
+{
+	"name":"plain_wolf",
+    "race":"wolf",
+	"traits":["claws"],
+    "expirience":9,
+	"stats":{"strength":[8,12],"constitution":[8,12],"dexterity":[4,8],"agility":[4,8],"intelligence":[4,8],"wisdom":[4,8],"cunning":[4,8],"charisma":[4,8]},
+	"appearance":{"body":"wolf"},
+	"equipment":[{
+    	"name":"teeth",
+	    "type":"weapon",
+    	"proficiency":"knife",
+    	"use_stat":"strength",
+    	"min_dam":1,
+    	"max_dam":3}],
+    "proficiency":{"knife":[1,2],"unarmed":[1,2],"light_armor":[1,2]},
+    "drop_rate":0.75,
+    "drops":["fur"]
+}
+{
+	"name":"desert_wolf",
+    "race":"wolf",
+	"traits":["claws"],
+    "expirience":14,
+	"stats":{"strength":[10,15],"constitution":[12,16],"dexterity":[5,10],"agility":[8,12],"intelligence":[5,10],"wisdom":[5,10],"cunning":[8,12],"charisma":[5,10]},
+	"appearance":{"body":"wolf"},
+	"equipment":[{
+    	"name":"claws",
+	    "type":"weapon",
+    	"proficiency":"knife",
+    	"use_stat":"strength",
+    	"min_dam":2,
+    	"max_dam":3,
+    	"afflict":["Bleeding",{"chance":0.33,"duration":3,"amount":1}]},
+    	{
+    	"name":"teeth",
+	    "type":"weapon",
+    	"proficiency":"knife",
+    	"use_stat":"strength",
+    	"min_dam":2,
+    	"max_dam":4,
+    	"afflict":["Bleeding",{"chance":0.25,"duration":3,"amount":1}]}],
+    "proficiency":{"knife":[1,3],"unarmed":[1,3],"light_armor":[1,3]},
+    "drop_rate":0.75,
+    "drops":["fur"]
+}
+{
+	"name":"hyena",
+    "race":"hyena",
+	"traits":["claws"],
+    "expirience":11,
+	"stats":{"strength":[8,12],"constitution":[8,12],"dexterity":[6,12],"agility":[6,12],"intelligence":[6,12],"wisdom":[6,12],"cunning":[6,12],"charisma":[6,12]},
+	"appearance":{"body":"hyena"},
+	"equipment":[{
+    	"name":"teeth",
+	    "type":"weapon",
+    	"proficiency":"knife",
+    	"use_stat":"strength",
+    	"min_dam":2,
+    	"max_dam":3}],
+    "proficiency":{"knife":[1,3],"unarmed":[1,2]},
+    "drop_rate":0.75,
+    "drops":["fur"]
+}
+{
+	"name":"dog",
+    "race":"dog",
+	"traits":["claws"],
+    "expirience":6,
+	"stats":{"strength":[4,8],"constitution":[5,12],"dexterity":[5,10],"agility":[5,10],"intelligence":[5,10],"wisdom":[5,10],"cunning":[5,10],"charisma":[5,10]},
+	"appearance":{"body":"wolf"},
+	"equipment":[{
+    	"name":"claws",
+	    "type":"teeth",
+    	"proficiency":"knife",
+    	"use_stat":"strength",
+    	"min_dam":1,
+    	"max_dam":3}],
+    "proficiency":{"knife":[1,2],"unarmed":1},
+    "drop_rate":0.75,
+    "drops":["fur"]
+}
+{
+	"name":"cat",
+    "race":"cat",
+	"traits":["claws"],
+    "expirience":10,
+	"stats":{"strength":[4,8],"constitution":[4,8],"dexterity":[10,15],"agility":[10,15],"intelligence":[5,10],"wisdom":[5,10],"cunning":[10,15],"charisma":[5,10]},
+	"appearance":{"body":"cat"},
+	"equipment":[{
+    	"name":"claws",
+	    "type":"weapon",
+    	"proficiency":"knife",
+    	"use_stat":"strength",
+    	"min_dam":1,
+    	"max_dam":3,
+    	"afflict":["Bleeding",{"chance":0.33,"duration":3,"amount":1}]}],
+    "proficiency":{"knife":[1,3],"unarmed":1},
+    "drop_rate":0.75,
+    "drops":["fur"]
+}
+{
+	"name":"lion",
+    "race":"lion",
+	"traits":["claws"],
+    "expirience":12,
+	"stats":{"strength":[8,12],"constitution":[8,12],"dexterity":[10,15],"agility":[10,15],"intelligence":[8,12],"wisdom":[8,12],"cunning":[10,15],"charisma":[8,12]},
+	"appearance":{"body":"lion"},
+	"equipment":[{
+    	"name":"claws",
+	    "type":"weapon",
+    	"proficiency":"knife",
+    	"use_stat":"strength",
+    	"min_dam":2,
+    	"max_dam":4,
+    	"afflict":["Bleeding",{"chance":0.33,"duration":4,"amount":1}]}],
+    "proficiency":{"knife":[2,3],"unarmed":[1,2],"light_armor":[1,2]},
+    "drop_rate":0.75,
+    "drops":["fur"]
+}
+{
+	"name":"mountain_lion",
+    "race":"lion",
+	"traits":["claws"],
+    "expirience":14,
+	"stats":{"strength":[10,15],"constitution":[10,15],"dexterity":[10,15],"agility":[10,15],"intelligence":[10,15],"wisdom":[10,15],"cunning":[10,15],"charisma":[10,15]},
+	"appearance":{"body":"lion"},
+	"equipment":[{
+    	"name":"claws",
+	    "type":"weapon",
+    	"proficiency":"knife",
+    	"use_stat":"strength",
+    	"min_dam":2,
+    	"max_dam":5,
+    	"afflict":["Bleeding",{"chance":0.33,"duration":4,"amount":1}]}],
+    "proficiency":{"knife":[2,3],"unarmed":[1,3],"light_armor":[1,3]},
+    "drop_rate":0.75,
+    "drops":["fur"]
+}

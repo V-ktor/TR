@@ -1,0 +1,14 @@
+{
+    "type":"terrain",
+    "name":"forest",
+    "traits":[],
+	"travel_time":0.2,
+	"encounters":[
+		{"script":"battle_woods","base_chance":0.2}
+	],
+	"tile":"forest",
+    "amount":8,
+	"pos":[212.0,64.0],
+	"spread":160.0,
+	"size":[32.0,96.0]
+}
