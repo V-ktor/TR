@@ -4,6 +4,7 @@ var character_ID := ""
 var character_type := ""
 var currency := "silver_coins"
 var price_scale := 2.0
+var known := false
 
 
 func goto(_actor,_action,_roll):
@@ -19,6 +20,7 @@ func goto(_actor,_action,_roll):
 				chars.push_back(Characters.characters[ID])
 	if chars.size()>0:
 		character = chars[randi()%chars.size()]
+		known = true
 	else:
 		character = create_mercenary()
 	encounter_init(character)
@@ -105,7 +107,7 @@ func create_mercenary() -> Characters.Character:
 	character_ID = actor.ID
 	return actor
 
-func encounter_init(actor):
+func encounter_init(actor:Characters.Character):
 	var adjective := tr("UNREMARKABLE")
 	var action := tr("SITTING_AT_THE_COUNTER")
 	character_type = tr(actor.race.to_upper())
@@ -116,8 +118,6 @@ func encounter_init(actor):
 		adjective = tr("MUSCULAR")
 	elif actor.appearance.has("skin") && actor.appearance.skin in ["pale","tanned","green","purple"]:
 		adjective = tr(actor.appearance.skin.to_upper())
-	elif actor.appearance.has("skin") && actor.appearance.skin in ["none","rotting"]:
-		adjective = tr("UNDEAD")
 	elif actor.appearance.has("hair") && actor.appearance.hair in ["bald"]:
 		adjective = tr(actor.appearance.hair.to_upper())
 	elif actor.appearance.has("hair_color") && actor.appearance.hair_color in ["blond"]:
@@ -126,6 +126,8 @@ func encounter_init(actor):
 		adjective = tr("SMALL")
 	elif actor.appearance.has("hair_color") && actor.appearance.hair_color in ["brown","white","red"]:
 		adjective = tr("HAIRED").format({"color":tr(actor.appearance.hair_color.to_upper())})
+	elif actor.appearance.has("skin") && actor.appearance.skin in ["none","rotting"]:
+		adjective = tr("UNDEAD")
 	elif actor.personality.size()>0 && !("young" in actor.personality) && !("old" in actor.personality):
 		adjective = tr(actor.personality[randi()%actor.personality.size()].to_upper())
 	
@@ -137,6 +139,8 @@ func encounter_init(actor):
 		character_type = tr("PERSON")
 	elif actor.base_type!="":
 		character_type = tr(actor.race.to_upper())+" "+tr(actor.base_type.to_upper())
+		if adjective==character_type:
+			adjective = tr("UNREMARKABLE")
 	if "young" in actor.personality:
 		character_type = tr("YOUNG")+" "+character_type
 	if "old" in actor.personality:
@@ -169,6 +173,8 @@ func encounter_init(actor):
 		action = tr("WITH_SOMETHING").format({"name":tr(actor.appearance.tail.to_upper())})
 	
 	Main.add_text(tr("BAR_ENCOUNTER_INIT").format({"adjective":adjective,"person":character_type,"action":action}))
+	if known:
+		Main.add_text(tr("BAR_ENCOUNTER_KNOWN").format({"name":actor.get_name()}))
 	Main.add_action(Game.Action.new(tr("APPROACH_CHARACTER").format({"name":character_type}),self,{8:{"method":"approach_success","grade":1},0:{"method":"approach_failed","grade":0}},"charisma","",4,8))
 	
 
@@ -183,11 +189,28 @@ func has_heavy_armor(actor) -> bool:
 
 
 func approach_success(_actor,_action,_roll):
-	var character = Characters.characters[character_ID]
-	var gender = Characters.characters[character_ID].gender
+	var character : Characters.Character = Characters.characters[character_ID]
+	var gender : int = Characters.characters[character_ID].gender
 	if character.hired && character.base_type!="":
-		Main.add_text(tr("APPROACH_MERCENARY").format({"name":character_type,"he/she":tr(Characters.HE_SHE[gender]),"type":tr(character.base_type.to_upper())}))
-		Main.add_action(Game.Action.new(tr("ASK_NAME").format({"his/her":tr(Characters.HIS_HER[gender])}),self,{0:{"method":"ask_for_name","grade":1}},"charisma","",2))
+		if known:
+			Main.add_text(tr("APPROACH_MERCENARY_KNOWN").format({"name":character.get_name()}))
+			if "cynical" in character.personality:
+				Main.add_text(tr("APPROACH_MERCENARY_NOT_AGAIN"))
+			elif "cheerful" in character.personality:
+				Main.add_text(tr("APPROACH_MERCENARY_MISSED_YOU").format({"name":Characters.player.get_name()}))
+			elif "bold" in character.personality || "reckless" in character.personality:
+				Main.add_text(tr("APPROACH_MERCENARY_FINALLY"))
+			else:
+				Main.add_text(tr("APPROACH_MERCENARY_HAVE_JOB").format({"name":Characters.player.get_name()}))
+		else:
+			Main.add_text(tr("APPROACH_MERCENARY").format({"name":character_type,"he/she":tr(Characters.HE_SHE[gender]),"type":tr(character.base_type.to_upper())}))
+			if "shy" in character.personality:
+				Main.add_text(tr("APPROACH_MERCENARY_YES"))
+			elif "cheerful" in character.personality or "curious" in character.personality:
+				Main.add_text(tr("APPROACH_MERCENARY_HELP"))
+			else:
+				Main.add_text(tr("APPROACH_MERCENARY_SERVICE"))
+			Main.add_action(Game.Action.new(tr("ASK_NAME").format({"his/her":tr(Characters.HIS_HER[gender])}),self,{0:{"method":"ask_for_name","grade":1}},"charisma","",2))
 		Main.add_action(Game.Action.new(tr("ASK_JOB"),self,{0:{"method":"ask_job","grade":1}},"charisma","",2))
 		Main.add_action(Game.Action.new(tr("ASK_WHY_ACCOMPANY").format({"he/she":tr(Characters.HE_SHE[gender])}),self,{0:{"method":"ask_why","grade":1}},"charisma","",2))
 		Main.add_action(Game.Action.new(tr("ASK_PRICE_SERVICE").format({"his/her":tr(Characters.HIS_HER[gender])}),self,{0:{"method":"ask_price","grade":1}},"charisma","",2))
@@ -202,42 +225,65 @@ func approach_failed(_actor,_action,_roll):
 
 func ask_for_name(_actor,_action,_roll):
 	var node
-	var character = Characters.characters[character_ID]
-	var gender = Characters.characters[character_ID].gender
+	var character : Characters.Character = Characters.characters[character_ID]
+	var gender : int = Characters.characters[character_ID].gender
 	var price := int(price_scale*character.payment_cost)
 	Main.add_text(tr("CHARACTER_INFO").format({"name":character.name.get_full(),"he/she":tr(Characters.HE_SHE[gender]),"him/her":tr(Characters.HIM_HER[gender])}))
-	Main.add_action(Game.Action.new(tr("ASK_JOB"),self,{0:{"method":"ask_job","grade":1}},"charisma","",2))
+	if character.appearance.has("skin") && character.appearance.skin=="rotting":
+		Main.add_text(tr("MERCENARY_ROTTEN_FLESH").format({"his/her":tr(Characters.HIS_HER[gender])}))
+	elif character.appearance.has("skin") && character.appearance.skin=="skull":
+		Main.add_text(tr("MERCENARY_SKULL_FACE").format({"his/her":tr(Characters.HIS_HER[gender])}))
+	elif character.appearance.has("skin") && character.appearance.skin=="scales" && character.appearance.has("hair_color") && character.appearance.hair_color in ["brown","red","grey"]:
+		Main.add_text(tr("MERCENARY_SCALES_SHIMMER").format({"his/her":tr(Characters.HIS_HER[gender]),"color":tr(character.appearance.hair_color.to_upper())}))
+	elif character.appearance.has("tail"):
+		Main.add_text(tr("MERCENARY_WAGS_TAIL").format({"he/she":tr(Characters.HE_SHE[gender]),"his/her":tr(Characters.HIS_HER[gender]),"tail":tr(character.appearance.tail.to_upper())}))
+	elif character.appearance.has("hair") && character.appearance.hair=="long":
+		Main.add_text(tr("MERCENARY_PUSH_HAIR").format({"he/she":tr(Characters.HE_SHE[gender]),"his/her":tr(Characters.HIS_HER[gender]),"color":tr(character.appearance.hair_color.to_upper())}))
+	elif character.appearance.has("hair_color") && character.appearance.hair_color=="black" && character.appearance.has("skin") && character.appearance.skin=="pale":
+		Main.add_text(tr("MERCENARY_CONTRAST").format({"his/her":tr(Characters.HIS_HER[gender]),"color":tr(character.appearance.hair_color.to_upper()),"skin":tr(character.appearance.skin.to_upper())}))
+	elif character.appearance.has("hair_color") && character.appearance.hair_color in ["blond","white"] && character.appearance.has("skin") && character.appearance.skin=="tanned":
+		Main.add_text(tr("MERCENARY_CONTRAST").format({"his/her":tr(Characters.HIS_HER[gender]),"color":tr(character.appearance.hair_color.to_upper()),"skin":tr(character.appearance.skin.to_upper())}))
+	elif character.appearance.has("hair_color") && character.appearance.hair_color=="blond" && character.appearance.has("skin") && character.appearance.skin=="purple":
+		Main.add_text(tr("MERCENARY_CONTRAST").format({"his/her":tr(Characters.HIS_HER[gender]),"color":tr(character.appearance.hair_color.to_upper()),"skin":tr(character.appearance.skin.to_upper())}))
+	elif character.appearance.has("head") && character.appearance.head in ["elven_ears","cat_ears","wolf_ears"]:
+		Main.add_text(tr("MERCENARY_EARS_TWITCH").format({"his/her":tr(Characters.HIS_HER[gender])}))
+	elif character.appearance.has("head") && character.appearance.head=="bearded":
+		Main.add_text(tr("MERCENARY_STROKES_BEARD").format({"he/she":tr(Characters.HE_SHE[gender]),"his/her":tr(Characters.HIS_HER[gender])}))
+	if !known:
+		Main.add_action(Game.Action.new(tr("ASK_JOB"),self,{0:{"method":"ask_job","grade":1}},"charisma","",2))
 	Main.add_action(Game.Action.new(tr("ASK_WHY_ACCOMPANY").format({"he/she":tr(Characters.HE_SHE[gender])}),self,{0:{"method":"ask_why","grade":1}},"charisma","",2))
 	Main.add_action(Game.Action.new(tr("ASK_PRICE_SERVICE").format({"his/her":tr(Characters.HIS_HER[gender])}),self,{0:{"method":"ask_price","grade":1}},"charisma","",2))
-	node = Main.add_action(Game.Action.new(tr("HIRE_MERCENARY").format({"name":character_type}),self,{8:{"method":"hire","grade":1},0:{"method":"fail_hire","grade":0}},"charisma","",4))
+	node = Main.add_action(Game.Action.new(tr("HIRE_MERCENARY").format({"name":character_type}),self,{4+4*int(!known):{"method":"hire","grade":1},0:{"method":"fail_hire","grade":0}},"charisma","",4))
 	Main.add_action(Game.Action.new(tr("GO_BACK"),self,{0:{"method":"leave","grade":1}},"","",3))
 	if Items.get_item_amount(currency)<price:
 		node.get_node("Button").disabled = true
 
 func ask_job(_actor,_action,_roll):
 	var node
-	var character = Characters.characters[character_ID]
-	var gender = Characters.characters[character_ID].gender
+	var character : Characters.Character = Characters.characters[character_ID]
+	var gender : int = Characters.characters[character_ID].gender
 	var price := int(price_scale*character.payment_cost)
-	Main.add_text(tr("CHARACTER_JOB").format({"he/she":tr(Characters.HE_SHE[gender]),"grade":tr("PROF_LEVEL"+str(clamp(1+character.level/5+int("bold" in character.personality)-int("shy" in character.personality),1,4))),"class":tr(character.base_type.to_upper())}))
+# warning-ignore:integer_division
+	Main.add_text(tr("CHARACTER_JOB").format({"he/she":tr(Characters.HE_SHE[gender]),"grade":tr("PROF_LEVEL"+str(clamp(int(1+character.level/5)+int("bold" in character.personality)-int("shy" in character.personality),1,4))),"class":tr(character.base_type.to_upper())}))
 	if "shy" in character.personality || "curious" in character.personality:
 		Main.add_text(tr("MERCENARY_NEED_HELP"))
 	elif "bold" in character.personality || "reckless" in character.personality:
 		Main.add_text(tr("MERCENARY_NO_BETTER"))
 	else:
 		Main.add_text(tr("MERCENARY_FOR_HIRE"))
-	Main.add_action(Game.Action.new(tr("ASK_NAME").format({"his/her":tr(Characters.HIS_HER[gender])}),self,{0:{"method":"ask_for_name","grade":1}},"charisma","",2))
+	if !known:
+		Main.add_action(Game.Action.new(tr("ASK_NAME").format({"his/her":tr(Characters.HIS_HER[gender])}),self,{0:{"method":"ask_for_name","grade":1}},"charisma","",2))
 	Main.add_action(Game.Action.new(tr("ASK_WHY_ACCOMPANY").format({"he/she":tr(Characters.HE_SHE[gender])}),self,{0:{"method":"ask_why","grade":1}},"charisma","",2))
 	Main.add_action(Game.Action.new(tr("ASK_PRICE_SERVICE").format({"his/her":tr(Characters.HIS_HER[gender])}),self,{0:{"method":"ask_price","grade":1}},"charisma","",2))
-	node = Main.add_action(Game.Action.new(tr("HIRE_MERCENARY").format({"name":character_type}),self,{8:{"method":"hire","grade":1},0:{"method":"fail_hire","grade":0}},"charisma","",4))
+	node = Main.add_action(Game.Action.new(tr("HIRE_MERCENARY").format({"name":character_type}),self,{4+4*int(!known):{"method":"hire","grade":1},0:{"method":"fail_hire","grade":0}},"charisma","",4))
 	Main.add_action(Game.Action.new(tr("GO_BACK"),self,{0:{"method":"leave","grade":1}},"","",3))
 	if Items.get_item_amount(currency)<price:
 		node.get_node("Button").disabled = true
 
 func ask_why(_actor,_action,_roll):
 	var node
-	var character = Characters.characters[character_ID]
-	var gender = Characters.characters[character_ID].gender
+	var character : Characters.Character = Characters.characters[character_ID]
+	var gender : int = Characters.characters[character_ID].gender
 	var price := int(price_scale*character.payment_cost)
 	if "old" in character.personality:
 		if "curious" in character.personality:
@@ -257,33 +303,35 @@ func ask_why(_actor,_action,_roll):
 			Main.add_text(tr("ACCOMPANY_REASON_MONEY"))
 		else:
 			Main.add_text(tr("ACCOMPANY_REASON_STRONG"))
-	Main.add_action(Game.Action.new(tr("ASK_NAME").format({"his/her":tr(Characters.HIS_HER[gender])}),self,{0:{"method":"ask_for_name","grade":1}},"charisma","",2))
+	if !known:
+		Main.add_action(Game.Action.new(tr("ASK_NAME").format({"his/her":tr(Characters.HIS_HER[gender])}),self,{0:{"method":"ask_for_name","grade":1}},"charisma","",2))
 	Main.add_action(Game.Action.new(tr("ASK_JOB"),self,{0:{"method":"ask_job","grade":1}},"charisma","",2))
 	Main.add_action(Game.Action.new(tr("ASK_PRICE_SERVICE").format({"his/her":tr(Characters.HIS_HER[gender])}),self,{0:{"method":"ask_price","grade":1}},"charisma","",2))
-	node = Main.add_action(Game.Action.new(tr("HIRE_MERCENARY").format({"name":character_type}),self,{8:{"method":"hire","grade":1},0:{"method":"fail_hire","grade":0}},"charisma","",4))
+	node = Main.add_action(Game.Action.new(tr("HIRE_MERCENARY").format({"name":character_type}),self,{4+4*int(!known):{"method":"hire","grade":1},0:{"method":"fail_hire","grade":0}},"charisma","",4))
 	Main.add_action(Game.Action.new(tr("GO_BACK"),self,{0:{"method":"leave","grade":1}},"","",3))
 	if Items.get_item_amount(currency)<price:
 		node.get_node("Button").disabled = true
 
 func ask_price(_actor,_action,_roll):
 	var node
-	var character = Characters.characters[character_ID]
-	var gender = Characters.characters[character_ID].gender
+	var character : Characters.Character = Characters.characters[character_ID]
+	var gender : int = Characters.characters[character_ID].gender
 	var price := int(price_scale*character.payment_cost)
 	Main.add_text(tr("MERCENARY_PRICE").format({"amount":price,"rate":character.payment_cost,"currency":tr(character.payment_currency.to_upper())}))
-	Main.add_action(Game.Action.new(tr("ASK_NAME").format({"his/her":tr(Characters.HIS_HER[gender])}),self,{0:{"method":"ask_for_name","grade":1}},"charisma","",2))
+	if !known:
+		Main.add_action(Game.Action.new(tr("ASK_NAME").format({"his/her":tr(Characters.HIS_HER[gender])}),self,{0:{"method":"ask_for_name","grade":1}},"charisma","",2))
 	Main.add_action(Game.Action.new(tr("ASK_JOB"),self,{0:{"method":"ask_job","grade":1}},"charisma","",2))
 	Main.add_action(Game.Action.new(tr("ASK_WHY_ACCOMPANY").format({"he/she":tr(Characters.HE_SHE[gender])}),self,{0:{"method":"ask_why","grade":1}},"charisma","",2))
-	node = Main.add_action(Game.Action.new(tr("HIRE_MERCENARY").format({"name":character_type}),self,{8:{"method":"hire","grade":1},0:{"method":"fail_hire","grade":0}},"charisma","",4))
+	node = Main.add_action(Game.Action.new(tr("HIRE_MERCENARY").format({"name":character_type}),self,{4+4*int(!known):{"method":"hire","grade":1},0:{"method":"fail_hire","grade":0}},"charisma","",4))
 	Main.add_action(Game.Action.new(tr("GO_BACK"),self,{0:{"method":"leave","grade":1}},"","",3))
 	if Items.get_item_amount(currency)<price:
 		node.get_node("Button").disabled = true
 
 func fail_hire(_actor,_action,_roll):
-	var character = Characters.characters[character_ID]
+	var character : Characters.Character = Characters.characters[character_ID]
 	if "reckless" in character.personality:
 		Main.add_text(tr("MERCENARY_FAIL_HIRE_EXP"))
-	if "shy" in character.personality || "curious" in character.personality:
+	elif "shy" in character.personality || "curious" in character.personality:
 		Main.add_text(tr("MERCENARY_FAIL_HIRE_DANGEROUS"))
 	elif "cynical" in character.personality:
 		Main.add_text(tr("MERCENARY_FAIL_HIRE_PAYMENT"))
@@ -292,7 +340,7 @@ func fail_hire(_actor,_action,_roll):
 	Main.add_action(Game.Action.new(tr("GO_BACK"),self,{0:{"method":"leave","grade":1}},"","",3))
 
 func hire(_actor,_action,_roll):
-	var character = Characters.characters[character_ID]
+	var character : Characters.Character = Characters.characters[character_ID]
 	var price := int(price_scale*character.payment_cost)
 	Main.add_text(tr("MERCENARY_HIRE").format({"name":character_type}))
 	if "bold" in character.personality || "curious" in character.personality:

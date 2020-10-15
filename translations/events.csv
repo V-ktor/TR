@@ -25,6 +25,7 @@ NORTHERN_MOUNTAINS_INTRO,"While moving through the mountains lions attack you."
 MOUNTAINS_VICTORY,"You survived the fight and continue moving across the mountains."
 MOUNTAINS_RETREAT,"You flee from the monsters ignoring the dangerous ground. They seem to be reluctant in following you."
 BAR_ENCOUNTER_INIT,"You notice a {adjective} {person} {action}."
+BAR_ENCOUNTER_KNOWN,"It's {name}."
 CLAD_IN_HEAVY_ARMOR,"clad in heavy armor"
 UNREMARKABLE,unremarkable
 TOWERING,towering
@@ -37,7 +38,23 @@ WITH_SOMETHING,"with {name}"
 WITH_SKULL_AS_HEAD,"with a skull as head"
 APPROACH_SUCCESS,"You walk over to the {name}. The encounter was unremarkable."
 APPROACH_MERCENARY,"You walk over to the {name}. {he/she} appears to be a {type} looking for work."
+APPROACH_MERCENARY_SERVICE,'"You require my service?"'
+APPROACH_MERCENARY_HELP,'"How can I help you?"'
+APPROACH_MERCENARY_YES,'"Y... yes?"'
+APPROACH_MERCENARY_KNOWN,"You walk over to the {name}."
+APPROACH_MERCENARY_HAVE_JOB,'"Well met, {name}. You have a job for me?"'
+APPROACH_MERCENARY_NOT_AGAIN,'"Oh no, not you again!"'
+APPROACH_MERCENARY_MISSED_YOU,'"It's nice to see you, {name. I've already missed you."'
+APPROACH_MERCENARY_FINALLY,'"So we finally meet again. Shall we travel together once more?"'
 APPROACH_FAILED,"You walk over to the {name}. {he/she} {is/are} hostile towards you and wishes to be left alone."
+MERCENARY_ROTTEN_FLESH,"Chunks of rotten flesh hangs down from {his/her} face."
+MERCENARY_SKULL_FACE,"You stare into {his/her} emotionless skull."
+MERCENARY_SCALES_SHIMMER,"{his/her} scales shimmer in various shades of {color}."
+MERCENARY_EARS_TWITCH,"{his/her} ears twitch."
+MERCENARY_PUSH_HAIR,"{he/she} pushes back {his/her} {color} hair."
+MERCENARY_STROKES_BEARD,"{he/she} strokes {his/her} beard."
+MERCENARY_WAGS_TAIL,"{he/she} wags {his/her} {tail}."
+MERCENARY_CONTRAST,"{his/her} {color} hair contrasts {his/her} {skin} skin."
 ASK_WHY_ACCOMPANY,"Ask why {he/she} wants to accompany you."
 ASK_PRICE_SERVICE,"Ask for the price of {his/her} service."
 MERCENARY_FOR_HIRE,'"I offer you my service, for an appropriate price that is."'

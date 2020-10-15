@@ -56,7 +56,7 @@ const HEAD_TYPES = {
 	"undead":["skull","rotting"]
 }
 const HAIR_TYPES = {
-	"default":["bald","short","long"]
+	"default":["bald","short","curly","long"]
 }
 const HAIR_COLOR_TYPES = {
 	"default":["black","brown","blond","grey","white","red"],
