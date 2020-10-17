@@ -3,7 +3,7 @@ extends "res://data/scripts/base_shop.gd"
 func goto(_actor,_action,_roll):
 	var c = Map.cities[Game.location]
 	rng.seed = c.shop_seed
-	type_filter = ["misc","fuel","currency","commodities"]
+	type_filter = ["misc","supplies","currency","commodities"]
 	min_items = 2
 	max_items = 4
 	gather_items()

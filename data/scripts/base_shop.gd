@@ -80,7 +80,7 @@ func add_items():
 	items.resize(min_items+rng.randi()%int(max(max_items-min_items+1,1)))
 	for i in range(items.size()):
 		items[i] = Items.create_item(all_items[randi()%all_items.size()])
-		if items[i].type=="currency" || items[i].type=="ingredient" || items[i].type=="fuel" || items[i].type=="commodities":
+		if items[i].type=="currency" || items[i].type=="ingredient" || items[i].type=="supplies" || items[i].type=="commodities":
 			items[i].amount = 10
 
 func add_commodities():
@@ -120,7 +120,7 @@ func buy_item(actor,action,roll):
 		Main.add_text("\n"+tr("YOU_BUY_ITEM_CHEAPER").format({"item":item.name,"price":item_price,"currency":tr(Items.items[currency].name.to_upper())})+"\n\n")
 	Items.add_item(item, amount)
 	Items.remove_items(currency, item_price)
-	if item.type!="commodities" && item.type!="fuel":
+	if item.type!="commodities" && item.type!="supplies":
 		items.remove(action.ID)
 	update_actions("buy")
 

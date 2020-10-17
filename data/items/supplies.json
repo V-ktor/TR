@@ -1,6 +1,6 @@
 {
 	"name":"supplies",
-	"type":"fuel",
+	"type":"supplies",
 	"weight":0.1,
 	"price":1,
     "grade":1
