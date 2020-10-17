@@ -6,6 +6,9 @@ const FACILITIES = [
 	"bar","inn","blacksmith","armory","tailor",
 	"board","herbalist","archery_range"
 ]
+const IMPORTANT_FACILITIES = [
+	"inn","board","bar"
+]
 const CITY_TRAITS = [
 	"poor","prosperous",
 	"trading","manufactories",
@@ -338,6 +341,7 @@ func create_city(data,size:=1,traits:=[]):
 	var position := get_random_position(data)
 	var population : int
 	var facilities := ["market"]
+	var extra_facilities := []
 	var price_mods := {}
 	while cities.has(name):
 		name = Names.get_random_city_name(data.race)
@@ -377,6 +381,11 @@ func create_city(data,size:=1,traits:=[]):
 			i -= 1
 	if !("inn" in facilities) && population>=5000:
 		facilities.push_back("inn")
+	for k in IMPORTANT_FACILITIES:
+		if !(k in facilities):
+			extra_facilities.push_back(k)
+	if extra_facilities.size()>0:
+		facilities.push_back(extra_facilities[randi()%extra_facilities.size()])
 	
 	add_city(name,position,data.race,population,facilities,traits,price_mods)
 
