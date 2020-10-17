@@ -20,6 +20,8 @@ func goto(_actor,_action,_roll):
 				chars.push_back(Characters.characters[ID])
 	if chars.size()>0:
 		character = chars[randi()%chars.size()]
+		character.hired_until = Map.time+int(rand_range(5.0,7.0)*24*60*60)
+		character.morale = (character.morale+60.0)/2.0
 		known = true
 	else:
 		character = create_mercenary()
