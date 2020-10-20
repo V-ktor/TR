@@ -5,10 +5,10 @@
 	"proficiency":{"two-hander":1,"blade":1,"axe":1,"light_armor":1,"heavy_armor":1,"crossbow":1,"fire_magic":1},
 	"playable":true,
 	"phrase_male":["nak","ush","rag","gor","ar","dish","ork","uk","urt"],
-	"phrase_female":["urk","ik","ish","vag","pun","nak","lo"],
+	"phrase_female":["urk","ik","ish","vag","pun","nak","lo","rak"],
 	"first_name_male":["badush","eragor","gronk","gushnak","hugor","pashnak","vushnak"],
-	"first_name_female":["badush","eragor","gronk","gushnak","hugor","pashnak","vushnak"],
-	"last_name":["bloodbath","massdestruction","violence","battleaddict"],
+	"first_name_female":["vagrak","iragurk","grinn","shnagrak","badvag","punak","urkrak"],
+	"last_name":["snort","verylongname","gregor","shronknak","shkgkrsh"],
 	"appearance":{"skin":"dark","head":"default","hair":"default","hair_color":"default","eyes":"beast","body":"default"},
 	"relations":{"elf":-50.0,"dwarf":-10.0,"human":-10.0}
 }

@@ -8,7 +8,7 @@
 	"phrase_male":["ard","ol","tis","til","th","as","ai","dur","us","go","hat"],
 	"phrase_female":["ak","uth"],
 	"first_name_male":["aigaithas","dulatus","gomatas","nardurol","pelatis","trithatil"],
-	"last_name":["goldmining","crafty","resourceful","avarice"],
+	"last_name":["goldmining","crafty","resourceful","avarice","longname"],
 	"appearance":{"skin":"default","head":"bearded","hair":"default","hair_color":"default","eyes":"default","body":"small"},
 	"relations":{"elf":-10.0}
 }
