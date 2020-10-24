@@ -71,6 +71,8 @@ INVENTORY,Inventory
 CHARACTERS,Characters
 EQUIPMENT,Equipment
 MAP,Map
+MISSIONS,Missions
+JOURNAL,Journal
 USED,used
 LVL,"Lvl."
 STATUS,Status
@@ -83,7 +85,10 @@ SHOW_STATUS,Show status
 SHOW_SKILLS,Show skills
 SHOW_TRAITS,Show traits
 TIME,Time
+TIMELIMIT,time limit
 TIME_FORMAT,"{hour}:{minute} {day}.{month}.{year}"
+LOCATION,location
+REMAINING,remaining
 PROF_LEVEL0,Untrained
 PROF_LEVEL1,Novice
 PROF_LEVEL2,Advanced
@@ -114,4 +119,10 @@ HIRED_UNTIL_TOOLTIP,"Hired until: {time}"
 SUPPLIES_REQUIRED,Supplies required
 MIN,min
 H,h
+DIFFICULTY,difficulty
+VERY_EASY,very easy
+EASY,easy
+MODERATE,moderate
+HARD,hard
+IMPOSSIBLE,impossible
 

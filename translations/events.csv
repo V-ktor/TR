@@ -24,6 +24,8 @@ MOUNTAINS,Mountains
 NORTHERN_MOUNTAINS_INTRO,"While moving through the mountains lions attack you."
 MOUNTAINS_VICTORY,"You survived the fight and continue moving across the mountains."
 MOUNTAINS_RETREAT,"You flee from the monsters ignoring the dangerous ground. They seem to be reluctant in following you."
+TAKE_CARE_OF_WOLFS_INTRO,"You arrive in the forest where the wolf pack was last seen. You don't have to search for long as the wolfs notice your presence first."
+TAKE_CARE_OF_WOLFS_VICTORY,"You have defeated the wolf pack. Go back to {city} to take your reward."
 BAR_ENCOUNTER_INIT,"You notice a {adjective} {person} {action}."
 BAR_ENCOUNTER_KNOWN,"It's {name}."
 CLAD_IN_HEAVY_ARMOR,"clad in heavy armor"

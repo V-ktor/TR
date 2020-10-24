@@ -1,0 +1,14 @@
+{
+    "name":"deliver_small_package",
+    "filter":["trading","manufactories"],
+    "difficulty":-0.5,
+    "timelimit":[10.0, 30.0],
+    "time_per_distance":0.1,
+    "max_distance":80.0,
+    "level_random":0.5,
+    "level_scale":0.0,
+    "location":"random_city",
+    "events":[{"type":"enter_city", "script":"res://data/events/jobs/deliver_small_package.gd"}],
+    "reward":{"silver_coins":40},
+    "descriptions":["deliver_package_short_desc1", "deliver_package_short_desc2", "deliver_package_short_desc3", "deliver_package_short_desc4"]
+}

@@ -1,0 +1,14 @@
+,en
+DELIVER_SMALL_PACKAGE,"Deliver a package."
+DELIVER_SMALL_PACKAGE_DESC,"Deliver a small package to {city}."
+DELIVER_PACKAGE_SHORT_DESC1,"Deliver a package to {location}."
+DELIVER_PACKAGE_SHORT_DESC2,"Bring a package to {location}."
+DELIVER_PACKAGE_SHORT_DESC3,"A package needs to be transported to {location}."
+DELIVER_PACKAGE_SHORT_DESC4,"Looking for someone heading to {location} to deliver a package."
+TAKE_CARE_OF_WOLFS,"Take care of wolfs."
+TAKE_CARE_OF_WOLFS_DESC,"Enter the forest near {city} and defeat the wolf pack."
+TAKE_CARE_OF_WOLFS_SHORT_DESC1,"Get rid of a wolf pack."
+TAKE_CARE_OF_WOLFS_SHORT_DESC2,"Take care of the wolf problem."
+TAKE_CARE_OF_WOLFS_SHORT_DESC3,"Help us fighting off wolfs."
+TAKE_CARE_OF_WOLFS_SHORT_DESC4,"Defeat the wolf pack."
+

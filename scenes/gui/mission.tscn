@@ -1,9 +1,6 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=32 format=2]
 
-[ext_resource path="res://scripts/main/main.gd" type="Script" id=1]
-[ext_resource path="res://scenes/main/map.tscn" type="PackedScene" id=2]
-[ext_resource path="res://images/backgrounds/coldmountain.png" type="Texture" id=3]
-[ext_resource path="res://fonts/Play-Bold.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://fonts/Play-Bold.ttf" type="DynamicFontData" id=1]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.25098, 0.25098, 0.25098, 1 )
@@ -336,7 +333,7 @@ expand_margin_left = 4.0
 expand_margin_right = 4.0
 
 [sub_resource type="DynamicFont" id=23]
-font_data = ExtResource( 5 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="Theme" id=24]
 default_font = SubResource( 23 )
@@ -455,407 +452,140 @@ VScrollBar/styles/scroll_focus = SubResource( 22 )
 VSeparator/constants/separation = 4
 VSeparator/styles/separator = SubResource( 11 )
 
-[sub_resource type="Shader" id=25]
-code = "shader_type canvas_item;
-
-uniform float scale_i = 1.0;
-uniform float scale_f = 1.0;
-uniform vec2 pos_i;
-uniform vec2 pos_f;
-uniform float speed = 0.1;
-
-void fragment()
-{
-	float w = (1.0+cos(speed*TIME))/2.0;
-	float scale = scale_i+(scale_f-scale_i)*w;
-	vec2 uv = (UV-vec2(0.5))/scale+vec2(0.5);
-	uv += pos_i+(pos_f-pos_i)*w;
-	COLOR = texture(TEXTURE, uv);
-}"
-
-[sub_resource type="ShaderMaterial" id=26]
-shader = SubResource( 25 )
-shader_param/scale_i = 1.25
-shader_param/scale_f = 1.1
-shader_param/pos_i = Vector2( -0.1, 0.05 )
-shader_param/pos_f = Vector2( 0.1, -0.05 )
-shader_param/speed = 0.1
-
-[sub_resource type="StyleBoxFlat" id=27]
+[sub_resource type="StyleBoxFlat" id=25]
 content_margin_left = 2.0
 content_margin_right = 2.0
 content_margin_top = 2.0
 content_margin_bottom = 2.0
 bg_color = Color( 0.372549, 0.180392, 0.0745098, 1 )
 
-[sub_resource type="StyleBoxFlat" id=28]
-bg_color = Color( 0.886275, 0.690196, 0.341176, 1 )
+[sub_resource type="StyleBoxFlat" id=26]
 draw_center = false
 border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_color = Color( 0, 0, 0, 0.501961 )
-shadow_size = 4
+border_color = Color( 0.752941, 0.878431, 1, 1 )
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id=27]
+draw_center = false
+border_width_left = 4
+border_color = Color( 0.25098, 0.501961, 0.627451, 1 )
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id=28]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.501961, 0.752941, 0.878431, 1 )
+corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id=29]
-bg_color = Color( 0.886275, 0.690196, 0.341176, 1 )
 draw_center = false
 border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color( 0.25098, 0.25098, 0.25098, 1 )
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_color = Color( 0, 0, 0, 0.501961 )
-shadow_size = 4
+border_color = Color( 0.12549, 0.0627451, 0.0627451, 1 )
+corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id=30]
-bg_color = Color( 0.886275, 0.690196, 0.341176, 1 )
 draw_center = false
 border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color( 0.886275, 0.690196, 0.341176, 1 )
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_color = Color( 0, 0, 0, 0.501961 )
-shadow_size = 4
+border_color = Color( 0.501961, 0.752941, 0.878431, 1 )
+corner_detail = 1
 
-[sub_resource type="StyleBoxEmpty" id=31]
-
-[sub_resource type="StyleBoxFlat" id=32]
-bg_color = Color( 0.886275, 0.690196, 0.341176, 1 )
-draw_center = false
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_color = Color( 0, 0, 0, 0.501961 )
-shadow_size = 4
-
-[node name="Main" type="CanvasLayer"]
-layer = 75
-script = ExtResource( 1 )
-
-[node name="ButtonMenu" type="Button" parent="."]
-anchor_left = 1.0
+[node name="Mission" type="Panel"]
 anchor_right = 1.0
-margin_left = -96.0
-margin_bottom = 32.0
-theme = SubResource( 24 )
-text = "MENU"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Title" type="Panel" parent="."]
-margin_left = 25.0
-margin_right = 275.0
-margin_bottom = 25.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 0, 256 )
 theme = SubResource( 24 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": ""
 }
 
-[node name="Label" type="Label" parent="Title"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-text = "LOG"
-align = 1
-valign = 1
-autowrap = true
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Panel" type="Panel" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 25.0
-margin_top = 25.0
-margin_right = -50.0
-margin_bottom = -25.0
-theme = SubResource( 24 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
 margin_top = 8.0
 margin_right = -8.0
 margin_bottom = -8.0
+scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="View" type="ScrollContainer" parent="Panel/HBoxContainer"]
-margin_right = 464.0
-margin_bottom = 534.0
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 1008.0
+margin_bottom = 240.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-follow_focus = true
-scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/View"]
-margin_right = 464.0
-margin_bottom = 534.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Image" type="TextureRect" parent="Panel/HBoxContainer/View/VBoxContainer"]
-material = SubResource( 26 )
-margin_right = 464.0
-margin_bottom = 384.0
-rect_min_size = Vector2( 0, 384 )
-texture = ExtResource( 3 )
-expand = true
-stretch_mode = 7
-
-[node name="Time" type="Label" parent="Panel/HBoxContainer/View/VBoxContainer"]
-margin_top = 388.0
-margin_right = 464.0
-margin_bottom = 407.0
-text = "TIME:"
-
-[node name="Text" type="RichTextLabel" parent="Panel/HBoxContainer/View/VBoxContainer"]
-margin_top = 411.0
-margin_right = 464.0
-margin_bottom = 534.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Text" type="ScrollContainer" parent="Panel/HBoxContainer"]
-margin_left = 468.0
-margin_right = 933.0
-margin_bottom = 534.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-follow_focus = true
-scroll_horizontal_enabled = false
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/Text"]
-margin_right = 465.0
-margin_bottom = 534.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Characters" type="ScrollContainer" parent="Panel/HBoxContainer"]
-visible = false
-margin_left = 624.0
-margin_right = 933.0
-margin_bottom = 534.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-follow_focus = true
-scroll_horizontal_enabled = false
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/Characters"]
-margin_right = 309.0
-margin_bottom = 534.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Inventory" type="ScrollContainer" parent="Panel/HBoxContainer"]
-visible = false
-margin_left = 624.0
-margin_right = 933.0
-margin_bottom = 534.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-follow_focus = true
-scroll_horizontal_enabled = false
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/Inventory"]
-margin_right = 309.0
-margin_bottom = 534.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="LabelPayment" type="Label" parent="Panel/HBoxContainer/Inventory/VBoxContainer"]
-margin_right = 309.0
+[node name="Name" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_right = 1008.0
 margin_bottom = 19.0
-text = "DEBTS"
-autowrap = true
 
-[node name="ButtonPay" type="Button" parent="Panel/HBoxContainer/Inventory/VBoxContainer"]
-margin_top = 23.0
-margin_right = 309.0
-margin_bottom = 50.0
-text = "PAY"
+[node name="LabelName" type="Label" parent="ScrollContainer/VBoxContainer/Name"]
+margin_right = 124.0
+margin_bottom = 19.0
+text = "MISSION_NAME"
 
-[node name="HSeparator" type="HSeparator" parent="Panel/HBoxContainer/Inventory/VBoxContainer"]
-margin_top = 54.0
-margin_right = 309.0
-margin_bottom = 58.0
-custom_styles/separator = SubResource( 27 )
+[node name="Space" type="Control" parent="ScrollContainer/VBoxContainer/Name"]
+margin_left = 128.0
+margin_right = 913.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="LabelEncumbrance" type="Label" parent="Panel/HBoxContainer/Inventory/VBoxContainer"]
-margin_top = 62.0
-margin_right = 309.0
-margin_bottom = 81.0
+[node name="LabelDifficulty" type="Label" parent="ScrollContainer/VBoxContainer/Name"]
+margin_left = 917.0
+margin_right = 1008.0
+margin_bottom = 19.0
 custom_colors/font_color = Color( 0.501961, 0.501961, 0.501961, 1 )
-text = "ENCUMBRANCE"
-autowrap = true
+text = "DIFFICULTY"
 
-[node name="HSeparator2" type="HSeparator" parent="Panel/HBoxContainer/Inventory/VBoxContainer"]
-margin_top = 85.0
-margin_right = 309.0
-margin_bottom = 89.0
-custom_styles/separator = SubResource( 27 )
+[node name="LabelDescription" type="Label" parent="ScrollContainer/VBoxContainer"]
+margin_top = 23.0
+margin_right = 1008.0
+margin_bottom = 42.0
+text = "DESCRIPTION"
 
-[node name="LabelInventory" type="Label" parent="Panel/HBoxContainer/Inventory/VBoxContainer"]
-margin_top = 93.0
-margin_right = 309.0
-margin_bottom = 112.0
-text = "INVENTORY"
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+margin_top = 46.0
+margin_right = 1008.0
+margin_bottom = 50.0
+custom_styles/separator = SubResource( 25 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/Inventory/VBoxContainer"]
-margin_top = 116.0
-margin_right = 309.0
-margin_bottom = 116.0
+[node name="LabelTimelimit" type="Label" parent="ScrollContainer/VBoxContainer"]
+margin_top = 54.0
+margin_right = 1008.0
+margin_bottom = 73.0
+text = "TIME_LIMIT"
 
-[node name="Item0" type="Button" parent="Panel/HBoxContainer/Inventory/VBoxContainer/VBoxContainer"]
-visible = false
-margin_right = 309.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 0, 32 )
-custom_styles/hover = SubResource( 28 )
-custom_styles/pressed = SubResource( 29 )
-custom_styles/focus = SubResource( 30 )
-custom_styles/disabled = SubResource( 31 )
-custom_styles/normal = SubResource( 32 )
+[node name="Location" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 77.0
+margin_right = 1008.0
+margin_bottom = 96.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Panel/HBoxContainer/Inventory/VBoxContainer/VBoxContainer/Item0"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
-mouse_filter = 2
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Location"]
+margin_right = 81.0
+margin_bottom = 19.0
+text = "LOCATION"
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/Location"]
+margin_left = 85.0
+margin_right = 170.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 0, 16 )
+custom_styles/hover = SubResource( 26 )
+custom_styles/pressed = SubResource( 27 )
+custom_styles/focus = SubResource( 28 )
+custom_styles/disabled = SubResource( 29 )
+custom_styles/normal = SubResource( 30 )
+text = "LOCATION"
+align = 0
 __meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Missions" type="ScrollContainer" parent="Panel/HBoxContainer"]
-visible = false
-margin_right = 933.0
-margin_bottom = 534.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-follow_focus = true
-scroll_horizontal_enabled = false
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/Missions"]
-margin_right = 933.0
-margin_bottom = 534.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Panel" type="Panel" parent="Panel"]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = 2.0
-margin_top = -275.0
-margin_right = 50.0
-margin_bottom = 275.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="HBoxContainer" parent="Panel/Panel"]
-anchor_top = 0.928
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 35.6
-margin_right = 498.0
-margin_bottom = 36.0
-rect_rotation = -90.0
-custom_constants/separation = 8
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ButtonLog" type="Button" parent="Panel/Panel/VBoxContainer"]
-margin_right = 60.0
-margin_bottom = 40.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "LOG"
-
-[node name="ButtonMap" type="Button" parent="Panel/Panel/VBoxContainer"]
-margin_left = 68.0
-margin_right = 128.0
-margin_bottom = 40.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "MAP"
-
-[node name="ButtonInv" type="Button" parent="Panel/Panel/VBoxContainer"]
-margin_left = 136.0
-margin_right = 237.0
-margin_bottom = 40.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "INVENTORY"
-
-[node name="ButtonChr" type="Button" parent="Panel/Panel/VBoxContainer"]
-margin_left = 245.0
-margin_right = 359.0
-margin_bottom = 40.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "CHARACTERS"
-
-[node name="ButtonMis" type="Button" parent="Panel/Panel/VBoxContainer"]
-margin_left = 367.0
-margin_right = 453.0
-margin_bottom = 40.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "MISSIONS"
-
-[node name="ButtonJou" type="Button" parent="Panel/Panel/VBoxContainer"]
-margin_left = 461.0
-margin_right = 542.0
-margin_bottom = 40.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "JOURNAL"
-
-[node name="Map" parent="Panel" instance=ExtResource( 2 )]
-visible = false
-
-[node name="PopupMenu" type="PopupMenu" parent="."]
-margin_right = 256.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 256, 0 )
-theme = SubResource( 24 )
-hide_on_state_item_selection = true
-__meta__ = {
-"_edit_use_anchors_": false
+"_editor_description_": ""
 }

@@ -2,10 +2,10 @@ extends Panel
 
 var focused_map := 0
 
-func show_map():
-	var pos = $ScrollContainer/Map.scale*(Map.get_location(Game.location).position+$ScrollContainer/Map.center)
+func show_map(location:=Game.location):
+	var pos = $ScrollContainer/Map.scale*(Map.get_location(location).position+$ScrollContainer/Map.center)
 	$ScrollContainer/Map.update()
-	$ScrollContainer/Map._select(Game.location)
+	$ScrollContainer/Map._select(location)
 	$ScrollContainer.scroll_horizontal = pos.x-$ScrollContainer.rect_size.x/2
 	$ScrollContainer.scroll_vertical = pos.y-$ScrollContainer.rect_size.y/2
 	focused_map = 2

@@ -282,6 +282,14 @@ func get_faction_cities(faction : String) -> Array:
 			array.push_back(c)
 	return array
 
+func get_nearby_locations(ID : String, max_dist : float) -> Array:
+	var array := []
+	var pos = get_location(ID).position
+	for c in cities.keys():
+		if pos.distance_squared_to(cities[c].position)<=max_dist*max_dist:
+			array.push_back(c)
+	return array
+
 
 func get_random_position(data) -> Vector2:
 	var position := Vector2()

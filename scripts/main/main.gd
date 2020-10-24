@@ -7,6 +7,7 @@ var selected_item := -1
 var text_label := preload("res://scenes/main/text.tscn")
 var action_button := preload("res://scenes/main/button.tscn")
 var character_panel := preload("res://scenes/gui/character.tscn")
+var mission_panel := preload("res://scenes/gui/mission.tscn")
 
 onready var text_container := $Panel/HBoxContainer/Text/VBoxContainer
 
@@ -338,7 +339,35 @@ func update_inventory():
 		for currency in Characters.payment.keys():
 			if Characters.payment[currency]>=1.0:
 				$Panel/HBoxContainer/Inventory/VBoxContainer/LabelPayment.text += "  "+tr(currency.to_upper())+": "+str(Characters.payment[currency]).pad_decimals(1)+"\n"
+
+func update_missions():
+	for c in $Panel/HBoxContainer/Missions/VBoxContainer.get_children():
+		c.hide()
 	
+	for i in range(Game.missions.size()):
+		var panel
+		var mission : Missions.Mission = Game.missions.values()[i]
+		var date := OS.get_datetime_from_unix_time(mission.timelimit)
+		var location = Map.get_location(mission.location)
+		if has_node("Panel/HBoxContainer/Missions/VBoxContainer/Mission"+str(i)):
+			panel = get_node("Panel/HBoxContainer/Missions/VBoxContainer/Mission"+str(i))
+		else:
+			panel = mission_panel.instance()
+			panel.name = "Mission"+str(i)
+			$Panel/HBoxContainer/Missions/VBoxContainer.add_child(panel)
+		panel.get_node("ScrollContainer/VBoxContainer/Name/LabelName").text = tr(mission.name.to_upper())
+		panel.get_node("ScrollContainer/VBoxContainer/Name/LabelDifficulty").text = tr(mission.difficulty.to_upper())
+		panel.get_node("ScrollContainer/VBoxContainer/LabelDescription").text = mission.description
+		for text in mission.updates:
+			panel.get_node("ScrollContainer/VBoxContainer/LabelDescription").text += "\n"+text
+		panel.get_node("ScrollContainer/VBoxContainer/LabelTimelimit").text = tr("TIMELIMIT")+": "+tr("TIME_FORMAT").format({"minute":str(date.minute).pad_zeros(2),"hour":str(date.hour).pad_zeros(2),"day":str(date.day).pad_zeros(2),"month":str(date.month).pad_zeros(2),"year":date.year,"weekday":date.weekday})+" ("+str(int((mission.timelimit-Map.time)/60.0/60.0))+tr("H")+" "+tr("REMAINING")+")"
+		panel.get_node("ScrollContainer/VBoxContainer/Location/Label").text = tr("LOCATION")+": "
+		panel.get_node("ScrollContainer/VBoxContainer/Location/Button").text = location.name
+		if panel.get_node("ScrollContainer/VBoxContainer/Location/Button").is_connected("pressed",self,"_show_location"):
+			panel.get_node("ScrollContainer/VBoxContainer/Location/Button").disconnect("pressed",self,"_show_location")
+		panel.get_node("ScrollContainer/VBoxContainer/Location/Button").connect("pressed",self,"_show_location",[mission.location])
+		panel.show()
+
 
 func create_item_tooltip_text(item) -> String:
 	var text := ""
@@ -366,6 +395,7 @@ func _show_log():
 	$Panel/HBoxContainer/Inventory.hide()
 	$Panel/HBoxContainer/Text.show()
 	$Panel/HBoxContainer/Characters.hide()
+	$Panel/HBoxContainer/Missions.hide()
 	$Panel/Map.hide()
 	if location_title!="":
 		$Title/Label.text = tr(location_title)
@@ -377,6 +407,7 @@ func _show_inventory():
 	$Panel/HBoxContainer/Text.hide()
 	$Panel/HBoxContainer/Inventory.show()
 	$Panel/HBoxContainer/Characters.hide()
+	$Panel/HBoxContainer/Missions.hide()
 	$Panel/Map.hide()
 	update_inventory()
 	$Title/Label.text = tr("INVENTORY")
@@ -386,17 +417,32 @@ func _show_characters():
 	$Panel/HBoxContainer/Text.hide()
 	$Panel/HBoxContainer/Inventory.hide()
 	$Panel/HBoxContainer/Characters.show()
+	$Panel/HBoxContainer/Missions.hide()
 	$Panel/Map.hide()
 	update_characters()
 	$Title/Label.text = tr("CHARACTERS")
 
-func _show_map():
+func _show_map(location:=Game.location):
 	$Panel/HBoxContainer/View.hide()
 	$Panel/HBoxContainer/Text.hide()
 	$Panel/HBoxContainer/Inventory.hide()
 	$Panel/HBoxContainer/Characters.hide()
-	$Panel/Map.show_map()
+	$Panel/HBoxContainer/Missions.hide()
+	$Panel/Map.show_map(location)
 	$Title/Label.text = tr("MAP")
+
+func _show_missions():
+	$Panel/HBoxContainer/View.hide()
+	$Panel/HBoxContainer/Text.hide()
+	$Panel/HBoxContainer/Inventory.hide()
+	$Panel/HBoxContainer/Characters.hide()
+	$Panel/HBoxContainer/Missions.show()
+	$Panel/Map.hide()
+	update_missions()
+	$Title/Label.text = tr("MISSIONS")
+
+func _show_location(location):
+	_show_map(location)
 
 func set_title(text):
 	location_title = text
@@ -424,6 +470,8 @@ func _ready():
 	$Panel/Panel/VBoxContainer/ButtonMap.connect("pressed",self,"_show_map")
 	$Panel/Panel/VBoxContainer/ButtonInv.connect("pressed",self,"_show_inventory")
 	$Panel/Panel/VBoxContainer/ButtonChr.connect("pressed",self,"_show_characters")
+	$Panel/Panel/VBoxContainer/ButtonMis.connect("pressed",self,"_show_missions")
+	$Panel/Panel/VBoxContainer/ButtonJou.connect("pressed",self,"_show_journal")
 	$Panel/HBoxContainer/Inventory/VBoxContainer/ButtonPay.connect("pressed",self,"_payout")
 	$PopupMenu.connect("id_pressed",self,"_select_character")
 	$ButtonMenu.connect("pressed",Menu,"show")

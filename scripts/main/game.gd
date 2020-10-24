@@ -11,6 +11,7 @@ const ROLL_GRADE = {
 
 var vars := {}
 var scripts := []
+var missions := {}
 var location : String
 var in_city := false
 var entry_forbidden := false
@@ -41,7 +42,7 @@ class Action:
 	var stamina := 0
 	var runes := {}
 	
-	func _init(_text,_script_file,_result,_primary:="",_secondary:="",_ticks:=0,_limit:=0,_offset:=0):
+	func _init(_text:String,_script_file,_result:Dictionary,_primary:="",_secondary:="",_ticks:=0,_limit:=0,_offset:=0):
 		text = _text
 		primary = _primary
 		secondary = _secondary
@@ -53,8 +54,6 @@ class Action:
 			_script = load("res://data/scripts/"+_script_file+".gd").new()
 		else:
 			_script = _script_file
-		
-	
 
 
 func roll(offset,num:=1,max_roll:=MAX_ROLL) -> int:
@@ -134,6 +133,46 @@ func pay(delay,currency,amount):
 	else:
 		Characters.payment[currency] = amount*float(delay)/60.0/60.0/24.0
 
+func accept_mission(mission):
+	var mission_ID = mission.name
+	var index := 1
+	while missions.has(mission_ID+str(index)):
+		index += 1
+	mission.ID = mission_ID+str(index)
+	print("Creating mission "+mission.ID+".")
+	if Map.get_location(mission.location)==null:
+		# Create the mission location if it does not exist.
+		var ID = mission.location
+		var loc = Map.Location.new(tr(mission.location_data.name.to_upper()),mission.location_data.position,"mission_location",[],true,mission.location_data.landscape)
+		var num := 1
+		loc.landscape = mission.location_data.landscape
+		if ID=="":
+			ID = mission.location_data.name
+		while Map.locations.has(ID+str(num)):
+			num += 1
+		ID += str(num)
+		Map.locations[ID] = loc
+		mission.location = ID
+		print("Add mission location "+mission.location+".")
+	for event in mission.events:
+		event = event.duplicate()
+		event.mission = mission.ID
+		event.location = mission.location
+		Events.register_event(event)
+		print("Add mission event "+event.type+"("+event.location+")"+".")
+	mission.status = "started"
+	missions[mission.ID] = mission
+
+func finish_mission(mission):
+	mission.status = "finished"
+	Events.clear_mission_events(mission.ID)
+	missions.erase(mission.ID)
+
+func fail_mission(mission):
+	mission.status = "failed"
+	Events.clear_mission_events(mission.ID)
+	missions.erase(mission.ID)
+
 
 func set_var(ID,value=true):
 	vars[ID] = value
@@ -187,7 +226,7 @@ func goto(_location:String):
 		for mount in Characters.mounts:
 			if !mount.active:
 				continue
-			Items.remove_items(mount.fuel, mount.fuel_consumption)
+			Items.remove_items(mount.supplies, mount.supply_consumption)
 		pay_party(delay)
 		timer.start()
 		yield(timer,"timeout")
@@ -199,10 +238,6 @@ func goto(_location:String):
 				script.init(c0.position+(c1.position-c0.position)*(i+1.0)/(num_steps+2.0))
 			Main.update_party()
 			Main._show_log()
-			for ID in Characters.party:
-				var c = Characters.characters[ID]
-				if "curious" in c.personality:
-					c.add_morale(2.0)
 			return
 	
 	var delay = int(rand_range(0.95, 1.05)*max(dist-8.0*num_steps, 0.0)*60.0*60.0/Characters.get_travel_speed())
@@ -219,11 +254,13 @@ func enter_location(_location : String,c=null):
 	if c==null:
 		c = Map.get_location(_location)
 	else:
-		c.shop_seed = randi()
+		if c.has_method("set_shop_seed"):
+			c.set_shop_seed(randi())
 	Main.add_text("\n"+tr("ENTER_LOCATION_"+c.type.to_upper()).format({"name":c.name}))
-	Main.add_text(c.description+"\n")
+	if c.description!="":
+		Main.add_text(c.description+"\n")
 	Main.update_party()
-	if location!=_location && (Characters.relations[c.faction]<-10 || (Characters.player.traits.has("startling") && Characters.relations[c.faction]<10)):
+	if c is Map.City && (location!=_location && (Characters.relations[c.faction]<-10 || (Characters.player.traits.has("startling") && Characters.relations[c.faction]<10))):
 		var script = load("res://data/events/city_gates.gd").new()
 		in_city = false
 		script.init(c,_location)
@@ -236,7 +273,7 @@ func enter_location(_location : String,c=null):
 	entry_forbidden = false
 	Main.set_title("")
 	in_city = true
-	print("Entering "+location)
+	print("Entering "+location+".")
 	
 	for ID in Map.locations.keys():
 		if Map.get_location(ID).temporary:
@@ -248,20 +285,29 @@ func enter_location(_location : String,c=null):
 	Main.update_landscape(c.landscape)
 	Main.set_title(c.name)
 	
-	var event = Events.check_event("enter_city", [location])
-	if event!=null:
-		var script = load("res://data/events/"+event.script+".gd").new()
-		if event.has("args"):
-			script.init(location,event.args)
-		else:
-			script.init(location)
-		Main.update_party()
-		Main._show_log()
-		return
-	
-	for f in c.facilities:
-		var action = Action.new(tr("VISIT_LOCATION").format({"name":tr(f.to_upper())}), "facilities/visit_"+f, {0:{"method":"goto","grade":1}}, "", "", 2)
-		Main.add_action(action)
+	if c is Map.City:
+		var event = Events.check_event("enter_city", [location])
+		if event!=null:
+			var script = load(event._script).new()
+			var args = [location,missions[event.mission]]+event.args
+			script.callv("init",args)
+			Main.update_party()
+			Main._show_log()
+			return
+		
+		for f in c.facilities:
+			var action = Action.new(tr("VISIT_LOCATION").format({"name":tr(f.to_upper())}), "facilities/visit_"+f, {0:{"method":"goto","grade":1}}, "", "", 2)
+			Main.add_action(action)
+	else:
+		var event = Events.check_event("enter_location", [location])
+		if event!=null:
+			var script = load(event._script).new()
+			var args = [location,missions[event.mission]]+event.args
+			script.callv("init",args)
+			Events.clear_event(event)
+			Main.update_party()
+			Main._show_log()
+			return
 	if c.can_leave || Main.get_action_count()==0:
 		# Enable to leave a location if there is no available action.
 		Main.add_action(Action.new(tr("LEAVE"), "location_general", {0:{"method":"leave","grade":1}}, "", "", 3))
@@ -306,8 +352,11 @@ func _save(filename:="autosave") -> bool:
 	
 	# Write data.
 	var date := OS.get_datetime()
+	var mission_data := {}
+	for k in missions.keys():
+		mission_data[k] = missions[k].to_dict()
 	file.store_line(JSON.print({"version":Menu.VERSION,"name":Characters.player.get_name(),"class":tr("LVL")+" "+str(Characters.player.level)+" "+tr(Characters.player.cls_name.to_upper()),"date":tr("TIME_FORMAT").format({"minute":str(date.minute).pad_zeros(2),"hour":str(date.hour).pad_zeros(2),"day":str(date.day).pad_zeros(2),"month":str(date.month).pad_zeros(2),"year":date.year,"weekday":date.weekday})}))
-	file.store_line(JSON.print({"location":location,"vars":vars}))
+	file.store_line(JSON.print({"location":location,"vars":vars,"missions":mission_data}))
 	error = Map._save(file)
 	if error!=OK:
 		print("Error while saving map data of save file user://saves/"+filename+".sav !")
@@ -337,6 +386,9 @@ func _load(filename:="autosave") -> int:
 	currentline = JSON.parse(file.get_line()).result
 	location = currentline.location
 	vars = currentline.vars
+	for ID in currentline.missions.keys():
+		var dict = currentline.missions[ID]
+		missions[ID] = Missions.Mission.new(dict)
 	error = Map._load(file)
 	if error!=OK:
 		print("Error while loading map data of save file user://saves/"+filename+".sav !")
@@ -349,6 +401,5 @@ func _load(filename:="autosave") -> int:
 	
 	file.close()
 	Menu.start()
-	enter_location(location,Map.cities[location])
+	enter_location(location,Map.get_location(location))
 	return OK
-

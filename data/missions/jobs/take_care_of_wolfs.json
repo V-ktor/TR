@@ -1,0 +1,13 @@
+{
+    "name":"take_care_of_wolfs",
+    "filter":["farming", "wood"],
+    "difficulty":1.0,
+    "timelimit":[10.0, 20.0],
+    "time_per_distance":0.1,
+    "location":{
+        "name":"deep_forest", "landscape":"woods", "position":[15.0, 40.0]
+    },
+    "events":[{"type":"enter_location", "script":"res://data/events/jobs/take_care_of_wolfs.gd"}],
+    "reward":{"silver_coins":100},
+    "descriptions":["take_care_of_wolfs_short_desc1", "take_care_of_wolfs_short_desc2", "take_care_of_wolfs_short_desc3", "take_care_of_wolfs_short_desc4"]
+}
