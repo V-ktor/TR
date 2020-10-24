@@ -77,7 +77,7 @@ func start():
 	Main.clear()
 	Main.get_node("Panel").show()
 	Main.get_node("Title").show()
-	Main.get_node("Panel/Map/ScrollContainer/Map").update()
+	Main.get_node("Panel/Map/ScrollContainer/Map").update(true)
 	Main.get_node("Panel/Map/ScrollContainer").scroll_horizontal = Main.get_node("Panel/Map/ScrollContainer/Map").rect_min_size.x/2-Main.get_node("Panel/Map/ScrollContainer").rect_size.x/2
 	Main.get_node("Panel/Map/ScrollContainer").scroll_vertical = Main.get_node("Panel/Map/ScrollContainer/Map").rect_min_size.y/2-Main.get_node("Panel/Map/ScrollContainer").rect_size.y/2
 	$Panel/VBoxContainer/Button6.show()

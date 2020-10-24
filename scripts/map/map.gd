@@ -154,7 +154,7 @@ func get_offset(dir : int) -> Vector2:
 			ofs = Vector2(-1, 0)
 	return ofs
 
-func update():
+func update(update_tilemap:=false):
 	for c in get_children():
 		if c.name=="Tooltip" || c.name=="Terrain" || c.name=="TileMap":
 			continue
@@ -173,7 +173,8 @@ func update():
 		bi.connect("pressed",self,"_select",[k])
 		if Game.location==l.name:
 			bi.get_node("Location").show()
-#	$Terrain.update()
+	if !update_tilemap:
+		return
 	$TileMap.clear()
 	$TileMap.position = scale*center
 	for pos in Map.tiles.keys():
@@ -203,8 +204,6 @@ func update():
 					$TileMap.set_cellv(pos,TILES[terrain].keys()[0])
 				else:
 					$TileMap.set_cellv(pos,matching[rnd%matching.size()])
-			
-			
 
 func _show_info(ID):
 	var c = Map.get_location(ID)
