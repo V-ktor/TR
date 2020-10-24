@@ -125,4 +125,8 @@ EASY,easy
 MODERATE,moderate
 HARD,hard
 IMPOSSIBLE,impossible
+ENGINE,Engine
+PROGRAMMING,Programming
+GRAPHICS,Graphics
+FONT,Font
 

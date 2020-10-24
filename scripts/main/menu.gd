@@ -762,12 +762,27 @@ func _ready():
 	$Panel/VBoxContainer/Button7.connect("pressed",self,"_show_save")
 	$Panel/VBoxContainer/Button3.connect("pressed",self,"_show_options")
 	$Panel/VBoxContainer/Button4.connect("pressed",self,"_quit")
+	$Panel/VBoxContainer/Button5.connect("pressed",$Credits,"show")
 	$Panel/VBoxContainer/Button6.connect("pressed",self,"hide")
 	$Files/Panel/Button.connect("pressed",$Files,"hide")
 	$Files/ScrollContainer/VBoxContainer/New/LineEdit.connect("text_entered",self,"_save_new")
 	$Files/ScrollContainer/VBoxContainer/New/ButtonConfirm.connect("pressed",self,"_save_new")
-	
+	$Credits/Panel/Button.connect("pressed",$Credits,"hide")
+	$Credits/RichTextLabel.connect("meta_clicked",OS,"shell_open")
 	
 	$Panel/VBoxContainer/Button6.hide()
 	$Panel/VBoxContainer/Button7.hide()
+	
+	# Set up credits text.
+	$Credits/RichTextLabel.add_text(tr("ENGINE")+":\n Godot 3.2 (")
+	$Credits/RichTextLabel.append_bbcode("[url=https://godotengine.org]godotengine.org[/url]")
+	$Credits/RichTextLabel.add_text(")\n\n"+tr("PROGRAMMING")+":\n - Viktor Hahn\n\n")
+	$Credits/RichTextLabel.add_text(tr("GRAPHICS")+":\n - Justin Nichol(")
+	$Credits/RichTextLabel.append_bbcode("[url=https://opengameart.org/content/flare-environment-concept-art-pack-1]opengameart.org[/url]")
+	$Credits/RichTextLabel.add_text(")\n - Sergei Churbanov\n - Tamara Ramsay (")
+	$Credits/RichTextLabel.append_bbcode("[url=http://vectorgurl.com/]vectorgurl.com[/url]")
+	$Credits/RichTextLabel.add_text(")\n - Nidhoggn\n - JAP\n\n")
+	$Credits/RichTextLabel.add_text(tr("FONT")+":\n - Jonas Hecksher\n - Kenney Vleugels (")
+	$Credits/RichTextLabel.append_bbcode("[url=www.kenney.nl]www.kenney.nl[/url]")
+	$Credits/RichTextLabel.add_text(")\n\n")
 	

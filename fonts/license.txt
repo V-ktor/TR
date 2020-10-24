@@ -13,6 +13,3 @@ kenvector_future.ttf, kenvector_future_thin.ttf:
 
 ###############################################################################
 
-TechBreak.png:
-License: CC0
-
