@@ -905,8 +905,8 @@ func riposte(actor,action,_roll):
 
 func backstab(actor,action,_roll):
 	var dam_roll := Game.do_roll(actor,"cunning","dexterity",0)
-	var damage := round(action.tool_used.dam_min+(action.tool_used.dam_max-action.tool_used.dam_min)*dam_roll/float(Game.MAX_ROLL))
-	action.tool_used.dam_max *= 2
+	var damage := round(action.tool_used.min_dam+(action.tool_used.max_dam-action.tool_used.min_dam)*dam_roll/float(Game.MAX_ROLL))
+	action.tool_used.max_dam *= 2
 	action.target.damaged(damage)
 	Main.add_text(tr("COMBAT_BACKSTAB").format({"actor":actor.get_name(),"target":action.target.get_name()}))
 	action.target.remove_status("distracted")

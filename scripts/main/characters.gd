@@ -788,7 +788,7 @@ func load_enemy_data(path):
 				continue
 			
 			enemies[currentline.name] = currentline
-			
+		file.close()
 		filename = dir.get_next()
 
 func _ready():

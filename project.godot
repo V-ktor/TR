@@ -33,6 +33,7 @@ Map="*res://scripts/main/world.gd"
 Events="*res://scripts/main/events.gd"
 Effects="*res://scripts/main/effects.gd"
 Spells="*res://scripts/main/spells.gd"
+Missions="*res://scripts/main/missions.gd"
 
 [debug]
 

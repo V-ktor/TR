@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://fonts/Play-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/gui/character.gd" type="Script" id=2]
@@ -530,6 +530,13 @@ shadow_color = Color( 0, 0, 0, 0.25098 )
 shadow_size = 2
 
 [sub_resource type="StyleBoxFlat" id=30]
+content_margin_left = 2.0
+content_margin_right = 2.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color( 0.372549, 0.180392, 0.0745098, 1 )
+
+[sub_resource type="StyleBoxFlat" id=31]
 bg_color = Color( 0.0627451, 0.12549, 0.188235, 1 )
 border_width_left = 4
 border_width_top = 4
@@ -541,7 +548,7 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxFlat" id=31]
+[sub_resource type="StyleBoxFlat" id=32]
 bg_color = Color( 0.886275, 0.690196, 0.341176, 1 )
 draw_center = false
 border_width_left = 20
@@ -556,7 +563,7 @@ corner_radius_bottom_left = 5
 shadow_color = Color( 0, 0, 0, 0.25098 )
 shadow_size = 2
 
-[sub_resource type="StyleBoxFlat" id=32]
+[sub_resource type="StyleBoxFlat" id=33]
 bg_color = Color( 0.886275, 0.690196, 0.341176, 1 )
 draw_center = false
 border_width_left = 4
@@ -819,6 +826,7 @@ __meta__ = {
 margin_top = 113.0
 margin_right = 748.0
 margin_bottom = 117.0
+custom_styles/separator = SubResource( 30 )
 
 [node name="LabelEquipment" type="Label" parent="Status/HBoxContainer/VBoxContainer"]
 margin_top = 121.0
@@ -849,13 +857,14 @@ clip_text = true
 margin_left = 752.0
 margin_right = 756.0
 margin_bottom = 253.0
+custom_styles/separator = SubResource( 30 )
 
 [node name="Control" type="Panel" parent="Status/HBoxContainer"]
 margin_left = 760.0
 margin_right = 1016.0
 margin_bottom = 253.0
 rect_min_size = Vector2( 256, 0 )
-custom_styles/panel = SubResource( 30 )
+custom_styles/panel = SubResource( 31 )
 script = ExtResource( 3 )
 
 [node name="Skills" type="VBoxContainer" parent="."]
@@ -941,7 +950,7 @@ margin_right = 338.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 0, 36 )
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 31 )
+custom_styles/panel = SubResource( 32 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Skills/ScrollContainer/VBoxContainer/Skill0"]
 anchor_right = 1.0
@@ -1001,6 +1010,7 @@ align = 1
 margin_top = 169.0
 margin_right = 1016.0
 margin_bottom = 173.0
+custom_styles/separator = SubResource( 30 )
 
 [node name="LabelStats" type="Label" parent="Skills"]
 margin_top = 175.0
@@ -1022,7 +1032,7 @@ margin_right = 506.0
 margin_bottom = 111.0
 rect_min_size = Vector2( 0, 36 )
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 32 )
+custom_styles/panel = SubResource( 33 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1161,7 +1171,7 @@ margin_right = 338.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 31 )
+custom_styles/panel = SubResource( 32 )
 
 [node name="Label" type="Label" parent="Traits/Traits/Trait0"]
 anchor_right = 1.0
@@ -1183,6 +1193,7 @@ __meta__ = {
 margin_top = 100.0
 margin_right = 1016.0
 margin_bottom = 104.0
+custom_styles/separator = SubResource( 30 )
 
 [node name="LabelSpells" type="Label" parent="Traits"]
 margin_top = 106.0
@@ -1212,7 +1223,7 @@ margin_right = 338.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 31 )
+custom_styles/panel = SubResource( 32 )
 
 [node name="Label" type="Label" parent="Traits/Spells/GridContainer/Spell0"]
 anchor_right = 1.0
@@ -1234,6 +1245,7 @@ __meta__ = {
 margin_top = 207.0
 margin_right = 1016.0
 margin_bottom = 211.0
+custom_styles/separator = SubResource( 30 )
 
 [node name="LabelApp" type="Label" parent="Traits"]
 margin_top = 213.0
@@ -1263,7 +1275,7 @@ margin_right = 338.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 31 )
+custom_styles/panel = SubResource( 32 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Traits/ScrollContainer/GridContainer/Trait0"]
 anchor_right = 1.0

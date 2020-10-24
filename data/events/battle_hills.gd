@@ -1,7 +1,7 @@
 extends "res://data/scripts/base_battle.gd"
 
 var ID := "battle_hills"
-var location
+var location : Map.Location
 
 
 func init(pos):
@@ -39,6 +39,7 @@ func init(pos):
 	
 	Main.update_landscape(location.landscape)
 	
+	# Add additional actions for the combat here.
 	ACTIONS += []
 	
 	connect("battle_won",self,"won_battle")

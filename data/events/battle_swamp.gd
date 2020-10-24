@@ -1,7 +1,7 @@
 extends "res://data/scripts/base_battle.gd"
 
 var ID := "battle_swamp"
-var location
+var location : Map.Location
 
 
 func init(pos):
@@ -33,6 +33,7 @@ func init(pos):
 	Main.update_landscape(location.landscape)
 	Main.add_text("\n"+tr("SWAMP_INTRO"))
 	
+	# Add additional actions for the combat here.
 	ACTIONS += []
 	
 	connect("battle_won",self,"won_battle")

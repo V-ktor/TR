@@ -13,6 +13,9 @@ var min_items := 4
 var max_items := 6
 
 
+func set_shop_seed(sd):
+	rng.seed = sd
+
 func update_actions(last_action:=""):
 	if mode=="buy":
 		for i in range(items.size()):

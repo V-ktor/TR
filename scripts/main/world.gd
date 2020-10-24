@@ -159,6 +159,7 @@ var time := 0
 
 class Location:
 	var name : String
+	var description : String
 	var position : Vector2
 	var type : String
 	var traits : Array
@@ -186,7 +187,6 @@ class City extends Location:
 	var population : int
 	var facilities : Array
 	var desc : Array
-	var description : String
 	var shop_seed : int
 	var price_mods : Dictionary
 	
@@ -597,8 +597,8 @@ func load_world(path : String):
 						if !currentline.has("traits"):
 							currentline.traits = []
 						terrain_data.push_back(currentline)
+			file.close()
 		file_name = dir.get_next()
-	
 
 func _ready():
 	load_world("res://data/world")

@@ -674,6 +674,7 @@ func load_races(path : String):
 					races[currentline.name] = currentline
 					if currentline.has("playable") && currentline.playable:
 						available_races.push_back(currentline.name)
+			file.close()
 		file_name = dir.get_next()
 
 func load_classes(path : String):
@@ -696,6 +697,7 @@ func load_classes(path : String):
 					classes[currentline.name] = currentline
 					if currentline.has("playable") && currentline.playable:
 						available_classes.push_back(currentline.name)
+			file.close()
 		file_name = dir.get_next()
 
 
