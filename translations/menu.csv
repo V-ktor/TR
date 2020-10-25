@@ -111,6 +111,7 @@ THEM,them
 IS,is
 ARE,are
 HIRED,hired
+HIRED_UNTIL,"Hired {name} until {date}."
 PAY,Pay
 PAYMENT_PER_DAY,"Payment: {amount} {currency} per day"
 DEBTS,Debts
@@ -130,6 +131,7 @@ ENGINE,Engine
 PROGRAMMING,Programming
 GRAPHICS,Graphics
 FONT,Font
-CITY,City
+CITIES,Cities
 TRAVEL,Travel
+COMPANIONS,Companions
 

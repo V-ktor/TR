@@ -11,6 +11,7 @@ func init(_location,args):
 	character = Characters.characters[ID]
 	Main.add_text(tr("MERCENARY_EXPIRED_INIT").format({"name":character.get_name(),"he/she":tr(Characters.HE_SHE[character.gender])}))
 	Characters.payout_party()
+	character.location = Game.location
 	if character.morale>75.0:
 		var cost := int(rand_range(7,9)+character.level-2*int("young" in character.personality)-int("old" in character.personality)-int("shy" in character.personality)+2*int("reckless" in character.personality))
 		Main.add_text(tr("MERCENARY_EXPIRED_EXTEND_CONTRACT"))

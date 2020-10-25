@@ -130,7 +130,7 @@ func _toggle_sort_time(pressed):
 	update_journal()
 
 func _show_journal_entry(ID):
-	var entry = Journal.entries.values()[ID]
+	var entry = Journal.entries[ID]
 	var date = OS.get_datetime_from_unix_time(entry.time)
 	$Panel/HBoxContainer/Journal/VBoxContainer/Image.texture = load(entry.image)
 	$Panel/HBoxContainer/Journal/VBoxContainer/Image/Title.text = entry.title
@@ -452,8 +452,9 @@ func update_journal():
 			$Panel/HBoxContainer/List/VBoxContainer/VBoxContainer.add_child(button)
 		button.text = entry.title
 		button.get_node("Label").text = tr("TIME_FORMAT").format({"minute":str(date.minute).pad_zeros(2),"hour":str(date.hour).pad_zeros(2),"day":str(date.day).pad_zeros(2),"month":str(date.month).pad_zeros(2),"year":date.year,"weekday":date.weekday})
-		if !button.is_connected("pressed",self,"_show_journal_entry"):
-			button.connect("pressed",self,"_show_journal_entry",[i])
+		if button.is_connected("pressed",self,"_show_journal_entry"):
+			button.disconnect("pressed",self,"_show_journal_entry")
+		button.connect("pressed",self,"_show_journal_entry",[k])
 		button.visible = Journal.filter.has(entry.category) && Journal.filter[entry.category]
 	
 

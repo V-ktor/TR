@@ -1,6 +1,6 @@
 extends Node
 
-const CATEGORIES = ["city", "travel", "quests"]
+const CATEGORIES = ["cities", "travel", "companions", "quests"]
 
 var entries := {}
 var filter := {}
@@ -44,14 +44,15 @@ func append_entry(ID : String, text):
 
 func get_entries_sorted() -> Array:
 	var keys := entries.keys()
-	if sort_by=="name_ascending":
-		keys.sort_custom(AlphabeticalSorter, "sort_ascending")
-	elif sort_by=="name_descending":
-		keys.sort_custom(AlphabeticalSorter, "sort_descending")
-	if sort_by=="date_ascending":
-		keys.sort_custom(TimeSorter, "sort_ascending")
-	elif sort_by=="date_descending":
-		keys.sort_custom(TimeSorter, "sort_descending")
+	match sort_by:
+		"name_ascending":
+			keys.sort_custom(AlphabeticalSorter, "sort_ascending")
+		"name_descending":
+			keys.sort_custom(AlphabeticalSorter, "sort_descending")
+		"date_ascending":
+			keys.sort_custom(TimeSorter, "sort_ascending")
+		"date_descending":
+			keys.sort_custom(TimeSorter, "sort_descending")
 	return keys
 
 

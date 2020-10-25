@@ -173,6 +173,7 @@ class Character:
 	var max_morale := 100.0
 	var home : String
 	var cls_name : String
+	var location : String
 	
 	
 	func _init(dict : Dictionary):
@@ -414,7 +415,7 @@ class Character:
 			"stamina":stamina,"traits":traits,"personality":personality,
 			"armor":armor,"taunt":taunt,
 			"hired":hired,"hired_until":hired_until,"morale":morale,"home":home,
-			"payment_cost":payment_cost,"payment_currency":payment_currency,
+			"location":location,"payment_cost":payment_cost,"payment_currency":payment_currency,
 			"status":status,"knowledge":knowledge,"cls_name":cls_name}
 		return dict
 

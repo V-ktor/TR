@@ -343,6 +343,7 @@ func fail_hire(_actor,_action,_roll):
 
 func hire(_actor,_action,_roll):
 	var character : Characters.Character = Characters.characters[character_ID]
+	var date := OS.get_datetime_from_unix_time(character.hired_until)
 	var price := int(price_scale*character.payment_cost)
 	Main.add_text(tr("MERCENARY_HIRE").format({"name":character_type}))
 	if "bold" in character.personality || "curious" in character.personality:
@@ -356,6 +357,7 @@ func hire(_actor,_action,_roll):
 	Items.remove_items(currency, price)
 	Characters.party.push_back(character_ID)
 	Main.update_party()
+	Journal.add_entry("hired_"+character_ID, tr("HIRED")+" "+character.get_name(), "companions", tr("HIRED_UNTIL").format({"name":character.get_name(),"date":tr("TIME_FORMAT").format({"minute":str(date.minute).pad_zeros(2),"hour":str(date.hour).pad_zeros(2),"day":str(date.day).pad_zeros(2),"month":str(date.month).pad_zeros(2),"year":date.year,"weekday":date.weekday})}), "", Map.time)
 	character_ID = ""
 	Main.add_action(Game.Action.new(tr("GO_BACK"),self,{0:{"method":"leave","grade":1}},"","",3))
 
