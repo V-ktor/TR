@@ -132,7 +132,12 @@ func _toggle_sort_time(pressed):
 func _show_journal_entry(ID):
 	var entry = Journal.entries[ID]
 	var date = OS.get_datetime_from_unix_time(entry.time)
-	$Panel/HBoxContainer/Journal/VBoxContainer/Image.texture = load(entry.image)
+	if entry.image=="":
+		$Panel/HBoxContainer/Journal/VBoxContainer/Image.texture = null
+		$Panel/HBoxContainer/Journal/VBoxContainer/Image.rect_min_size.y = 64
+	else:
+		$Panel/HBoxContainer/Journal/VBoxContainer/Image.texture = load(entry.image)
+		$Panel/HBoxContainer/Journal/VBoxContainer/Image.rect_min_size.y = 256
 	$Panel/HBoxContainer/Journal/VBoxContainer/Image/Title.text = entry.title
 	$Panel/HBoxContainer/Journal/VBoxContainer/Image/Date.text = tr("TIME_FORMAT").format({"minute":str(date.minute).pad_zeros(2),"hour":str(date.hour).pad_zeros(2),"day":str(date.day).pad_zeros(2),"month":str(date.month).pad_zeros(2),"year":date.year,"weekday":date.weekday})
 	$Panel/HBoxContainer/Journal/VBoxContainer/Text.clear()
