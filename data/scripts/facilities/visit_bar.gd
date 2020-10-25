@@ -357,7 +357,8 @@ func hire(_actor,_action,_roll):
 	Items.remove_items(currency, price)
 	Characters.party.push_back(character_ID)
 	Main.update_party()
-	Journal.add_entry("hired_"+character_ID, tr("HIRED")+" "+character.get_name(), "companions", tr("HIRED_UNTIL").format({"name":character.get_name(),"date":tr("TIME_FORMAT").format({"minute":str(date.minute).pad_zeros(2),"hour":str(date.hour).pad_zeros(2),"day":str(date.day).pad_zeros(2),"month":str(date.month).pad_zeros(2),"year":date.year,"weekday":date.weekday})}), "", Map.time)
+	Journal.add_entry(character_ID, character.get_name(), ["persons","companions"], "", "", Map.time)
+	Journal.add_entry("hired_"+character_ID, tr("HIRED")+" "+character.get_name(), ["companions"], tr("HIRED_UNTIL").format({"date":tr("TIME_FORMAT").format({"minute":str(date.minute).pad_zeros(2),"hour":str(date.hour).pad_zeros(2),"day":str(date.day).pad_zeros(2),"month":str(date.month).pad_zeros(2),"year":date.year,"weekday":date.weekday})}), "", Map.time,{"character":{"name":character.get_name(),"target":character_ID}})
 	character_ID = ""
 	Main.add_action(Game.Action.new(tr("GO_BACK"),self,{0:{"method":"leave","grade":1}},"","",3))
 

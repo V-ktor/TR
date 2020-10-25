@@ -1,6 +1,6 @@
 extends Node
 
-const CATEGORIES = ["cities", "travel", "companions", "quests"]
+const CATEGORIES = ["cities", "travel", "companions", "persons", "quests"]
 
 var entries := {}
 var filter := {}
@@ -28,19 +28,27 @@ class TimeSorter:
 		return false
 
 
-func add_entry(ID : String, title : String, category : String, text, image : String, time : int):
+func add_entry(ID : String, title : String, tags : Array, text, image : String, time : int, link=[{}]):
+	if typeof(link)!=TYPE_ARRAY:
+		link = [link]
 	if typeof(text)==TYPE_ARRAY:
-		entries[ID] = {"title":title, "category":category, "text":text, "image":image, "time":time}
+		entries[ID] = {"title":title, "tags":tags, "text":text, "image":image, "time":time, "link":link}
 	else:
-		entries[ID] = {"title":title, "category":category, "text":[text], "image":image, "time":time}
+		entries[ID] = {"title":title, "tags":tags, "text":[text], "image":image, "time":time, "link":link}
 
-func append_entry(ID : String, text):
+func append_entry(ID : String, text, link=[{}]):
 	if !entries.has(ID):
 		return
 	if typeof(text)==TYPE_ARRAY:
+		if typeof(link)!=TYPE_ARRAY:
+			link = [link]
 		entries[ID].text += text
+		entries[ID].link += link
 	else:
+		if typeof(link)==TYPE_ARRAY:
+			link = link[0]
 		entries[ID].text.push_back(text)
+		entries[ID].link.push_back(link)
 
 func get_entries_sorted() -> Array:
 	var keys := entries.keys()
@@ -54,6 +62,12 @@ func get_entries_sorted() -> Array:
 		"date_descending":
 			keys.sort_custom(TimeSorter, "sort_descending")
 	return keys
+
+func has_valid_tag(tags : Array) -> bool:
+	for tag in tags:
+		if filter.has(tag) && filter[tag]:
+			return true
+	return false
 
 
 func _save(file : File) -> int:

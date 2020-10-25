@@ -76,12 +76,14 @@ QUESTS,Quests
 JOURNAL,Journal
 USED,used
 LVL,"Lvl."
+LEVEL,Level
 STATUS,Status
 SKILLS,Skills
 TRAITS,Traits
 APPEARANCE,Appearance
 PROFICIENCIES,Proficiencies
 SPELLS,Spells
+PERSONALITY,Personality
 SHOW_STATUS,Show status
 SHOW_SKILLS,Show skills
 SHOW_TRAITS,Show traits
@@ -111,7 +113,6 @@ THEM,them
 IS,is
 ARE,are
 HIRED,hired
-HIRED_UNTIL,"Hired {name} until {date}."
 PAY,Pay
 PAYMENT_PER_DAY,"Payment: {amount} {currency} per day"
 DEBTS,Debts
@@ -134,4 +135,5 @@ FONT,Font
 CITIES,Cities
 TRAVEL,Travel
 COMPANIONS,Companions
+PERSONS,Persons
 

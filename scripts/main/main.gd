@@ -132,6 +132,7 @@ func _toggle_sort_time(pressed):
 func _show_journal_entry(ID):
 	var entry = Journal.entries[ID]
 	var date = OS.get_datetime_from_unix_time(entry.time)
+	# Set the preview image and collapse/expand if image exists or not.
 	if entry.image=="":
 		$Panel/HBoxContainer/Journal/VBoxContainer/Image.texture = null
 		$Panel/HBoxContainer/Journal/VBoxContainer/Image.rect_min_size.y = 64
@@ -142,29 +143,59 @@ func _show_journal_entry(ID):
 	$Panel/HBoxContainer/Journal/VBoxContainer/Image/Date.text = tr("TIME_FORMAT").format({"minute":str(date.minute).pad_zeros(2),"hour":str(date.hour).pad_zeros(2),"day":str(date.day).pad_zeros(2),"month":str(date.month).pad_zeros(2),"year":date.year,"weekday":date.weekday})
 	$Panel/HBoxContainer/Journal/VBoxContainer/Text.clear()
 	$Panel/HBoxContainer/Journal/VBoxContainer/Text.push_color(Color(0.0,0.0,0.0))
-	if entry.category=="city":
-		var city = Map.get_location(entry.title)
-		$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr("FACTION")+": "+tr(city.faction.to_upper())+"\n")
-		if Characters.relations.has(city.faction):
-			var relation = Characters.relations[city.faction]
-			$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr("RELATION")+": ")
-			if relation<=-50:
-				$Panel/HBoxContainer/Journal/VBoxContainer/Text.push_color(Color(1.0,0.1,0.1).darkened(0.5))
-			elif relation<=-10:
-				$Panel/HBoxContainer/Journal/VBoxContainer/Text.push_color(Color(0.9,0.9,0.1).darkened(0.5))
-			elif relation<10:
-				$Panel/HBoxContainer/Journal/VBoxContainer/Text.push_color(Color(1.0,1.0,1.0).darkened(0.5))
-			elif relation<50:
-				$Panel/HBoxContainer/Journal/VBoxContainer/Text.push_color(Color(0.7,1.0,0.5).darkened(0.5))
-			else:
-				$Panel/HBoxContainer/Journal/VBoxContainer/Text.push_color(Color(0.2,1.0,0.1).darkened(0.5))
-			$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(str(relation)+"\n")
-			$Panel/HBoxContainer/Journal/VBoxContainer/Text.push_color(Color(0.0,0.0,0.0))
-		$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr("POPULATION")+": "+str(city.population)+"\n\n")#+tr("FACILITIES")+":\n")
-#		for s in city.facilities:
-#			$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text("  "+tr(s.to_upper())+"\n")
-	for text in entry.text:
-		$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(text+"\n")
+	$Panel/HBoxContainer/Journal/VBoxContainer/LabelTags.text = ""
+	for tag in entry.tags:
+		$Panel/HBoxContainer/Journal/VBoxContainer/LabelTags.text += tag+" "
+		match tag:
+			"cities":
+				# Add more informations if the entry is for a city.
+				var city = Map.get_location(entry.title)
+				if city!=null:
+					$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr("FACTION")+": "+tr(city.faction.to_upper())+"\n")
+					if Characters.relations.has(city.faction):
+						var relation = Characters.relations[city.faction]
+						$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr("RELATION")+": ")
+						if relation<=-50:
+							$Panel/HBoxContainer/Journal/VBoxContainer/Text.push_color(Color(1.0,0.1,0.1).darkened(0.5))
+						elif relation<=-10:
+							$Panel/HBoxContainer/Journal/VBoxContainer/Text.push_color(Color(0.9,0.9,0.1).darkened(0.5))
+						elif relation<10:
+							$Panel/HBoxContainer/Journal/VBoxContainer/Text.push_color(Color(1.0,1.0,1.0).darkened(0.5))
+						elif relation<50:
+							$Panel/HBoxContainer/Journal/VBoxContainer/Text.push_color(Color(0.7,1.0,0.5).darkened(0.5))
+						else:
+							$Panel/HBoxContainer/Journal/VBoxContainer/Text.push_color(Color(0.2,1.0,0.1).darkened(0.5))
+						$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(str(relation)+"\n")
+						$Panel/HBoxContainer/Journal/VBoxContainer/Text.push_color(Color(0.0,0.0,0.0))
+					$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr("POPULATION")+": "+str(city.population)+"\n\n")#+tr("FACILITIES")+":\n")
+			"persons":
+				# Add more informations if the entry is for a character.
+				if Characters.characters.has(ID):
+					var character = Characters.characters[ID]
+					$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(character.get_name()+" ("+tr(Characters.HE_SHE[character.gender])+"/"+tr(Characters.HIM_HER[character.gender])+")\n"+tr("LEVEL")+": "+str(character.level)+" ("+str(int(100*character.expirience/character.max_expirience))+"%)"+"\n"+tr("RACE")+": "+tr(character.race.to_upper())+"\n")
+					$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr("TRAITS")+": ")
+					for trait in character.traits:
+						$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr(trait.to_upper())+" ")
+					if character.knowledge.size()>0:
+						$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr("SPELLS")+": ")
+						for knowledge in character.knowledge:
+							$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr(knowledge.to_upper())+" ")
+					$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text("\n"+tr("PERSONALITY")+": ")
+					for personality in character.personality:
+						$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr(personality.to_upper())+" ")
+	# Add the main text.
+	for i in range(entry.text.size()):
+		var text = entry.text[i]
+		var links := {}
+		# Prepare links to other journal entries.
+		for k in entry.link[i].keys():
+			var link = entry.link[i][k]
+			links[k] = "[url="+link.target+"]"+link.name+"[/url]"
+		$Panel/HBoxContainer/Journal/VBoxContainer/Text.append_bbcode(text.format(links)+"\n")
+
+func _journal_link_clicked(data):
+	if typeof(data)==TYPE_STRING:
+		_show_journal_entry(data)
 
 
 func update_landscape(type):
@@ -460,7 +491,7 @@ func update_journal():
 		if button.is_connected("pressed",self,"_show_journal_entry"):
 			button.disconnect("pressed",self,"_show_journal_entry")
 		button.connect("pressed",self,"_show_journal_entry",[k])
-		button.visible = Journal.filter.has(entry.category) && Journal.filter[entry.category]
+		button.visible = Journal.has_valid_tag(entry.tags)
 	
 
 
@@ -559,6 +590,7 @@ func _show_journal():
 	$Panel/HBoxContainer/Journal/VBoxContainer/Image.texture = null
 	$Panel/HBoxContainer/Journal/VBoxContainer/Image/Title.text = tr("JOURNAL")
 	$Panel/HBoxContainer/Journal/VBoxContainer/Image/Date.text = ""
+	$Panel/HBoxContainer/Journal/VBoxContainer/LabelTags.text = ""
 	$Title/Label.text = tr("JOURNAL")
 
 func _show_location(location):
@@ -597,4 +629,5 @@ func _ready():
 	$ButtonMenu.connect("pressed",Menu,"show")
 	$Panel/HBoxContainer/List/VBoxContainer/HBoxContainer/ButtonName.connect("toggled",self,"_toggle_sort_name")
 	$Panel/HBoxContainer/List/VBoxContainer/HBoxContainer/ButtonTime.connect("toggled",self,"_toggle_sort_time")
+	$Panel/HBoxContainer/Journal/VBoxContainer/Text.connect("meta_clicked",self,"_journal_link_clicked")
 	
