@@ -404,7 +404,7 @@ func add_city(name,position,faction,population,facilities,traits,price_mods):
 	city.set_desc()
 	cities[city.name] = city
 	# Add an entry to the journal.
-	Journal.add_entry(city.name, city.name, "city", city.description, BACKGROUND_IMAGES[city.landscape].file, int(time-60.0*60.0*24.0*365.0*population/1000.0*rand_range(0.8,1.2)))
+	Journal.add_entry(city.name, city.name, "city", city.description, BACKGROUND_IMAGES[city.landscape].file, int(time-60.0*60.0*24.0*365.0*(10.0+population/8000.0)*rand_range(0.9,1.1)))
 
 func create_terrain(data,size,dist,angle):
 	var tile := ""

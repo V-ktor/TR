@@ -19,20 +19,20 @@ class AlphabeticalSorter:
 
 class TimeSorter:
 	static func sort_ascending(a, b):
-		if Journal.entries[a].date<Journal.entries[b].date:
+		if Journal.entries[a].time<Journal.entries[b].time:
 			return true
 		return false
 	static func sort_descending(a, b):
-		if Journal.entries[b].date<Journal.entries[a].date:
+		if Journal.entries[b].time<Journal.entries[a].time:
 			return true
 		return false
 
 
-func add_entry(ID : String, title : String, category : String, text, image : String, date : int):
+func add_entry(ID : String, title : String, category : String, text, image : String, time : int):
 	if typeof(text)==TYPE_ARRAY:
-		entries[ID] = {"title":title, "category":category, "text":text, "image":image, "date":date}
+		entries[ID] = {"title":title, "category":category, "text":text, "image":image, "time":time}
 	else:
-		entries[ID] = {"title":title, "category":category, "text":[text], "image":image, "date":date}
+		entries[ID] = {"title":title, "category":category, "text":[text], "image":image, "time":time}
 
 func append_entry(ID : String, text):
 	if !entries.has(ID):

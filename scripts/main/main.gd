@@ -440,6 +440,7 @@ func update_journal():
 	for i in range(keys.size()):
 		var k = keys[i]
 		var entry = Journal.entries[k]
+		var date = OS.get_datetime_from_unix_time(entry.time)
 		var button
 		if has_node("Panel/HBoxContainer/List/VBoxContainer/VBoxContainer/Button"+str(i)):
 			button = get_node("Panel/HBoxContainer/List/VBoxContainer/VBoxContainer/Button"+str(i))
@@ -448,6 +449,7 @@ func update_journal():
 			button.name = "Button"+str(i)
 			$Panel/HBoxContainer/List/VBoxContainer/VBoxContainer.add_child(button)
 		button.text = entry.title
+		button.get_node("Label").text = tr("TIME_FORMAT").format({"minute":str(date.minute).pad_zeros(2),"hour":str(date.hour).pad_zeros(2),"day":str(date.day).pad_zeros(2),"month":str(date.month).pad_zeros(2),"year":date.year,"weekday":date.weekday})
 		if !button.is_connected("pressed",self,"_show_journal_entry"):
 			button.connect("pressed",self,"_show_journal_entry",[i])
 		button.visible = Journal.filter.has(entry.category) && Journal.filter[entry.category]

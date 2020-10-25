@@ -1006,6 +1006,16 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="Label" type="Label" parent="Panel/HBoxContainer/List/VBoxContainer/VBoxContainer/Button0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "DATE"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Journal" type="ScrollContainer" parent="Panel/HBoxContainer"]
 visible = false
 margin_left = 260.0
