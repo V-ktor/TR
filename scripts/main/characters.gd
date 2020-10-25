@@ -351,6 +351,16 @@ class Character:
 		return true
 	
 	func equip(index,item) -> bool:
+		if item.has("2h") && item["2h"]:
+			var valid := false
+			for i in range(slots.size()):
+				if i==index:
+					continue
+				if slots[i]==item.slot:
+					valid = true
+					break
+			if !valid:
+				return false
 		if equipment.size()<=index:
 			equipment.resize(index+1)
 		elif equipment[index]!=null:
