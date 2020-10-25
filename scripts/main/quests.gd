@@ -1,8 +1,8 @@
 extends Node
 
-var missions := {}
+var quests := {}
 
-class Mission:
+class Quest:
 	var ID : String
 	var name : String
 	var description : String
@@ -94,8 +94,8 @@ func load_missions(path : String):
 				currentline = currentline.get_result()
 #				var currentline = JSON.parse(file.get_as_text()).result
 				if currentline!=null:
-					missions[currentline.name] = currentline
-				print("Add mission "+currentline.name+".")
+					quests[currentline.name] = currentline
+				print("Add quest "+currentline.name+".")
 			file.close()
 		file_name = dir.get_next()
 

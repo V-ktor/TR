@@ -11,7 +11,7 @@ const ROLL_GRADE = {
 
 var vars := {}
 var scripts := []
-var missions := {}
+var quests := {}
 var location : String
 var in_city := false
 var entry_forbidden := false
@@ -133,45 +133,45 @@ func pay(delay,currency,amount):
 	else:
 		Characters.payment[currency] = amount*float(delay)/60.0/60.0/24.0
 
-func accept_mission(mission):
-	var mission_ID = mission.name
+func accept_quest(quest):
+	var quest_ID = quest.name
 	var index := 1
-	while missions.has(mission_ID+str(index)):
+	while quests.has(quest_ID+str(index)):
 		index += 1
-	mission.ID = mission_ID+str(index)
-	print("Creating mission "+mission.ID+".")
-	if Map.get_location(mission.location)==null:
-		# Create the mission location if it does not exist.
-		var ID = mission.location
-		var loc = Map.Location.new(tr(mission.location_data.name.to_upper()),mission.location_data.position,"mission_location",[],true,mission.location_data.landscape)
+	quest.ID = quest_ID+str(index)
+	print("Creating quest "+quest.ID+".")
+	if Map.get_location(quest.location)==null:
+		# Create the quest location if it does not exist.
+		var ID = quest.location
+		var loc = Map.Location.new(tr(quest.location_data.name.to_upper()),quest.location_data.position,"quest_location",[],true,quest.location_data.landscape)
 		var num := 1
-		loc.landscape = mission.location_data.landscape
+		loc.landscape = quest.location_data.landscape
 		if ID=="":
-			ID = mission.location_data.name
+			ID = quest.location_data.name
 		while Map.locations.has(ID+str(num)):
 			num += 1
 		ID += str(num)
 		Map.locations[ID] = loc
-		mission.location = ID
-		print("Add mission location "+mission.location+".")
-	for event in mission.events:
+		quest.location = ID
+		print("Add quest location "+quest.location+".")
+	for event in quest.events:
 		event = event.duplicate()
-		event.mission = mission.ID
-		event.location = mission.location
+		event.quest = quest.ID
+		event.location = quest.location
 		Events.register_event(event)
-		print("Add mission event "+event.type+"("+event.location+")"+".")
-	mission.status = "started"
-	missions[mission.ID] = mission
+		print("Add quest event "+event.type+"("+event.location+")"+".")
+	quest.status = "started"
+	quests[quest.ID] = quest
 
-func finish_mission(mission):
-	mission.status = "finished"
-	Events.clear_mission_events(mission.ID)
-	missions.erase(mission.ID)
+func finish_quest(quest):
+	quest.status = "finished"
+	Events.clear_quest_events(quest.ID)
+	quests.erase(quest.ID)
 
-func fail_mission(mission):
-	mission.status = "failed"
-	Events.clear_mission_events(mission.ID)
-	missions.erase(mission.ID)
+func fail_quest(quest):
+	quest.status = "failed"
+	Events.clear_quest_events(quest.ID)
+	quests.erase(quest.ID)
 
 
 func set_var(ID,value=true):
@@ -289,7 +289,7 @@ func enter_location(_location : String,c=null):
 		var event = Events.check_event("enter_city", [location])
 		if event!=null:
 			var script = load(event._script).new()
-			var args = [location,missions[event.mission]]+event.args
+			var args = [location,quests[event.quest]]+event.args
 			script.callv("init",args)
 			Main.update_party()
 			Main._show_log()
@@ -302,7 +302,7 @@ func enter_location(_location : String,c=null):
 		var event = Events.check_event("enter_location", [location])
 		if event!=null:
 			var script = load(event._script).new()
-			var args = [location,missions[event.mission]]+event.args
+			var args = [location,quests[event.quest]]+event.args
 			script.callv("init",args)
 			Events.clear_event(event)
 			Main.update_party()
@@ -352,11 +352,11 @@ func _save(filename:="autosave") -> bool:
 	
 	# Write data.
 	var date := OS.get_datetime()
-	var mission_data := {}
-	for k in missions.keys():
-		mission_data[k] = missions[k].to_dict()
+	var quest_data := {}
+	for k in quests.keys():
+		quest_data[k] = quests[k].to_dict()
 	file.store_line(JSON.print({"version":Menu.VERSION,"name":Characters.player.get_name(),"class":tr("LVL")+" "+str(Characters.player.level)+" "+tr(Characters.player.cls_name.to_upper()),"date":tr("TIME_FORMAT").format({"minute":str(date.minute).pad_zeros(2),"hour":str(date.hour).pad_zeros(2),"day":str(date.day).pad_zeros(2),"month":str(date.month).pad_zeros(2),"year":date.year,"weekday":date.weekday})}))
-	file.store_line(JSON.print({"location":location,"vars":vars,"missions":mission_data}))
+	file.store_line(JSON.print({"location":location,"vars":vars,"quests":quest_data}))
 	error = Map._save(file)
 	if error!=OK:
 		print("Error while saving map data of save file user://saves/"+filename+".sav !")
@@ -386,9 +386,9 @@ func _load(filename:="autosave") -> int:
 	currentline = JSON.parse(file.get_line()).result
 	location = currentline.location
 	vars = currentline.vars
-	for ID in currentline.missions.keys():
-		var dict = currentline.missions[ID]
-		missions[ID] = Missions.Mission.new(dict)
+	for ID in currentline.quests.keys():
+		var dict = currentline.quests[ID]
+		quests[ID] = Quests.Quest.new(dict)
 	error = Map._load(file)
 	if error!=OK:
 		print("Error while loading map data of save file user://saves/"+filename+".sav !")

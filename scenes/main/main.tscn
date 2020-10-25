@@ -1,8 +1,9 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://scripts/main/main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/main/map.tscn" type="PackedScene" id=2]
 [ext_resource path="res://images/backgrounds/coldmountain.png" type="Texture" id=3]
+[ext_resource path="res://images/backgrounds/sk5.jpg" type="Texture" id=4]
 [ext_resource path="res://fonts/Play-Bold.ttf" type="DynamicFontData" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -550,6 +551,51 @@ corner_radius_bottom_left = 4
 shadow_color = Color( 0, 0, 0, 0.501961 )
 shadow_size = 4
 
+[sub_resource type="StyleBoxFlat" id=33]
+draw_center = false
+border_width_left = 4
+border_color = Color( 0.752941, 0.878431, 1, 1 )
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id=34]
+draw_center = false
+border_width_left = 4
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.25098, 0.501961, 0.627451, 1 )
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id=35]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.501961, 0.752941, 0.878431, 1 )
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id=36]
+draw_center = false
+border_width_left = 4
+border_color = Color( 0.12549, 0.0627451, 0.0627451, 1 )
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id=37]
+draw_center = false
+border_width_left = 4
+border_color = Color( 0.501961, 0.752941, 0.878431, 1 )
+corner_detail = 1
+
+[sub_resource type="ButtonGroup" id=38]
+
+[sub_resource type="DynamicFont" id=39]
+size = 24
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+font_data = ExtResource( 5 )
+
 [node name="Main" type="CanvasLayer"]
 layer = 75
 script = ExtResource( 1 )
@@ -704,7 +750,7 @@ margin_right = 309.0
 margin_bottom = 50.0
 text = "PAY"
 
-[node name="HSeparator" type="HSeparator" parent="Panel/HBoxContainer/Inventory/VBoxContainer"]
+[node name="HSeparator1" type="HSeparator" parent="Panel/HBoxContainer/Inventory/VBoxContainer"]
 margin_top = 54.0
 margin_right = 309.0
 margin_bottom = 58.0
@@ -758,7 +804,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Missions" type="ScrollContainer" parent="Panel/HBoxContainer"]
+[node name="Quests" type="ScrollContainer" parent="Panel/HBoxContainer"]
 visible = false
 margin_right = 933.0
 margin_bottom = 534.0
@@ -767,8 +813,140 @@ size_flags_vertical = 3
 follow_focus = true
 scroll_horizontal_enabled = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/Missions"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/Quests"]
 margin_right = 933.0
+margin_bottom = 534.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="List" type="ScrollContainer" parent="Panel/HBoxContainer"]
+visible = false
+margin_right = 933.0
+margin_bottom = 534.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.33
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/List"]
+margin_right = 933.0
+margin_bottom = 534.0
+rect_min_size = Vector2( 256, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/List/VBoxContainer"]
+margin_right = 933.0
+margin_bottom = 50.0
+
+[node name="HSeparator" type="HSeparator" parent="Panel/HBoxContainer/List/VBoxContainer/VBoxContainer"]
+margin_right = 933.0
+margin_bottom = 4.0
+custom_styles/separator = SubResource( 27 )
+
+[node name="Button" type="Button" parent="Panel/HBoxContainer/List/VBoxContainer/VBoxContainer"]
+margin_top = 8.0
+margin_right = 933.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 0, 16 )
+custom_styles/hover = SubResource( 33 )
+custom_styles/pressed = SubResource( 34 )
+custom_styles/focus = SubResource( 35 )
+custom_styles/disabled = SubResource( 36 )
+custom_styles/normal = SubResource( 37 )
+toggle_mode = true
+pressed = true
+text = "CATEGORY"
+align = 0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer/List/VBoxContainer/VBoxContainer"]
+margin_top = 31.0
+margin_right = 933.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Space" type="Control" parent="Panel/HBoxContainer/List/VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_right = 4.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 4, 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/List/VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 8.0
+margin_right = 933.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button0" type="Button" parent="Panel/HBoxContainer/List/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 925.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 0, 16 )
+custom_styles/hover = SubResource( 33 )
+custom_styles/pressed = SubResource( 34 )
+custom_styles/focus = SubResource( 35 )
+custom_styles/disabled = SubResource( 36 )
+custom_styles/normal = SubResource( 37 )
+toggle_mode = true
+group = SubResource( 38 )
+text = "ENTRY"
+align = 0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Journal" type="ScrollContainer" parent="Panel/HBoxContainer"]
+visible = false
+margin_left = 260.0
+margin_right = 933.0
+margin_bottom = 534.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/Journal"]
+margin_right = 673.0
+margin_bottom = 534.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Image" type="TextureRect" parent="Panel/HBoxContainer/Journal/VBoxContainer"]
+margin_right = 673.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 0, 256 )
+size_flags_horizontal = 3
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 7
+
+[node name="Title" type="Label" parent="Panel/HBoxContainer/Journal/VBoxContainer/Image"]
+anchor_left = 0.5
+anchor_right = 1.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 39 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.501961 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 0
+text = "TITLE"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="Panel/HBoxContainer/Journal/VBoxContainer"]
+margin_top = 260.0
+margin_right = 673.0
 margin_bottom = 534.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -801,43 +979,43 @@ __meta__ = {
 }
 
 [node name="ButtonLog" type="Button" parent="Panel/Panel/VBoxContainer"]
-margin_right = 60.0
+margin_right = 67.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "LOG"
 
 [node name="ButtonMap" type="Button" parent="Panel/Panel/VBoxContainer"]
-margin_left = 68.0
-margin_right = 128.0
+margin_left = 75.0
+margin_right = 143.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "MAP"
 
 [node name="ButtonInv" type="Button" parent="Panel/Panel/VBoxContainer"]
-margin_left = 136.0
-margin_right = 237.0
+margin_left = 151.0
+margin_right = 252.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "INVENTORY"
 
 [node name="ButtonChr" type="Button" parent="Panel/Panel/VBoxContainer"]
-margin_left = 245.0
-margin_right = 359.0
+margin_left = 260.0
+margin_right = 374.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "CHARACTERS"
 
 [node name="ButtonMis" type="Button" parent="Panel/Panel/VBoxContainer"]
-margin_left = 367.0
+margin_left = 382.0
 margin_right = 453.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "MISSIONS"
+text = "QUESTS"
 
 [node name="ButtonJou" type="Button" parent="Panel/Panel/VBoxContainer"]
 margin_left = 461.0

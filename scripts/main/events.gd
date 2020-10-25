@@ -7,21 +7,21 @@ var character_events := {}
 class Event:
 	var type : String
 	var location : String
-	var mission : String
+	var quest : String
 	var base_chance : float
 	var args : Array
 	var _script
 	
-	func _init(_type,_script_path,_location,_mission="",_base_chance=1.0,_args:=[]):
+	func _init(_type,_script_path,_location,_quest="",_base_chance=1.0,_args:=[]):
 		type = _type
 		_script = _script_path
 		location = _location
-		mission = _mission
+		quest = _quest
 		base_chance = _base_chance
 		args = _args
 	
 	func to_dict() -> Dictionary:
-		var dict := {"type":type,"script":_script,"location":location,"base_chance":base_chance,"mission":mission,"args":args}
+		var dict := {"type":type,"script":_script,"location":location,"base_chance":base_chance,"quest":quest,"args":args}
 		return dict
 
 
@@ -86,23 +86,23 @@ func check_enter_location(location : String):
 
 
 func register_event(data : Dictionary):
-	var mission := ""
+	var quest := ""
 	var base_chance := 1.0
 	var args := []
-	if data.has("mission"):
-		mission = data.mission
+	if data.has("quest"):
+		quest = data.quest
 	if data.has("base_chance"):
 		base_chance = data.base_chance
 	if data.has("args"):
 		args = data.args
-	events.push_back(Event.new(data.type,data.script,data.location,mission,base_chance,args))
+	events.push_back(Event.new(data.type,data.script,data.location,quest,base_chance,args))
 
 func clear_event(event : Event):
 	events.erase(event)
 
-func clear_mission_events(ID):
+func clear_quest_events(ID):
 	for event in events:
-		if event.mission==ID:
+		if event.quest==ID:
 			clear_event(event)
 
 
@@ -123,7 +123,7 @@ func _load(file : File) -> int:
 		return FAILED
 	events.resize(currentline.events.size())
 	for i in range(events.size()):
-		events[i] = Event.new(currentline.events[i].type,currentline.events[i].script,currentline.events[i].location,currentline.events[i].mission,currentline.events[i].base_chance,currentline.events[i].args)
+		events[i] = Event.new(currentline.events[i].type,currentline.events[i].script,currentline.events[i].location,currentline.events[i].quest,currentline.events[i].base_chance,currentline.events[i].args)
 	currentline = JSON.parse(file.get_line()).result
 	if currentline==null || typeof(currentline)!=TYPE_DICTIONARY:
 		return FAILED

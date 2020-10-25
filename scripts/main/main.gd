@@ -7,7 +7,7 @@ var selected_item := -1
 var text_label := preload("res://scenes/main/text.tscn")
 var action_button := preload("res://scenes/main/button.tscn")
 var character_panel := preload("res://scenes/gui/character.tscn")
-var mission_panel := preload("res://scenes/gui/mission.tscn")
+var quest_panel := preload("res://scenes/gui/quest.tscn")
 
 onready var text_container := $Panel/HBoxContainer/Text/VBoxContainer
 
@@ -340,32 +340,32 @@ func update_inventory():
 			if Characters.payment[currency]>=1.0:
 				$Panel/HBoxContainer/Inventory/VBoxContainer/LabelPayment.text += "  "+tr(currency.to_upper())+": "+str(Characters.payment[currency]).pad_decimals(1)+"\n"
 
-func update_missions():
-	for c in $Panel/HBoxContainer/Missions/VBoxContainer.get_children():
+func update_quests():
+	for c in $Panel/HBoxContainer/Quests/VBoxContainer.get_children():
 		c.hide()
 	
-	for i in range(Game.missions.size()):
+	for i in range(Game.quests.size()):
 		var panel
-		var mission : Missions.Mission = Game.missions.values()[i]
-		var date := OS.get_datetime_from_unix_time(mission.timelimit)
-		var location = Map.get_location(mission.location)
-		if has_node("Panel/HBoxContainer/Missions/VBoxContainer/Mission"+str(i)):
-			panel = get_node("Panel/HBoxContainer/Missions/VBoxContainer/Mission"+str(i))
+		var quest : Quests.Quest = Game.quests.values()[i]
+		var date := OS.get_datetime_from_unix_time(quest.timelimit)
+		var location = Map.get_location(quest.location)
+		if has_node("Panel/HBoxContainer/Quests/VBoxContainer/Quest"+str(i)):
+			panel = get_node("Panel/HBoxContainer/Quests/VBoxContainer/Quest"+str(i))
 		else:
-			panel = mission_panel.instance()
-			panel.name = "Mission"+str(i)
-			$Panel/HBoxContainer/Missions/VBoxContainer.add_child(panel)
-		panel.get_node("ScrollContainer/VBoxContainer/Name/LabelName").text = tr(mission.name.to_upper())
-		panel.get_node("ScrollContainer/VBoxContainer/Name/LabelDifficulty").text = tr(mission.difficulty.to_upper())
-		panel.get_node("ScrollContainer/VBoxContainer/LabelDescription").text = mission.description
-		for text in mission.updates:
+			panel = quest_panel.instance()
+			panel.name = "Quest"+str(i)
+			$Panel/HBoxContainer/Quests/VBoxContainer.add_child(panel)
+		panel.get_node("ScrollContainer/VBoxContainer/Name/LabelName").text = tr(quest.name.to_upper())
+		panel.get_node("ScrollContainer/VBoxContainer/Name/LabelDifficulty").text = tr(quest.difficulty.to_upper())
+		panel.get_node("ScrollContainer/VBoxContainer/LabelDescription").text = quest.description
+		for text in quest.updates:
 			panel.get_node("ScrollContainer/VBoxContainer/LabelDescription").text += "\n"+text
-		panel.get_node("ScrollContainer/VBoxContainer/LabelTimelimit").text = tr("TIMELIMIT")+": "+tr("TIME_FORMAT").format({"minute":str(date.minute).pad_zeros(2),"hour":str(date.hour).pad_zeros(2),"day":str(date.day).pad_zeros(2),"month":str(date.month).pad_zeros(2),"year":date.year,"weekday":date.weekday})+" ("+str(int((mission.timelimit-Map.time)/60.0/60.0))+tr("H")+" "+tr("REMAINING")+")"
+		panel.get_node("ScrollContainer/VBoxContainer/LabelTimelimit").text = tr("TIMELIMIT")+": "+tr("TIME_FORMAT").format({"minute":str(date.minute).pad_zeros(2),"hour":str(date.hour).pad_zeros(2),"day":str(date.day).pad_zeros(2),"month":str(date.month).pad_zeros(2),"year":date.year,"weekday":date.weekday})+" ("+str(int((quest.timelimit-Map.time)/60.0/60.0))+tr("H")+" "+tr("REMAINING")+")"
 		panel.get_node("ScrollContainer/VBoxContainer/Location/Label").text = tr("LOCATION")+": "
 		panel.get_node("ScrollContainer/VBoxContainer/Location/Button").text = location.name
 		if panel.get_node("ScrollContainer/VBoxContainer/Location/Button").is_connected("pressed",self,"_show_location"):
 			panel.get_node("ScrollContainer/VBoxContainer/Location/Button").disconnect("pressed",self,"_show_location")
-		panel.get_node("ScrollContainer/VBoxContainer/Location/Button").connect("pressed",self,"_show_location",[mission.location])
+		panel.get_node("ScrollContainer/VBoxContainer/Location/Button").connect("pressed",self,"_show_location",[quest.location])
 		panel.show()
 
 
@@ -395,7 +395,7 @@ func _show_log():
 	$Panel/HBoxContainer/Inventory.hide()
 	$Panel/HBoxContainer/Text.show()
 	$Panel/HBoxContainer/Characters.hide()
-	$Panel/HBoxContainer/Missions.hide()
+	$Panel/HBoxContainer/Quests.hide()
 	$Panel/Map.hide()
 	if location_title!="":
 		$Title/Label.text = tr(location_title)
@@ -407,7 +407,7 @@ func _show_inventory():
 	$Panel/HBoxContainer/Text.hide()
 	$Panel/HBoxContainer/Inventory.show()
 	$Panel/HBoxContainer/Characters.hide()
-	$Panel/HBoxContainer/Missions.hide()
+	$Panel/HBoxContainer/Quests.hide()
 	$Panel/Map.hide()
 	update_inventory()
 	$Title/Label.text = tr("INVENTORY")
@@ -417,7 +417,7 @@ func _show_characters():
 	$Panel/HBoxContainer/Text.hide()
 	$Panel/HBoxContainer/Inventory.hide()
 	$Panel/HBoxContainer/Characters.show()
-	$Panel/HBoxContainer/Missions.hide()
+	$Panel/HBoxContainer/Quests.hide()
 	$Panel/Map.hide()
 	update_characters()
 	$Title/Label.text = tr("CHARACTERS")
@@ -427,19 +427,19 @@ func _show_map(location:=Game.location):
 	$Panel/HBoxContainer/Text.hide()
 	$Panel/HBoxContainer/Inventory.hide()
 	$Panel/HBoxContainer/Characters.hide()
-	$Panel/HBoxContainer/Missions.hide()
+	$Panel/HBoxContainer/Quests.hide()
 	$Panel/Map.show_map(location)
 	$Title/Label.text = tr("MAP")
 
-func _show_missions():
+func _show_quests():
 	$Panel/HBoxContainer/View.hide()
 	$Panel/HBoxContainer/Text.hide()
 	$Panel/HBoxContainer/Inventory.hide()
 	$Panel/HBoxContainer/Characters.hide()
-	$Panel/HBoxContainer/Missions.show()
+	$Panel/HBoxContainer/Quests.show()
 	$Panel/Map.hide()
-	update_missions()
-	$Title/Label.text = tr("MISSIONS")
+	update_quests()
+	$Title/Label.text = tr("QUESTS")
 
 func _show_location(location):
 	_show_map(location)
@@ -470,7 +470,7 @@ func _ready():
 	$Panel/Panel/VBoxContainer/ButtonMap.connect("pressed",self,"_show_map")
 	$Panel/Panel/VBoxContainer/ButtonInv.connect("pressed",self,"_show_inventory")
 	$Panel/Panel/VBoxContainer/ButtonChr.connect("pressed",self,"_show_characters")
-	$Panel/Panel/VBoxContainer/ButtonMis.connect("pressed",self,"_show_missions")
+	$Panel/Panel/VBoxContainer/ButtonMis.connect("pressed",self,"_show_quests")
 	$Panel/Panel/VBoxContainer/ButtonJou.connect("pressed",self,"_show_journal")
 	$Panel/HBoxContainer/Inventory/VBoxContainer/ButtonPay.connect("pressed",self,"_payout")
 	$PopupMenu.connect("id_pressed",self,"_select_character")
