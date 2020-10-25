@@ -366,6 +366,9 @@ func _save(filename:="autosave") -> bool:
 	error = Events._save(file)
 	if error!=OK:
 		print("Error while saving event data of save file user://saves/"+filename+".sav !")
+	error = Journal._save(file)
+	if error!=OK:
+		print("Error while saving journal data of save file user://saves/"+filename+".sav !")
 	
 	file.close()
 	return true
@@ -398,6 +401,9 @@ func _load(filename:="autosave") -> int:
 	error = Events._load(file)
 	if error!=OK:
 		print("Error while loading event data of save file user://saves/"+filename+".sav !")
+	error = Journal._load(file)
+	if error!=OK:
+		print("Error while loading journal data of save file user://saves/"+filename+".sav !")
 	
 	file.close()
 	Menu.start()

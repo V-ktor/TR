@@ -111,6 +111,55 @@ func _select_character(index):
 		update_inventory()
 	selected_item = -1
 
+func _toggle_category_filter(pressed,category):
+	Journal.filter[category] = pressed
+	update_journal()
+
+func _toggle_sort_name(pressed):
+	for c in $Panel/HBoxContainer/List/VBoxContainer/HBoxContainer.get_children():
+		c.get_node("Active").hide()
+	$Panel/HBoxContainer/List/VBoxContainer/HBoxContainer/ButtonName/Active.show()
+	Journal.sort_by = ["name_ascending","name_descending"][int(pressed)]
+	update_journal()
+
+func _toggle_sort_time(pressed):
+	for c in $Panel/HBoxContainer/List/VBoxContainer/HBoxContainer.get_children():
+		c.get_node("Active").hide()
+	$Panel/HBoxContainer/List/VBoxContainer/HBoxContainer/ButtonTime/Active.show()
+	Journal.sort_by = ["date_ascending","date_descending"][int(pressed)]
+	update_journal()
+
+func _show_journal_entry(ID):
+	var entry = Journal.entries.values()[ID]
+	$Panel/HBoxContainer/Journal/VBoxContainer/Image.texture = load(entry.image)
+	$Panel/HBoxContainer/Journal/VBoxContainer/Image/Title.text = entry.title
+	$Panel/HBoxContainer/Journal/VBoxContainer/Text.clear()
+	$Panel/HBoxContainer/Journal/VBoxContainer/Text.push_color(Color(0.0,0.0,0.0))
+	if entry.category=="city":
+		var city = Map.get_location(entry.title)
+		$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr("FACTION")+": "+tr(city.faction.to_upper())+"\n")
+		if Characters.relations.has(city.faction):
+			var relation = Characters.relations[city.faction]
+			$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr("RELATION")+": ")
+			if relation<=-50:
+				$Panel/HBoxContainer/Journal/VBoxContainer/Text.push_color(Color(1.0,0.1,0.1).darkened(0.5))
+			elif relation<=-10:
+				$Panel/HBoxContainer/Journal/VBoxContainer/Text.push_color(Color(0.9,0.9,0.1).darkened(0.5))
+			elif relation<10:
+				$Panel/HBoxContainer/Journal/VBoxContainer/Text.push_color(Color(1.0,1.0,1.0).darkened(0.5))
+			elif relation<50:
+				$Panel/HBoxContainer/Journal/VBoxContainer/Text.push_color(Color(0.7,1.0,0.5).darkened(0.5))
+			else:
+				$Panel/HBoxContainer/Journal/VBoxContainer/Text.push_color(Color(0.2,1.0,0.1).darkened(0.5))
+			$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(str(relation)+"\n")
+			$Panel/HBoxContainer/Journal/VBoxContainer/Text.push_color(Color(0.0,0.0,0.0))
+		$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr("POPULATION")+": "+str(city.population)+"\n\n")#+tr("FACILITIES")+":\n")
+#		for s in city.facilities:
+#			$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text("  "+tr(s.to_upper())+"\n")
+	for text in entry.text:
+		$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(text+"\n")
+
+
 func update_landscape(type):
 	if !Map.BACKGROUND_IMAGES.has(type):
 		$Panel/HBoxContainer/View/VBoxContainer/Image.hide()
@@ -368,6 +417,42 @@ func update_quests():
 		panel.get_node("ScrollContainer/VBoxContainer/Location/Button").connect("pressed",self,"_show_location",[quest.location])
 		panel.show()
 
+func update_journal():
+	var keys = Journal.get_entries_sorted()
+	for c in $Panel/HBoxContainer/List/VBoxContainer/VBoxContainer.get_children():
+		c.hide()
+	
+	for i in range(Journal.CATEGORIES.size()):
+		var c = Journal.CATEGORIES[i]
+		var button
+		if has_node("Panel/HBoxContainer/List/VBoxContainer/GridContainer/Button"+str(i)):
+			button = get_node("Panel/HBoxContainer/List/VBoxContainer/GridContainer/Button"+str(i))
+		else:
+			button = $Panel/HBoxContainer/List/VBoxContainer/GridContainer/Button0.duplicate(0)
+			button.name = "Button"+str(i)
+			$Panel/HBoxContainer/List/VBoxContainer/GridContainer.add_child(button)
+		button.text = tr(c.to_upper())
+		if button.is_connected("toggled",self,"_toggle_category_filter"):
+			button.disconnect("toggled",self,"_toggle_category_filter")
+		button.pressed = Journal.filter.has(c) && Journal.filter[c]
+		button.connect("toggled",self,"_toggle_category_filter",[c])
+	
+	for i in range(keys.size()):
+		var k = keys[i]
+		var entry = Journal.entries[k]
+		var button
+		if has_node("Panel/HBoxContainer/List/VBoxContainer/VBoxContainer/Button"+str(i)):
+			button = get_node("Panel/HBoxContainer/List/VBoxContainer/VBoxContainer/Button"+str(i))
+		else:
+			button = $Panel/HBoxContainer/List/VBoxContainer/VBoxContainer/Button0.duplicate(0)
+			button.name = "Button"+str(i)
+			$Panel/HBoxContainer/List/VBoxContainer/VBoxContainer.add_child(button)
+		button.text = entry.title
+		if !button.is_connected("pressed",self,"_show_journal_entry"):
+			button.connect("pressed",self,"_show_journal_entry",[i])
+		button.visible = Journal.filter.has(entry.category) && Journal.filter[entry.category]
+	
+
 
 func create_item_tooltip_text(item) -> String:
 	var text := ""
@@ -396,6 +481,8 @@ func _show_log():
 	$Panel/HBoxContainer/Text.show()
 	$Panel/HBoxContainer/Characters.hide()
 	$Panel/HBoxContainer/Quests.hide()
+	$Panel/HBoxContainer/List.hide()
+	$Panel/HBoxContainer/Journal.hide()
 	$Panel/Map.hide()
 	if location_title!="":
 		$Title/Label.text = tr(location_title)
@@ -408,6 +495,8 @@ func _show_inventory():
 	$Panel/HBoxContainer/Inventory.show()
 	$Panel/HBoxContainer/Characters.hide()
 	$Panel/HBoxContainer/Quests.hide()
+	$Panel/HBoxContainer/List.hide()
+	$Panel/HBoxContainer/Journal.hide()
 	$Panel/Map.hide()
 	update_inventory()
 	$Title/Label.text = tr("INVENTORY")
@@ -418,6 +507,8 @@ func _show_characters():
 	$Panel/HBoxContainer/Inventory.hide()
 	$Panel/HBoxContainer/Characters.show()
 	$Panel/HBoxContainer/Quests.hide()
+	$Panel/HBoxContainer/List.hide()
+	$Panel/HBoxContainer/Journal.hide()
 	$Panel/Map.hide()
 	update_characters()
 	$Title/Label.text = tr("CHARACTERS")
@@ -428,6 +519,8 @@ func _show_map(location:=Game.location):
 	$Panel/HBoxContainer/Inventory.hide()
 	$Panel/HBoxContainer/Characters.hide()
 	$Panel/HBoxContainer/Quests.hide()
+	$Panel/HBoxContainer/List.hide()
+	$Panel/HBoxContainer/Journal.hide()
 	$Panel/Map.show_map(location)
 	$Title/Label.text = tr("MAP")
 
@@ -437,9 +530,25 @@ func _show_quests():
 	$Panel/HBoxContainer/Inventory.hide()
 	$Panel/HBoxContainer/Characters.hide()
 	$Panel/HBoxContainer/Quests.show()
+	$Panel/HBoxContainer/List.hide()
+	$Panel/HBoxContainer/Journal.hide()
 	$Panel/Map.hide()
 	update_quests()
 	$Title/Label.text = tr("QUESTS")
+
+func _show_journal():
+	$Panel/HBoxContainer/View.hide()
+	$Panel/HBoxContainer/Text.hide()
+	$Panel/HBoxContainer/Inventory.hide()
+	$Panel/HBoxContainer/Characters.hide()
+	$Panel/HBoxContainer/Quests.hide()
+	$Panel/HBoxContainer/List.show()
+	$Panel/HBoxContainer/Journal.show()
+	$Panel/Map.hide()
+	update_journal()
+	$Panel/HBoxContainer/Journal/VBoxContainer/Image.texture = null
+	$Panel/HBoxContainer/Journal/VBoxContainer/Image/Title.text = tr("JOURNAL")
+	$Title/Label.text = tr("JOURNAL")
 
 func _show_location(location):
 	_show_map(location)
@@ -475,4 +584,6 @@ func _ready():
 	$Panel/HBoxContainer/Inventory/VBoxContainer/ButtonPay.connect("pressed",self,"_payout")
 	$PopupMenu.connect("id_pressed",self,"_select_character")
 	$ButtonMenu.connect("pressed",Menu,"show")
+	$Panel/HBoxContainer/List/VBoxContainer/HBoxContainer/ButtonName.connect("toggled",self,"_toggle_sort_name")
+	$Panel/HBoxContainer/List/VBoxContainer/HBoxContainer/ButtonTime.connect("toggled",self,"_toggle_sort_time")
 	

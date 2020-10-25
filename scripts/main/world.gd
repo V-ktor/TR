@@ -344,7 +344,8 @@ func get_terrains(pos) -> Array:
 
 
 
-func create_city(data,size:=1,traits:=[]):
+func create_city(data, size:=1, traits:=[]):
+	# Set up the variables for a new city.
 	var name := Names.get_random_city_name(data.race)
 	var position := get_random_position(data)
 	var population : int
@@ -398,9 +399,12 @@ func create_city(data,size:=1,traits:=[]):
 	add_city(name,position,data.race,population,facilities,traits,price_mods)
 
 func add_city(name,position,faction,population,facilities,traits,price_mods):
+	# Create the new city.
 	var city = City.new(name,position,faction,population,facilities,traits,price_mods)
 	city.set_desc()
 	cities[city.name] = city
+	# Add an entry to the journal.
+	Journal.add_entry(city.name, city.name, "city", city.description, BACKGROUND_IMAGES[city.landscape].file, int(time-60.0*60.0*24.0*365.0*population/1000.0*rand_range(0.8,1.2)))
 
 func create_terrain(data,size,dist,angle):
 	var tile := ""

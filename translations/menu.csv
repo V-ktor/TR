@@ -30,6 +30,7 @@ LOAD,Load
 SAVE,Save
 POPULATION,Population
 FACILITIES,Facilities
+FACTION,Faction
 DISTANCE,Distance
 TRAVEL_TIME,Travel time
 FUEL_CONSUMPTION,Fuel consumption
@@ -129,4 +130,6 @@ ENGINE,Engine
 PROGRAMMING,Programming
 GRAPHICS,Graphics
 FONT,Font
+CITY,City
+TRAVEL,Travel
 

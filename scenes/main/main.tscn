@@ -1,10 +1,12 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://scripts/main/main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/main/map.tscn" type="PackedScene" id=2]
 [ext_resource path="res://images/backgrounds/coldmountain.png" type="Texture" id=3]
 [ext_resource path="res://images/backgrounds/sk5.jpg" type="Texture" id=4]
 [ext_resource path="res://fonts/Play-Bold.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://images/gui/arrow_up.png" type="Texture" id=6]
+[ext_resource path="res://images/gui/arrow_down.png" type="Texture" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.25098, 0.25098, 0.25098, 1 )
@@ -587,7 +589,58 @@ border_width_left = 4
 border_color = Color( 0.501961, 0.752941, 0.878431, 1 )
 corner_detail = 1
 
-[sub_resource type="ButtonGroup" id=38]
+[sub_resource type="StyleBoxFlat" id=41]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.752941, 0.878431, 1, 1 )
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id=42]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.501961, 0.752941, 0.878431, 1 )
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id=43]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.501961, 0.752941, 0.878431, 1 )
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id=44]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.12549, 0.0627451, 0.0627451, 1 )
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id=45]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.501961, 0.752941, 0.878431, 1 )
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id=46]
+draw_center = false
+border_width_bottom = 4
+border_color = Color( 0.501961, 0.752941, 0.878431, 1 )
+corner_detail = 1
+
+[sub_resource type="ButtonGroup" id=40]
 
 [sub_resource type="DynamicFont" id=39]
 size = 24
@@ -656,7 +709,7 @@ __meta__ = {
 }
 
 [node name="View" type="ScrollContainer" parent="Panel/HBoxContainer"]
-margin_right = 464.0
+margin_right = 334.0
 margin_bottom = 534.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -664,14 +717,14 @@ follow_focus = true
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/View"]
-margin_right = 464.0
+margin_right = 334.0
 margin_bottom = 534.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Image" type="TextureRect" parent="Panel/HBoxContainer/View/VBoxContainer"]
 material = SubResource( 26 )
-margin_right = 464.0
+margin_right = 334.0
 margin_bottom = 384.0
 rect_min_size = Vector2( 0, 384 )
 texture = ExtResource( 3 )
@@ -680,20 +733,20 @@ stretch_mode = 7
 
 [node name="Time" type="Label" parent="Panel/HBoxContainer/View/VBoxContainer"]
 margin_top = 388.0
-margin_right = 464.0
+margin_right = 334.0
 margin_bottom = 407.0
 text = "TIME:"
 
 [node name="Text" type="RichTextLabel" parent="Panel/HBoxContainer/View/VBoxContainer"]
 margin_top = 411.0
-margin_right = 464.0
+margin_right = 334.0
 margin_bottom = 534.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Text" type="ScrollContainer" parent="Panel/HBoxContainer"]
-margin_left = 468.0
-margin_right = 933.0
+margin_left = 338.0
+margin_right = 673.0
 margin_bottom = 534.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -701,7 +754,7 @@ follow_focus = true
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/Text"]
-margin_right = 465.0
+margin_right = 335.0
 margin_bottom = 534.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -820,7 +873,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="List" type="ScrollContainer" parent="Panel/HBoxContainer"]
-visible = false
+margin_left = 677.0
 margin_right = 933.0
 margin_bottom = 534.0
 size_flags_horizontal = 3
@@ -830,26 +883,24 @@ follow_focus = true
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/List"]
-margin_right = 933.0
+margin_right = 256.0
 margin_bottom = 534.0
 rect_min_size = Vector2( 256, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/List/VBoxContainer"]
-margin_right = 933.0
-margin_bottom = 50.0
+[node name="GridContainer" type="GridContainer" parent="Panel/HBoxContainer/List/VBoxContainer"]
+margin_right = 256.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+columns = 2
 
-[node name="HSeparator" type="HSeparator" parent="Panel/HBoxContainer/List/VBoxContainer/VBoxContainer"]
-margin_right = 933.0
-margin_bottom = 4.0
-custom_styles/separator = SubResource( 27 )
-
-[node name="Button" type="Button" parent="Panel/HBoxContainer/List/VBoxContainer/VBoxContainer"]
-margin_top = 8.0
-margin_right = 933.0
-margin_bottom = 27.0
+[node name="Button0" type="Button" parent="Panel/HBoxContainer/List/VBoxContainer/GridContainer"]
+margin_right = 128.0
+margin_bottom = 19.0
 rect_min_size = Vector2( 0, 16 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_styles/hover = SubResource( 33 )
 custom_styles/pressed = SubResource( 34 )
 custom_styles/focus = SubResource( 35 )
@@ -863,27 +914,83 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer/List/VBoxContainer/VBoxContainer"]
-margin_top = 31.0
-margin_right = 933.0
-margin_bottom = 50.0
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer/List/VBoxContainer"]
+margin_top = 23.0
+margin_right = 256.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+custom_constants/separation = 8
+
+[node name="ButtonName" type="CheckButton" parent="Panel/HBoxContainer/List/VBoxContainer/HBoxContainer"]
+margin_right = 124.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 0, 16 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_icons/off = ExtResource( 6 )
+custom_icons/on = ExtResource( 7 )
+custom_styles/hover = SubResource( 41 )
+custom_styles/pressed = SubResource( 42 )
+custom_styles/focus = SubResource( 43 )
+custom_styles/disabled = SubResource( 44 )
+custom_styles/normal = SubResource( 45 )
+text = "NAME"
+
+[node name="Active" type="Panel" parent="Panel/HBoxContainer/List/VBoxContainer/HBoxContainer/ButtonName"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 46 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonTime" type="CheckButton" parent="Panel/HBoxContainer/List/VBoxContainer/HBoxContainer"]
+margin_left = 132.0
+margin_right = 256.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 0, 16 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_icons/off = ExtResource( 6 )
+custom_icons/on = ExtResource( 7 )
+custom_styles/hover = SubResource( 41 )
+custom_styles/pressed = SubResource( 42 )
+custom_styles/focus = SubResource( 43 )
+custom_styles/disabled = SubResource( 44 )
+custom_styles/normal = SubResource( 45 )
+text = "TIME"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Active" type="Panel" parent="Panel/HBoxContainer/List/VBoxContainer/HBoxContainer/ButtonTime"]
+visible = false
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 46 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator" type="HSeparator" parent="Panel/HBoxContainer/List/VBoxContainer"]
+margin_top = 48.0
+margin_right = 256.0
+margin_bottom = 52.0
+custom_styles/separator = SubResource( 27 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/List/VBoxContainer"]
+margin_top = 56.0
+margin_right = 256.0
+margin_bottom = 534.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Space" type="Control" parent="Panel/HBoxContainer/List/VBoxContainer/VBoxContainer/HBoxContainer"]
-margin_right = 4.0
-margin_bottom = 19.0
-rect_min_size = Vector2( 4, 4 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/List/VBoxContainer/VBoxContainer/HBoxContainer"]
-margin_left = 8.0
-margin_right = 933.0
-margin_bottom = 19.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Button0" type="Button" parent="Panel/HBoxContainer/List/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_right = 925.0
+[node name="Button0" type="Button" parent="Panel/HBoxContainer/List/VBoxContainer/VBoxContainer"]
+margin_right = 256.0
 margin_bottom = 19.0
 rect_min_size = Vector2( 0, 16 )
 custom_styles/hover = SubResource( 33 )
@@ -892,7 +999,7 @@ custom_styles/focus = SubResource( 35 )
 custom_styles/disabled = SubResource( 36 )
 custom_styles/normal = SubResource( 37 )
 toggle_mode = true
-group = SubResource( 38 )
+group = SubResource( 40 )
 text = "ENTRY"
 align = 0
 __meta__ = {
@@ -950,6 +1057,7 @@ margin_right = 673.0
 margin_bottom = 534.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+bbcode_enabled = true
 
 [node name="Panel" type="Panel" parent="Panel"]
 anchor_left = 1.0
