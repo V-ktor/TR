@@ -222,7 +222,7 @@ func approach_success(_actor,_action,_roll):
 
 func approach_failed(_actor,_action,_roll):
 	var gender = Characters.characters[character_ID].gender
-	Main.add_text(tr("APPROACH_FAILED").format({"name":character_type,"he/she":tr(Characters.HE_SHE[gender]),"is/are":tr(Characters.IS_ARE[gender])}))
+	Main.add_text(tr("APPROACH_FAILED"+str(1+(randi()%3))).format({"name":character_type,"he/she":tr(Characters.HE_SHE[gender]),"is/are":tr(Characters.IS_ARE[gender])}))
 	Main.add_action(Game.Action.new(tr("GO_BACK"),self,{0:{"method":"leave","grade":1}},"","",3))
 
 func ask_for_name(_actor,_action,_roll):

@@ -386,11 +386,11 @@ func update_inventory():
 	$Panel/HBoxContainer/Inventory/VBoxContainer/LabelEncumbrance.text = tr("ENCUMBRANCE")+": "+str(mass).pad_decimals(1)+"kg / "+str(capacity).pad_decimals(1)+"kg"
 	$Panel/HBoxContainer/Inventory/VBoxContainer/LabelPayment.hide()
 	$Panel/HBoxContainer/Inventory/VBoxContainer/ButtonPay.hide()
-	$Panel/HBoxContainer/Inventory/VBoxContainer/HSeparator.hide()
+	$Panel/HBoxContainer/Inventory/VBoxContainer/HSeparator1.hide()
 	if Characters.payment.size()>0:
 		$Panel/HBoxContainer/Inventory/VBoxContainer/LabelPayment.show()
 		$Panel/HBoxContainer/Inventory/VBoxContainer/ButtonPay.show()
-		$Panel/HBoxContainer/Inventory/VBoxContainer/HSeparator.show()
+		$Panel/HBoxContainer/Inventory/VBoxContainer/HSeparator1.show()
 		$Panel/HBoxContainer/Inventory/VBoxContainer/LabelPayment.text = tr("DEBTS")+":\n"
 		for currency in Characters.payment.keys():
 			if Characters.payment[currency]>=1.0:

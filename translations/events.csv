@@ -48,7 +48,9 @@ APPROACH_MERCENARY_HAVE_JOB,'"Well met, {name}. You have a job for me?"'
 APPROACH_MERCENARY_NOT_AGAIN,'"Oh no, not you again!"'
 APPROACH_MERCENARY_MISSED_YOU,'"It's nice to see you, {name. I've already missed you."'
 APPROACH_MERCENARY_FINALLY,'"So we finally meet again. Shall we travel together once more?"'
-APPROACH_FAILED,"You walk over to the {name}. {he/she} {is/are} hostile towards you and wishes to be left alone."
+APPROACH_FAILED1,"You walk over to the {name}. {he/she} {is/are} hostile towards you and wishes to be left alone."
+APPROACH_FAILED2,"You walk over to the {name}. {he/she} does not want to talk to you."
+APPROACH_FAILED3,"You walk over to the {name}, but fail striking up a conversation."
 MERCENARY_ROTTEN_FLESH,"Chunks of rotten flesh hangs down from {his/her} face."
 MERCENARY_SKULL_FACE,"You stare into {his/her} emotionless skull."
 MERCENARY_SCALES_SHIMMER,"{his/her} scales shimmer in various shades of {color}."
