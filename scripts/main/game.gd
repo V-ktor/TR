@@ -287,6 +287,9 @@ func enter_location(_location : String,c=null):
 	
 	if c is Map.City:
 		var event = Events.check_event("enter_city", [location])
+		# Add journal entry for the city,
+		if !Journal.entries.has(c.name):
+			Journal.add_entry(c.name, c.name, ["cities",c.faction], c.description, Map.BACKGROUND_IMAGES[c.landscape].file, Map.time)
 		if event!=null:
 			var script = load(event._script).new()
 			var args = [location,quests[event.quest]]+event.args
