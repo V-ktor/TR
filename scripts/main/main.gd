@@ -131,8 +131,10 @@ func _toggle_sort_time(pressed):
 
 func _show_journal_entry(ID):
 	var entry = Journal.entries.values()[ID]
+	var date = OS.get_datetime_from_unix_time(entry.time)
 	$Panel/HBoxContainer/Journal/VBoxContainer/Image.texture = load(entry.image)
 	$Panel/HBoxContainer/Journal/VBoxContainer/Image/Title.text = entry.title
+	$Panel/HBoxContainer/Journal/VBoxContainer/Image/Date.text = tr("TIME_FORMAT").format({"minute":str(date.minute).pad_zeros(2),"hour":str(date.hour).pad_zeros(2),"day":str(date.day).pad_zeros(2),"month":str(date.month).pad_zeros(2),"year":date.year,"weekday":date.weekday})
 	$Panel/HBoxContainer/Journal/VBoxContainer/Text.clear()
 	$Panel/HBoxContainer/Journal/VBoxContainer/Text.push_color(Color(0.0,0.0,0.0))
 	if entry.category=="city":
@@ -550,6 +552,7 @@ func _show_journal():
 	update_journal()
 	$Panel/HBoxContainer/Journal/VBoxContainer/Image.texture = null
 	$Panel/HBoxContainer/Journal/VBoxContainer/Image/Title.text = tr("JOURNAL")
+	$Panel/HBoxContainer/Journal/VBoxContainer/Image/Date.text = ""
 	$Title/Label.text = tr("JOURNAL")
 
 func _show_location(location):

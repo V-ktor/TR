@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://scripts/main/main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/main/map.tscn" type="PackedScene" id=2]
@@ -649,6 +649,12 @@ outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 font_data = ExtResource( 5 )
 
+[sub_resource type="DynamicFont" id=47]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+font_data = ExtResource( 5 )
+
 [node name="Main" type="CanvasLayer"]
 layer = 75
 script = ExtResource( 1 )
@@ -709,7 +715,7 @@ __meta__ = {
 }
 
 [node name="View" type="ScrollContainer" parent="Panel/HBoxContainer"]
-margin_right = 334.0
+margin_right = 464.0
 margin_bottom = 534.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -717,14 +723,14 @@ follow_focus = true
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/View"]
-margin_right = 334.0
+margin_right = 464.0
 margin_bottom = 534.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Image" type="TextureRect" parent="Panel/HBoxContainer/View/VBoxContainer"]
 material = SubResource( 26 )
-margin_right = 334.0
+margin_right = 464.0
 margin_bottom = 384.0
 rect_min_size = Vector2( 0, 384 )
 texture = ExtResource( 3 )
@@ -733,20 +739,20 @@ stretch_mode = 7
 
 [node name="Time" type="Label" parent="Panel/HBoxContainer/View/VBoxContainer"]
 margin_top = 388.0
-margin_right = 334.0
+margin_right = 464.0
 margin_bottom = 407.0
 text = "TIME:"
 
 [node name="Text" type="RichTextLabel" parent="Panel/HBoxContainer/View/VBoxContainer"]
 margin_top = 411.0
-margin_right = 334.0
+margin_right = 464.0
 margin_bottom = 534.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Text" type="ScrollContainer" parent="Panel/HBoxContainer"]
-margin_left = 338.0
-margin_right = 673.0
+margin_left = 468.0
+margin_right = 933.0
 margin_bottom = 534.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -754,7 +760,7 @@ follow_focus = true
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/Text"]
-margin_right = 335.0
+margin_right = 465.0
 margin_bottom = 534.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -859,6 +865,7 @@ __meta__ = {
 
 [node name="Quests" type="ScrollContainer" parent="Panel/HBoxContainer"]
 visible = false
+margin_left = 624.0
 margin_right = 933.0
 margin_bottom = 534.0
 size_flags_horizontal = 3
@@ -867,12 +874,13 @@ follow_focus = true
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/Quests"]
-margin_right = 933.0
+margin_right = 309.0
 margin_bottom = 534.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="List" type="ScrollContainer" parent="Panel/HBoxContainer"]
+visible = false
 margin_left = 677.0
 margin_right = 933.0
 margin_bottom = 534.0
@@ -1018,7 +1026,7 @@ __meta__ = {
 
 [node name="Journal" type="ScrollContainer" parent="Panel/HBoxContainer"]
 visible = false
-margin_left = 260.0
+margin_left = 624.0
 margin_right = 933.0
 margin_bottom = 534.0
 size_flags_horizontal = 3
@@ -1027,13 +1035,13 @@ follow_focus = true
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/Journal"]
-margin_right = 673.0
+margin_right = 309.0
 margin_bottom = 534.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Image" type="TextureRect" parent="Panel/HBoxContainer/Journal/VBoxContainer"]
-margin_right = 673.0
+margin_right = 309.0
 margin_bottom = 256.0
 rect_min_size = Vector2( 0, 256 )
 size_flags_horizontal = 3
@@ -1061,9 +1069,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Date" type="Label" parent="Panel/HBoxContainer/Journal/VBoxContainer/Image"]
+anchor_top = 1.0
+anchor_right = 0.25
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -40.0
+margin_bottom = -8.0
+custom_fonts/font = SubResource( 47 )
+custom_colors/font_color = Color( 1, 1, 1, 0.752941 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 0.752941 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.501961 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 0
+text = "DATE"
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Text" type="RichTextLabel" parent="Panel/HBoxContainer/Journal/VBoxContainer"]
 margin_top = 260.0
-margin_right = 673.0
+margin_right = 309.0
 margin_bottom = 534.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
