@@ -1,3 +1,5 @@
 ,en
 HIRED_UNTIL,"Hired {character} until {date}."
+FIRED_AT,"Fired {character} at {city}."
+LEARNED_SPELL,"Learned the {spell} spell."
 

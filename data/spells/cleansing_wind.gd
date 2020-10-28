@@ -17,7 +17,7 @@ const ACTION = {
 
 func cast(actor,action,roll):
 	var set := []
-	prepare_spell(actor,action,roll)
+	prepare_spell(actor,action,roll,"cleansing_wind")
 	Main.add_text(tr("COMBAT_CLEANSING_WIND"))
 	if actor in action.ref.player:
 		set = action.ref.enemy

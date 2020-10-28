@@ -19,7 +19,7 @@ const ACTION = {
 func cast(actor,action,roll):
 	var damage := get_damage(actor,action,roll,ACTION.min_dam,ACTION.max_dam,ACTION.dam_scale)
 	var duration := 3
-	prepare_spell(actor,action,roll)
+	prepare_spell(actor,action,roll,"combustion")
 	print("damage: "+str(damage))
 	if action.target.has_status("frozen"):
 		Main.add_text(tr("COMBAT_COMBUSTION_FROZEN").format({"target":action.target.get_name(),"actor":actor.get_name()}))

@@ -51,6 +51,10 @@ func new_game():
 		Items.add_items(array[0], array[1])
 	for mount in Characters.mounts:
 		Items.add_items(mount.fuel, mount.fuel_capacity)
+	Game.quests.clear()
+	Game.scripts.clear()
+	Game.vars.clear()
+	Journal.entries.clear()
 	Map.create_world()
 	for k in Map.cities.keys():
 		if Map.cities[k].population>largest_city && Map.cities[k].faction==available_races[player_race]:

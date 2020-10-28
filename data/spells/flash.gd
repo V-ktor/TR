@@ -18,7 +18,7 @@ const ACTION = {
 
 func cast(actor,action,roll):
 	var damage := get_damage(actor,action,roll,ACTION.min_dam,ACTION.max_dam,ACTION.dam_scale)
-	prepare_spell(actor,action,roll)
+	prepare_spell(actor,action,roll,"flash")
 	print("damage: "+str(damage))
 	action.target.damaged(damage)
 	Main.add_text(tr("COMBAT_FLASH").format({"target":action.target.get_name()}))

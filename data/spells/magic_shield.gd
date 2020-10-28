@@ -17,7 +17,7 @@ const ACTION = {
 }
 
 func cast(actor,action,roll):
-	prepare_spell(actor,action,roll)
+	prepare_spell(actor,action,roll,"magic_shield")
 	var damage := get_damage(actor,action,roll,ACTION.min_dam,ACTION.max_dam,ACTION.dam_scale)
 	print("damage: "+str(damage))
 	Main.add_text(tr("COMBAT_MAGIC_SHIELD").format({"target":action.target.get_name()}))

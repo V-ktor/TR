@@ -693,6 +693,12 @@ func victory():
 	for ID in Characters.party:
 		var c = Characters.characters[ID]
 		c.increase_morale(5.0)
+		for spell in c.spells_used.keys():
+			if spell in c.knowledge:
+				continue
+			if c.spells_used[spell]>40-Game.do_roll(c,"intelligence","cunning"):
+				c.learn_spell(spell)
+				Main.add_text(tr("ACTOR_LEARNED_SPELL").format({"name":c.get_name(),"spell":tr(spell.to_upper())}))
 	if loot.size()>0:
 		var list := ""
 		for i in range(loot.size()):

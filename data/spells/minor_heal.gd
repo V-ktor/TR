@@ -17,7 +17,7 @@ const ACTION = {
 }
 
 func cast(actor,action,roll):
-	prepare_spell(actor,action,roll)
+	prepare_spell(actor,action,roll,"minor_heal")
 	if action.target.has_status("bleeding") || action.target.has_status("poisoned"):
 		Main.add_text(tr("COMBAT_CLEANSE").format({"target":action.target.get_name()}))
 		action.target.remove_status("bleeding")

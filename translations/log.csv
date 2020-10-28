@@ -46,5 +46,6 @@ LOST_GOLD,"You lost {amount} {currency}."
 HAIRED,"{color}-haired"
 COMPLETE_JOB,"You completed the job."
 COMPLETE_JOB_REWARD,"You receive a reward of {reward} for completing the job."
-ENTER_LOCATION_MISSION_LOCATION,"You arrive at the designated location."
+ENTER_LOCATION_QUEST_LOCATION,"You arrive at the designated location."
+ACTOR_LEARNED_SPELL,"{name} learned {spell}."
 

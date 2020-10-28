@@ -23,7 +23,7 @@ func cast_blinding(actor,action,roll):
 func cast(actor,action,roll):
 	var dam_scale := 1.0
 	var damage := get_damage(actor,action,roll,ACTION.min_dam,ACTION.max_dam,ACTION.dam_scale*rand_range(0.8,1.2))
-	prepare_spell(actor,action,roll)
+	prepare_spell(actor,action,roll,"sand_blast")
 	if "liquid" in action.target.traits:
 		Main.add_text(tr("COMBAT_SAND_BLAST").format({"actor":actor.get_name(),"target":action.target.get_name()}))
 		Main.add_text(tr("COMBAT_LITTLE_IMPACT_LIQUID_BODY").format({"target":action.target.get_name()}))

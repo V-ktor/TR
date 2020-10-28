@@ -61,11 +61,14 @@ func keep(_actor,_acion,roll):
 	Main.add_action(Game.Action.new(tr("ACTION_CONTINUE"),self,{0:{"method":"leave","grade":1}},"","",3))
 
 func fail_keep(_actor,_acion,_roll):
+	var city = Map.get_location(Game.location)
 	Main.add_text(tr("MERCENARY_EXPIRED_EXTENDED_FAILED").format({"name":character.get_name(),"he/she":tr(Characters.HE_SHE[character.gender])}))
 	Characters.party.erase(ID)
 	Main.add_action(Game.Action.new(tr("ACTION_CONTINUE"),self,{0:{"method":"leave","grade":1}},"","",3))
+	Journal.add_entry("fired_"+ID, tr("FIRED")+" "+character.get_name(), ["companions"], tr("FIRED_AT"), "", Map.time,{"character":{"name":character.get_name(),"target":ID},"city":{"name":city.name,"target":Game.location}})
 
 func abandon(_actor,_acion,_roll):
+	var city = Map.get_location(Game.location)
 	Main.add_text(tr("MERCENARY_EXPIRED_ABANDON").format({"name":character.get_name(),"he/she":tr(Characters.HE_SHE[character.gender])}))
 	if "bold" in character.personality || "reckless" in character.personality:
 		Main.add_text(tr("MERCENARY_EXPIRED_ABANDON_TOO_BAD"))
@@ -75,6 +78,7 @@ func abandon(_actor,_acion,_roll):
 		Main.add_text(tr("MERCENARY_EXPIRED_ABANDON_MEET_AGAIN"))
 	Characters.party.erase(ID)
 	Main.add_action(Game.Action.new(tr("ACTION_CONTINUE"),self,{0:{"method":"leave","grade":1}},"","",3))
+	Journal.add_entry("fired_"+ID, tr("FIRED")+" "+character.get_name(), ["companions"], tr("FIRED_AT"), "", Map.time,{"character":{"name":character.get_name(),"target":ID},"city":{"name":city.name,"target":Game.location}})
 
 func abandon_keep(_actor,_acion,_roll):
 	Main.add_text(tr("MERCENARY_EXPIRED_ABANDON_FAILED").format({"name":character.get_name(),"he/she":tr(Characters.HE_SHE[character.gender])}))

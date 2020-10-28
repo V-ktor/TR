@@ -174,7 +174,7 @@ class Character:
 	var home : String
 	var cls_name : String
 	var location : String
-	
+	var spells_used := {}
 	
 	func _init(dict : Dictionary):
 		for key in dict.keys():
@@ -238,7 +238,7 @@ class Character:
 				list += eq.knowledge
 		return list
 	
-	func add_exp(value):
+	func add_exp(value : int):
 		expirience += value
 		if expirience>=max_expirience:
 			level_up()
@@ -303,16 +303,15 @@ class Character:
 			mana = 0
 			Main.add_text(tr("COMBAT_ACTOR_EXHAUSTED").format({"actor":get_name()}))
 	
-	func decrease_morale(amount):
+	func decrease_morale(amount : float):
 		if hired:
 			morale -= amount
 	
-	func increase_morale(amount):
+	func increase_morale(amount : float):
 		if hired:
 			morale += amount
 			if morale>max_morale:
 				morale = max_morale
-	
 	
 	func add_status(cl,dict:={}):
 		var st = cl.new(self,dict)
@@ -327,7 +326,7 @@ class Character:
 			st.on_apply()
 		status[st.name] = st
 	
-	func remove_status(type):
+	func remove_status(type : String):
 		if !status.has(type):
 			return
 		var st = status[type]
@@ -335,14 +334,14 @@ class Character:
 			st.on_remove()
 		status.erase(type)
 	
-	func has_status(type):
+	func has_status(type : String):
 		return status.has(type)
 	
 	func reset_status():
 		for type in status.keys():
 			remove_status(type)
 	
-	func unequip(index) -> bool:
+	func unequip(index : int) -> bool:
 		if equipment.size()<=index || equipment[index]==null:
 			return false
 		Items.add_item(equipment[index])
@@ -370,7 +369,7 @@ class Character:
 		calc_stats()
 		return true
 	
-	func inc_stat(stat) -> bool:
+	func inc_stat(stat : String) -> bool:
 		if stat_points<1:
 			return false
 		stats[stat] += 1
@@ -379,14 +378,14 @@ class Character:
 		stat_points -= 1
 		return true
 	
-	func dec_stat(stat) -> bool:
+	func dec_stat(stat : String) -> bool:
 		if stats[stat]<=min_stats[stat]:
 			return false
 		stat_points += 1
 		stats[stat] -= 1
 		return true
 	
-	func inc_prof(prof) -> bool:
+	func inc_prof(prof : String) -> bool:
 		var cost := 1
 		if proficiency.has(prof):
 			if proficiency[prof]>=MAX_PROFICIENCY:
@@ -400,7 +399,7 @@ class Character:
 		prof_points -= cost
 		return true
 	
-	func dec_prof(prof) -> bool:
+	func dec_prof(prof : String) -> bool:
 		if !proficiency.has(prof) || proficiency[prof]<=min_prof[prof] || proficiency[prof]<=0:
 			return false
 		prof_points += proficiency[prof]
@@ -409,7 +408,14 @@ class Character:
 			proficiency.erase(prof)
 		return true
 	
-	func get_name():
+	func learn_spell(spell : String):
+		if spell in knowledge:
+			return
+		knowledge.push_back(spell)
+		Journal.add_entry(spell, tr(spell.to_upper()), ["spells"], tr(spell.to_upper())+"_TOOLTIP", "", Map.time)
+		Journal.add_entry("learned_"+spell, tr("LEARNED")+" "+tr(spell.to_upper()), ["spells"], tr("LEARNED_SPELL"), "", Map.time,{"spell":{"name":tr(spell.to_upper()),"target":spell}})
+	
+	func get_name() -> String:
 		if typeof(name)==TYPE_STRING:
 			return name
 		else:
@@ -426,7 +432,7 @@ class Character:
 			"armor":armor,"taunt":taunt,
 			"hired":hired,"hired_until":hired_until,"morale":morale,"home":home,
 			"location":location,"payment_cost":payment_cost,"payment_currency":payment_currency,
-			"status":status,"knowledge":knowledge,"cls_name":cls_name}
+			"status":status,"knowledge":knowledge,"cls_name":cls_name,"spells_used":spells_used}
 		return dict
 
 

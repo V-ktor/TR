@@ -19,7 +19,7 @@ const ACTION = {
 func double_cast(actor,action,roll):
 	var target
 	var damage := get_damage(actor,action,roll,ACTION.min_dam,ACTION.max_dam,ACTION.dam_scale)
-	prepare_spell(actor,action,roll)
+	prepare_spell(actor,action,roll,"magic_missile")
 	if actor in action.ref.player:
 		target = action.ref.enemy[randi()%action.ref.enemy.size()]
 	else:

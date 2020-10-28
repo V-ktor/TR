@@ -237,7 +237,7 @@ func ask_for_name(_actor,_action,_roll):
 		Main.add_text(tr("MERCENARY_SKULL_FACE").format({"his/her":tr(Characters.HIS_HER[gender])}))
 	elif character.appearance.has("skin") && character.appearance.skin=="scales" && character.appearance.has("hair_color") && character.appearance.hair_color in ["brown","red","grey"]:
 		Main.add_text(tr("MERCENARY_SCALES_SHIMMER").format({"his/her":tr(Characters.HIS_HER[gender]),"color":tr(character.appearance.hair_color.to_upper())}))
-	elif character.appearance.has("tail"):
+	elif character.appearance.has("tail") && character.appearance.tail!="none":
 		Main.add_text(tr("MERCENARY_WAGS_TAIL").format({"he/she":tr(Characters.HE_SHE[gender]),"his/her":tr(Characters.HIS_HER[gender]),"tail":tr(character.appearance.tail.to_upper())}))
 	elif character.appearance.has("hair") && character.appearance.hair=="long":
 		Main.add_text(tr("MERCENARY_PUSH_HAIR").format({"he/she":tr(Characters.HE_SHE[gender]),"his/her":tr(Characters.HIS_HER[gender]),"color":tr(character.appearance.hair_color.to_upper())}))

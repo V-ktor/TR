@@ -1,6 +1,6 @@
 extends Node
 
-const CATEGORIES = ["cities", "travel", "companions", "persons", "quests"]
+const CATEGORIES = ["cities", "companions", "persons", "spells", "quests"]
 
 var entries := {}
 var filter := {}
