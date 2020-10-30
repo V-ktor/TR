@@ -51,7 +51,7 @@ class Quest:
 		return dict
 
 
-func load_missions(path : String):
+func load_quests(path : String):
 	var dir := Directory.new()
 	var error := dir.open(path)
 	if error!=OK:
@@ -62,7 +62,7 @@ func load_missions(path : String):
 	var file_name := dir.get_next()
 	while file_name!="":
 		if dir.current_is_dir():
-			load_missions(path+"/"+file_name)
+			load_quests(path+"/"+file_name)
 		else:
 			var file := File.new()
 			var err := file.open(path+"/"+file_name,File.READ)
@@ -100,5 +100,5 @@ func load_missions(path : String):
 		file_name = dir.get_next()
 
 func _ready():
-	load_missions("res://data/missions")
-	load_missions("user://data/missions")
+	load_quests("res://data/quests")
+	load_quests("user://data/quests")
