@@ -332,6 +332,7 @@ func get_terrain_traits(pos) -> Array:
 	for terrain in terrains:
 		if pos.distance_squared_to(terrain.position)<terrain.radius*terrain.radius:
 			traits += terrain.traits
+			traits.push_back(terrain.type)
 	return traits
 
 func get_terrains(pos) -> Array:
