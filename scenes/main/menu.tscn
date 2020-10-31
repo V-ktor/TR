@@ -1,7 +1,10 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://scripts/main/menu.gd" type="Script" id=1]
 [ext_resource path="res://fonts/Play-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://images/gui/slider_grabber.png" type="Texture" id=3]
+[ext_resource path="res://images/gui/slider_grabber_highlight.png" type="Texture" id=4]
+[ext_resource path="res://images/gui/slider_grabber_disabled.png" type="Texture" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.12549, 0.12549, 0.12549, 0.25098 )
@@ -163,6 +166,34 @@ content_margin_right = 2.0
 content_margin_top = 2.0
 content_margin_bottom = 2.0
 bg_color = Color( 0.921569, 0.768627, 0.403922, 1 )
+
+[sub_resource type="StyleBoxFlat" id=36]
+bg_color = Color( 0.886275, 0.690196, 0.341176, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=37]
+bg_color = Color( 0.921569, 0.768627, 0.403922, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+shadow_color = Color( 0, 0, 0, 0.501961 )
+shadow_size = 4
 
 [sub_resource type="StyleBoxFlat" id=13]
 content_margin_left = 4.0
@@ -363,6 +394,13 @@ HScrollBar/styles/scroll = SubResource( 10 )
 HScrollBar/styles/scroll_focus = SubResource( 11 )
 HSeparator/constants/separation = 4
 HSeparator/styles/separator = SubResource( 12 )
+HSlider/icons/grabber = ExtResource( 3 )
+HSlider/icons/grabber_disabled = ExtResource( 5 )
+HSlider/icons/grabber_highlight = ExtResource( 4 )
+HSlider/icons/tick = null
+HSlider/styles/grabber_area = SubResource( 36 )
+HSlider/styles/grabber_area_highlight = SubResource( 37 )
+HSlider/styles/slider = SubResource( 10 )
 Label/colors/font_color = Color( 0.12549, 0.12549, 0.12549, 1 )
 Label/colors/font_color_shadow = Color( 0, 0, 0, 0.12549 )
 Label/colors/font_outline_modulate = Color( 0.886275, 0.690196, 0.341176, 1 )
@@ -503,6 +541,8 @@ shadow_size = 2
 [sub_resource type="DynamicFont" id=34]
 size = 12
 font_data = ExtResource( 2 )
+
+[sub_resource type="ButtonGroup" id=35]
 
 [node name="Menu" type="CanvasLayer"]
 layer = 100
@@ -2061,6 +2101,151 @@ custom_colors/font_color = Color( 0.12549, 0.12549, 0.12549, 0.752941 )
 text = "VERSION"
 align = 1
 valign = 1
+
+[node name="Options" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+margin_top = 50.0
+margin_right = -25.0
+margin_bottom = -25.0
+theme = SubResource( 25 )
+custom_styles/panel = SubResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="HSeparator1" type="HSeparator" parent="Options"]
+anchor_right = 1.0
+margin_left = 4.0
+margin_top = 40.0
+margin_right = -4.0
+margin_bottom = 48.0
+mouse_filter = 1
+custom_styles/separator = SubResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="HSeparator2" type="HSeparator" parent="Options"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -48.0
+margin_right = -4.0
+margin_bottom = -40.0
+mouse_filter = 1
+custom_styles/separator = SubResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Top" type="HBoxContainer" parent="Options"]
+anchor_right = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = 40.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button0" type="Button" parent="Options/Top"]
+visible = false
+margin_left = 399.0
+margin_right = 559.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 160, 0 )
+toggle_mode = true
+group = SubResource( 35 )
+
+[node name="Bottom" type="HBoxContainer" parent="Options"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -40.0
+margin_right = -8.0
+margin_bottom = -8.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonConfirm" type="Button" parent="Options/Bottom"]
+margin_left = 235.0
+margin_right = 395.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 160, 0 )
+text = "CONFIRM"
+
+[node name="ButtonApply" type="Button" parent="Options/Bottom"]
+margin_left = 399.0
+margin_right = 559.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 160, 0 )
+text = "APPLY"
+
+[node name="ButtonCancel" type="Button" parent="Options/Bottom"]
+margin_left = 563.0
+margin_right = 723.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 160, 0 )
+text = "CANCEL"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Options"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 48.0
+margin_right = -8.0
+margin_bottom = -48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/ScrollContainer"]
+margin_right = 958.0
+margin_bottom = 429.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="Options"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -192.0
+margin_top = -36.0
+margin_bottom = -4.0
+custom_styles/panel = SubResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Label" type="Label" parent="Options/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -32.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "OPTIONS"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Options/Panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -32.0
+text = "X"
 
 [node name="Credits" type="Panel" parent="."]
 visible = false

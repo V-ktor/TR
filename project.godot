@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
+Settings="*res://scripts/main/settings.gd"
 Characters="*res://scripts/main/characters.gd"
 Main="*res://scenes/main/main.tscn"
 Game="*res://scripts/main/game.gd"

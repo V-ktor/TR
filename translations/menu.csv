@@ -1,6 +1,7 @@
 ,en
 NEXT,Next
 BACK,Back
+APPLY,Apply
 CONFIRM,Confirm
 CANCEL,Cancel
 CONTINUE,Continue
@@ -11,6 +12,15 @@ SAVE,Save
 OPTIONS,Options
 CREDITS,Credits
 QUIT,Quit
+GAME,Game
+DISPLAY,Display
+AUDIO,Audio
+WIDTH,Width
+HEIGHT,Height
+FULLSCREEN,Fullscreen
+MAXIMIZED,Window Maximized
+SOUND_VOLUME,Sound Volume
+MUSIC_VOLUME,Music Volume
 RANDOMIZE,Randomize
 NAME,Name
 FIRST_NAME,First Name

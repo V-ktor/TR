@@ -606,6 +606,12 @@ func _show_save():
 	$Files/Panel/Label.text = tr("SAVE")
 	$Files.show()
 
+func _show_options():
+	Settings.load_settings()
+	$Options.show()
+	_select_setting(true, Settings.settings.keys()[0])
+
+
 func update_save_files():
 	# Add paths of all save files to save_files.
 	var filename : String
@@ -653,9 +659,60 @@ func update_save_files():
 				else:
 					button.get_node("GridContainer/LabelVersion").modulate = Color(1.0,1.0,1.0)
 				button.show()
-		
-	
 
+func _apply_settings():
+	# ...
+	Settings.apply()
+	Settings.save_settings()
+
+func _confirm_settings():
+	_apply_settings()
+	$Options.hide()
+
+func _set_setting(value, type, ID):
+	Settings.settings[type][ID] = value
+
+func _select_setting(pressed, type):
+	if !pressed:
+		return
+	for c in $Options/ScrollContainer/VBoxContainer.get_children():
+		c.queue_free()
+	for k in Settings.settings[type]:
+		var container := HBoxContainer.new()
+		var label := Label.new()
+		label.text = tr(k.to_upper())
+		label.add_color_override("font_color", Color(1.0,1.0,1.0))
+		label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		container.add_child(label)
+		match typeof(Settings.settings[type][k]):
+			TYPE_BOOL:
+				var button := CheckBox.new()
+				button.name = k.capitalize()
+				button.pressed = Settings.settings[type][k]
+				button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				button.connect("toggled",self,"_set_setting",[type,k])
+				container.add_child(button)
+			TYPE_INT:
+				var button := SpinBox.new()
+				button.name = k.capitalize()
+				button.min_value = 800
+				button.max_value = 4096
+				button.value = Settings.settings[type][k]
+				button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				button.connect("value_changed",self,"_set_setting",[type,k])
+				container.add_child(button)
+			TYPE_REAL:
+				var button = HSlider.new()
+				button.name = k.capitalize()
+				button.min_value = 0.0
+				button.max_value = 1.0
+				button.step = 0.0
+				button.value = Settings.settings[type][k]
+				button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				button.connect("value_changed",self,"_set_setting",[type,k])
+				container.add_child(button)
+		
+		$Options/ScrollContainer/VBoxContainer.add_child(container)
 
 
 func load_races(path : String):
@@ -715,11 +772,13 @@ func _input(event):
 func _ready():
 	randomize()
 	
+	# Load race and class data.
 	load_races("res://data/races")
 	load_races("user://data/races")
 	load_classes("res://data/classes")
 	load_classes("user://data/classes")
 	
+	# Set up GUI stuff.
 	for stat in Characters.STATS:
 		var box = $NewChar/HBoxContainer/Summary/VBoxContainer/Stats/Stat0.duplicate()
 		box.name = stat.capitalize()
@@ -753,7 +812,15 @@ func _ready():
 		$NewChar/HBoxContainer/Classes/VBoxContainer.add_child(button)
 		button.connect("pressed",self,"_set_class",[i])
 		button.show()
+	for k in Settings.settings.keys():
+		var button := $Options/Top/Button0.duplicate()
+		button.name = "Button"+k.capitalize()
+		button.text = tr(k.to_upper())
+		button.connect("toggled",self,"_select_setting",[k])
+		$Options/Top.add_child(button)
+		button.show()
 	
+	# Connect buttons.
 	$NewChar/Top/ButtonRace.connect("pressed",self,"_select_race")
 	$NewChar/Top/ButtonClass.connect("pressed",self,"_select_class")
 	$NewChar/Top/ButtonAppearance.connect("pressed",self,"_select_appearance")
@@ -771,9 +838,14 @@ func _ready():
 	$Files/Panel/Button.connect("pressed",$Files,"hide")
 	$Files/ScrollContainer/VBoxContainer/New/LineEdit.connect("text_entered",self,"_save_new")
 	$Files/ScrollContainer/VBoxContainer/New/ButtonConfirm.connect("pressed",self,"_save_new")
+	$Options/Panel/Button.connect("pressed",$Options,"hide")
+	$Options/Bottom/ButtonConfirm.connect("pressed",self,"_confirm_settings")
+	$Options/Bottom/ButtonApply.connect("pressed",self,"_apply_settings")
+	$Options/Bottom/ButtonCancel.connect("pressed",$Options,"hide")
 	$Credits/Panel/Button.connect("pressed",$Credits,"hide")
 	$Credits/RichTextLabel.connect("meta_clicked",OS,"shell_open")
 	
+	# Hide these buttons. Only visible once the game has been started.
 	$Panel/VBoxContainer/Button6.hide()
 	$Panel/VBoxContainer/Button7.hide()
 	
