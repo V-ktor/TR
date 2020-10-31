@@ -1,5 +1,18 @@
 extends Node
 
+const MIN_VALUES = {
+	"width":800,
+	"height":600,
+	"sound_volume":0.0,
+	"music_volume":0.0
+}
+const MAX_VALUES = {
+	"width":4096,
+	"height":4096,
+	"sound_volume":1.0,
+	"music_volume":1.0
+}
+
 var settings := {
 	"display":{
 		"width":int(OS.window_size.x),"height":int(OS.window_size.y),

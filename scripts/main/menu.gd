@@ -695,8 +695,14 @@ func _select_setting(pressed, type):
 			TYPE_INT:
 				var button := SpinBox.new()
 				button.name = k.capitalize()
-				button.min_value = 800
-				button.max_value = 4096
+				if Settings.MIN_VALUES.has(k):
+					button.min_value = Settings.MIN_VALUES[k]
+				else:
+					button.min_value = 0
+				if Settings.MAX_VALUES.has(k):
+					button.max_value = Settings.MAX_VALUES[k]
+				else:
+					button.max_value = 100
 				button.value = Settings.settings[type][k]
 				button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 				button.connect("value_changed",self,"_set_setting",[type,k])
@@ -704,8 +710,14 @@ func _select_setting(pressed, type):
 			TYPE_REAL:
 				var button = HSlider.new()
 				button.name = k.capitalize()
-				button.min_value = 0.0
-				button.max_value = 1.0
+				if Settings.MIN_VALUES.has(k):
+					button.min_value = Settings.MIN_VALUES[k]
+				else:
+					button.min_value = 0.0
+				if Settings.MAX_VALUES.has(k):
+					button.max_value = Settings.MAX_VALUES[k]
+				else:
+					button.max_value = 1.0
 				button.step = 0.0
 				button.value = Settings.settings[type][k]
 				button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
