@@ -1,6 +1,6 @@
 ,en
 WOODS,Woods
-WOODS_INTRO,"While walking through the forest you hear noises around you.\nToo late you realize that you are not alone..."
+WOODS_INTRO,"While walking through the forest you hear noises around you. Too late you realize that you are not alone..."
 WOODS_VICTORY,"After defeating all monsters you continue your journey."
 WOODS_RETREAT,"You run as fast as you can, leaving the forest quickly."
 PLAINS,Plains
@@ -26,6 +26,10 @@ MOUNTAINS_VICTORY,"You survived the fight and continue moving across the mountai
 MOUNTAINS_RETREAT,"You flee from the monsters ignoring the dangerous ground. They seem to be reluctant in following you."
 TAKE_CARE_OF_WOLFS_INTRO,"You arrive in the forest where the wolf pack was last seen. You don't have to search for long as the wolfs notice your presence first."
 TAKE_CARE_OF_WOLFS_VICTORY,"You have defeated the wolf pack. Go back to {city} to take your reward."
+ELIMINATE_GOBLINS_INTRO,"After searching the rough terrain for hours you finally spot the group of goblins you were looking for."
+ELIMINATE_GOBLINS_VICTORY,"You have defeated the goblins. Go back to {city} to take your reward."
+HUNT_DOWN_BANDITS_INTRO,"You stumbled across a group of bandits. They don't look friendly."
+HUNT_DOWN_BANDITS_VICTORY,"The bandits lie dead beneath you. You should go back to {city} for a reward."
 BAR_ENCOUNTER_INIT,"You notice a {adjective} {person} {action}."
 BAR_ENCOUNTER_KNOWN,"It's {name}."
 CLAD_IN_HEAVY_ARMOR,"clad in heavy armor"

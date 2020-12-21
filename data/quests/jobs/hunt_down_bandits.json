@@ -1,0 +1,13 @@
+{
+    "name":"hunt_down_bandits",
+    "filter":["prosperous","trading"],
+    "difficulty":2.0,
+    "timelimit":[10.0, 25.0],
+    "time_per_distance":0.1,
+    "location":{
+        "name":"bandit_ambush", "landscape":"plains", "position":[15.0, 40.0]
+    },
+    "events":[{"type":"enter_location", "script":"res://data/events/jobs/hunt_down_bandits.gd"}],
+    "reward":{"silver_coins":300},
+    "descriptions":["hunt_down_bandits_short_desc1", "hunt_down_bandits_short_desc2", "hunt_down_bandits_short_desc3", "hunt_down_bandits_short_desc4"]
+}

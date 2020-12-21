@@ -1,6 +1,6 @@
 {
     "name":"take_care_of_wolfs",
-    "filter":["farming", "wood"],
+    "filter":["farming", "wood", "forest"],
     "difficulty":1.0,
     "timelimit":[10.0, 20.0],
     "time_per_distance":0.1,

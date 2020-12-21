@@ -1,0 +1,13 @@
+{
+    "name":"eliminate_goblins",
+    "filter":["hills", "farming"],
+    "difficulty":1.5,
+    "timelimit":[10.0, 20.0],
+    "time_per_distance":0.1,
+    "location":{
+        "name":"hill_ambush", "landscape":"hills", "position":[15.0, 40.0]
+    },
+    "events":[{"type":"enter_location", "script":"res://data/events/jobs/eliminate_goblins.gd"}],
+    "reward":{"silver_coins":125},
+    "descriptions":["eliminate_goblins_short_desc1", "eliminate_goblins_short_desc2", "eliminate_goblins_short_desc3", "eliminate_goblins_short_desc4"]
+}

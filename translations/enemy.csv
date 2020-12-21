@@ -22,6 +22,10 @@ GNOLL_SPEAR,"gnoll (spear)"
 GNOLL_SLINGER,gnoll slinger
 GNOLL_SHAMAN,gnoll shaman
 TROLL,troll
+BANDIT_BLADE,"bandit (blade)"
+BANDIT_MACE,"bandit (mace)"
+BANDIT_HUNTER,"bandit (bow)"
+BANDIT_CASTER,"bandit (mage)"
 VAMPIRIC_BAT,vampiric bat
 CRIMSON_IMP,crimson imp
 WHITE_IMP,white imp

@@ -1,0 +1,49 @@
+{
+	"name":"bandit_blade",
+    "race":"human",
+	"traits":[],
+    "expirience":20,
+	"stats":{"strength":[6,12],"constitution":[8,12],"dexterity":[10,15],"agility":[10,15],"intelligence":[6,12],"wisdom":[6,12],"cunning":[10,15],"charisma":[8,14]},
+	"appearance":{"body":"average"},
+	"equipment":["long_sword","dagger","leather_armor"],
+    "proficiency":{"blade":[2,3],"knife":[2,3],"light_armor":[2,3]},
+    "drop_rate":0.1,
+    "drops":["long_sword","dagger","leather_armor"]
+}
+{
+	"name":"bandit_mace",
+    "race":"human",
+	"traits":[],
+    "expirience":20,
+	"stats":{"strength":[8,14],"constitution":[8,12],"dexterity":[10,15],"agility":[10,15],"intelligence":[6,12],"wisdom":[6,12],"cunning":[10,15],"charisma":[6,12]},
+	"appearance":{"body":"average"},
+	"equipment":["mace","buckler","chain_mail"],
+    "proficiency":{"mace":[2,3],"shield":[2,3],"heavy_armor":[2,3]},
+    "drop_rate":0.1,
+    "drops":["mace","buckler","chain_mail"]
+}
+{
+	"name":"bandit_hunter",
+    "race":"human",
+	"traits":[],
+    "expirience":20,
+	"stats":{"strength":[6,12],"constitution":[6,12],"dexterity":[11,15],"agility":[11,15],"intelligence":[6,12],"wisdom":[6,12],"cunning":[11,15],"charisma":[8,14]},
+	"appearance":{"body":"average"},
+	"equipment":["dagger","bow","leather_armor"],
+    "proficiency":{"bow":[2,3],"knife":[2,3],"light_armor":[2,3]},
+    "drop_rate":0.1,
+    "drops":["bow","dagger","leather_armor"]
+}
+{
+	"name":"bandit_caster",
+    "race":"human",
+	"traits":[],
+    "expirience":20,
+	"stats":{"strength":[6,12],"constitution":[6,12],"dexterity":[10,15],"agility":[10,15],"intelligence":[8,14],"wisdom":[8,14],"cunning":[10,15],"charisma":[6,12]},
+	"appearance":{"body":"average"},
+	"equipment":["staff","robe"],
+    "proficiency":{"staff":[2,3],"light_armor":[1,2],"light_magic":[1,2],"healing_magic":[1,2],"nature_magic":[1,2]},
+    "knowledge":["flash","minor_heal","vines"],
+    "drop_rate":0.1,
+    "drops":["staff","robe"]
+}
