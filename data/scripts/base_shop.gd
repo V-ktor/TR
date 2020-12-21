@@ -88,6 +88,8 @@ func add_items():
 
 func add_commodities():
 	for k in Items.commodities:
+		if Map.cities.has(Game.location) && Map.cities[Game.location].price_mods.has(k) && Map.cities[Game.location].price_mods[k]>1.2:
+			continue
 		var amount := 10
 		items.push_back(Items.create_item(k,true,amount))
 

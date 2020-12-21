@@ -2,7 +2,7 @@
 	"name":"book_of_conjuration",
 	"type":"spellbook",
 	"slot":"trinket",
-	"knowledge":["magic_missile","combustion","freeze"],
+	"knowledge":["magic_missile","combustion","freeze","fire_shield"],
 	"weight":1.0,
 	"price":250,
     "grade":1,

@@ -570,20 +570,22 @@ func get_actions(actor) -> Array:
 func acquire_target(actor,filter={}):
 	var q := []
 	var set := []
+	if filter.has("self") && filter.self:
+		set.push_back(actor)
 	if actor.has_status("confused"):
-		set = player+enemy
+		set += player+enemy
 	elif actor in enemy:
 		if filter.has("ally") && filter.ally:
-			set = enemy
+			set += enemy
 		else:
-			set = player
+			set += player
 	elif actor in player:
 		if filter.has("ally") && filter.ally:
-			set = player
+			set += player
 		else:
-			set = enemy
-	else:
-		set = player+enemy
+			set += enemy
+	if filter.size()==0:
+		set += player+enemy
 	for target in set:
 		if target==actor:
 			continue
@@ -633,7 +635,10 @@ func next_turn():
 	var actions := get_actions(actor)
 	Main.add_text("")
 	if "regeneration" in actor.traits:
-		actor.heal(int(actor.max_health/10))
+		actor.heal(int(ceil(actor.max_health/10)))
+	for effect in area_effects.values():
+		if effect.has_method("on_turn"):
+			effect.on_turn()
 	Main.update_party()
 	
 	if actor in enemy || actor.has_status("confused"):
@@ -732,7 +737,17 @@ func clear_status():
 func clear_area_effects():
 	area_effects.clear()
 
+func add_area_effect(area_effect : Effects.AreaEffect, caster, args:={}):
+	var effect = area_effect.new(self, caster, args)
+	if area_effects.has(effect.name):
+		remove_area_effect(area_effects[effect.name])
+	area_effects[effect.name] = effect
+	if effect.has_method("on_apply"):
+		effect.on_apply()
+
 func remove_area_effect(area_effect : Effects.AreaEffect):
+	if area_effect.has_method("on_remove"):
+		area_effect.on_remove()
 	area_effects.erase(area_effect.name)
 
 func check_block(actor,action,_roll):
@@ -792,13 +807,16 @@ func attack(actor,action,roll):
 	if weapon_name=="fists":
 		weapon_name = tr("FISTS").format({"his/her":tr(Characters.HIS_HER[actor.gender])})
 	Main.add_text(tr("COMBAT_HIT").format({"actor":actor.get_name(),"target":action.target.get_name(),"weapon":action.tool_used.name}))
-	if action.target.has_status("riposte"):
+	if action.target.has_status("riposte") && action.tool_used.range=="melee":
 # warning-ignore:integer_division
 		damage = int(damage/2)
 		action.target.remove_status("riposte")
 		Main.add_text(tr("RIPOSTE_ACTION").format({"actor":actor.get_name(),"target":action.target.get_name()}))
 		actor.damaged(damage)
 		print(actor.get_name()+"->"+action.target.get_name()+" damage: "+str(damage))
+	for st in action.target.status.values():
+		if st.has_method("on_attacked"):
+			st.on_attacked(actor,action)
 	action.target.damaged(damage)
 	if damage>0 && action.target.health>0:
 		Main.add_text(tr("COMBAT_DAMAGED").format({"actor":action.target.get_name()}))

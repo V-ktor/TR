@@ -9,7 +9,6 @@ class Effect:
 	var permament := false				# automatically remove after battles if false
 	var failed := false					# applying this effect failed
 	var owner : Characters.Character
-	
 
 class AreaEffect:
 	var name := ""
@@ -79,6 +78,44 @@ class MagicShield:
 		amount = int(args.amount+amount)
 		owner.shielding = int(max(owner.shielding+amount, 0))
 		return true
+	
+	func on_turn():
+		duration -= 1
+		if duration<=0:
+			owner.remove_status(name)
+
+class FireShield:
+	extends Effect
+	var amount := 0
+	
+	func _init(_actor,args={}):
+		name = "fire_shield"
+		beneficial = true
+		if !args.has("amount"):
+			args.amount = 4
+		if !args.has("duration"):
+			args.duration = 4
+		duration = args.duration
+	
+	func on_apply():
+		Main.add_text(tr("STATUS_FIRE_SHIELD").format({"actor":owner.get_name()}))
+	
+	func on_remove():
+		Main.add_text(tr("STATUS_FIRE_SHIELD_STOP").format({"actor":owner.get_name()}))
+	
+	func merge(args={}):
+		if !args.has("amount") || !args.has("duration"):
+			return false
+		duration = int((args.duration+duration)/2)
+		amount = int((args.amount+amount)/2)
+		return true
+	
+	func on_attacked(attacker,action):
+		if action.tool_used.range!="melee":
+			return
+		Main.add_text(tr("FIRE_SHIELD_BURN").format({"actor":owner.get_name(),"target":attacker.get_name()}))
+		attacker.damaged(amount)
+		print(owner.get_name()+"->"+attacker.get_name()+" damage: "+str(amount))
 	
 	func on_turn():
 		duration -= 1
@@ -475,9 +512,10 @@ class PoisonousClouds:
 	extends AreaEffect
 	var damage := 0
 	
-	func _init(_game_state,_actor,args={}):
+	func _init(_game_state,actor,args={}):
 		name = "poisonous_clouds"
 		game_state = _game_state
+		caster = actor
 		if args.has("damage"):
 			damage = args.damage
 		if args.has("duration"):
@@ -492,6 +530,41 @@ class PoisonousClouds:
 	func on_turn():
 		for actor in game_state.player+game_state.enemy:
 			actor.damaged(damage)
+		duration -= 1
+		if duration<=0:
+			game_state.remove_area_effect(self)
+
+class WildFire:
+	extends AreaEffect
+	var damage := 0
+	
+	func _init(_game_state,actor,args={}):
+		name = "wild_fire"
+		game_state = _game_state
+		caster = actor
+		if args.has("damage"):
+			damage = args.damage
+		else:
+			damage = 6
+		if args.has("duration"):
+			duration = args.duration
+		else:
+			duration = 3
+	
+	func on_apply():
+		Main.add_text(tr("AREA_WILD_FIRE"))
+	
+	func on_remove():
+		Main.add_text(tr("AREA_WILD_FIRE_STOP"))
+	
+	func on_turn():
+		var set := []
+		if caster in game_state.player:
+			set += game_state.enemy
+		if caster in game_state.enemy:
+			set += game_state.ally
+		for actor in set:
+			actor.add_status(Burning,{"duration":3,"amount":ceil(damage/float(duration+1))})
 		duration -= 1
 		if duration<=0:
 			game_state.remove_area_effect(self)

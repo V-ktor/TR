@@ -75,6 +75,17 @@ COMBAT_VINES,"{target} is entangled in vines emerging from the ground."
 COMBAT_VINES_LIQUID_BODY,"Vines shoot through {target}'s body but can't keep hold of it."
 CAST_CLEANSING_WIND,"Conjure a gust of wind."
 COMBAT_CLEANSING_WIND,"Conjures a powerful gust of wind."
+CAST_MAGIC_SHIELD,"Cast a protective shield on the target."
+COMBAT_MAGIC_SHIELD,"{target} is protected by a magical shield."
+CAST_FIRE_SHIELD,"Cast a flaming shield on the target damaging all attackers in melee range."
+COMBAT_FIRE_SHIELD,"{target} is surrounded by a wall of fire."
+FIRE_SHIELD_BURN,"{target} was burned by {actor}'s fire shield."
+CAST_HEAT_BEAM,"Set {target} ablaze with a beam of fire."
+COMBAT_HEAT_BEAM,"{target} was set ablaze."
+CAST_WILD_FIRE,"Set the battle field ablaze."
+COMBAT_WILD_FIRE,"{actor} conjures fires."
+CAST_FROST_LANCE,"Conjure a spear of ice."
+COMBAT_FROST_LANCE,"{actor} hurled a spear of ice at {target}."
 ARCANE,Arcane
 FIRE,Fire
 ICE,Ice
