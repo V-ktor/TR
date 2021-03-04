@@ -43,6 +43,7 @@ func create_mercenary() -> Characters.Character:
 	var proficiency := {}
 	var appearance := {}
 	var personality := []
+	var background := []
 	var knowledge := []
 	var stats := {}
 	
@@ -86,8 +87,9 @@ func create_mercenary() -> Characters.Character:
 			level += 2
 			stats.constitution -= 2
 			stats.wisdom += 1
+	background.push_back(Characters.BACKGROUNDS[randi()%Characters.BACKGROUNDS.size()])
 	
-	actor = Characters.add_character(name, level, 0, gender, race.name, stats, equip, proficiency, appearance, [], knowledge, 0, int(max(level-1-int("young" in personality)+int("old" in personality), 0)))
+	actor = Characters.add_character(name, level, 0, gender, race.name, stats, equip, proficiency, background, appearance, [], knowledge, 0, int(max(level-1-int("young" in personality)+int("old" in personality), 0)))
 	Characters.distribute_prof_points(actor)
 	actor.base_type = cl.name
 	personality.push_back(Characters.PERSONALITIES[randi()%Characters.PERSONALITIES.size()])

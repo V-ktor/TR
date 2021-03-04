@@ -2,7 +2,7 @@
 	"name":"orc",
 	"traits":["startling","intimidating"],
 	"stats":{"strength":2,"constitution":2,"intelligence":-2,"charisma":-2},
-	"proficiency":{"two-hander":1,"blade":1,"axe":1,"light_armor":1,"heavy_armor":1,"crossbow":1,"fire_magic":1},
+	"proficiency":{"greatsword":1,"blade":1,"axe":1,"light_armor":1,"heavy_armor":1,"crossbow":1,"fire_magic":1},
 	"playable":true,
 	"phrase_male":["nak","ush","rag","gor","ar","dish","ork","uk","urt"],
 	"phrase_female":["urk","ik","ish","vag","pun","nak","lo","rak"],

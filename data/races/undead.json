@@ -1,7 +1,7 @@
 {
 	"name":"undead",
 	"traits":["undead","poison_resistance"],
-	"proficiency":{"blade":1,"axe":1,"two-hander":1,"crossbow":1,"bow":1,"shield":1,"heavy_armor":1,"arcane_magic":1,"ice_magic":1},
+	"proficiency":{"blade":1,"axe":1,"greatsword":1,"crossbow":1,"bow":1,"shield":1,"heavy_armor":1,"arcane_magic":1,"ice_magic":1},
 	"phrase_male":["mal","bal","ice","tor","thur"],
 	"phrase_female":["mal","bal","ark","cy","dis"],
 	"first_name_male":["necromancer","skeleton","ghoul","lich"],

@@ -1,8 +1,8 @@
 extends CanvasLayer
 
 const VERSION = "0.0"
-const MAX_MENUS = 4
-const MENUS = ["race","class","appearance","name"]
+const MAX_MENUS = 5
+const MENUS = ["race","class","background","appearance","name"]
 const STAT_DEFAULT = 10
 const STAT_MIN = 5
 const STAT_MAX = 15
@@ -17,6 +17,7 @@ var player_name := Names.Name.new("", "")
 var gender := -1
 var player_race := -1
 var player_class := -1
+var player_background := -1
 var player_appearance := {}
 var current := 0
 var files_mode := "load"
@@ -40,8 +41,9 @@ func new_game():
 		traits = races[race].traits
 	Characters.characters.clear()
 	Characters.inventory.clear()
-	Characters.player = Characters.add_character(player_name,1,0,gender,race,stats,classes[cl].equipment,proficiency,player_appearance,traits,[],get_stat_points_left(),0)
+	Characters.player = Characters.add_character(player_name,1,0,gender,race,stats,classes[cl].equipment,proficiency,Characters.BACKGROUNDS[player_background],player_appearance,traits,[],get_stat_points_left(),0)
 	Characters.player.cls_name = cl
+	Characters.player.story = [tr(Characters.BACKGROUNDS[player_background].to_upper()+"_DESC"),tr(Characters.BACKGROUNDS[player_background].to_upper()+"_"+cl.to_upper())]
 	Characters.party = [Characters.player.ID]
 	if classes[cl].has("mounts"):
 		Characters.mounts = []+classes[cl].mounts.duplicate(true)
@@ -55,6 +57,7 @@ func new_game():
 	Game.scripts.clear()
 	Game.vars.clear()
 	Journal.entries.clear()
+	Journal.add_entry(Characters.player.ID, player_name.get_name(), ["persons","companions"], "", "", Map.time)
 	Map.create_world()
 	for k in Map.cities.keys():
 		if Map.cities[k].population>largest_city && Map.cities[k].faction==available_races[player_race]:
@@ -231,6 +234,13 @@ func _set_class(ID : int):
 	get_node("NewChar/HBoxContainer/Classes/VBoxContainer/Button"+str(ID)).pressed = true
 	update_preview(classes.values()[player_class])
 
+func _set_background(ID : int):
+	player_background = ID
+	$NewChar/HBoxContainer/Description.clear()
+	$NewChar/HBoxContainer/Description.add_text(tr(Characters.BACKGROUNDS[ID])+"\n\n")
+	$NewChar/HBoxContainer/Description.add_text(tr(Characters.BACKGROUNDS[ID]+"_DESC")+"\n"+tr(Characters.BACKGROUNDS[ID]+"_"+available_classes[player_class].to_upper())+"\n")
+	get_node("NewChar/HBoxContainer/Background/VBoxContainer/Button"+str(ID)).pressed = true
+
 func _set_trait(type : String, ID : String):
 	player_appearance[type] = ID
 	$NewChar/HBoxContainer/Description.clear()
@@ -243,10 +253,12 @@ func _randomize():
 		1:
 			_set_class(randi()%available_classes.size())
 		2:
+			_set_background(randi()%Characters.BACKGROUNDS.size())
+		3:
 			for s in races[available_races[player_race]].appearance.keys():
 				set_random_trait(s)
 			update_appearance()
-		3:
+		4:
 			var race = races[available_races[player_race]]
 			var cl = classes[available_classes[player_class]]
 			# Set gender.
@@ -318,6 +330,7 @@ func _select_race():
 	current = 0
 	$NewChar/HBoxContainer/Races.show()
 	$NewChar/HBoxContainer/Classes.hide()
+	$NewChar/HBoxContainer/Background.hide()
 	$NewChar/HBoxContainer/Appearance.hide()
 	$NewChar/HBoxContainer/Name.hide()
 	$NewChar/HBoxContainer/Description.show()
@@ -335,6 +348,7 @@ func _select_class():
 	current = 1
 	$NewChar/HBoxContainer/Races.hide()
 	$NewChar/HBoxContainer/Classes.show()
+	$NewChar/HBoxContainer/Background.hide()
 	$NewChar/HBoxContainer/Appearance.hide()
 	$NewChar/HBoxContainer/Name.hide()
 	$NewChar/HBoxContainer/Description.show()
@@ -348,10 +362,31 @@ func _select_class():
 	else:
 		_set_class(player_class)
 
-func _select_appearance():
+func _select_background():
 	current = 2
 	$NewChar/HBoxContainer/Races.hide()
 	$NewChar/HBoxContainer/Classes.hide()
+	$NewChar/HBoxContainer/Background.show()
+	$NewChar/HBoxContainer/Appearance.hide()
+	$NewChar/HBoxContainer/Name.hide()
+	$NewChar/HBoxContainer/Description.show()
+	$NewChar/HBoxContainer/Preview.show()
+	$NewChar/HBoxContainer/Summary.hide()
+	$NewChar/Top/ButtonBackground.pressed = true
+	for c in $NewChar/HBoxContainer/Preview/VBoxContainer.get_children():
+		c.hide()
+	if player_background<0:
+		_set_background(0)
+	$NewChar/HBoxContainer/Preview/VBoxContainer/LabelDescription.text = tr(Characters.BACKGROUNDS[player_background].to_upper()+"_DESC")
+	if player_class>=0:
+		$NewChar/HBoxContainer/Preview/VBoxContainer/LabelDescription.text += "\n\n"+tr(Characters.BACKGROUNDS[player_background].to_upper()+"_"+available_classes[player_class].to_upper())
+	$NewChar/HBoxContainer/Preview/VBoxContainer/LabelDescription.show()
+
+func _select_appearance():
+	current = 3
+	$NewChar/HBoxContainer/Races.hide()
+	$NewChar/HBoxContainer/Classes.hide()
+	$NewChar/HBoxContainer/Background.hide()
 	$NewChar/HBoxContainer/Appearance.show()
 	$NewChar/HBoxContainer/Name.hide()
 	$NewChar/HBoxContainer/Description.show()
@@ -364,9 +399,10 @@ func _select_appearance():
 
 func _select_name():
 	var race = races[available_races[player_race]]
-	current = 3
+	current = 4
 	$NewChar/HBoxContainer/Races.hide()
 	$NewChar/HBoxContainer/Classes.hide()
+	$NewChar/HBoxContainer/Background.hide()
 	$NewChar/HBoxContainer/Appearance.hide()
 	$NewChar/HBoxContainer/Name.show()
 	$NewChar/HBoxContainer/Description.hide()
@@ -824,6 +860,14 @@ func _ready():
 		$NewChar/HBoxContainer/Classes/VBoxContainer.add_child(button)
 		button.connect("pressed",self,"_set_class",[i])
 		button.show()
+	for i in range(Characters.BACKGROUNDS.size()):
+		var button = $NewChar/HBoxContainer/Background/VBoxContainer/Button.duplicate()
+		button.name = "Button"+str(i)
+		button.text = tr(Characters.BACKGROUNDS[i].to_upper())
+		button.hint_tooltip = tr(Characters.BACKGROUNDS[i].to_upper()+"_TOOLTIP")
+		$NewChar/HBoxContainer/Background/VBoxContainer.add_child(button)
+		button.connect("pressed",self,"_set_background",[i])
+		button.show()
 	for k in Settings.settings.keys():
 		var button := $Options/Top/Button0.duplicate()
 		button.name = "Button"+k.capitalize()
@@ -835,6 +879,7 @@ func _ready():
 	# Connect buttons.
 	$NewChar/Top/ButtonRace.connect("pressed",self,"_select_race")
 	$NewChar/Top/ButtonClass.connect("pressed",self,"_select_class")
+	$NewChar/Top/ButtonBackground.connect("pressed",self,"_select_background")
 	$NewChar/Top/ButtonAppearance.connect("pressed",self,"_select_appearance")
 	$NewChar/Top/ButtonName.connect("pressed",self,"_select_name")
 	$NewChar/Bottom/ButtonBack.connect("pressed",self,"_back")

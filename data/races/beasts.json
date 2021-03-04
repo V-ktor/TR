@@ -1,7 +1,7 @@
 {
 	"name":"beast",
 	"stats":{"intelligence":-2,"wisdom":-2,"charisma":3,"strength":1},
-	"proficiency":{"unarmed":1,"two-hander":1,"spear":1,"knife":1,"sling":1,"nature_magic":1},
+	"proficiency":{"unarmed":1,"greatsword":1,"spear":1,"knife":1,"sling":1,"nature_magic":1},
 	"playable":false,
 	"phrase_male":["nya","she","xe","krr","ucc","ish","owo"],
 	"phrase_female":["nya","mia","au","ioa","you","la","sha","uwu"],

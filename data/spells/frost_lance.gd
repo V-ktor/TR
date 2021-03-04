@@ -23,14 +23,13 @@ func cast(actor,action,roll):
 	Main.add_text(tr("COMBAT_DAMAGED").format({"actor":action.target.get_name()}))
 	action.target.damaged(damage)
 	if action.target.has_status("burning"):
-	    action.target.remove_status("burning")
+		action.target.remove_status("burning")
 		action.target.add_status("wet",{"duration":5,"amount":1})
-    elif action.target.has_status("wet"):
-        action.target.remove_status("wet")
-        action.target.add_status(Effects.Frozen,{"duration":4,"stats_inc":{"agility":-4,"dexterity":-4}})
+	elif action.target.has_status("wet"):
+		action.target.remove_status("wet")
+		action.target.add_status(Effects.Frozen,{"duration":4,"stats_inc":{"agility":-4,"dexterity":-4}})
 	else:
-    	action.target.add_status(Effects.Frozen,{"duration":2,"stats_inc":{"agility":-3,"dexterity":-3}})
-	
+		action.target.add_status(Effects.Frozen,{"duration":2,"stats_inc":{"agility":-3,"dexterity":-3}})
 	action.ref.end_turn()
 
 func _init():

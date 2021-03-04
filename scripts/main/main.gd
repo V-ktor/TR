@@ -171,18 +171,38 @@ func _show_journal_entry(ID):
 			"persons":
 				# Add more informations if the entry is for a character.
 				if Characters.characters.has(ID):
-					var character = Characters.characters[ID]
-					$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(character.get_name()+" ("+tr(Characters.HE_SHE[character.gender])+"/"+tr(Characters.HIM_HER[character.gender])+")\n"+tr("LEVEL")+": "+str(character.level)+" ("+str(int(100*character.expirience/character.max_expirience))+"%)"+"\n"+tr("RACE")+": "+tr(character.race.to_upper())+"\n")
-					$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr("TRAITS")+": ")
-					for trait in character.traits:
-						$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr(trait.to_upper())+" ")
+					var character : Characters.Character = Characters.characters[ID]
+					# warning-ignore:integer_division
+					$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(character.get_name()+" ("+tr(Characters.HE_SHE[character.gender])+"/"+tr(Characters.HIM_HER[character.gender])+")\n"+tr("LEVEL")+": "+str(character.level)+" ("+str(int(100*character.expirience/character.max_expirience))+"%)"+"\n"+tr("RACE")+": "+tr(character.race.to_upper())+"\n\n")
+					if character==Characters.player:
+						$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr("PLAYER_CHARACTER")+"\n\n")
+					elif ID in Characters.party:
+						if character.hired_until!=0:
+							var hired_date := OS.get_datetime_from_unix_time(character.hired_until)
+							$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr("ACCOMPANYING_YOU_UNTIL").format({"date":tr("TIME_FORMAT").format({"minute":str(hired_date.minute).pad_zeros(2),"hour":str(hired_date.hour).pad_zeros(2),"day":str(hired_date.day).pad_zeros(2),"month":str(hired_date.month).pad_zeros(2),"year":hired_date.year,"weekday":hired_date.weekday})})+"\n\n")
+						else:
+							$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr("ACCOMPANYING_YOU")+"\n\n")
+					else:
+						$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr("LAST_KNOWN_LOCATION").format({"location":Map.get_location(character.location).name})+"\n\n")
+					if character.story.size()>0:
+						for text in character.story:
+							$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr(text)+"\n")
+						$Panel/HBoxContainer/Journal/VBoxContainer/Text.newline()
+					if character.traits.size()>0:
+						$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr("TRAITS")+": ")
+						for trait in character.traits:
+							$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr(trait.to_upper())+" ")
+						$Panel/HBoxContainer/Journal/VBoxContainer/Text.newline()
 					if character.knowledge.size()>0:
 						$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr("SPELLS")+": ")
 						for knowledge in character.knowledge:
 							$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr(knowledge.to_upper())+" ")
-					$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text("\n"+tr("PERSONALITY")+": ")
-					for personality in character.personality:
-						$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr(personality.to_upper())+" ")
+						$Panel/HBoxContainer/Journal/VBoxContainer/Text.newline()
+					if character.personality.size()>0:
+						$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr("PERSONALITY")+": ")
+						for personality in character.personality:
+							$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr(personality.to_upper())+" ")
+						$Panel/HBoxContainer/Journal/VBoxContainer/Text.newline()
 	# Add the main text.
 	for i in range(entry.text.size()):
 		var text = entry.text[i]
@@ -200,12 +220,12 @@ func _journal_link_clicked(data):
 
 func update_landscape(type):
 	if !Map.BACKGROUND_IMAGES.has(type):
-		$Panel/HBoxContainer/View/VBoxContainer/Image.hide()
+		$Panel/HBoxContainer/View/VBoxContainer/Image/Image.hide()
 		return
-	$Panel/HBoxContainer/View/VBoxContainer/Image.texture = load(Map.BACKGROUND_IMAGES[type].file)
+	$Panel/HBoxContainer/View/VBoxContainer/Image/Image.texture = load(Map.BACKGROUND_IMAGES[type].file)
 	for p in Map.BACKGROUND_IMAGES[type].keys():
-		$Panel/HBoxContainer/View/VBoxContainer/Image.material.set_shader_param(p,Map.BACKGROUND_IMAGES[type][p])
-	$Panel/HBoxContainer/View/VBoxContainer/Image.show()
+		$Panel/HBoxContainer/View/VBoxContainer/Image/Image.material.set_shader_param(p,Map.BACKGROUND_IMAGES[type][p])
+	$Panel/HBoxContainer/View/VBoxContainer/Image/Image.show()
 
 func update_party():
 	var text := $Panel/HBoxContainer/View/VBoxContainer/Text

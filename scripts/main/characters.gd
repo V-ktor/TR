@@ -14,7 +14,7 @@ const STATS = [
 const MAX_PROFICIENCY = 4
 const PROFICIENCIES = [
 	"unarmed",
-	"two-hander",
+	"greatsword",
 	"blade",
 	"knife",
 	"axe",
@@ -96,6 +96,9 @@ const APPEARANCE_TRAITS = {
 const PERSONALITIES = [
 	"shy","bold","reckless","cynical","curious","cheerful"
 ]
+const BACKGROUNDS = [
+	"drifter","explorer","mercenary","criminal","slave"
+]
 const ALIGNMENTS = [
 	"lawful","chaotic","evil"
 ]
@@ -160,6 +163,7 @@ class Character:
 	var taunt : int
 	var appearance : Dictionary
 	var traits : Array
+	var background := []
 	var personality := []
 	var status : Dictionary
 	var knowledge : Array
@@ -175,6 +179,7 @@ class Character:
 	var cls_name : String
 	var location : String
 	var spells_used := {}
+	var story := []
 	
 	func _init(dict : Dictionary):
 		for key in dict.keys():
@@ -432,7 +437,8 @@ class Character:
 			"armor":armor,"taunt":taunt,
 			"hired":hired,"hired_until":hired_until,"morale":morale,"home":home,
 			"location":location,"payment_cost":payment_cost,"payment_currency":payment_currency,
-			"status":status,"knowledge":knowledge,"cls_name":cls_name,"spells_used":spells_used}
+			"status":status,"knowledge":knowledge,"cls_name":cls_name,"spells_used":spells_used,
+			"story":story}
 		return dict
 
 
@@ -498,7 +504,7 @@ func distribute_prof_points(character : Character):
 		if character.prof_points<=0:
 			break
 
-func add_character(name,level,expirience,gender,race,_stats,_equip,prof,apr,_traits,knowledge,stat_points,prof_points):
+func add_character(name,level,expirience,gender,race,_stats,_equip,prof,bg,apr,_traits,knowledge,stat_points,prof_points):
 	var character
 	var ID = name
 	var num := 1
@@ -507,6 +513,7 @@ func add_character(name,level,expirience,gender,race,_stats,_equip,prof,apr,_tra
 	var stats = _stats.duplicate()
 	var traits = _traits.duplicate()
 	var equipment := []
+	var background := []
 	var equip := []
 	equip.resize(_equip.size())
 	for i in range(_equip.size()):
@@ -526,7 +533,11 @@ func add_character(name,level,expirience,gender,race,_stats,_equip,prof,apr,_tra
 		for k in APPEARANCE_TRAITS.keys():
 			if appearance[s]==k && !(APPEARANCE_TRAITS[k] in traits):
 				traits.push_back(APPEARANCE_TRAITS[k])
-	character = Character.new({"name":name,"level":level,"expirience":expirience,"gender":gender,"race":race,"stats":stats,"equipment":equipment,"proficiency":proficiency,"appearance":appearance,"traits":traits,"knowledge":knowledge.duplicate(),"stat_points":stat_points,"prof_points":prof_points})
+	if typeof(bg)!=TYPE_ARRAY:
+		background.push_back(bg)
+	else:
+		background = bg.duplicate()
+	character = Character.new({"name":name,"level":level,"expirience":expirience,"gender":gender,"race":race,"stats":stats,"equipment":equipment,"proficiency":proficiency,"background":background,"appearance":appearance,"traits":traits,"knowledge":knowledge.duplicate(),"stat_points":stat_points,"prof_points":prof_points})
 	equipment.resize(character.slots.size())
 	for i in range(character.slots.size()):
 		for j in range(equip.size()-1,-1,-1):

@@ -2,4 +2,8 @@
 HIRED_UNTIL,"Hired {character} until {date}."
 FIRED_AT,"Fired {character} at {city}."
 LEARNED_SPELL,"Learned the {spell} spell."
+ACCOMPANYING_YOU,"Currently accompanying you."
+ACCOMPANYING_YOU_UNTIL,"Currently accompanying you (until {date})."
+LAST_KNOWN_LOCATION,"Last known location: {location}."
+PLAYER_CHARACTER,"player character"
 

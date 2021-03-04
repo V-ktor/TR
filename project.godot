@@ -43,7 +43,7 @@ gdscript/warnings/return_value_discarded=false
 
 [locale]
 
-translations=PoolStringArray( "res://translations/combat.en.translation", "res://translations/menu.en.translation", "res://translations/stats.en.translation", "res://translations/log.en.translation", "res://translations/locations.en.translation", "res://translations/races.en.translation", "res://translations/events.en.translation", "res://translations/items.en.translation", "res://translations/enhancements.en.translation", "res://translations/enemy.en.translation", "res://translations/effects.en.translation", "res://translations/traits.en.translation", "res://translations/spells.en.translation", "res://translations/classes.en.translation", "res://translations/city_descriptions.en.translation", "res://translations/jobs.en.translation", "res://translations/journal.en.translation" )
+translations=PoolStringArray( "res://translations/combat.en.translation", "res://translations/menu.en.translation", "res://translations/stats.en.translation", "res://translations/log.en.translation", "res://translations/locations.en.translation", "res://translations/races.en.translation", "res://translations/events.en.translation", "res://translations/items.en.translation", "res://translations/enhancements.en.translation", "res://translations/enemy.en.translation", "res://translations/effects.en.translation", "res://translations/traits.en.translation", "res://translations/spells.en.translation", "res://translations/classes.en.translation", "res://translations/city_descriptions.en.translation", "res://translations/jobs.en.translation", "res://translations/journal.en.translation", "res://translations/backgrounds.en.translation" )
 
 [rendering]
 

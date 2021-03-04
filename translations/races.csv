@@ -1,6 +1,6 @@
 ,en
 HUMAN,Human
-HUMNA_PLURAL,Humans
+HUMAN_PLURAL,Humans
 HUMAN_TOOLTIP,""
 HUMAN_DESCRIPTION,"Insert a proper description here."
 ELF,Elf
@@ -16,7 +16,7 @@ ORC_PLURAL,Orcs
 ORC_TOOLTIP,"Violent semi-nomadic humanoids."
 ORC_DESCRIPTION,"Insert a proper description here."
 DWARF,Dwarf
-DWARD_PLURAL,Dwarves
+DWARF_PLURAL,Dwarves
 DWARF_TOOLTIP,"Sturdy cave dwellers of small stature."
 DWARF_DESCRIPTION,"Insert a proper description here."
 SKIN,Skin

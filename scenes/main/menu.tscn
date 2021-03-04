@@ -167,7 +167,7 @@ content_margin_top = 2.0
 content_margin_bottom = 2.0
 bg_color = Color( 0.921569, 0.768627, 0.403922, 1 )
 
-[sub_resource type="StyleBoxFlat" id=36]
+[sub_resource type="StyleBoxFlat" id=13]
 bg_color = Color( 0.886275, 0.690196, 0.341176, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -181,7 +181,7 @@ corner_radius_bottom_left = 1
 shadow_color = Color( 0, 0, 0, 0.501961 )
 shadow_size = 4
 
-[sub_resource type="StyleBoxFlat" id=37]
+[sub_resource type="StyleBoxFlat" id=14]
 bg_color = Color( 0.921569, 0.768627, 0.403922, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -195,7 +195,7 @@ corner_radius_bottom_left = 1
 shadow_color = Color( 0, 0, 0, 0.501961 )
 shadow_size = 4
 
-[sub_resource type="StyleBoxFlat" id=13]
+[sub_resource type="StyleBoxFlat" id=15]
 content_margin_left = 4.0
 content_margin_right = 4.0
 content_margin_top = 4.0
@@ -213,7 +213,7 @@ corner_radius_bottom_left = 4
 shadow_color = Color( 0, 0, 0, 0.501961 )
 shadow_size = 4
 
-[sub_resource type="StyleBoxFlat" id=14]
+[sub_resource type="StyleBoxFlat" id=16]
 content_margin_left = 4.0
 content_margin_right = 4.0
 content_margin_top = 4.0
@@ -231,7 +231,7 @@ corner_radius_bottom_left = 4
 shadow_color = Color( 0, 0, 0, 0.501961 )
 shadow_size = 4
 
-[sub_resource type="StyleBoxFlat" id=15]
+[sub_resource type="StyleBoxFlat" id=17]
 content_margin_left = 4.0
 content_margin_right = 4.0
 content_margin_top = 4.0
@@ -249,7 +249,7 @@ corner_radius_bottom_left = 4
 shadow_color = Color( 0, 0, 0, 0.501961 )
 shadow_size = 4
 
-[sub_resource type="StyleBoxFlat" id=16]
+[sub_resource type="StyleBoxFlat" id=18]
 bg_color = Color( 0.870588, 0.792157, 0.701961, 1 )
 border_width_left = 4
 border_width_top = 4
@@ -261,7 +261,7 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxFlat" id=17]
+[sub_resource type="StyleBoxFlat" id=19]
 bg_color = Color( 0, 0, 0, 1 )
 draw_center = false
 border_width_left = 4
@@ -275,7 +275,7 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[sub_resource type="StyleBoxFlat" id=18]
+[sub_resource type="StyleBoxFlat" id=20]
 bg_color = Color( 0.12549, 0.12549, 0.12549, 1 )
 border_width_left = 4
 border_width_top = 4
@@ -287,7 +287,7 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxFlat" id=19]
+[sub_resource type="StyleBoxFlat" id=21]
 bg_color = Color( 0.886275, 0.690196, 0.341176, 1 )
 border_width_left = 4
 border_width_top = 4
@@ -305,7 +305,7 @@ expand_margin_bottom = 4.0
 shadow_color = Color( 0, 0, 0, 0.501961 )
 shadow_size = 4
 
-[sub_resource type="StyleBoxFlat" id=20]
+[sub_resource type="StyleBoxFlat" id=22]
 bg_color = Color( 0.921569, 0.768627, 0.403922, 1 )
 border_width_left = 4
 border_width_top = 4
@@ -323,7 +323,7 @@ expand_margin_bottom = 4.0
 shadow_color = Color( 0, 0, 0, 0.501961 )
 shadow_size = 4
 
-[sub_resource type="StyleBoxFlat" id=21]
+[sub_resource type="StyleBoxFlat" id=23]
 bg_color = Color( 0.717647, 0.490196, 0.2, 1 )
 border_width_left = 4
 border_width_top = 4
@@ -341,7 +341,7 @@ expand_margin_bottom = 4.0
 shadow_color = Color( 0, 0, 0, 0.501961 )
 shadow_size = 4
 
-[sub_resource type="StyleBoxFlat" id=22]
+[sub_resource type="StyleBoxFlat" id=24]
 content_margin_left = 4.0
 content_margin_right = 4.0
 content_margin_top = 4.0
@@ -354,7 +354,7 @@ corner_radius_bottom_left = 3
 expand_margin_left = 4.0
 expand_margin_right = 4.0
 
-[sub_resource type="StyleBoxFlat" id=23]
+[sub_resource type="StyleBoxFlat" id=25]
 content_margin_left = 4.0
 content_margin_right = 4.0
 content_margin_top = 4.0
@@ -367,11 +367,11 @@ corner_radius_bottom_left = 3
 expand_margin_left = 4.0
 expand_margin_right = 4.0
 
-[sub_resource type="DynamicFont" id=24]
+[sub_resource type="DynamicFont" id=26]
 font_data = ExtResource( 2 )
 
-[sub_resource type="Theme" id=25]
-default_font = SubResource( 24 )
+[sub_resource type="Theme" id=27]
+default_font = SubResource( 26 )
 Button/colors/font_color = Color( 0.12549, 0.12549, 0.12549, 1 )
 Button/colors/font_color_disabled = Color( 0.12549, 0.12549, 0.12549, 0.25098 )
 Button/colors/font_color_hover = Color( 0.25098, 0.25098, 0.25098, 1 )
@@ -398,8 +398,8 @@ HSlider/icons/grabber = ExtResource( 3 )
 HSlider/icons/grabber_disabled = ExtResource( 5 )
 HSlider/icons/grabber_highlight = ExtResource( 4 )
 HSlider/icons/tick = null
-HSlider/styles/grabber_area = SubResource( 36 )
-HSlider/styles/grabber_area_highlight = SubResource( 37 )
+HSlider/styles/grabber_area = SubResource( 13 )
+HSlider/styles/grabber_area_highlight = SubResource( 14 )
 HSlider/styles/slider = SubResource( 10 )
 Label/colors/font_color = Color( 0.12549, 0.12549, 0.12549, 1 )
 Label/colors/font_color_shadow = Color( 0, 0, 0, 0.12549 )
@@ -420,10 +420,10 @@ LineEdit/colors/selection_color = Color( 0.921569, 0.768627, 0.403922, 1 )
 LineEdit/constants/minimum_spaces = 12
 LineEdit/fonts/font = null
 LineEdit/icons/clear = null
-LineEdit/styles/focus = SubResource( 13 )
-LineEdit/styles/normal = SubResource( 14 )
-LineEdit/styles/read_only = SubResource( 15 )
-Panel/styles/panel = SubResource( 16 )
+LineEdit/styles/focus = SubResource( 15 )
+LineEdit/styles/normal = SubResource( 16 )
+LineEdit/styles/read_only = SubResource( 17 )
+Panel/styles/panel = SubResource( 18 )
 PopupMenu/colors/font_color = Color( 0.12549, 0.12549, 0.12549, 1 )
 PopupMenu/colors/font_color_accel = Color( 0.188235, 0.188235, 0.188235, 0.8 )
 PopupMenu/colors/font_color_disabled = Color( 0.0627451, 0.0627451, 0.0627451, 0.8 )
@@ -436,11 +436,11 @@ PopupMenu/icons/radio_checked = null
 PopupMenu/icons/radio_unchecked = null
 PopupMenu/icons/submenu = null
 PopupMenu/icons/unchecked = null
-PopupMenu/styles/hover = SubResource( 17 )
+PopupMenu/styles/hover = SubResource( 19 )
 PopupMenu/styles/labeled_separator_left = null
 PopupMenu/styles/labeled_separator_right = null
-PopupMenu/styles/panel = SubResource( 16 )
-PopupMenu/styles/panel_disabled = SubResource( 18 )
+PopupMenu/styles/panel = SubResource( 18 )
+PopupMenu/styles/panel_disabled = SubResource( 20 )
 PopupMenu/styles/separator = SubResource( 12 )
 SpinBox/icons/updown = null
 TextEdit/colors/background_color = Color( 0, 0, 0, 0 )
@@ -479,22 +479,22 @@ TextEdit/icons/folded = null
 TextEdit/icons/space = null
 TextEdit/icons/tab = null
 TextEdit/styles/completion = null
-TextEdit/styles/focus = SubResource( 13 )
-TextEdit/styles/normal = SubResource( 14 )
-TextEdit/styles/read_only = SubResource( 15 )
+TextEdit/styles/focus = SubResource( 15 )
+TextEdit/styles/normal = SubResource( 16 )
+TextEdit/styles/read_only = SubResource( 17 )
 VScrollBar/icons/decrement = null
 VScrollBar/icons/decrement_highlight = null
 VScrollBar/icons/increment = null
 VScrollBar/icons/increment_highlight = null
-VScrollBar/styles/grabber = SubResource( 19 )
-VScrollBar/styles/grabber_highlight = SubResource( 20 )
-VScrollBar/styles/grabber_pressed = SubResource( 21 )
-VScrollBar/styles/scroll = SubResource( 22 )
-VScrollBar/styles/scroll_focus = SubResource( 23 )
+VScrollBar/styles/grabber = SubResource( 21 )
+VScrollBar/styles/grabber_highlight = SubResource( 22 )
+VScrollBar/styles/grabber_pressed = SubResource( 23 )
+VScrollBar/styles/scroll = SubResource( 24 )
+VScrollBar/styles/scroll_focus = SubResource( 25 )
 VSeparator/constants/separation = 4
 VSeparator/styles/separator = SubResource( 12 )
 
-[sub_resource type="StyleBoxFlat" id=26]
+[sub_resource type="StyleBoxFlat" id=28]
 bg_color = Color( 0.0627451, 0.12549, 0.188235, 1 )
 border_width_left = 4
 border_width_top = 4
@@ -506,18 +506,18 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxFlat" id=27]
+[sub_resource type="StyleBoxFlat" id=29]
 content_margin_left = 2.0
 content_margin_right = 2.0
 content_margin_top = 2.0
 content_margin_bottom = 2.0
 bg_color = Color( 0.372549, 0.180392, 0.0745098, 1 )
 
-[sub_resource type="ButtonGroup" id=28]
+[sub_resource type="ButtonGroup" id=30]
 
-[sub_resource type="ButtonGroup" id=29]
+[sub_resource type="ButtonGroup" id=31]
 
-[sub_resource type="StyleBoxFlat" id=30]
+[sub_resource type="StyleBoxFlat" id=32]
 bg_color = Color( 0.886275, 0.690196, 0.341176, 1 )
 draw_center = false
 border_width_left = 20
@@ -532,17 +532,17 @@ corner_radius_bottom_left = 5
 shadow_color = Color( 0, 0, 0, 0.25098 )
 shadow_size = 2
 
-[sub_resource type="ButtonGroup" id=31]
-
-[sub_resource type="ButtonGroup" id=32]
-
 [sub_resource type="ButtonGroup" id=33]
 
-[sub_resource type="DynamicFont" id=34]
+[sub_resource type="ButtonGroup" id=34]
+
+[sub_resource type="ButtonGroup" id=35]
+
+[sub_resource type="DynamicFont" id=36]
 size = 12
 font_data = ExtResource( 2 )
 
-[sub_resource type="ButtonGroup" id=35]
+[sub_resource type="ButtonGroup" id=37]
 
 [node name="Menu" type="CanvasLayer"]
 layer = 100
@@ -567,8 +567,8 @@ margin_left = -96.0
 margin_top = -128.0
 margin_right = 96.0
 margin_bottom = 128.0
-theme = SubResource( 25 )
-custom_styles/panel = SubResource( 26 )
+theme = SubResource( 27 )
+custom_styles/panel = SubResource( 28 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -644,8 +644,8 @@ margin_left = 4.0
 margin_top = 4.0
 margin_right = -4.0
 margin_bottom = -4.0
-theme = SubResource( 25 )
-custom_styles/panel = SubResource( 26 )
+theme = SubResource( 27 )
+custom_styles/panel = SubResource( 28 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -657,7 +657,7 @@ margin_top = 40.0
 margin_right = -4.0
 margin_bottom = 48.0
 mouse_filter = 1
-custom_styles/separator = SubResource( 27 )
+custom_styles/separator = SubResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -672,7 +672,7 @@ margin_top = -48.0
 margin_right = -4.0
 margin_bottom = -40.0
 mouse_filter = 1
-custom_styles/separator = SubResource( 27 )
+custom_styles/separator = SubResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -690,40 +690,49 @@ __meta__ = {
 }
 
 [node name="ButtonRace" type="Button" parent="NewChar/Top"]
-margin_left = 174.0
-margin_right = 334.0
+margin_left = 92.0
+margin_right = 252.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 160, 0 )
 toggle_mode = true
 pressed = true
-group = SubResource( 28 )
+group = SubResource( 30 )
 text = "RACE"
 
 [node name="ButtonClass" type="Button" parent="NewChar/Top"]
-margin_left = 338.0
-margin_right = 498.0
+margin_left = 256.0
+margin_right = 416.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 160, 0 )
 toggle_mode = true
-group = SubResource( 28 )
+group = SubResource( 30 )
 text = "CLASS"
 
-[node name="ButtonAppearance" type="Button" parent="NewChar/Top"]
-margin_left = 502.0
-margin_right = 662.0
+[node name="ButtonBackground" type="Button" parent="NewChar/Top"]
+margin_left = 420.0
+margin_right = 580.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 160, 0 )
 toggle_mode = true
-group = SubResource( 28 )
+group = SubResource( 30 )
+text = "BACKGROUND"
+
+[node name="ButtonAppearance" type="Button" parent="NewChar/Top"]
+margin_left = 584.0
+margin_right = 744.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 160, 0 )
+toggle_mode = true
+group = SubResource( 30 )
 text = "APPEARANCE"
 
 [node name="ButtonName" type="Button" parent="NewChar/Top"]
-margin_left = 666.0
-margin_right = 826.0
+margin_left = 748.0
+margin_right = 908.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 160, 0 )
 toggle_mode = true
-group = SubResource( 28 )
+group = SubResource( 30 )
 text = "NAME"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="NewChar"]
@@ -761,7 +770,7 @@ margin_right = 50.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
 toggle_mode = true
-group = SubResource( 29 )
+group = SubResource( 31 )
 text = "RACE"
 
 [node name="Classes" type="ScrollContainer" parent="NewChar/HBoxContainer"]
@@ -785,7 +794,32 @@ margin_right = 50.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
 toggle_mode = true
-group = SubResource( 29 )
+group = SubResource( 31 )
+text = "RACE"
+
+[node name="Background" type="ScrollContainer" parent="NewChar/HBoxContainer"]
+visible = false
+margin_left = 247.0
+margin_right = 490.0
+margin_bottom = 496.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NewChar/HBoxContainer/Background"]
+margin_right = 243.0
+margin_bottom = 496.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="NewChar/HBoxContainer/Background/VBoxContainer"]
+visible = false
+margin_right = 50.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+toggle_mode = true
+group = SubResource( 31 )
 text = "RACE"
 
 [node name="Appearance" type="ScrollContainer" parent="NewChar/HBoxContainer"]
@@ -808,7 +842,7 @@ margin_right = 325.0
 margin_bottom = 28.0
 rect_min_size = Vector2( 0, 28 )
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 30 )
+custom_styles/panel = SubResource( 32 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NewChar/HBoxContainer/Appearance/VBoxContainer/Cat0"]
 anchor_right = 1.0
@@ -835,7 +869,7 @@ margin_top = 28.0
 margin_right = 297.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 0, 32 )
-group = SubResource( 31 )
+group = SubResource( 33 )
 text = "TRAIT"
 
 [node name="Name" type="VBoxContainer" parent="NewChar/HBoxContainer"]
@@ -862,7 +896,7 @@ placeholder_text = "FIRST_NAME"
 margin_top = 54.0
 margin_right = 319.0
 margin_bottom = 58.0
-custom_styles/separator = SubResource( 27 )
+custom_styles/separator = SubResource( 29 )
 
 [node name="LabelLastName" type="Label" parent="NewChar/HBoxContainer/Name"]
 margin_top = 62.0
@@ -881,7 +915,7 @@ placeholder_text = "LAST_NAME"
 margin_top = 116.0
 margin_right = 319.0
 margin_bottom = 120.0
-custom_styles/separator = SubResource( 27 )
+custom_styles/separator = SubResource( 29 )
 
 [node name="LabelPronouns" type="Label" parent="NewChar/HBoxContainer/Name"]
 margin_top = 124.0
@@ -901,7 +935,7 @@ margin_bottom = 27.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 pressed = true
-group = SubResource( 32 )
+group = SubResource( 34 )
 text = "HE_HIM"
 
 [node name="CheckBox2" type="CheckBox" parent="NewChar/HBoxContainer/Name/HBoxContainer"]
@@ -910,7 +944,7 @@ margin_right = 192.0
 margin_bottom = 27.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-group = SubResource( 32 )
+group = SubResource( 34 )
 text = "SHE_HER"
 
 [node name="CheckBox3" type="CheckBox" parent="NewChar/HBoxContainer/Name/HBoxContainer"]
@@ -919,7 +953,7 @@ margin_right = 319.0
 margin_bottom = 27.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-group = SubResource( 32 )
+group = SubResource( 34 )
 text = "THEY_THEM"
 
 [node name="VSeparator1" type="VSeparator" parent="NewChar/HBoxContainer"]
@@ -927,7 +961,7 @@ margin_left = 329.0
 margin_right = 333.0
 margin_bottom = 496.0
 mouse_filter = 1
-custom_styles/separator = SubResource( 27 )
+custom_styles/separator = SubResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -962,7 +996,7 @@ size_flags_vertical = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="NewChar/HBoxContainer/Summary/VBoxContainer"]
 visible = false
-margin_right = 325.0
+margin_right = 243.0
 margin_bottom = 20.0
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 fit_content_height = true
@@ -972,7 +1006,7 @@ visible = false
 margin_right = 325.0
 margin_bottom = 4.0
 mouse_filter = 1
-custom_styles/separator = SubResource( 27 )
+custom_styles/separator = SubResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -997,7 +1031,7 @@ margin_right = 162.0
 margin_bottom = 28.0
 rect_min_size = Vector2( 0, 28 )
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 30 )
+custom_styles/panel = SubResource( 32 )
 
 [node name="Label" type="Label" parent="NewChar/HBoxContainer/Summary/VBoxContainer/Traits/Trait0"]
 anchor_right = 1.0
@@ -1020,7 +1054,7 @@ visible = false
 margin_right = 325.0
 margin_bottom = 4.0
 mouse_filter = 1
-custom_styles/separator = SubResource( 27 )
+custom_styles/separator = SubResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -1050,7 +1084,7 @@ margin_right = 243.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 0, 36 )
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 30 )
+custom_styles/panel = SubResource( 32 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="NewChar/HBoxContainer/Summary/VBoxContainer/Stats/Stat0"]
 anchor_right = 1.0
@@ -1092,7 +1126,7 @@ margin_top = 50.0
 margin_right = 325.0
 margin_bottom = 54.0
 mouse_filter = 1
-custom_styles/separator = SubResource( 27 )
+custom_styles/separator = SubResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -1126,7 +1160,7 @@ margin_right = 325.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 0, 36 )
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 30 )
+custom_styles/panel = SubResource( 32 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="NewChar/HBoxContainer/Summary/VBoxContainer/Proficiencies/Skill0"]
 anchor_right = 1.0
@@ -1181,7 +1215,7 @@ margin_top = 180.0
 margin_right = 325.0
 margin_bottom = 184.0
 mouse_filter = 1
-custom_styles/separator = SubResource( 27 )
+custom_styles/separator = SubResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -1207,7 +1241,7 @@ margin_right = 162.0
 margin_bottom = 28.0
 rect_min_size = Vector2( 0, 28 )
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 30 )
+custom_styles/panel = SubResource( 32 )
 
 [node name="Label" type="Label" parent="NewChar/HBoxContainer/Summary/VBoxContainer/Equipment/Equipment0"]
 anchor_right = 1.0
@@ -1231,7 +1265,7 @@ margin_top = 180.0
 margin_right = 325.0
 margin_bottom = 184.0
 mouse_filter = 1
-custom_styles/separator = SubResource( 27 )
+custom_styles/separator = SubResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -1257,7 +1291,7 @@ margin_right = 162.0
 margin_bottom = 28.0
 rect_min_size = Vector2( 0, 28 )
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 30 )
+custom_styles/panel = SubResource( 32 )
 
 [node name="Label" type="Label" parent="NewChar/HBoxContainer/Summary/VBoxContainer/Spells/Spell0"]
 anchor_right = 1.0
@@ -1280,7 +1314,7 @@ margin_left = 666.0
 margin_right = 670.0
 margin_bottom = 496.0
 mouse_filter = 1
-custom_styles/separator = SubResource( 27 )
+custom_styles/separator = SubResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1316,7 +1350,7 @@ margin_top = 23.0
 margin_right = 326.0
 margin_bottom = 27.0
 mouse_filter = 1
-custom_styles/separator = SubResource( 27 )
+custom_styles/separator = SubResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -1339,7 +1373,7 @@ margin_right = 326.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 30 )
+custom_styles/panel = SubResource( 32 )
 
 [node name="Label" type="Label" parent="NewChar/HBoxContainer/Preview/VBoxContainer/Traits/Trait0"]
 anchor_right = 1.0
@@ -1362,7 +1396,7 @@ margin_top = 90.0
 margin_right = 326.0
 margin_bottom = 94.0
 mouse_filter = 1
-custom_styles/separator = SubResource( 27 )
+custom_styles/separator = SubResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -1385,7 +1419,7 @@ margin_right = 326.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 30 )
+custom_styles/panel = SubResource( 32 )
 
 [node name="Label" type="Label" parent="NewChar/HBoxContainer/Preview/VBoxContainer/Stats/Stat0"]
 margin_left = 20.0
@@ -1406,7 +1440,7 @@ margin_top = 157.0
 margin_right = 326.0
 margin_bottom = 161.0
 mouse_filter = 1
-custom_styles/separator = SubResource( 27 )
+custom_styles/separator = SubResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -1429,7 +1463,7 @@ margin_right = 326.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 30 )
+custom_styles/panel = SubResource( 32 )
 
 [node name="Label" type="Label" parent="NewChar/HBoxContainer/Preview/VBoxContainer/Proficiencies/Skill0"]
 margin_left = 20.0
@@ -1450,7 +1484,7 @@ margin_top = 224.0
 margin_right = 326.0
 margin_bottom = 228.0
 mouse_filter = 1
-custom_styles/separator = SubResource( 27 )
+custom_styles/separator = SubResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -1473,7 +1507,7 @@ margin_right = 326.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 30 )
+custom_styles/panel = SubResource( 32 )
 
 [node name="Label" type="Label" parent="NewChar/HBoxContainer/Preview/VBoxContainer/Spells/Spell0"]
 anchor_right = 1.0
@@ -1496,7 +1530,7 @@ margin_top = 291.0
 margin_right = 326.0
 margin_bottom = 295.0
 mouse_filter = 1
-custom_styles/separator = SubResource( 27 )
+custom_styles/separator = SubResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -1519,7 +1553,7 @@ margin_right = 326.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 30 )
+custom_styles/panel = SubResource( 32 )
 
 [node name="Label" type="Label" parent="NewChar/HBoxContainer/Preview/VBoxContainer/Equipment/Equipment0"]
 anchor_right = 1.0
@@ -1542,7 +1576,7 @@ margin_top = 358.0
 margin_right = 326.0
 margin_bottom = 362.0
 mouse_filter = 1
-custom_styles/separator = SubResource( 27 )
+custom_styles/separator = SubResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -1565,7 +1599,7 @@ margin_right = 326.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
 size_flags_horizontal = 3
-custom_styles/panel = SubResource( 30 )
+custom_styles/panel = SubResource( 32 )
 
 [node name="Label" type="Label" parent="NewChar/HBoxContainer/Preview/VBoxContainer/Inventory/Item0"]
 anchor_right = 1.0
@@ -1626,7 +1660,7 @@ placeholder_text = "FIRST_NAME"
 margin_top = 54.0
 margin_right = 326.0
 margin_bottom = 58.0
-custom_styles/separator = SubResource( 27 )
+custom_styles/separator = SubResource( 29 )
 
 [node name="Label2" type="Label" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1"]
 margin_top = 62.0
@@ -1645,7 +1679,7 @@ placeholder_text = "LAST_NAME"
 margin_top = 116.0
 margin_right = 326.0
 margin_bottom = 120.0
-custom_styles/separator = SubResource( 27 )
+custom_styles/separator = SubResource( 29 )
 
 [node name="Label5" type="Label" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1"]
 margin_top = 124.0
@@ -1665,7 +1699,7 @@ margin_bottom = 27.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 pressed = true
-group = SubResource( 33 )
+group = SubResource( 35 )
 text = "HE_HIM"
 
 [node name="CheckBox2" type="CheckBox" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1/HBoxContainer"]
@@ -1674,7 +1708,7 @@ margin_right = 199.0
 margin_bottom = 27.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-group = SubResource( 33 )
+group = SubResource( 35 )
 text = "SHE_HER"
 
 [node name="CheckBox3" type="CheckBox" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1/HBoxContainer"]
@@ -1683,14 +1717,14 @@ margin_right = 326.0
 margin_bottom = 27.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-group = SubResource( 33 )
+group = SubResource( 35 )
 text = "THEY_THEM"
 
 [node name="HSeparator3" type="HSeparator" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1"]
 margin_top = 178.0
 margin_right = 326.0
 margin_bottom = 182.0
-custom_styles/separator = SubResource( 27 )
+custom_styles/separator = SubResource( 29 )
 
 [node name="Label3" type="Label" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1"]
 margin_top = 186.0
@@ -1708,7 +1742,7 @@ margin_bottom = 236.0
 margin_top = 240.0
 margin_right = 326.0
 margin_bottom = 244.0
-custom_styles/separator = SubResource( 27 )
+custom_styles/separator = SubResource( 29 )
 
 [node name="Label4" type="Label" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1"]
 margin_top = 248.0
@@ -1726,7 +1760,7 @@ margin_bottom = 298.0
 margin_top = 302.0
 margin_right = 326.0
 margin_bottom = 306.0
-custom_styles/separator = SubResource( 27 )
+custom_styles/separator = SubResource( 29 )
 
 [node name="Space" type="Control" parent="NewChar/VBoxContainer/HBoxContainer2/VBoxContainer1"]
 margin_top = 310.0
@@ -1808,7 +1842,7 @@ __meta__ = {
 margin_top = 46.0
 margin_right = 330.0
 margin_bottom = 50.0
-custom_styles/separator = SubResource( 27 )
+custom_styles/separator = SubResource( 29 )
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="NewChar/VBoxContainer/HBoxContainer2"]
 margin_left = 672.0
@@ -1839,7 +1873,7 @@ rect_min_size = Vector2( 0, 80 )
 [node name="HSeparator" type="HSeparator" parent="NewChar/VBoxContainer/HBoxContainer"]
 margin_right = 1000.0
 margin_bottom = 4.0
-custom_styles/separator = SubResource( 27 )
+custom_styles/separator = SubResource( 29 )
 
 [node name="Label" type="Label" parent="NewChar/VBoxContainer/HBoxContainer"]
 margin_top = 8.0
@@ -1959,8 +1993,8 @@ margin_left = -256.0
 margin_top = -256.0
 margin_right = 256.0
 margin_bottom = 256.0
-theme = SubResource( 25 )
-custom_styles/panel = SubResource( 26 )
+theme = SubResource( 27 )
+custom_styles/panel = SubResource( 28 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1971,7 +2005,7 @@ anchor_right = 1.0
 margin_left = -192.0
 margin_top = -36.0
 margin_bottom = -4.0
-custom_styles/panel = SubResource( 26 )
+custom_styles/panel = SubResource( 28 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2084,7 +2118,7 @@ margin_right = 158.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 34 )
+custom_fonts/font = SubResource( 36 )
 custom_colors/font_color = Color( 0.12549, 0.12549, 0.12549, 0.752941 )
 text = "FILENAME"
 valign = 1
@@ -2096,7 +2130,7 @@ margin_right = 320.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 34 )
+custom_fonts/font = SubResource( 36 )
 custom_colors/font_color = Color( 0.12549, 0.12549, 0.12549, 0.752941 )
 text = "VERSION"
 align = 1
@@ -2110,8 +2144,8 @@ margin_left = 25.0
 margin_top = 50.0
 margin_right = -25.0
 margin_bottom = -25.0
-theme = SubResource( 25 )
-custom_styles/panel = SubResource( 26 )
+theme = SubResource( 27 )
+custom_styles/panel = SubResource( 28 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -2124,7 +2158,7 @@ margin_top = 40.0
 margin_right = -4.0
 margin_bottom = 48.0
 mouse_filter = 1
-custom_styles/separator = SubResource( 27 )
+custom_styles/separator = SubResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -2139,7 +2173,7 @@ margin_top = -48.0
 margin_right = -4.0
 margin_bottom = -40.0
 mouse_filter = 1
-custom_styles/separator = SubResource( 27 )
+custom_styles/separator = SubResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -2163,7 +2197,7 @@ margin_right = 559.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 160, 0 )
 toggle_mode = true
-group = SubResource( 35 )
+group = SubResource( 37 )
 
 [node name="Bottom" type="HBoxContainer" parent="Options"]
 anchor_top = 1.0
@@ -2222,7 +2256,7 @@ anchor_right = 1.0
 margin_left = -192.0
 margin_top = -36.0
 margin_bottom = -4.0
-custom_styles/panel = SubResource( 26 )
+custom_styles/panel = SubResource( 28 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -2257,8 +2291,8 @@ margin_left = -320.0
 margin_top = -224.0
 margin_right = 320.0
 margin_bottom = 224.0
-theme = SubResource( 25 )
-custom_styles/panel = SubResource( 26 )
+theme = SubResource( 27 )
+custom_styles/panel = SubResource( 28 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -2282,7 +2316,7 @@ anchor_right = 1.0
 margin_left = -192.0
 margin_top = -36.0
 margin_bottom = -4.0
-custom_styles/panel = SubResource( 26 )
+custom_styles/panel = SubResource( 28 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
