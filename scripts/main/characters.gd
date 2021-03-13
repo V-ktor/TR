@@ -714,6 +714,81 @@ func create_enemy(type, level:=1, ID:="") -> Character:
 		enemy.drops = dict.drops
 	return enemy
 
+func create_npc(dict:={}) -> Character:
+	var race
+	var cl
+	var actor
+	var name
+	var city = Map.cities[Game.location]
+	var level := int(max(player.level*rand_range(0.9,1.1)+rand_range(-2.0,2.0), 1))
+	var gender := int(2.1*randf())
+	var stat_offset := {}
+	var main_stats := []
+	var equip := []
+	var proficiency := {}
+	var appearance := {}
+	var personality := []
+	var background := []
+	var knowledge := []
+	var stats := {}
+	
+	if randf()<0.5:
+		race = Menu.races[Map.cities[Game.location].faction]
+	else:
+		race = Menu.races.values()[randi()%Menu.races.size()]
+	if race.has("stats"):
+		stat_offset = race.stats
+	if race.has("proficiency"):
+		for k in race.proficiency.keys():
+			proficiency[k] = race.proficiency[k]
+	if race.has("appearance"):
+		appearance = race.appearance.duplicate(true)
+	if gender==1 && race.has("no_female") && race.no_female:
+		gender = 0
+	if gender==0 && race.has("no_male") && race.no_male:
+		gender = 1
+	cl = Menu.classes.values()[randi()%Menu.classes.size()]
+	if cl.has("main_stats"):
+		main_stats = cl.main_stats
+	if cl.has("equipment"):
+		equip = cl.equipment
+	if cl.has("proficiency"):
+		for k in cl.proficiency.keys():
+			if proficiency.has(k):
+				proficiency[k] += cl.proficiency[k]
+			else:
+				proficiency[k] = cl.proficiency[k]
+	name = Names.get_random_name(gender,race.name)
+	stats = distribute_stat_points(stat_offset, main_stats, 0)
+	if randf()<0.5:
+		if randf()<0.5:
+			personality.push_back("young")
+			level = int(max(level-2,1))
+			stats.constitution += 1
+		else:
+			personality.push_back("old")
+			level += 2
+			stats.constitution -= 1
+	background.push_back(BACKGROUNDS[randi()%BACKGROUNDS.size()])
+	
+	actor = add_character(name, level, 0, gender, race.name, stats, equip, proficiency, background, appearance, [], knowledge, 0, int(max(level-1-int("young" in personality)+int("old" in personality), 0)))
+	distribute_prof_points(actor)
+	actor.base_type = cl.name
+	personality.push_back(PERSONALITIES[randi()%PERSONALITIES.size()])
+	personality.push_back(ALIGNMENTS[randi()%ALIGNMENTS.size()])
+	actor.personality = personality
+	if city.faction==actor.race && ("young" in personality || !("old" in personality) || randf()<0.5):
+		actor.home = Game.location
+	else:
+		var cities : Array = Map.get_faction_cities(actor.race)
+		if cities.size()==0:
+			actor.home = Map.cities.keys()[randi()%Map.cities.size()]
+		else:
+			actor.home = cities[randi()%cities.size()]
+	for key in dict.keys():
+		actor.set(key, dict[key])
+	return actor
+
 
 func _save(file : File) -> int:
 	# Add informations to save file.
