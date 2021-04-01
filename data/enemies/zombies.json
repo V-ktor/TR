@@ -1,0 +1,24 @@
+{
+	"name":"walking_corpse",
+    "race":"zombie",
+	"traits":["undead","rotting"],
+    "expirience":4,
+	"stats":{"strength":[10,15],"constitution":[10,15],"dexterity":[4,8],"agility":[4,8],"intelligence":[4,8],"wisdom":[4,8],"cunning":[4,8],"charisma":[4,8]},
+	"appearance":{"body":"average","skin":"undead","body":"undead"},
+	"equipment":["robe"],
+    "proficiency":{"unarmed":[1,2],"light_armor":[1,2]},
+    "drop_rate":0.75,
+    "drops":["rotten_flesh"]
+}
+{
+	"name":"weak_zombie",
+    "race":"zombie",
+	"traits":["undead","rotting"],
+    "expirience":8,
+	"stats":{"strength":[12,16],"constitution":[10,15],"dexterity":[5,10],"agility":[5,10],"intelligence":[4,8],"wisdom":[4,8],"cunning":[4,8],"charisma":[4,8]},
+	"appearance":{"body":"average","skin":"undead","body":"undead"},
+	"equipment":["leather_armor"],
+    "proficiency":{"unarmed":[1,3],"light_armor":[1,2]},
+    "drop_rate":0.75,
+    "drops":["rotten_flesh"]
+}

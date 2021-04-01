@@ -1,4 +1,16 @@
 {
+	"name":"small_imp",
+    "race":"imp",
+	"traits":[],
+    "expirience":10,
+	"stats":{"strength":[5,10],"constitution":[5,10],"dexterity":[5,10],"agility":[5,10],"intelligence":[5,10],"wisdom":[10,15],"cunning":[5,10],"charisma":[5,10]},
+	"appearance":{"body":"small"},
+	"equipment":["dagger"],
+    "proficiency":{"knife":[1,2],"unarmed":1,"light_armor":[1,2],"fire_magic":[1,2],"light_magic":[1,2],"wind_magic":[1,2]},
+    "drop_rate":0.5,
+    "drops":["imp_leather"]
+}
+{
 	"name":"crimson_imp",
     "race":"imp",
 	"traits":[],

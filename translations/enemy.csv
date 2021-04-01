@@ -27,6 +27,9 @@ BANDIT_MACE,"bandit (mace)"
 BANDIT_HUNTER,"bandit (bow)"
 BANDIT_CASTER,"bandit (mage)"
 VAMPIRIC_BAT,vampiric bat
+SMALL_IMP,Small Imp
 CRIMSON_IMP,crimson imp
 WHITE_IMP,white imp
+WALKING_CORPSE,walking corpse
+WEAK_ZOMBIE,weak zombie
 
