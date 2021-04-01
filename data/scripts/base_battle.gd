@@ -384,6 +384,9 @@ func init_battle():
 	turn_timer.one_shot = true
 	Main.add_child(turn_timer)
 	
+	Main.add_action(Game.Action.new(tr("FIGHT"),self,{0:{"method":"start_battle","grade":1}},"","",2))
+
+func start_battle(_actor,_action,_roll):
 	sort_attack_order()
 	next_turn()
 
@@ -584,7 +587,7 @@ func acquire_target(actor,filter={}):
 			set += player
 		else:
 			set += enemy
-	if filter.size()==0:
+	if set.size()==0:
 		set += player+enemy
 	for target in set:
 		if target==actor:
@@ -648,15 +651,19 @@ func next_turn():
 			Main.add_text(tr("COMBAT_UNABLE_TO_ACT").format({"actor":actor.get_name()}))
 			end_turn()
 	elif actor in player:
+		Main.add_text(tr("ACTORS_TURN").format({"actor":actor.get_name()}))
 		for action in actions:
 			Main.add_action_actor(actor,action)
-		if Main.get_action_count()==0:
+		if actions.size()==0 && Main.get_action_count()==0:
 			Main.add_text(tr("COMBAT_UNABLE_TO_ACT").format({"actor":actor.get_name()}))
 			end_turn()
 	else:
 		end_turn()
 
 func end_turn():
+	if turn_timer.time_left>0.0:
+		printt("Timer still running...")
+		return
 	turn_timer.start()
 	yield(turn_timer,"timeout")
 	
