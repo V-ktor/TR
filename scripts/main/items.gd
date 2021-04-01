@@ -20,45 +20,45 @@ var enhancements_minor := {}
 var enhancements_major := {}
 
 
-func add_item(item,amount:=1):
-	var ID = Characters.inventory.find(item)
+func add_item(item : Dictionary, amount:=1):
+	var ID := Characters.inventory.find(item)
 	if ID>=0:
 		Characters.inventory[ID].amount += amount
 	else:
 		item.amount = amount
 		Characters.inventory.push_back(item)
 
-func remove_item(item):
+func remove_item(item : Dictionary):
 	Characters.inventory.erase(item)
 
-func find_items(base_type) -> Array:
+func find_items(base_type : String) -> Array:
 	var array := []
 	for i in range(Characters.inventory.size()):
 		if Characters.inventory[i].base_type==base_type:
 			array.push_back(i)
 	return array
 
-func has_item(name) -> bool:
+func has_item(name : String) -> bool:
 	return find_items(name).size()>0
 
-func get_item_amount(name) -> int:
+func get_item_amount(name : String) -> int:
 	var amount := 0
 	for i in find_items(name):
 		amount += Characters.inventory[i].amount
 	return amount
 
-func add_items(name,amount:=1):
-	var array = find_items(name)
+func add_items(name : String, amount:=1):
+	var array := find_items(name)
 	if array.size()>0:
-		var item = Characters.inventory[array[0]]
+		var item : Dictionary = Characters.inventory[array[0]]
 		if item.has("amount"):
 			item.amount += amount
 		else:
 			item.amount = 1 + amount
 	else:
-		add_item(Items.create_item(name),amount)
+		add_item(create_item(name), amount)
 
-func remove_items(name,amount:=1) -> int:
+func remove_items(name : String, amount:=1) -> int:
 	var removed := 0
 	for i in find_items(name):
 		if Characters.inventory[i].amount<amount:
@@ -75,13 +75,13 @@ func remove_items(name,amount:=1) -> int:
 	return amount-removed
 
 
-func health_potion(target,amount) -> bool:
+func health_potion(target : Characters.Character, amount : int) -> bool:
 	if target.health>=target.max_health:
 		return false
 	target.heal(amount)
 	return true
 
-func mana_potion(target,amount) -> bool:
+func mana_potion(target : Characters.Character, amount : int) -> bool:
 	if target.mana>=target.max_mana:
 		return false
 	target.mana += amount
@@ -91,8 +91,15 @@ func mana_potion(target,amount) -> bool:
 
 
 
-func create_item(type,no_enhancements:=false,amount:=1):
-	var item = items[type].duplicate()
+func create_item(type : String, no_enhancements:=false, amount:=1):
+	if !items.has(type):
+		var item := {
+			"name":type,"type":"quest","base_type":type,
+			"weight":0.0,"price":0,"grade":1
+		}
+		return item
+	
+	var item : Dictionary = items[type].duplicate()
 	for s in EQUIPMENT_STATS:
 		if item.has(s) && typeof(item[s])==TYPE_ARRAY:
 			item[s] = int(round(rand_range(item[s][0],item[s][1])))
@@ -106,7 +113,7 @@ func create_item(type,no_enhancements:=false,amount:=1):
 	item.amount = amount
 	return item
 
-func add_enhancement(item,minor:=false):
+func add_enhancement(item : Dictionary, minor:=false):
 	var enhancements := []
 	if !item.has("enhancements"):
 		return
@@ -134,7 +141,7 @@ func add_enhancement(item,minor:=false):
 			break
 		cur += enhancements[i].frequency
 	
-	var enhancement = enhancements[ID]
+	var enhancement : Dictionary = enhancements[ID]
 	if minor:
 		item.name = tr(enhancement.name.to_upper())+" "+item.name
 	else:
@@ -152,11 +159,11 @@ func add_enhancement(item,minor:=false):
 			item.knowledge = enhancement.knowledge
 
 
-func load_items(path):
-	var dir = Directory.new()
-	var file = File.new()
-	var filename
-	var error = dir.change_dir(path)
+func load_items(path : String):
+	var dir := Directory.new()
+	var file := File.new()
+	var filename : String
+	var error := dir.change_dir(path)
 	if error!=OK:
 		return
 	error = dir.list_dir_begin(true)
@@ -177,42 +184,41 @@ func load_items(path):
 		
 		while !file.eof_reached():
 			# Gather all lines that are belonging to the same item.
-			var currentline = file.get_line()
-			var num_brackets = 0
-			for s in currentline:
+			var raw := file.get_line()
+			var num_brackets := 0
+			for s in raw:
 				num_brackets += int(s=="{")-int(s=="}")
 			while num_brackets>0:
-				var new = file.get_line()
+				var new := file.get_line()
 				for s in new:
 					num_brackets += int(s=="{")-int(s=="}")
-				currentline += "\n"+new
+				raw += "\n"+new
 				if file.eof_reached():
 					break
-			if currentline.length()<1:
+			if raw.length()<1:
 				continue
 			
 			# parse data
-			var raw = currentline
-			currentline = JSON.parse(currentline)
+			var currentline := JSON.parse(raw)
 			if currentline.error!=OK:
 				printt("Error parsing "+filename+".",raw)
 				continue
-			currentline = currentline.get_result()
-			if !currentline.has("name"):
+			var data : Dictionary = currentline.get_result()
+			if !data.has("name"):
 				printt("Error parsing "+filename+" (missing name).")
 				continue
 			
-			items[currentline.name] = currentline
-			if currentline.type=="commodities" || currentline.type=="fuel":
-				commodities.push_back(currentline.name)
+			items[data.name] = data
+			if data.type=="commodities" || data.type=="fuel":
+				commodities.push_back(data.name)
 			
 		filename = dir.get_next()
 
-func load_enhancements(path):
-	var dir = Directory.new()
-	var file = File.new()
-	var filename
-	var error = dir.change_dir(path)
+func load_enhancements(path : String):
+	var dir := Directory.new()
+	var file := File.new()
+	var filename : String
+	var error := dir.change_dir(path)
 	if error!=OK:
 		return
 	error = dir.list_dir_begin(true)
@@ -233,41 +239,40 @@ func load_enhancements(path):
 		
 		while !file.eof_reached():
 			# Gather all lines that are belonging to the same item.
-			var currentline = file.get_line()
-			var num_brackets = 0
-			for s in currentline:
+			var raw := file.get_line()
+			var num_brackets := 0
+			for s in raw:
 				num_brackets += int(s=="{")-int(s=="}")
 			while num_brackets>0:
-				var new = file.get_line()
+				var new := file.get_line()
 				for s in new:
 					num_brackets += int(s=="{")-int(s=="}")
-				currentline += "\n"+new
+				raw += "\n"+new
 				if file.eof_reached():
 					break
-			if currentline.length()<1:
+			if raw.length()<1:
 				continue
 			
 			# parse data
-			var raw = currentline
-			currentline = JSON.parse(currentline)
+			var currentline := JSON.parse(raw)
 			if currentline.error!=OK:
 				printt("Error parsing "+filename+".",raw)
 				continue
-			currentline = currentline.get_result()
-			if !currentline.has("name"):
+			var data : Dictionary = currentline.get_result()
+			if !data.has("name"):
 				printt("Error parsing "+filename+" (missing name).")
 				continue
 			
-			if currentline.has("minor") && currentline.minor:
-				if !enhancements_minor.has(currentline.type):
-					enhancements_minor[currentline.type] = [currentline]
+			if data.has("minor") && data.minor:
+				if !enhancements_minor.has(data.type):
+					enhancements_minor[data.type] = [data]
 				else:
-					enhancements_minor[currentline.type].push_back(currentline)
+					enhancements_minor[data.type].push_back(data)
 			else:
-				if !enhancements_major.has(currentline.type):
-					enhancements_major[currentline.type] = [currentline]
+				if !enhancements_major.has(data.type):
+					enhancements_major[data.type] = [data]
 				else:
-					enhancements_major[currentline.type].push_back(currentline)
+					enhancements_major[data.type].push_back(data)
 			
 		filename = dir.get_next()
 
