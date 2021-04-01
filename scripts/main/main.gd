@@ -22,7 +22,7 @@ func hide_actions():
 			c.disable()
 
 func add_text(text) -> Label:
-	var li = text_label.instance()
+	var li : Label = text_label.instance()
 	if text.length()>0:
 		text[0] = text[0].to_upper()
 	li.text = text
@@ -33,10 +33,10 @@ func add_text(text) -> Label:
 	return li
 
 func add_action_actor(actor,action):
-	var limit = action.limit-action.offset-Game.get_offset(actor,action.primary,action.secondary)
+	var limit : int = action.limit-action.offset-Game.get_offset(actor,action.primary,action.secondary)
 	if action.target!=null && action.target_primary!="":
 		limit += Game.get_offset(action.target,action.target_primary,action.target_secondary)
-	var bi = action_button.instance()
+	var bi : Control = action_button.instance()
 	bi.get_node("Button").text = tr(action.text).replace("<name>",actor.name.get_name())
 	bi.get_node("Button").connect("pressed",self,"_select_action",[actor,action,bi])
 	if limit>action.faces*action.num:
@@ -54,7 +54,7 @@ func add_action_actor(actor,action):
 	return bi
 
 func add_action(action,proficiencies=[]):
-	var actor = Characters.get_best_character(Characters.party,action.primary,action.secondary,proficiencies)
+	var actor := Characters.get_best_character(Characters.party,action.primary,action.secondary,proficiencies)
 	return add_action_actor(actor,action)
 
 func get_action_count() -> int:
@@ -71,8 +71,8 @@ func _select_action(actor,action,node):
 
 
 func _equip(index,button,slot,ID):
-	var c = Characters.characters[ID]
-	var i = button.get_item_id(index)
+	var c : Characters.Character = Characters.characters[ID]
+	var i : int = button.get_item_id(index)
 	if i>0:
 		c.equip(slot,Characters.inventory[i-1])
 	elif i==0:
@@ -80,7 +80,7 @@ func _equip(index,button,slot,ID):
 	update_characters()
 
 func _use_item(index):
-	var dict = Characters.inventory[index]
+	var dict : Dictionary = Characters.inventory[index]
 	if !dict.has("method"):
 		selected_item = -1
 		return
@@ -98,6 +98,7 @@ func _use_item(index):
 		Items.remove_items(dict.name)
 		update_inventory()
 	selected_item = -1
+	update_party()
 
 func _payout():
 	Characters.payout_party()
@@ -105,7 +106,7 @@ func _payout():
 func _select_character(index):
 	if selected_item<0:
 		return
-	var dict = Characters.inventory[selected_item]
+	var dict : Dictionary = Characters.inventory[selected_item]
 	if Items.callv(dict.method,[Characters.characters[Characters.party[index]]]+dict.args):
 		Items.remove_items(dict.name)
 		update_inventory()
@@ -130,8 +131,8 @@ func _toggle_sort_time(pressed):
 	update_journal()
 
 func _show_journal_entry(ID):
-	var entry = Journal.entries[ID]
-	var date = OS.get_datetime_from_unix_time(entry.time)
+	var entry : Dictionary = Journal.entries[ID]
+	var date := OS.get_datetime_from_unix_time(entry.time)
 	# Set the preview image and collapse/expand if image exists or not.
 	if entry.image=="":
 		$Panel/HBoxContainer/Journal/VBoxContainer/Image.texture = null
@@ -149,11 +150,11 @@ func _show_journal_entry(ID):
 		match tag:
 			"cities":
 				# Add more informations if the entry is for a city.
-				var city = Map.get_location(entry.title)
+				var city : Map.Location = Map.get_location(entry.title)
 				if city!=null:
 					$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr("FACTION")+": "+tr(city.faction.to_upper())+"\n")
 					if Characters.relations.has(city.faction):
-						var relation = Characters.relations[city.faction]
+						var relation : float = Characters.relations[city.faction]
 						$Panel/HBoxContainer/Journal/VBoxContainer/Text.add_text(tr("RELATION")+": ")
 						if relation<=-50:
 							$Panel/HBoxContainer/Journal/VBoxContainer/Text.push_color(Color(1.0,0.1,0.1).darkened(0.5))
@@ -205,11 +206,11 @@ func _show_journal_entry(ID):
 						$Panel/HBoxContainer/Journal/VBoxContainer/Text.newline()
 	# Add the main text.
 	for i in range(entry.text.size()):
-		var text = entry.text[i]
+		var text : String = entry.text[i]
 		var links := {}
 		# Prepare links to other journal entries.
 		for k in entry.link[i].keys():
-			var link = entry.link[i][k]
+			var link : Dictionary = entry.link[i][k]
 			links[k] = "[url="+link.target+"]"+link.name+"[/url]"
 		$Panel/HBoxContainer/Journal/VBoxContainer/Text.append_bbcode(text.format(links)+"\n")
 
@@ -231,7 +232,7 @@ func update_party():
 	var text := $Panel/HBoxContainer/View/VBoxContainer/Text
 	text.clear()
 	for ID in Characters.party:
-		var c = Characters.characters[ID]
+		var c : Characters.Character = Characters.characters[ID]
 		text.add_text(c.name.first+": ")
 		text.push_color(Color(1.0,0.0,0.0).linear_interpolate(Color(0.0,1.0,0.0),float(c.health)/max(float(c.max_health),1.0)))
 		text.add_text("["+tr("HEALTH")+": "+tr("HEALTH"+str(ceil(4*c.health/max(c.max_health,1))))+"] ")
@@ -255,10 +256,10 @@ func update_characters():
 	for c in $Panel/HBoxContainer/Characters/VBoxContainer.get_children():
 		c.hide()
 	for i in range(Characters.party.size()):
-		var ID = Characters.party[i]
-		var c = Characters.characters[ID]
-		var knowledge = c.get_knowledge()
-		var panel
+		var ID : String = Characters.party[i]
+		var c : Characters.Character = Characters.characters[ID]
+		var knowledge : Array = c.get_knowledge()
+		var panel : Control
 		if has_node("Panel/HBoxContainer/Characters/VBoxContainer/Character"+str(ID)):
 			panel = get_node("Panel/HBoxContainer/Characters/VBoxContainer/Character"+str(ID))
 			panel.show()
@@ -280,7 +281,7 @@ func update_characters():
 		for c2 in panel.get_node("Status/HBoxContainer/VBoxContainer/HBoxContainerEffects").get_children():
 			c2.hide()
 		for j in c.status.size():
-			var label
+			var label : Control
 			if panel.has_node("Status/HBoxContainer/VBoxContainer/HBoxContainerEffects/Status"+str(j)):
 				label = panel.get_node("Status/HBoxContainer/VBoxContainer/HBoxContainerEffects/Status"+str(j))
 			else:
@@ -299,12 +300,12 @@ func update_characters():
 			panel.get_node("Status/HBoxContainer/VBoxContainer/HBoxContainerEffects/Hired").show()
 			panel.get_node("Status/HBoxContainer/VBoxContainer/HBoxContainerEffects/Hired").hint_tooltip = tr("PAYMENT_TOOLTIP").format({"amount":str(c.payment_cost),"currency":tr(c.payment_currency.to_upper())})
 			if c.hired_until!=0:
-				var date = OS.get_datetime_from_unix_time(c.hired_until)
+				var date := OS.get_datetime_from_unix_time(c.hired_until)
 				panel.get_node("Status/HBoxContainer/VBoxContainer/HBoxContainerEffects/Hired").hint_tooltip += "\n"+tr("HIRED_UNTIL_TOOLTIP").format({"time":tr("TIME_FORMAT").format({"minute":str(date.minute).pad_zeros(2),"hour":str(date.hour).pad_zeros(2),"day":str(date.day).pad_zeros(2),"month":str(date.month).pad_zeros(2),"year":date.year,"weekday":date.weekday})})
 		for c2 in panel.get_node("Status/HBoxContainer/VBoxContainer/GridContainer").get_children():
 			c2.hide()
 		for j in range(c.slots.size()):
-			var button
+			var button : Control
 			if panel.has_node("Status/HBoxContainer/VBoxContainer/GridContainer/Button"+str(j)):
 				button = panel.get_node("Status/HBoxContainer/VBoxContainer/GridContainer/Button"+str(j))
 				button.clear()
@@ -324,16 +325,16 @@ func update_characters():
 					button.add_item(tr(c.slots[j].to_upper())+": "+tr(c.equipment[j].name),0)
 					button.select(1)
 				for k in range(Characters.inventory.size()):
-					var item = Characters.inventory[k]
+					var item : Dictionary = Characters.inventory[k]
 					if item.has("slot") && item.slot==c.slots[j]:
 						button.add_item(tr(item.name),k+1)
 		for stat in Characters.STATS:
-			var node = panel.get_node("Skills/HBoxContainerStats/"+stat.capitalize())
+			var node : Control = panel.get_node("Skills/HBoxContainerStats/"+stat.capitalize())
 			node.get_node("VBoxContainer/Value").value = c.stats[stat]
 			node.get_node("VBoxContainer/Value").min_value = c.min_stats[stat]
 		panel.get_node("Skills/LabelPoints").text = tr("POINTS_LEFT")+" "+str(c.prof_points)
 		for prof in Characters.PROFICIENCIES:
-			var node = panel.get_node("Skills/ScrollContainer/VBoxContainer/"+prof.capitalize())
+			var node : Control = panel.get_node("Skills/ScrollContainer/VBoxContainer/"+prof.capitalize())
 			if c.proficiency.has(prof):
 				node.get_node("HBoxContainer/Level").text = tr("PROF_LEVEL"+str(c.proficiency[prof]))
 				node.get_node("HBoxContainer/ButtonDec").disabled = c.proficiency[prof]>0
@@ -343,8 +344,8 @@ func update_characters():
 		for c2 in panel.get_node("Traits/Traits").get_children():
 			c2.hide()
 		for j in range(c.traits.size()):
-			var label
-			var stylebox
+			var label : Control
+			var stylebox : StyleBox
 			if panel.has_node("Traits/Traits/Trait"+str(j)):
 				label = panel.get_node("Traits/Traits/Trait"+str(j))
 			else:
@@ -368,7 +369,7 @@ func update_characters():
 			for c2 in panel.get_node("Traits/Spells/GridContainer").get_children():
 				c2.hide()
 			for j in range(knowledge.size()):
-				var node
+				var node : Control
 				if panel.has_node("Traits/Spells/GridContainer/Spell"+str(j)):
 					node = panel.get_node("Traits/Spells/GridContainer/Spell"+str(j))
 				else:
@@ -384,7 +385,7 @@ func update_characters():
 		for c2 in panel.get_node("Traits/ScrollContainer/GridContainer").get_children():
 			c2.hide()
 		for j in range(c.appearance.size()):
-			var node
+			var node : Control
 			if panel.has_node("Traits/ScrollContainer/GridContainer/Trait"+str(j)):
 				node = panel.get_node("Traits/ScrollContainer/GridContainer/Trait"+str(j))
 			else:
@@ -408,7 +409,7 @@ func update_inventory():
 	for i in range(Characters.inventory.size()):
 		var item : Button
 		var label : RichTextLabel
-		var dict = Characters.inventory[i]
+		var dict : Dictionary = Characters.inventory[i]
 		var tooltip := create_item_tooltip_text(dict)
 		if has_node("Panel/HBoxContainer/Inventory/VBoxContainer/VBoxContainer/Item"+str(i)):
 			item = get_node("Panel/HBoxContainer/Inventory/VBoxContainer/VBoxContainer/Item"+str(i))
@@ -452,10 +453,10 @@ func update_quests():
 		c.hide()
 	
 	for i in range(Game.quests.size()):
-		var panel
+		var panel : Control
 		var quest : Quests.Quest = Game.quests.values()[i]
 		var date := OS.get_datetime_from_unix_time(quest.timelimit)
-		var location = Map.get_location(quest.location)
+		var location : Map.Location = Map.get_location(quest.location)
 		if has_node("Panel/HBoxContainer/Quests/VBoxContainer/Quest"+str(i)):
 			panel = get_node("Panel/HBoxContainer/Quests/VBoxContainer/Quest"+str(i))
 		else:
@@ -476,13 +477,13 @@ func update_quests():
 		panel.show()
 
 func update_journal():
-	var keys = Journal.get_entries_sorted()
+	var keys : Array = Journal.get_entries_sorted()
 	for c in $Panel/HBoxContainer/List/VBoxContainer/VBoxContainer.get_children():
 		c.hide()
 	
 	for i in range(Journal.CATEGORIES.size()):
-		var c = Journal.CATEGORIES[i]
-		var button
+		var c : String = Journal.CATEGORIES[i]
+		var button : Control
 		if has_node("Panel/HBoxContainer/List/VBoxContainer/GridContainer/Button"+str(i)):
 			button = get_node("Panel/HBoxContainer/List/VBoxContainer/GridContainer/Button"+str(i))
 		else:
@@ -496,10 +497,10 @@ func update_journal():
 		button.connect("toggled",self,"_toggle_category_filter",[c])
 	
 	for i in range(keys.size()):
-		var k = keys[i]
-		var entry = Journal.entries[k]
-		var date = OS.get_datetime_from_unix_time(entry.time)
-		var button
+		var k : String = keys[i]
+		var entry : Dictionary = Journal.entries[k]
+		var date := OS.get_datetime_from_unix_time(entry.time)
+		var button : Control
 		if has_node("Panel/HBoxContainer/List/VBoxContainer/VBoxContainer/Button"+str(i)):
 			button = get_node("Panel/HBoxContainer/List/VBoxContainer/VBoxContainer/Button"+str(i))
 		else:
