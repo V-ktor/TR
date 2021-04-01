@@ -107,10 +107,11 @@ func _select_character(index):
 	if selected_item<0:
 		return
 	var dict : Dictionary = Characters.inventory[selected_item]
-	if Items.callv(dict.method,[Characters.characters[Characters.party[index]]]+dict.args):
-		Items.remove_items(dict.name)
+	if Items.callv(dict.method, [Characters.characters[Characters.party[index]]]+dict.args):
+		Items.remove_items(dict.base_type)
 		update_inventory()
 	selected_item = -1
+	update_party()
 
 func _toggle_category_filter(pressed,category):
 	Journal.filter[category] = pressed
