@@ -43,6 +43,8 @@ const CITY_DESC = [
 	"+dwarf +small -manufactories -wood -farming",
 	"+orc +blacksmith +armory",
 	"+human +prosperous +large",
+	# special traits
+	"+reshaped"
 ]
 const IMAGE_HUMAN_CITY = {
 	"file":"res://images/backgrounds/sk5.jpg",

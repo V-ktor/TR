@@ -2,7 +2,7 @@ extends CanvasLayer
 
 const VERSION = "0.0"
 const MAX_MENUS = 5
-const MENUS = ["race","class","background","appearance","name"]
+const MENUS = ["race", "class", "background", "appearance", "name"]
 const STAT_DEFAULT = 10
 const STAT_MIN = 5
 const STAT_MAX = 15
@@ -41,9 +41,9 @@ func new_game():
 		traits = races[race].traits
 	Characters.characters.clear()
 	Characters.inventory.clear()
-	Characters.player = Characters.add_character(player_name,1,0,gender,race,stats,classes[cl].equipment,proficiency,Characters.BACKGROUNDS[player_background],player_appearance,traits,[],get_stat_points_left(),0)
+	Characters.player = Characters.add_character(player_name, 1, 0, gender, race, stats, classes[cl].equipment, proficiency, Characters.BACKGROUNDS[player_background], player_appearance, traits, [], get_stat_points_left(), 0)
 	Characters.player.cls_name = cl
-	Characters.player.story = [tr(Characters.BACKGROUNDS[player_background].to_upper()+"_DESC"),tr(Characters.BACKGROUNDS[player_background].to_upper()+"_"+cl.to_upper())]
+	Characters.player.story = [tr(Characters.BACKGROUNDS[player_background].to_upper()+"_DESC"), tr(Characters.BACKGROUNDS[player_background].to_upper()+"_"+cl.to_upper())]
 	Characters.party = [Characters.player.ID]
 	if classes[cl].has("mounts"):
 		Characters.mounts = []+classes[cl].mounts.duplicate(true)
@@ -57,7 +57,7 @@ func new_game():
 	Game.scripts.clear()
 	Game.vars.clear()
 	Journal.entries.clear()
-	Journal.add_entry(Characters.player.ID, player_name.get_name(), ["persons","companions"], "", "", Map.time)
+	Journal.add_entry(Characters.player.ID, player_name.get_name(), ["persons", "companions"], "", "", Map.time)
 	Map.create_world()
 	for k in Map.cities.keys():
 		if Map.cities[k].population>largest_city && Map.cities[k].faction==available_races[player_race]:
@@ -67,6 +67,7 @@ func new_game():
 		printt("No suitable starting location found!")
 		location = Map.cities.keys()[randi()%Map.cities.size()]
 	Game.location = location
+	Characters.player.home = location
 	for r in races.keys():
 		Characters.relations[r] = 0.0
 	if races[race].has("relations"):
@@ -74,8 +75,20 @@ func new_game():
 			Characters.relations[r] += races[race].relations[r]
 	Characters.relations[available_races[player_race]] += 10.0
 	start()
-	Game.enter_location(location,Map.cities[location])
-	Game._save()
+#	Game.enter_location(location, Map.cities[location])
+	var script
+	if Characters.BACKGROUNDS[player_background]=="mercenary":
+		script = load("res://data/events/game_start/mercenary.gd").new()
+	elif cl=="wizard":
+		script = load("res://data/events/game_start/wizard.gd").new()
+#	elif Characters.BACKGROUNDS[player_background]=="mercenary":
+	else:
+		script = load("res://data/events/game_start/mercenary.gd").new()
+	Game.in_city = false
+	script.init(Map.cities[location], location, cl)
+	Main.update_party()
+	Main._show_log()
+#	Game._save()
 
 
 func start():
@@ -131,7 +144,7 @@ func get_stat_points_left() -> int:
 			left += races[race].stats[stat]
 	return left
 
-func _set_stat(value,stat,node):
+func _set_stat(value, stat, node):
 	if value-stats[stat]<=get_stat_points_left():
 		stats[stat] = value
 	else:
@@ -140,7 +153,7 @@ func _set_stat(value,stat,node):
 
 func combine_dicts(dict1 : Dictionary, dict2 : Dictionary) -> Dictionary:
 	var dict := {}
-	for k in ["traits","stats","proficiency","equipment","inventory","knowledge"]:
+	for k in ["traits", "stats", "proficiency", "equipment", "inventory", "knowledge"]:
 		if dict1.has(k):
 			dict[k] = dict1[k].duplicate(true)
 		if dict2.has(k):
@@ -179,7 +192,7 @@ func get_all_traits(type : String) -> Array:
 
 func set_random_trait(type : String):
 	var all_traits := get_all_traits(type)
-	_set_trait(type,all_traits[randi()%all_traits.size()])
+	_set_trait(type, all_traits[randi()%all_traits.size()])
 
 func _update_name(_text):
 	player_name.first = $NewChar/HBoxContainer/Name/FirstName.text
@@ -196,7 +209,7 @@ func _set_gender(_pressed : bool, ID : int):
 func _set_race(ID : int):
 	var race = available_races[ID]
 	player_race = ID
-	_set_gender(true,gender)
+	_set_gender(true, gender)
 	$NewChar/HBoxContainer/Description.clear()
 	$NewChar/HBoxContainer/Description.add_text(tr(race.to_upper())+"\n\n")
 	$NewChar/HBoxContainer/Description.add_text(tr(race.to_upper()+"_TOOLTIP")+"\n\n")
@@ -237,8 +250,8 @@ func _set_class(ID : int):
 func _set_background(ID : int):
 	player_background = ID
 	$NewChar/HBoxContainer/Description.clear()
-	$NewChar/HBoxContainer/Description.add_text(tr(Characters.BACKGROUNDS[ID])+"\n\n")
-	$NewChar/HBoxContainer/Description.add_text(tr(Characters.BACKGROUNDS[ID]+"_DESC")+"\n"+tr(Characters.BACKGROUNDS[ID]+"_"+available_classes[player_class].to_upper())+"\n")
+	$NewChar/HBoxContainer/Description.add_text(tr(Characters.BACKGROUNDS[ID].to_upper())+"\n\n")
+	$NewChar/HBoxContainer/Description.add_text(tr(Characters.BACKGROUNDS[ID].to_upper()+"_DESC")+"\n"+tr(Characters.BACKGROUNDS[ID].to_upper()+"_"+available_classes[player_class].to_upper())+"\n")
 	get_node("NewChar/HBoxContainer/Background/VBoxContainer/Button"+str(ID)).pressed = true
 
 func _set_trait(type : String, ID : String):
@@ -269,7 +282,7 @@ func _randomize():
 				gender = 0
 			get_node("NewChar/HBoxContainer/Name/HBoxContainer/CheckBox"+str(gender+1)).pressed = true
 			# Randomize name.
-			player_name = Names.get_random_name(gender,available_races[player_race])
+			player_name = Names.get_random_name(gender, available_races[player_race])
 			get_node("NewChar/HBoxContainer/Name/FirstName").text = player_name.first
 			get_node("NewChar/HBoxContainer/Name/LastName").text = player_name.last
 			# Distribute stat points.
@@ -284,19 +297,19 @@ func _randomize():
 					stats[stat] = STAT_MIN+offset+randi()%int(max(STAT_MAX-STAT_MIN, 1))
 			while get_stat_points_left()!=0:
 				var points_left := get_stat_points_left()
-				for _i in range(max(-points_left,0)):
+				for _i in range(max(-points_left, 0)):
 					var s = stats.keys()[randi()%stats.size()]
 					var offset := 0
 					if race.has("stats") && race.stats.has(s):
 						offset += race.stats[s]
 					if !(s in cl.main_stats):
-						stats[s] = max(stats[s]-1,STAT_MIN+offset)
-				for _i in range(max(points_left,0)):
+						stats[s] = max(stats[s]-1, STAT_MIN+offset)
+				for _i in range(max(points_left, 0)):
 					var s = stats.keys()[randi()%stats.size()]
 					var offset := 0
 					if race.has("stats") && race.stats.has(s):
 						offset += race.stats[s]
-					stats[s] = min(stats[s]+1,STAT_MAX+offset)
+					stats[s] = min(stats[s]+1, STAT_MAX+offset)
 			update_summary()
 
 
@@ -408,7 +421,7 @@ func _select_name():
 	$NewChar/HBoxContainer/Description.hide()
 	$NewChar/HBoxContainer/Summary.show()
 	$NewChar/HBoxContainer/Preview.show()
-	update_preview(add_appearance_traits(combine_dicts(races[available_races[player_race]],classes[available_classes[player_class]])))
+	update_preview(add_appearance_traits(combine_dicts(races[available_races[player_race]], classes[available_classes[player_class]])))
 	$NewChar/HBoxContainer/Preview/VBoxContainer/LabelStats.hide()
 	$NewChar/HBoxContainer/Preview/VBoxContainer/Stats.hide()
 	$NewChar/HBoxContainer/Preview/VBoxContainer/HSeparator2.hide()
@@ -444,7 +457,7 @@ func update_preview(dict : Dictionary):
 				stylebox.border_color = Characters.TRAIT_COLOR[dict.traits[i]]
 			else:
 				stylebox.border_color = Color("#e2b057")
-			panel.add_stylebox_override("panel",stylebox)
+			panel.add_stylebox_override("panel", stylebox)
 	
 	$NewChar/HBoxContainer/Preview/VBoxContainer/LabelStats.visible = dict.has("stats")
 	$NewChar/HBoxContainer/Preview/VBoxContainer/Stats.visible = dict.has("stats")
@@ -547,7 +560,7 @@ func update_preview(dict : Dictionary):
 	$NewChar/HBoxContainer/Preview/VBoxContainer/HSeparator6.hide()
 
 func update_summary():
-	var dict := combine_dicts(races[available_races[player_race]],classes[available_classes[player_class]])
+	var dict := combine_dicts(races[available_races[player_race]], classes[available_classes[player_class]])
 	for s in stats.keys():
 		var panel = get_node("NewChar/HBoxContainer/Summary/VBoxContainer/Stats/"+s.capitalize())
 		if dict.has("stats") && dict.stats.has(s):
@@ -611,10 +624,10 @@ func update_appearance():
 					panel.get_node("VBoxContainer").add_child(button)
 				button.show()
 				button.text = tr(traits[j].to_upper())
-				if button.is_connected("pressed",self,"_set_trait"):
-					button.disconnect("pressed",self,"_set_trait")
+				if button.is_connected("pressed", self, "_set_trait"):
+					button.disconnect("pressed", self, "_set_trait")
 				button.pressed = player_appearance[type]==traits[j]
-				button.connect("pressed",self,"_set_trait",[type,traits[j]])
+				button.connect("pressed", self, "_set_trait", [type, traits[j]])
 			panel.rect_min_size.y = 36*(1+traits.size())
 			for k in Characters.APPEARANCE_TRAITS.keys():
 				if k==player_appearance[type] && !(Characters.APPEARANCE_TRAITS[k] in dict.traits):
@@ -662,7 +675,7 @@ func update_save_files():
 	save_files.clear()
 	while filename!="":
 		if ".sav" in filename:
-			save_files.push_back(filename.replace(".sav",""))
+			save_files.push_back(filename.replace(".sav", ""))
 		filename = dir.get_next()
 	save_files.sort()
 	dir.list_dir_end()
@@ -674,14 +687,14 @@ func update_save_files():
 		var file := File.new()
 		if has_node("Files/ScrollContainer/VBoxContainer/Button"+str(i)):
 			button = get_node("Files/ScrollContainer/VBoxContainer/Button"+str(i))
-			if button.is_connected("pressed",self,"_select_file"):
-				button.disconnect("pressed",self,"_select_file")
+			if button.is_connected("pressed", self, "_select_file"):
+				button.disconnect("pressed", self, "_select_file")
 		else:
 			button = $Files/ScrollContainer/VBoxContainer/Button0.duplicate(0)
 			button.name = "Button"+str(i)
 			$Files/ScrollContainer/VBoxContainer.add_child(button)
-		button.connect("pressed",self,"_select_file",[save_files[i]])
-		error = file.open("user://saves/"+save_files[i]+".sav",File.READ)
+		button.connect("pressed", self, "_select_file", [save_files[i]])
+		error = file.open("user://saves/"+save_files[i]+".sav", File.READ)
 		if error==OK:
 			var currentline = JSON.parse(file.get_line()).result
 			if currentline!=null && typeof(currentline)==TYPE_DICTIONARY:
@@ -691,9 +704,9 @@ func update_save_files():
 				button.get_node("GridContainer/LabelFilename").text = save_files[i]
 				button.get_node("GridContainer/LabelVersion").text = currentline.version
 				if currentline.version!=VERSION:
-					button.get_node("GridContainer/LabelVersion").modulate = Color(1.0,0.0,0.0)
+					button.get_node("GridContainer/LabelVersion").modulate = Color(1.0, 0.0, 0.0)
 				else:
-					button.get_node("GridContainer/LabelVersion").modulate = Color(1.0,1.0,1.0)
+					button.get_node("GridContainer/LabelVersion").modulate = Color(1.0, 1.0, 1.0)
 				button.show()
 
 func _apply_settings():
@@ -717,7 +730,7 @@ func _select_setting(pressed, type):
 		var container := HBoxContainer.new()
 		var label := Label.new()
 		label.text = tr(k.to_upper())
-		label.add_color_override("font_color", Color(1.0,1.0,1.0))
+		label.add_color_override("font_color", Color(1.0, 1.0, 1.0))
 		label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		container.add_child(label)
 		match typeof(Settings.settings[type][k]):
@@ -726,7 +739,7 @@ func _select_setting(pressed, type):
 				button.name = k.capitalize()
 				button.pressed = Settings.settings[type][k]
 				button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-				button.connect("toggled",self,"_set_setting",[type,k])
+				button.connect("toggled", self, "_set_setting", [type, k])
 				container.add_child(button)
 			TYPE_INT:
 				var button := SpinBox.new()
@@ -741,7 +754,7 @@ func _select_setting(pressed, type):
 					button.max_value = 100
 				button.value = Settings.settings[type][k]
 				button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-				button.connect("value_changed",self,"_set_setting",[type,k])
+				button.connect("value_changed", self, "_set_setting", [type, k])
 				container.add_child(button)
 			TYPE_REAL:
 				var button = HSlider.new()
@@ -757,7 +770,7 @@ func _select_setting(pressed, type):
 				button.step = 0.0
 				button.value = Settings.settings[type][k]
 				button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-				button.connect("value_changed",self,"_set_setting",[type,k])
+				button.connect("value_changed", self, "_set_setting", [type, k])
 				container.add_child(button)
 		
 		$Options/ScrollContainer/VBoxContainer.add_child(container)
@@ -775,7 +788,7 @@ func load_races(path : String):
 	while file_name!="":
 		if !dir.current_is_dir():
 			var file := File.new()
-			var err := file.open(path+"/"+file_name,File.READ)
+			var err := file.open(path+"/"+file_name, File.READ)
 			if err==OK:
 				var currentline = JSON.parse(file.get_as_text()).result
 				if currentline!=null:
@@ -798,7 +811,7 @@ func load_classes(path : String):
 	while file_name!="":
 		if !dir.current_is_dir():
 			var file := File.new()
-			var err := file.open(path+"/"+file_name,File.READ)
+			var err := file.open(path+"/"+file_name, File.READ)
 			if err==OK:
 				var currentline = JSON.parse(file.get_as_text()).result
 				if currentline!=null:
@@ -837,20 +850,20 @@ func _ready():
 		box.get_node("HBoxContainer/SpinBox").value = STAT_DEFAULT
 		box.get_node("HBoxContainer/SpinBox").hint_tooltip = tr(stat.to_upper()+"_TOOLTIP")
 		$NewChar/HBoxContainer/Summary/VBoxContainer/Stats.add_child(box)
-		box.get_node("HBoxContainer/SpinBox").connect("value_changed",self,"_set_stat",[stat,box])
+		box.get_node("HBoxContainer/SpinBox").connect("value_changed", self, "_set_stat", [stat, box])
 		box.show()
 		stats[stat] = STAT_DEFAULT
-	$NewChar/HBoxContainer/Name/FirstName.connect("text_changed",self,"_update_name")
-	$NewChar/HBoxContainer/Name/LastName.connect("text_changed",self,"_update_name")
+	$NewChar/HBoxContainer/Name/FirstName.connect("text_changed", self, "_update_name")
+	$NewChar/HBoxContainer/Name/LastName.connect("text_changed", self, "_update_name")
 	for i in range(3):
-		get_node("NewChar/HBoxContainer/Name/HBoxContainer/CheckBox"+str(i+1)).connect("toggled",self,"_set_gender",[i])
+		get_node("NewChar/HBoxContainer/Name/HBoxContainer/CheckBox"+str(i+1)).connect("toggled", self, "_set_gender", [i])
 	for i in range(available_races.size()):
 		var button = $NewChar/HBoxContainer/Races/VBoxContainer/Button.duplicate()
 		button.name = "Button"+str(i)
 		button.text = tr(available_races[i].to_upper())
 		button.hint_tooltip = tr(available_races[i].to_upper()+"_TOOLTIP")
 		$NewChar/HBoxContainer/Races/VBoxContainer.add_child(button)
-		button.connect("pressed",self,"_set_race",[i])
+		button.connect("pressed", self, "_set_race", [i])
 		button.show()
 	for i in range(available_classes.size()):
 		var button = $NewChar/HBoxContainer/Classes/VBoxContainer/Button.duplicate()
@@ -858,7 +871,7 @@ func _ready():
 		button.text = tr(available_classes[i].to_upper())
 		button.hint_tooltip = tr(available_classes[i].to_upper()+"_TOOLTIP")
 		$NewChar/HBoxContainer/Classes/VBoxContainer.add_child(button)
-		button.connect("pressed",self,"_set_class",[i])
+		button.connect("pressed", self, "_set_class", [i])
 		button.show()
 	for i in range(Characters.BACKGROUNDS.size()):
 		var button = $NewChar/HBoxContainer/Background/VBoxContainer/Button.duplicate()
@@ -866,41 +879,41 @@ func _ready():
 		button.text = tr(Characters.BACKGROUNDS[i].to_upper())
 		button.hint_tooltip = tr(Characters.BACKGROUNDS[i].to_upper()+"_TOOLTIP")
 		$NewChar/HBoxContainer/Background/VBoxContainer.add_child(button)
-		button.connect("pressed",self,"_set_background",[i])
+		button.connect("pressed", self, "_set_background", [i])
 		button.show()
 	for k in Settings.settings.keys():
 		var button := $Options/Top/Button0.duplicate()
 		button.name = "Button"+k.capitalize()
 		button.text = tr(k.to_upper())
-		button.connect("toggled",self,"_select_setting",[k])
+		button.connect("toggled", self, "_select_setting", [k])
 		$Options/Top.add_child(button)
 		button.show()
 	
 	# Connect buttons.
-	$NewChar/Top/ButtonRace.connect("pressed",self,"_select_race")
-	$NewChar/Top/ButtonClass.connect("pressed",self,"_select_class")
-	$NewChar/Top/ButtonBackground.connect("pressed",self,"_select_background")
-	$NewChar/Top/ButtonAppearance.connect("pressed",self,"_select_appearance")
-	$NewChar/Top/ButtonName.connect("pressed",self,"_select_name")
-	$NewChar/Bottom/ButtonBack.connect("pressed",self,"_back")
-	$NewChar/Bottom/ButtonContinue.connect("pressed",self,"_next")
-	$NewChar/Bottom/ButtonRandomize.connect("pressed",self,"_randomize")
-	$Panel/VBoxContainer/Button1.connect("pressed",self,"_show_new")
-	$Panel/VBoxContainer/Button2.connect("pressed",self,"_show_load")
-	$Panel/VBoxContainer/Button7.connect("pressed",self,"_show_save")
-	$Panel/VBoxContainer/Button3.connect("pressed",self,"_show_options")
-	$Panel/VBoxContainer/Button4.connect("pressed",self,"_quit")
-	$Panel/VBoxContainer/Button5.connect("pressed",$Credits,"show")
-	$Panel/VBoxContainer/Button6.connect("pressed",self,"hide")
-	$Files/Panel/Button.connect("pressed",$Files,"hide")
-	$Files/ScrollContainer/VBoxContainer/New/LineEdit.connect("text_entered",self,"_save_new")
-	$Files/ScrollContainer/VBoxContainer/New/ButtonConfirm.connect("pressed",self,"_save_new")
-	$Options/Panel/Button.connect("pressed",$Options,"hide")
-	$Options/Bottom/ButtonConfirm.connect("pressed",self,"_confirm_settings")
-	$Options/Bottom/ButtonApply.connect("pressed",self,"_apply_settings")
-	$Options/Bottom/ButtonCancel.connect("pressed",$Options,"hide")
-	$Credits/Panel/Button.connect("pressed",$Credits,"hide")
-	$Credits/RichTextLabel.connect("meta_clicked",OS,"shell_open")
+	$NewChar/Top/ButtonRace.connect("pressed", self, "_select_race")
+	$NewChar/Top/ButtonClass.connect("pressed", self, "_select_class")
+	$NewChar/Top/ButtonBackground.connect("pressed", self, "_select_background")
+	$NewChar/Top/ButtonAppearance.connect("pressed", self, "_select_appearance")
+	$NewChar/Top/ButtonName.connect("pressed", self, "_select_name")
+	$NewChar/Bottom/ButtonBack.connect("pressed", self, "_back")
+	$NewChar/Bottom/ButtonContinue.connect("pressed", self, "_next")
+	$NewChar/Bottom/ButtonRandomize.connect("pressed", self, "_randomize")
+	$Panel/VBoxContainer/Button1.connect("pressed", self, "_show_new")
+	$Panel/VBoxContainer/Button2.connect("pressed", self, "_show_load")
+	$Panel/VBoxContainer/Button7.connect("pressed", self, "_show_save")
+	$Panel/VBoxContainer/Button3.connect("pressed", self, "_show_options")
+	$Panel/VBoxContainer/Button4.connect("pressed", self, "_quit")
+	$Panel/VBoxContainer/Button5.connect("pressed", $Credits, "show")
+	$Panel/VBoxContainer/Button6.connect("pressed", self, "hide")
+	$Files/Panel/Button.connect("pressed", $Files, "hide")
+	$Files/ScrollContainer/VBoxContainer/New/LineEdit.connect("text_entered", self, "_save_new")
+	$Files/ScrollContainer/VBoxContainer/New/ButtonConfirm.connect("pressed", self, "_save_new")
+	$Options/Panel/Button.connect("pressed", $Options, "hide")
+	$Options/Bottom/ButtonConfirm.connect("pressed", self, "_confirm_settings")
+	$Options/Bottom/ButtonApply.connect("pressed", self, "_apply_settings")
+	$Options/Bottom/ButtonCancel.connect("pressed", $Options, "hide")
+	$Credits/Panel/Button.connect("pressed", $Credits, "hide")
+	$Credits/RichTextLabel.connect("meta_clicked", OS, "shell_open")
 	
 	# Hide these buttons. Only visible once the game has been started.
 	$Panel/VBoxContainer/Button6.hide()

@@ -478,6 +478,9 @@ void fragment()
 	uv += pos_i+(pos_f-pos_i)*w;
 	COLOR = texture(TEXTURE, uv);
 	COLOR.a *= texture(mask, UV).g;
+	COLOR.rgb = (COLOR.r+COLOR.g+COLOR.b)/3.0*vec3(1.0);
+	COLOR.r = min(1.33*max(COLOR.r-0.125, 0.0), 1.0);
+	COLOR.b = min(0.75*COLOR.b+0.125, 1.0);
 }"
 
 [sub_resource type="ShaderMaterial" id=26]
@@ -721,20 +724,22 @@ __meta__ = {
 }
 
 [node name="View" type="ScrollContainer" parent="Panel/HBoxContainer"]
-margin_right = 477.0
+margin_right = 408.0
 margin_bottom = 554.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.75
 follow_focus = true
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/View"]
-margin_right = 477.0
+margin_right = 408.0
 margin_bottom = 554.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Image" type="TextureRect" parent="Panel/HBoxContainer/View/VBoxContainer"]
+visible = false
 margin_right = 477.0
 margin_bottom = 384.0
 rect_min_size = Vector2( 0, 384 )
@@ -759,20 +764,35 @@ __meta__ = {
 }
 
 [node name="Time" type="Label" parent="Panel/HBoxContainer/View/VBoxContainer"]
-margin_top = 388.0
-margin_right = 477.0
-margin_bottom = 407.0
+margin_right = 408.0
+margin_bottom = 19.0
 text = "TIME:"
 
 [node name="Text" type="RichTextLabel" parent="Panel/HBoxContainer/View/VBoxContainer"]
-margin_top = 411.0
-margin_right = 477.0
+margin_top = 23.0
+margin_right = 408.0
+margin_bottom = 282.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HSeparator" type="HSeparator" parent="Panel/HBoxContainer/View/VBoxContainer"]
+margin_top = 286.0
+margin_right = 408.0
+margin_bottom = 290.0
+custom_styles/separator = SubResource( 27 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Text2" type="RichTextLabel" parent="Panel/HBoxContainer/View/VBoxContainer"]
+margin_top = 294.0
+margin_right = 408.0
 margin_bottom = 554.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Text" type="ScrollContainer" parent="Panel/HBoxContainer"]
-margin_left = 481.0
+margin_left = 412.0
 margin_right = 958.0
 margin_bottom = 554.0
 size_flags_horizontal = 3
@@ -781,64 +801,64 @@ follow_focus = true
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/Text"]
-margin_right = 477.0
+margin_right = 546.0
 margin_bottom = 554.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Characters" type="ScrollContainer" parent="Panel/HBoxContainer"]
 visible = false
-margin_left = 624.0
-margin_right = 933.0
-margin_bottom = 534.0
+margin_left = 641.0
+margin_right = 958.0
+margin_bottom = 554.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 follow_focus = true
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/Characters"]
-margin_right = 309.0
-margin_bottom = 534.0
+margin_right = 317.0
+margin_bottom = 554.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Inventory" type="ScrollContainer" parent="Panel/HBoxContainer"]
 visible = false
-margin_left = 624.0
-margin_right = 933.0
-margin_bottom = 534.0
+margin_left = 641.0
+margin_right = 958.0
+margin_bottom = 554.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 follow_focus = true
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/Inventory"]
-margin_right = 309.0
-margin_bottom = 534.0
+margin_right = 317.0
+margin_bottom = 554.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="LabelPayment" type="Label" parent="Panel/HBoxContainer/Inventory/VBoxContainer"]
-margin_right = 309.0
+margin_right = 317.0
 margin_bottom = 19.0
 text = "DEBTS"
 autowrap = true
 
 [node name="ButtonPay" type="Button" parent="Panel/HBoxContainer/Inventory/VBoxContainer"]
 margin_top = 23.0
-margin_right = 309.0
+margin_right = 317.0
 margin_bottom = 50.0
 text = "PAY"
 
 [node name="HSeparator1" type="HSeparator" parent="Panel/HBoxContainer/Inventory/VBoxContainer"]
 margin_top = 54.0
-margin_right = 309.0
+margin_right = 317.0
 margin_bottom = 58.0
 custom_styles/separator = SubResource( 27 )
 
 [node name="LabelEncumbrance" type="Label" parent="Panel/HBoxContainer/Inventory/VBoxContainer"]
 margin_top = 62.0
-margin_right = 309.0
+margin_right = 317.0
 margin_bottom = 81.0
 custom_colors/font_color = Color( 0.501961, 0.501961, 0.501961, 1 )
 text = "ENCUMBRANCE"
@@ -846,19 +866,19 @@ autowrap = true
 
 [node name="HSeparator2" type="HSeparator" parent="Panel/HBoxContainer/Inventory/VBoxContainer"]
 margin_top = 85.0
-margin_right = 309.0
+margin_right = 317.0
 margin_bottom = 89.0
 custom_styles/separator = SubResource( 27 )
 
 [node name="LabelInventory" type="Label" parent="Panel/HBoxContainer/Inventory/VBoxContainer"]
 margin_top = 93.0
-margin_right = 309.0
+margin_right = 317.0
 margin_bottom = 112.0
 text = "INVENTORY"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/Inventory/VBoxContainer"]
 margin_top = 116.0
-margin_right = 309.0
+margin_right = 317.0
 margin_bottom = 116.0
 
 [node name="Item0" type="Button" parent="Panel/HBoxContainer/Inventory/VBoxContainer/VBoxContainer"]

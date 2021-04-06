@@ -189,6 +189,12 @@ func get_var(ID):
 	return false
 
 
+func start_event(event : Events.Event, args : Array):
+	var script = load(event._script).new()
+	script.callv("init",args)
+	Main.update_party()
+	Main._show_log()
+
 func goto(_location:String):
 	var c0 = Map.get_location(location)
 	var c1 = Map.get_location(_location)
@@ -289,13 +295,12 @@ func enter_location(_location : String,c=null):
 		var event = Events.check_event("enter_city", [location])
 		# Add journal entry for the city,
 		if !Journal.entries.has(c.name):
-			Journal.add_entry(c.name, c.name, ["cities",c.faction], c.description, Map.BACKGROUND_IMAGES[c.landscape].file, Map.time)
+			var image := ""
+			if Map.BACKGROUND_IMAGES.has(c.landscape):
+				image = Map.BACKGROUND_IMAGES[c.landscape].file
+			Journal.add_entry(c.name, c.name, ["cities",c.faction], c.description, image, Map.time)
 		if event!=null:
-			var script = load(event._script).new()
-			var args = [location,quests[event.quest]]+event.args
-			script.callv("init",args)
-			Main.update_party()
-			Main._show_log()
+			start_event(event, [location,quests[event.quest]]+event.args)
 			return
 		
 		for f in c.facilities:
@@ -304,12 +309,7 @@ func enter_location(_location : String,c=null):
 	else:
 		var event = Events.check_event("enter_location", [location])
 		if event!=null:
-			var script = load(event._script).new()
-			var args = [location,quests[event.quest]]+event.args
-			script.callv("init",args)
-			Events.clear_event(event)
-			Main.update_party()
-			Main._show_log()
+			start_event(event, [location,quests[event.quest]]+event.args)
 			return
 	if c.can_leave || Main.get_action_count()==0:
 		# Enable to leave a location if there is no available action.

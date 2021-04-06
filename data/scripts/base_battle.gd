@@ -368,6 +368,7 @@ func init_battle():
 	else:
 		var list := ""
 		var dict := get_enemy_counts(enemy)
+		var count := {}
 		for i in range(dict.size()):
 			if dict.values()[i]==1:
 				list += tr(dict.keys()[i].to_upper())
@@ -377,6 +378,18 @@ func init_battle():
 				list += ", "
 			if i==dict.size()-2:
 				list += tr("AND")+" "
+		for c in enemy:
+			if dict.has(c.base_type) && dict[c.base_type]>1:
+				if !count.has(c.base_type):
+					count[c.base_type] = 0
+				if typeof(c.name)==TYPE_STRING:
+					c.name += " "+char(KEY_A+count[c.base_type])
+				else:
+					if c.name.last.length()>0:
+						c.name.last += " "+char(KEY_A+count[c.base_type])
+					else:
+						c.name.first += " "+char(KEY_A+count[c.base_type])
+				count[c.base_type] += 1
 		group = tr("GROUP_OF").format({"list":list})
 	Main.add_text(tr("COMBAT_INIT").format({"enemy":group}))
 	
@@ -389,6 +402,34 @@ func init_battle():
 func start_battle(_actor, _action, _roll):
 	sort_attack_order()
 	next_turn()
+
+func update_enemies():
+	var text := Main.get_node("Panel/HBoxContainer/View/VBoxContainer/Text2")
+	text.clear()
+	for c in enemy:
+		text.push_color(Color(1.0,0.3,0.2))
+		if typeof(c.name)==TYPE_STRING:
+			text.add_text(c.name+": ")
+		else:
+			text.add_text(c.name.first+": ")
+		text.push_color(Color(1.0,0.0,0.0).linear_interpolate(Color(0.0,1.0,0.0),float(c.health)/max(float(c.max_health),1.0)))
+		text.add_text("["+tr("HEALTH")+": "+tr("HEALTH"+str(ceil(4*c.health/max(c.max_health,1))))+"] ")
+		text.push_color(Color(1.0,0.0,0.0).linear_interpolate(Color(0.0,1.0,0.0),float(c.stamina)/max(float(c.max_stamina),1.0)))
+#		text.add_text("["+tr("STAMINA")+": "+tr("STAMINA"+str(ceil(4*c.stamina/max(c.max_stamina,1))))+"] ")
+#		text.push_color(Color(1.0,0.0,0.0).linear_interpolate(Color(0.0,1.0,0.0),float(c.mana)/max(float(c.max_mana),1.0)))
+#		text.add_text("["+tr("MANA")+": "+tr("MANA"+str(ceil(4*c.mana/max(c.max_mana,1))))+"] ")
+		text.push_color(Color(1.0,1.0,1.0))
+		for k in c.status.keys():
+			if c.status[k].detrimental:
+				text.push_color(Color(1.0,0.25,0.25))
+			elif c.status[k].beneficial:
+				text.push_color(Color(0.25,1.0,0.25))
+			else:
+				text.push_color(Color(1.0,1.0,1.0))
+			text.add_text("["+tr(k.to_upper())+"] ")
+		text.push_color(Color(1.0,1.0,1.0))
+		text.newline()
+
 
 
 func is_action_valid(actor, dict) -> bool:
@@ -643,6 +684,7 @@ func next_turn():
 		if effect.has_method("on_turn"):
 			effect.on_turn()
 	Main.update_party()
+	update_enemies()
 	
 	if actor in enemy || actor.has_status("confused"):
 		if actions.size()>0:
@@ -689,6 +731,7 @@ func defeat():
 	print("Player lost battle!")
 	Main.add_text(tr("PLAYER_DEAD"))
 	clear_status()
+	Main.get_node("Panel/HBoxContainer/View/VBoxContainer/Text2").clear()
 	emit_signal("battle_lost", true)
 	turn_timer.queue_free()
 	queue_free()
@@ -696,6 +739,7 @@ func defeat():
 func victory():
 	print("Player won battle!")
 	clear_status()
+	Main.get_node("Panel/HBoxContainer/View/VBoxContainer/Text2").clear()
 	if expirience>0:
 		expirience /= Characters.party.size()
 		Main.add_text(tr("EXP_GAINED"))
@@ -732,6 +776,7 @@ func escaped():
 		var c = Characters.characters[ID]
 		c.increase_morale(5.0)
 	clear_status()
+	Main.get_node("Panel/HBoxContainer/View/VBoxContainer/Text2").clear()
 	emit_signal("battle_won", false)
 	turn_timer.queue_free()
 

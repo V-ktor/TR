@@ -714,9 +714,8 @@ func create_enemy(type, level:=1, ID:="") -> Character:
 		enemy.drops = dict.drops
 	return enemy
 
-func create_npc(dict:={}) -> Character:
+func create_npc(dict:={}, cl=null) -> Character:
 	var race
-	var cl
 	var actor
 	var name
 	var city = Map.cities[Game.location]
@@ -747,7 +746,10 @@ func create_npc(dict:={}) -> Character:
 		gender = 0
 	if gender==0 && race.has("no_male") && race.no_male:
 		gender = 1
-	cl = Menu.classes.values()[randi()%Menu.classes.size()]
+	if cl==null:
+		cl = Menu.classes.values()[randi()%Menu.classes.size()]
+	elif typeof(cl)==TYPE_STRING:
+		cl = Menu.classes[cl]
 	if cl.has("main_stats"):
 		main_stats = cl.main_stats
 	if cl.has("equipment"):
