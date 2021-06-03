@@ -17,7 +17,9 @@
 +BLACKSMITH+ARMORY+TAILOR+ARCHERY_RANGE,"All kinds of weapons and armors are sold by the various shops in {city}."
 +ELF+ARCHERY_RANGE-POOR-SMALL,"Adjacent to the city lies the training ground where the best of the elvish rangers are trained."
 +DWARF+MANUFACTORIES+BLACKSMITH+ARMORY-SMALL,"{city} lives up to the reputation of dwarfs. Weapons and armors of high quality are being produced in the various forges and manufactories. The resulting noise is rather loud an can be heared through out the entire city."
-+DWARF+SMALL-MANUFACTORIES-WOOD-FARMING,"While only being a small outpost the dwarves are running large mines in {city}."
++DWARF+SMALL-MANUFACTORIES-WOOD-FARMING,"While only being a small outpost the dwarves are running large mining opreations in {city}."
 +ORC+BLACKSMITH+ARMORY,"This city contains a large amount of forges and armories supplying the orcish armies and maraudeurs."
-+HUMAN+PROSPEROUS+LARGE,"Being one of the largest cities in the empire, {city} is an important cultural and economical area."
++HUMAN+PROSPEROUS+LARGE-RESHAPED-SUMMONED,"Being one of the largest cities in the empire, {city} is an important cultural and economical area."
++RESHAPED,"In a recent event parts of the city have been replaced by entirely new buildings."
++SUMMONED,"This city just popped up recently. While the buildings look rather old they did not exist until recently. Even weirder is the fact that the people inhabiting the city claim that the city existed for many years."
 

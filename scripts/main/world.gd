@@ -41,10 +41,10 @@ const CITY_DESC = [
 	"+elf +archery_range -poor -small",
 	"+dwarf +manufactories +blacksmith +armory -small",
 	"+dwarf +small -manufactories -wood -farming",
-	"+orc +blacksmith +armory",
-	"+human +prosperous +large",
+	"+orc +blacksmith +armory -reshaped -summoned",
+	"+human +prosperous +large -reshaped -summoned",
 	# special traits
-	"+reshaped"
+	"+reshaped","+summoned"
 ]
 const IMAGE_HUMAN_CITY = {
 	"file":"res://images/backgrounds/sk5.jpg",

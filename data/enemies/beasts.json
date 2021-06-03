@@ -63,6 +63,25 @@
     "drops":["fur"]
 }
 {
+	"name":"boar",
+    "race":"boar",
+	"traits":["claws"],
+    "expirience":12,
+	"stats":{"strength":[8,12],"constitution":[12,16],"dexterity":[4,8],"agility":[4,8],"intelligence":[6,12],"wisdom":[6,12],"cunning":[4,8],"charisma":[4,8]},
+	"appearance":{"body":"boar"},
+	"equipment":[{
+    	"name":"fangs",
+	    "type":"weapon",
+    	"proficiency":"knife",
+    	"use_stat":"strength",
+    	"min_dam":2,
+    	"max_dam":3,
+    	"afflict":["Bleeding",{"chance":0.2,"duration":3,"amount":1}]}],
+    "proficiency":{"knife":[1,2],"unarmed":[1,2],"light_armor":[1,2]},
+    "drop_rate":0.75,
+    "drops":["fur"]
+}
+{
 	"name":"hyena",
     "race":"hyena",
 	"traits":["claws"],

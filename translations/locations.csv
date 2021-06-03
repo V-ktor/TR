@@ -9,4 +9,21 @@ BOARD,board
 HERBALIST,herbalist
 ARCHERY_RANGE,archery range
 DEEP_FOREST,deep forest
+CROSSROADS,crossroads
+WORKROOM,workroom
+WORKSHOP,workshop
+LABORATORY,laboratory
+FORGE,forge
+TOWER,tower
+MAGE_TOWER,mage tower
+UNFAMILIAR_ROOM,unfamiliar room
+UNFAMILIAR_BUILDING,unfamiliar building
+UNFAMILIAR_CITY,unfamiliar city
+RUINS,ruins
+CORRIDOR,corridor
+CANTEEN,canteen
+ARMORY,armory
+BARRACKS,barracks
+SHRINE,shrine
+UNKNOWN_ROOM,unknown room
 

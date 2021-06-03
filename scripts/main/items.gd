@@ -94,7 +94,7 @@ func mana_potion(target : Characters.Character, amount : int) -> bool:
 func create_item(type : String, no_enhancements:=false, amount:=1):
 	if !items.has(type):
 		var item := {
-			"name":type,"type":"quest","base_type":type,
+			"name":tr(type.to_upper()),"type":"quest","base_type":type,
 			"weight":0.0,"price":0,"grade":1
 		}
 		return item

@@ -293,7 +293,7 @@ func enter_location(_location : String,c=null):
 	
 	if c is Map.City:
 		var event = Events.check_event("enter_city", [location])
-		# Add journal entry for the city,
+		# Add journal entry for the city.
 		if !Journal.entries.has(c.name):
 			var image := ""
 			if Map.BACKGROUND_IMAGES.has(c.landscape):

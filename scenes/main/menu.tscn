@@ -1344,6 +1344,7 @@ margin_right = 326.0
 margin_bottom = 19.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "TEXT"
+autowrap = true
 
 [node name="HSeparator6" type="HSeparator" parent="NewChar/HBoxContainer/Preview/VBoxContainer"]
 margin_top = 23.0

@@ -60,11 +60,11 @@ func new_game():
 	Journal.add_entry(Characters.player.ID, player_name.get_name(), ["persons", "companions"], "", "", Map.time)
 	Map.create_world()
 	for k in Map.cities.keys():
-		if Map.cities[k].population>largest_city && Map.cities[k].faction==available_races[player_race]:
+		if Map.cities[k].population>largest_city && Map.cities[k].faction==available_races[player_race] && !Map.cities[k].traits.has("capital"):
 			largest_city = Map.cities[k].population
 			location = k
 	if location=="":
-		printt("No suitable starting location found!")
+		printt("No suitable starting location found!\nSelecting a random city instead...")
 		location = Map.cities.keys()[randi()%Map.cities.size()]
 	Game.location = location
 	Characters.player.home = location
@@ -79,9 +79,12 @@ func new_game():
 	var script
 	if Characters.BACKGROUNDS[player_background]=="mercenary":
 		script = load("res://data/events/game_start/mercenary.gd").new()
+	elif Characters.BACKGROUNDS[player_background]=="explorer":
+		script = load("res://data/events/game_start/explorer.gd").new()
+	elif Characters.BACKGROUNDS[player_background]=="drifter" && (cl=="archer" || cl=="druid" || cl=="rogue"):
+		script = load("res://data/events/game_start/explorer.gd").new()
 	elif cl=="wizard":
 		script = load("res://data/events/game_start/wizard.gd").new()
-#	elif Characters.BACKGROUNDS[player_background]=="mercenary":
 	else:
 		script = load("res://data/events/game_start/mercenary.gd").new()
 	Game.in_city = false
@@ -253,6 +256,10 @@ func _set_background(ID : int):
 	$NewChar/HBoxContainer/Description.add_text(tr(Characters.BACKGROUNDS[ID].to_upper())+"\n\n")
 	$NewChar/HBoxContainer/Description.add_text(tr(Characters.BACKGROUNDS[ID].to_upper()+"_DESC")+"\n"+tr(Characters.BACKGROUNDS[ID].to_upper()+"_"+available_classes[player_class].to_upper())+"\n")
 	get_node("NewChar/HBoxContainer/Background/VBoxContainer/Button"+str(ID)).pressed = true
+	$NewChar/HBoxContainer/Preview/VBoxContainer/LabelDescription.text = tr(Characters.BACKGROUNDS[player_background].to_upper()+"_DESC")
+	if player_class>=0:
+		$NewChar/HBoxContainer/Preview/VBoxContainer/LabelDescription.text += "\n\n"+tr(Characters.BACKGROUNDS[player_background].to_upper()+"_"+available_classes[player_class].to_upper())
+	$NewChar/HBoxContainer/Preview/VBoxContainer/LabelDescription.show()
 
 func _set_trait(type : String, ID : String):
 	player_appearance[type] = ID
@@ -390,10 +397,8 @@ func _select_background():
 		c.hide()
 	if player_background<0:
 		_set_background(0)
-	$NewChar/HBoxContainer/Preview/VBoxContainer/LabelDescription.text = tr(Characters.BACKGROUNDS[player_background].to_upper()+"_DESC")
-	if player_class>=0:
-		$NewChar/HBoxContainer/Preview/VBoxContainer/LabelDescription.text += "\n\n"+tr(Characters.BACKGROUNDS[player_background].to_upper()+"_"+available_classes[player_class].to_upper())
-	$NewChar/HBoxContainer/Preview/VBoxContainer/LabelDescription.show()
+	else:
+		$NewChar/HBoxContainer/Preview/VBoxContainer/LabelDescription.hide()
 
 func _select_appearance():
 	current = 3

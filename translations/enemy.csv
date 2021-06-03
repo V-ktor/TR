@@ -4,6 +4,7 @@ WOLF,wolf
 PLAIN_WOLF,plain wolf
 DESERT_WOLF,desert wolf
 HYENA,hyena
+BOAR,boar
 CAT,cat
 LION,lion
 MOUNTAIN_LION,mountain lion
@@ -27,7 +28,7 @@ BANDIT_MACE,"bandit (mace)"
 BANDIT_HUNTER,"bandit (bow)"
 BANDIT_CASTER,"bandit (mage)"
 VAMPIRIC_BAT,vampiric bat
-SMALL_IMP,Small Imp
+SMALL_IMP,small imp
 CRIMSON_IMP,crimson imp
 WHITE_IMP,white imp
 WALKING_CORPSE,walking corpse

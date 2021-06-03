@@ -97,7 +97,7 @@ const PERSONALITIES = [
 	"shy","bold","reckless","cynical","curious","cheerful"
 ]
 const BACKGROUNDS = [
-	"drifter","explorer","mercenary","criminal","slave"
+	"drifter","explorer","mercenary"
 ]
 const ALIGNMENTS = [
 	"lawful","chaotic","evil"

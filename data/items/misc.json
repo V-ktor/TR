@@ -1,8 +1,15 @@
 {
+	"name":"torch",
+	"type":"misc",
+	"weight":0.5,
+	"price":20,
+    "grade":1
+}
+{
 	"name":"goo",
 	"type":"misc",
 	"weight":0.1,
-	"price":5,
+	"price":6,
     "grade":0
 }
 {
@@ -31,5 +38,12 @@
 	"type":"misc",
 	"weight":1.0,
 	"price":80,
+    "grade":0
+}
+{
+	"name":"rotten_flesh",
+	"type":"misc",
+	"weight":0.2,
+	"price":4,
     "grade":0
 }

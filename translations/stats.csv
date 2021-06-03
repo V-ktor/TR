@@ -18,8 +18,8 @@ CHARISMA_TOOLTIP,"Charisma"
 PROFICIENCY,Proficiency
 UNARMED,Unarmed combat
 UNARMED_TOOLTIP,"Allows you to attack with your bare fists."
-TWO-HANDER,Two-hander
-TWO-HANDER_TOOLTIP,"Allows you to wield two-handed weapons."
+GREATSWORD,Great Sword
+GREATSWORD_TOOLTIP,"Allows you to wield great swords."
 BLADE,Blade
 BLADE_TOOLTIP,"Allows you to effectively use small and medium sized swords."
 KNIFE,Knife
