@@ -398,7 +398,7 @@ func _select_background():
 	if player_background<0:
 		_set_background(0)
 	else:
-		$NewChar/HBoxContainer/Preview/VBoxContainer/LabelDescription.hide()
+		_set_background(player_background)
 
 func _select_appearance():
 	current = 3
@@ -411,6 +411,7 @@ func _select_appearance():
 	$NewChar/HBoxContainer/Preview.show()
 	$NewChar/HBoxContainer/Summary.hide()
 	$NewChar/Top/ButtonAppearance.pressed = true
+	$NewChar/HBoxContainer/Description.text = ""
 	for c in $NewChar/HBoxContainer/Preview/VBoxContainer.get_children():
 		c.hide()
 	update_appearance()
@@ -882,7 +883,7 @@ func _ready():
 		var button = $NewChar/HBoxContainer/Background/VBoxContainer/Button.duplicate()
 		button.name = "Button"+str(i)
 		button.text = tr(Characters.BACKGROUNDS[i].to_upper())
-		button.hint_tooltip = tr(Characters.BACKGROUNDS[i].to_upper()+"_TOOLTIP")
+#		button.hint_tooltip = tr(Characters.BACKGROUNDS[i].to_upper()+"_TOOLTIP")
 		$NewChar/HBoxContainer/Background/VBoxContainer.add_child(button)
 		button.connect("pressed", self, "_set_background", [i])
 		button.show()

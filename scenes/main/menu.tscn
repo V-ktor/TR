@@ -1323,7 +1323,6 @@ __meta__ = {
 margin_left = 674.0
 margin_right = 1000.0
 margin_bottom = 496.0
-rect_clip_content = false
 mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
