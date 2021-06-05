@@ -57,7 +57,6 @@ func new_game():
 	Game.scripts.clear()
 	Game.vars.clear()
 	Journal.entries.clear()
-	Journal.add_entry(Characters.player.ID, player_name.get_name(), ["persons", "companions"], "", "", Map.time)
 	Map.create_world()
 	for k in Map.cities.keys():
 		if Map.cities[k].population>largest_city && Map.cities[k].faction==available_races[player_race] && !Map.cities[k].traits.has("capital"):
@@ -74,6 +73,7 @@ func new_game():
 		for r in races[race].relations.keys():
 			Characters.relations[r] += races[race].relations[r]
 	Characters.relations[available_races[player_race]] += 10.0
+	Journal.add_entry(Characters.player.ID, player_name.get_name(), ["persons", "companions"], "", "", Map.time)
 	start()
 #	Game.enter_location(location, Map.cities[location])
 	var script

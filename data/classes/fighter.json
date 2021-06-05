@@ -3,6 +3,6 @@
     "playable":true,
     "main_stats":["strength","dexterity"],
     "proficiency":{"greatsword":1,"axe":1,"light_armor":1,"heavy_armor":1,"unarmed":1},
-    "equipment":["leather_armor","axe","great_sword"],
+    "equipment":["leather_armor","great_sword","axe"],
     "inventory":[["silver_coins",100],["small_health_potion",2],["supplies",50]]
 }
