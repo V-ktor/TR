@@ -362,6 +362,13 @@ class Character:
 					continue
 				if slots[i]==item.slot:
 					valid = true
+					if equipment.size()>i && equipment[i]!=null:
+						unequip(i)
+					if i<index:
+						# Always put two-handed equipment in the first slot.
+						if equipment.size()>index && equipment[index]!=null:
+							unequip(index)
+						index = i
 					break
 			if !valid:
 				return false
