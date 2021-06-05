@@ -17,8 +17,8 @@ func init(_parent_script : Node):
 	mean_level /= player.size()
 	enemy.resize(num_enemies+1)
 	for i in range(num_enemies):
-		enemy[i] = Characters.create_enemy("small_imp",mean_level)
-	enemy[num_enemies] = Characters.create_enemy("crimson_imp",mean_level)
+		enemy[i] = Characters.create_enemy("small_imp", int(mean_level))
+	enemy[num_enemies] = Characters.create_enemy("crimson_imp", int(round(mean_level)))
 	
 	# Add additional actions for the combat here.
 	ACTIONS += []
@@ -29,7 +29,7 @@ func init(_parent_script : Node):
 
 # victory #
 
-func won_battle(victory : bool):
+func won_battle(_victory : bool):
 	Main.add_text("\n"+tr("MERCENARY_IMPS_DEFEATED"))
 	Main.add_action(Game.Action.new(tr("ACTION_CONTINUE"),parent_script,{0:{"method":"imps_defeated","grade":1}},"","",3))
 

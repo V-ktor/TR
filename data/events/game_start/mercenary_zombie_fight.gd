@@ -17,7 +17,7 @@ func init(_parent_script : Node, type:="walking_corpse"):
 	mean_level /= player.size()
 	enemy.resize(num_enemies)
 	for i in range(num_enemies):
-		enemy[i] = Characters.create_enemy(type,mean_level)
+		enemy[i] = Characters.create_enemy(type, int(mean_level))
 	
 	# Add additional actions for the combat here.
 	ACTIONS += []

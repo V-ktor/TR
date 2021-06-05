@@ -2,6 +2,7 @@ extends Node
 
 var quests := {}
 
+
 class Quest:
 	var ID : String
 	var name : String

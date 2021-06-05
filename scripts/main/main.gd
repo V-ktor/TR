@@ -45,6 +45,7 @@ func add_action_actor(actor,action):
 		bi.get_node("Chance").modulate = Color(0.5,0.0,0.0)
 		bi.get_node("Chance").show()
 	elif limit>0 && action.result.size()>1:
+# warning-ignore:integer_division
 		bi.get_node("Chance").text = "["+tr("CHANCE")+": "+tr("CHANCE"+str(int(4*limit/Game.MAX_ROLL)))+"]"
 		bi.get_node("Chance").modulate = Color(0.0,1.0,0.0).linear_interpolate(Color(1.0,0.0,0.0),float(limit)/float(Game.MAX_ROLL))
 		bi.get_node("Chance").show()
@@ -275,9 +276,13 @@ func update_characters():
 		panel.get_node("Skills/HBoxContainerName/Class").text = panel.get_node("Status/HBoxContainerName/Class").text
 		panel.get_node("Traits/HBoxContainerName/Name").text = panel.get_node("Status/HBoxContainerName/Name").text
 		panel.get_node("Traits/HBoxContainerName/Class").text = panel.get_node("Status/HBoxContainerName/Class").text
+# warning-ignore:integer_division
 		panel.get_node("Status/HBoxContainerStatus/Health/Label").text = tr("HEALTH"+str(ceil(4*c.health/c.max_health)))+" ("+str(c.health)+"/"+str(c.max_health)+")"
+# warning-ignore:integer_division
 		panel.get_node("Status/HBoxContainerStatus/Stamina/Label").text = tr("STAMINA"+str(ceil(4*c.stamina/c.max_stamina)))+" ("+str(c.stamina)+"/"+str(c.max_stamina)+")"
+# warning-ignore:integer_division
 		panel.get_node("Status/HBoxContainerStatus/Mana/Label").text = tr("MANA"+str(ceil(4*c.mana/c.max_mana)))+" ("+str(c.mana)+"/"+str(c.max_mana)+")"
+# warning-ignore:integer_division
 		panel.get_node("Status/HBoxContainerStatus/Exp/Label").text = str(c.expirience)+"/"+str(c.max_expirience)+" ("+str(int(100*c.expirience/c.max_expirience))+"%)"
 		for c2 in panel.get_node("Status/HBoxContainer/VBoxContainer/HBoxContainerEffects").get_children():
 			c2.hide()
