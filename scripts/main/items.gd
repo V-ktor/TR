@@ -176,20 +176,6 @@ func get_file_paths(path : String) -> Array:
 	
 	return array
 
-func load_file_paths(path : String) -> Array:
-	var array := []
-	var file := File.new()
-	var error := file.open(path, File.READ)
-	if error!=OK:
-		return array
-	
-	var currentline := file.get_line()
-	while !file.eof_reached():
-		array.push_back(currentline)
-		currentline = file.get_line()
-	file.close()
-	return array
-
 func load_items(paths : Array):
 	for file_name in paths:
 		# open file
@@ -280,11 +266,9 @@ func load_enhancements(paths : Array):
 					enhancements_major[data.type].push_back(data)
 
 func load_data():
-#	load_items(get_file_paths("res://data/items"))
-	load_items(load_file_paths("res://data/items.dat"))
+	load_items(get_file_paths("res://data/items"))
 	load_items(get_file_paths("user://data/items"))
-#	load_enhancements(get_file_paths("res://data/enhancements"))
-	load_enhancements(load_file_paths("res://data/enhancements.dat"))
+	load_enhancements(get_file_paths("res://data/enhancements"))
 	load_enhancements(get_file_paths("user://data/enhancements"))
 	
 

@@ -866,20 +866,6 @@ func get_file_paths(path : String) -> Array:
 	
 	return array
 
-func load_file_paths(path : String) -> Array:
-	var array := []
-	var file := File.new()
-	var error := file.open(path, File.READ)
-	if error!=OK:
-		return array
-	
-	var currentline := file.get_line()
-	while !file.eof_reached():
-		array.push_back(currentline)
-		currentline = file.get_line()
-	file.close()
-	return array
-
 func load_enemy_data(paths : Array):
 	var file := File.new()
 	for file_name in paths:
@@ -922,6 +908,5 @@ func load_enemy_data(paths : Array):
 		file.close()
 
 func _ready():
-#	load_enemy_data(get_file_paths("res://data/enemies"))
-	load_enemy_data(load_file_paths("res://data/enemies.dat"))
+	load_enemy_data(get_file_paths("res://data/enemies"))
 	load_enemy_data(get_file_paths("user://data/enemies"))

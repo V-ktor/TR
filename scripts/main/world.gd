@@ -587,20 +587,6 @@ func get_file_paths(path : String) -> Array:
 	
 	return array
 
-func load_file_paths(path : String) -> Array:
-	var array := []
-	var file := File.new()
-	var error := file.open(path, File.READ)
-	if error!=OK:
-		return array
-	
-	var currentline := file.get_line()
-	while !file.eof_reached():
-		array.push_back(currentline)
-		currentline = file.get_line()
-	file.close()
-	return array
-
 func load_world(paths : Array):
 	for file_name in paths:
 		var file := File.new()
@@ -635,6 +621,5 @@ func load_world(paths : Array):
 		file.close()
 
 func _ready():
-#	load_world(get_file_paths("res://data/world"))
-	load_world(load_file_paths("res://data/world.dat"))
+	load_world(get_file_paths("res://data/world"))
 	load_world(get_file_paths("user://data/world"))

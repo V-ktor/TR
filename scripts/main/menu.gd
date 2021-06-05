@@ -75,7 +75,6 @@ func new_game():
 	Characters.relations[available_races[player_race]] += 10.0
 	Journal.add_entry(Characters.player.ID, player_name.get_name(), ["persons", "companions"], "", "", Map.time)
 	start()
-#	Game.enter_location(location, Map.cities[location])
 	var script
 	if Characters.BACKGROUNDS[player_background]=="mercenary":
 		script = load("res://data/events/game_start/mercenary.gd").new()
@@ -91,7 +90,6 @@ func new_game():
 	script.init(Map.cities[location], location, cl)
 	Main.update_party()
 	Main._show_log()
-#	Game._save()
 
 
 func start():
@@ -809,20 +807,6 @@ func get_file_paths(path : String) -> Array:
 	
 	return array
 
-func load_file_paths(path : String) -> Array:
-	var array := []
-	var file := File.new()
-	var error := file.open(path, File.READ)
-	if error!=OK:
-		return array
-	
-	var currentline := file.get_line()
-	while !file.eof_reached():
-		array.push_back(currentline)
-		currentline = file.get_line()
-	file.close()
-	return array
-
 func load_races(paths : Array):
 	for file_name in paths:
 		var file := File.new()
@@ -861,11 +845,9 @@ func _ready():
 	randomize()
 	
 	# Load race and class data.
-#	load_races(get_file_paths("res://data/races"))
-	load_races(load_file_paths("res://data/races.dat"))
+	load_races(get_file_paths("res://data/races"))
 	load_races(get_file_paths("user://data/races"))
-#	load_classes(get_file_paths("res://data/classes"))
-	load_classes(load_file_paths("res://data/classes.dat"))
+	load_classes(get_file_paths("res://data/classes"))
 	load_classes(get_file_paths("user://data/classes"))
 	
 	# Set up GUI stuff.

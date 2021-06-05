@@ -69,20 +69,6 @@ func get_file_paths(path : String) -> Array:
 	
 	return array
 
-func load_file_paths(path : String) -> Array:
-	var array := []
-	var file := File.new()
-	var error := file.open(path, File.READ)
-	if error!=OK:
-		return array
-	
-	var currentline := file.get_line()
-	while !file.eof_reached():
-		array.push_back(currentline)
-		currentline = file.get_line()
-	file.close()
-	return array
-
 func load_quests(paths : Array):
 	for file_name in paths:
 		var file := File.new()
@@ -119,6 +105,5 @@ func load_quests(paths : Array):
 		file.close()
 
 func _ready():
-#	load_quests(get_file_paths("res://data/quests"))
-	load_quests(load_file_paths("res://data/quests.dat"))
+	load_quests(get_file_paths("res://data/quests"))
 	load_quests(get_file_paths("user://data/quests"))

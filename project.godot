@@ -22,7 +22,6 @@ config/icon="res://icon.png"
 
 [autoload]
 
-DataPaths="*res://scripts/main/data_paths.gd"
 Settings="*res://scripts/main/settings.gd"
 Names="*res://scripts/main/names.gd"
 Characters="*res://scripts/main/characters.gd"
