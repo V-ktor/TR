@@ -4,6 +4,7 @@ extends Node
 func add_file_paths(path : String, name : String, file=null):
 	var dir := Directory.new()
 	var error := dir.open(path)
+	var file_opened : bool = file!=null
 	if error!=OK:
 		print("Error when accessing "+path+"!")
 		return
@@ -19,7 +20,8 @@ func add_file_paths(path : String, name : String, file=null):
 		else:
 			file.store_line(path+"/"+file_name)
 		file_name = dir.get_next()
-	file.close()
+	if !file_opened:
+		file.close()
 
 func scan_data_dir(path : String, file=null):
 	var dir := Directory.new()
