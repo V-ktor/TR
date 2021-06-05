@@ -357,6 +357,8 @@ func _select_race():
 	$NewChar/HBoxContainer/Preview.show()
 	$NewChar/HBoxContainer/Summary.hide()
 	$NewChar/Top/ButtonRace.pressed = true
+	$NewChar/Bottom/ButtonBack.text = tr("CANCEL")
+	$NewChar/Bottom/ButtonContinue.text = tr("NEXT")
 	for c in $NewChar/HBoxContainer/Preview/VBoxContainer.get_children():
 		c.hide()
 	if player_race<0:
@@ -375,6 +377,8 @@ func _select_class():
 	$NewChar/HBoxContainer/Preview.show()
 	$NewChar/HBoxContainer/Summary.hide()
 	$NewChar/Top/ButtonClass.pressed = true
+	$NewChar/Bottom/ButtonBack.text = tr("BACK")
+	$NewChar/Bottom/ButtonContinue.text = tr("NEXT")
 	for c in $NewChar/HBoxContainer/Preview/VBoxContainer.get_children():
 		c.hide()
 	if player_class<0:
@@ -393,6 +397,8 @@ func _select_background():
 	$NewChar/HBoxContainer/Preview.show()
 	$NewChar/HBoxContainer/Summary.hide()
 	$NewChar/Top/ButtonBackground.pressed = true
+	$NewChar/Bottom/ButtonBack.text = tr("BACK")
+	$NewChar/Bottom/ButtonContinue.text = tr("NEXT")
 	for c in $NewChar/HBoxContainer/Preview/VBoxContainer.get_children():
 		c.hide()
 	if player_background<0:
@@ -412,6 +418,8 @@ func _select_appearance():
 	$NewChar/HBoxContainer/Summary.hide()
 	$NewChar/Top/ButtonAppearance.pressed = true
 	$NewChar/HBoxContainer/Description.text = ""
+	$NewChar/Bottom/ButtonBack.text = tr("BACK")
+	$NewChar/Bottom/ButtonContinue.text = tr("NEXT")
 	for c in $NewChar/HBoxContainer/Preview/VBoxContainer.get_children():
 		c.hide()
 	update_appearance()
@@ -434,6 +442,8 @@ func _select_name():
 	$NewChar/HBoxContainer/Name/HBoxContainer/CheckBox1.disabled = race.has("no_male") && race.no_male
 	$NewChar/HBoxContainer/Name/HBoxContainer/CheckBox2.disabled = race.has("no_female") && race.no_female
 	$NewChar/Top/ButtonName.pressed = true
+	$NewChar/Bottom/ButtonBack.text = tr("BACK")
+	$NewChar/Bottom/ButtonContinue.text = tr("CONFIRM")
 	if player_name.get_name()==" ":
 		_randomize()
 	else:
