@@ -21,7 +21,7 @@ func cast(actor,action,roll):
 	var damage := get_damage(actor,action,roll,ACTION.min_dam,ACTION.max_dam,ACTION.dam_scale)
 	print("damage: "+str(damage))
 	Main.add_text(tr("COMBAT_FIRE_SHIELD").format({"target":action.target.get_name()}))
-	action.target.add_status(Effects.MagicShield,{"duration":4,"amount":damage})
+	action.target.add_status(Effects.FireShield,{"duration":4,"amount":damage})
 	action.ref.end_turn()
 
 func _init():

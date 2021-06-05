@@ -17,4 +17,12 @@ MAGIC_SHIELD,Magic Shield
 MAGIC_SHIELD_TOOLTIP,"Errect a shield that absorbs all incomming damage up to a certain limit."
 CLEANSING_WIND,Cleansing Wind
 CLEANSING_WIND_TOOLTIP,"Conjure a gust of wind clearing fog or similar area effects and possibly affecting flying targets."
+HEAT_BEAM,Heat Beam
+HEAT_BEAM_TOOLTIP,"Project a beam of fire onto the target, setting the target ablaze."
+WILD_FIRE,Wild Fire
+WILD_FIRE_TOOLTIP,"Set the battle field ablaze, dealing damage over time to all hostile targets."
+FIRE_SHIELD,Fire Shield
+FIRE_SHIELD_TOOLTIP,"Errect a shield that absorbs incomming damage and damages the attacker in melee range."
+FROST_LANCE,Frost Lance
+FROST_LANCE_TOOLTIP,"Hurls a lance of ice at the target dealing high damage and freezing it."
 
