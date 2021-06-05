@@ -9,6 +9,7 @@ These are the project files for Godot 3.3.2. It's meant to be opened or run usin
 * character generation with several predefined races and classes
 * stat rolls
 * randomly generated world
+* open world
 * random events and encounters
 * turn based combat
 * trading
