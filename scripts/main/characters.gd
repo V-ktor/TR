@@ -842,28 +842,47 @@ func _load(file : File) -> int:
 	
 	return OK
 
-func load_enemy_data(path):
+func get_file_paths(path : String) -> Array:
+	var array := []
 	var dir := Directory.new()
-	var file := File.new()
-	var filename : String
-	var error := dir.change_dir(path)
+	var error := dir.open(path)
 	if error!=OK:
-		return
-	error = dir.list_dir_begin(true)
-	if error!=OK:
-		return
+		print("Error when accessing "+path+"!")
+		return array
 	
-	# Load all data files in the items directory.
-	filename = dir.get_next()
-	while filename!="":
+	dir.list_dir_begin(true)
+	var file_name := dir.get_next()
+	while file_name!="":
+		if !dir.current_is_dir():
+			array.push_back(path+"/"+file_name)
+		file_name = dir.get_next()
+	
+	return array
+
+func load_file_paths(path : String) -> Array:
+	var array := []
+	var file := File.new()
+	var error := file.open(path, File.READ)
+	if error!=OK:
+		return array
+	
+	var currentline := file.get_line()
+	while !file.eof_reached():
+		array.push_back(currentline)
+		currentline = file.get_line()
+	file.close()
+	return array
+
+func load_enemy_data(paths : Array):
+	var file := File.new()
+	for file_name in paths:
 		# open file
-		error = file.open(path+"/"+filename, File.READ)
+		var error := file.open(file_name, File.READ)
 		if error!=OK:
-			print("Can't open file "+filename+"!")
-			filename = dir.get_next()
+			print("Can't open file "+file_name+"!")
 			continue
 		else:
-			print("Loading items "+filename+".")
+			print("Loading items "+file_name+".")
 		
 		while !file.eof_reached():
 			# Gather all lines that are belonging to the same item.
@@ -885,17 +904,17 @@ func load_enemy_data(path):
 			var raw = currentline
 			currentline = JSON.parse(currentline)
 			if currentline.error!=OK:
-				printt("Error parsing "+filename+".", raw)
+				printt("Error parsing "+file_name+".", raw)
 				continue
 			currentline = currentline.get_result()
 			if !currentline.has("name"):
-				printt("Error parsing "+filename+" (missing name).")
+				printt("Error parsing "+file_name+" (missing name).")
 				continue
 			
 			enemies[currentline.name] = currentline
 		file.close()
-		filename = dir.get_next()
 
 func _ready():
-	load_enemy_data("res://data/enemies")
-	load_enemy_data("user://data/enemies")
+#	load_enemy_data(get_file_paths("res://data/enemies"))
+	load_enemy_data(load_file_paths("res://data/enemies.dat"))
+	load_enemy_data(get_file_paths("user://data/enemies"))

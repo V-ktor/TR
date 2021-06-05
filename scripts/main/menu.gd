@@ -782,51 +782,62 @@ func _select_setting(pressed, type):
 		$Options/ScrollContainer/VBoxContainer.add_child(container)
 
 
-func load_races(path : String):
+func get_file_paths(path : String) -> Array:
+	var array := []
 	var dir := Directory.new()
 	var error := dir.open(path)
 	if error!=OK:
 		print("Error when accessing "+path+"!")
-		return
+		return array
 	
 	dir.list_dir_begin(true)
 	var file_name := dir.get_next()
 	while file_name!="":
 		if !dir.current_is_dir():
-			var file := File.new()
-			var err := file.open(path+"/"+file_name, File.READ)
-			if err==OK:
-				var currentline = JSON.parse(file.get_as_text()).result
-				if currentline!=null:
-					print("Add race "+file_name+".")
-					races[currentline.name] = currentline
-					if currentline.has("playable") && currentline.playable:
-						available_races.push_back(currentline.name)
-			file.close()
+			array.push_back(path+"/"+file_name)
 		file_name = dir.get_next()
+	
+	return array
 
-func load_classes(path : String):
-	var dir := Directory.new()
-	var error := dir.open(path)
+func load_file_paths(path : String) -> Array:
+	var array := []
+	var file := File.new()
+	var error := file.open(path, File.READ)
 	if error!=OK:
-		print("Error when accessing "+path+"!")
-		return
+		return array
 	
-	dir.list_dir_begin(true)
-	var file_name := dir.get_next()
-	while file_name!="":
-		if !dir.current_is_dir():
-			var file := File.new()
-			var err := file.open(path+"/"+file_name, File.READ)
-			if err==OK:
-				var currentline = JSON.parse(file.get_as_text()).result
-				if currentline!=null:
-					print("Add class "+file_name+".")
-					classes[currentline.name] = currentline
-					if currentline.has("playable") && currentline.playable:
-						available_classes.push_back(currentline.name)
-			file.close()
-		file_name = dir.get_next()
+	var currentline := file.get_line()
+	while !file.eof_reached():
+		array.push_back(currentline)
+		currentline = file.get_line()
+	file.close()
+	return array
+
+func load_races(paths : Array):
+	for file_name in paths:
+		var file := File.new()
+		var err := file.open(file_name, File.READ)
+		if err==OK:
+			var currentline = JSON.parse(file.get_as_text()).result
+			if currentline!=null:
+				print("Add race "+file_name+".")
+				races[currentline.name] = currentline
+				if currentline.has("playable") && currentline.playable:
+					available_races.push_back(currentline.name)
+		file.close()
+
+func load_classes(paths : Array):
+	for file_name in paths:
+		var file := File.new()
+		var err := file.open(file_name, File.READ)
+		if err==OK:
+			var currentline = JSON.parse(file.get_as_text()).result
+			if currentline!=null:
+				print("Add class "+file_name+".")
+				classes[currentline.name] = currentline
+				if currentline.has("playable") && currentline.playable:
+					available_classes.push_back(currentline.name)
+		file.close()
 
 
 func _input(event):
@@ -840,10 +851,12 @@ func _ready():
 	randomize()
 	
 	# Load race and class data.
-	load_races("res://data/races")
-	load_races("user://data/races")
-	load_classes("res://data/classes")
-	load_classes("user://data/classes")
+#	load_races(get_file_paths("res://data/races"))
+	load_races(load_file_paths("res://data/races.dat"))
+	load_races(get_file_paths("user://data/races"))
+#	load_classes(get_file_paths("res://data/classes"))
+	load_classes(load_file_paths("res://data/classes.dat"))
+	load_classes(get_file_paths("user://data/classes"))
 	
 	# Set up GUI stuff.
 	for stat in Characters.STATS:

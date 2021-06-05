@@ -1,0 +1,13 @@
+res://data/scripts/location_general.gd
+res://data/scripts/base_shop.gd
+res://data/scripts/base_battle.gd
+res://data/scripts/facilities/visit_imperial_palace.gd
+res://data/scripts/facilities/visit_board.gd
+res://data/scripts/facilities/visit_armory.gd
+res://data/scripts/facilities/visit_herbalist.gd
+res://data/scripts/facilities/visit_inn.gd
+res://data/scripts/facilities/visit_tailor.gd
+res://data/scripts/facilities/visit_archery_range.gd
+res://data/scripts/facilities/visit_blacksmith.gd
+res://data/scripts/facilities/visit_bar.gd
+res://data/scripts/facilities/visit_market.gd

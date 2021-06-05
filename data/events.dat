@@ -1,0 +1,7 @@
+res://data/events/game_start/explorer.gd
+res://data/events/game_start/wizard.gd
+res://data/events/game_start/mercenary_zombie_fight.gd
+res://data/events/game_start/wizard_basement_fight.gd
+res://data/events/game_start/mercenary.gd
+res://data/events/game_start/explorer_forest_fight.gd
+res://data/events/game_start/mercenary_imp_fight.gd

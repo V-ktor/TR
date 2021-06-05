@@ -159,28 +159,47 @@ func add_enhancement(item : Dictionary, minor:=false):
 			item.knowledge = enhancement.knowledge
 
 
-func load_items(path : String):
+func get_file_paths(path : String) -> Array:
+	var array := []
 	var dir := Directory.new()
-	var file := File.new()
-	var filename : String
-	var error := dir.change_dir(path)
+	var error := dir.open(path)
 	if error!=OK:
-		return
-	error = dir.list_dir_begin(true)
-	if error!=OK:
-		return
+		print("Error when accessing "+path+"!")
+		return array
 	
-	# Load all data files in the items directory.
-	filename = dir.get_next()
-	while filename!="":
+	dir.list_dir_begin(true)
+	var file_name := dir.get_next()
+	while file_name!="":
+		if !dir.current_is_dir():
+			array.push_back(path+"/"+file_name)
+		file_name = dir.get_next()
+	
+	return array
+
+func load_file_paths(path : String) -> Array:
+	var array := []
+	var file := File.new()
+	var error := file.open(path, File.READ)
+	if error!=OK:
+		return array
+	
+	var currentline := file.get_line()
+	while !file.eof_reached():
+		array.push_back(currentline)
+		currentline = file.get_line()
+	file.close()
+	return array
+
+func load_items(paths : Array):
+	for file_name in paths:
 		# open file
-		error = file.open(path+"/"+filename,File.READ)
+		var file := File.new()
+		var error := file.open(file_name, File.READ)
 		if error!=OK:
-			print("Can't open file "+filename+"!")
-			filename = dir.get_next()
+			print("Can't open file "+file_name+"!")
 			continue
 		else:
-			print("Loading items "+filename+".")
+			print("Loading items "+file_name+".")
 		
 		while !file.eof_reached():
 			# Gather all lines that are belonging to the same item.
@@ -201,41 +220,27 @@ func load_items(path : String):
 			# parse data
 			var currentline := JSON.parse(raw)
 			if currentline.error!=OK:
-				printt("Error parsing "+filename+".",raw)
+				printt("Error parsing "+file_name+".",raw)
 				continue
 			var data : Dictionary = currentline.get_result()
 			if !data.has("name"):
-				printt("Error parsing "+filename+" (missing name).")
+				printt("Error parsing "+file_name+" (missing name).")
 				continue
 			
 			items[data.name] = data
 			if data.type=="commodities" || data.type=="fuel":
 				commodities.push_back(data.name)
-			
-		filename = dir.get_next()
 
-func load_enhancements(path : String):
-	var dir := Directory.new()
-	var file := File.new()
-	var filename : String
-	var error := dir.change_dir(path)
-	if error!=OK:
-		return
-	error = dir.list_dir_begin(true)
-	if error!=OK:
-		return
-	
-	# Load all data files in the enhancement directory.
-	filename = dir.get_next()
-	while filename!="":
+func load_enhancements(paths : Array):
+	for file_name in paths:
 		# open file
-		error = file.open(path+"/"+filename,File.READ)
+		var file := File.new()
+		var error := file.open(file_name, File.READ)
 		if error!=OK:
-			print("Can't open file "+filename+"!")
-			filename = dir.get_next()
+			print("Can't open file "+file_name+"!")
 			continue
 		else:
-			print("Loading enhancements "+filename+".")
+			print("Loading enhancements "+file_name+".")
 		
 		while !file.eof_reached():
 			# Gather all lines that are belonging to the same item.
@@ -256,11 +261,11 @@ func load_enhancements(path : String):
 			# parse data
 			var currentline := JSON.parse(raw)
 			if currentline.error!=OK:
-				printt("Error parsing "+filename+".",raw)
+				printt("Error parsing "+file_name+".",raw)
 				continue
 			var data : Dictionary = currentline.get_result()
 			if !data.has("name"):
-				printt("Error parsing "+filename+" (missing name).")
+				printt("Error parsing "+file_name+" (missing name).")
 				continue
 			
 			if data.has("minor") && data.minor:
@@ -273,14 +278,14 @@ func load_enhancements(path : String):
 					enhancements_major[data.type] = [data]
 				else:
 					enhancements_major[data.type].push_back(data)
-			
-		filename = dir.get_next()
 
 func load_data():
-	load_items("res://data/items")
-	load_items("user://data/items")
-	load_enhancements("res://data/enhancements")
-	load_enhancements("user://data/enhancements")
+#	load_items(get_file_paths("res://data/items"))
+	load_items(load_file_paths("res://data/items.dat"))
+	load_items(get_file_paths("user://data/items"))
+#	load_enhancements(get_file_paths("res://data/enhancements"))
+	load_enhancements(load_file_paths("res://data/enhancements.dat"))
+	load_enhancements(get_file_paths("user://data/enhancements"))
 	
 
 

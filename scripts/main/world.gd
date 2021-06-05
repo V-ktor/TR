@@ -570,49 +570,71 @@ func _load(file : File) -> int:
 	
 	return OK
 
-func load_world(path : String):
+func get_file_paths(path : String) -> Array:
+	var array := []
 	var dir := Directory.new()
 	var error := dir.open(path)
 	if error!=OK:
 		print("Error when accessing "+path+"!")
-		return
+		return array
 	
 	dir.list_dir_begin(true)
 	var file_name := dir.get_next()
 	while file_name!="":
 		if !dir.current_is_dir():
-			var file := File.new()
-			var err := file.open(path+"/"+file_name,File.READ)
-			if err==OK:
-				var currentline = JSON.parse(file.get_as_text()).result
-				if currentline!=null && currentline.has("type"):
-					if currentline.type=="city":
-						print("Add cities "+file_name+".")
-						currentline.pos = Vector2(currentline.pos[0],currentline.pos[1])
-						city_data.push_back(currentline)
-					elif currentline.type=="terrain":
-						print("Add terrain "+file_name+".")
-						if currentline.has("pos"):
-							currentline.pos = Vector2(currentline.pos[0],currentline.pos[1])
-						if currentline.has("start_pos"):
-							currentline.start_pos = Vector2(currentline.start_pos[0],currentline.start_pos[1])
-						if currentline.has("end_pos"):
-							currentline.end_pos = Vector2(currentline.end_pos[0],currentline.end_pos[1])
-						if currentline.has("color"):
-							if typeof(currentline.color)==TYPE_ARRAY:
-								currentline.color = Color(currentline.color[0],currentline.color[1],currentline.color[2])
-							elif typeof(currentline.color)==TYPE_STRING:
-								currentline.color = Color(currentline.color)
-						if !currentline.has("travel_time"):
-							currentline.travel_time = 0.0
-						if !currentline.has("encounters"):
-							currentline.encounters = []
-						if !currentline.has("traits"):
-							currentline.traits = []
-						terrain_data.push_back(currentline)
-			file.close()
+			array.push_back(path+"/"+file_name)
 		file_name = dir.get_next()
+	
+	return array
+
+func load_file_paths(path : String) -> Array:
+	var array := []
+	var file := File.new()
+	var error := file.open(path, File.READ)
+	if error!=OK:
+		return array
+	
+	var currentline := file.get_line()
+	while !file.eof_reached():
+		array.push_back(currentline)
+		currentline = file.get_line()
+	file.close()
+	return array
+
+func load_world(paths : Array):
+	for file_name in paths:
+		var file := File.new()
+		var err := file.open(file_name, File.READ)
+		if err==OK:
+			var currentline = JSON.parse(file.get_as_text()).result
+			if currentline!=null && currentline.has("type"):
+				if currentline.type=="city":
+					print("Add cities "+file_name+".")
+					currentline.pos = Vector2(currentline.pos[0],currentline.pos[1])
+					city_data.push_back(currentline)
+				elif currentline.type=="terrain":
+					print("Add terrain "+file_name+".")
+					if currentline.has("pos"):
+						currentline.pos = Vector2(currentline.pos[0],currentline.pos[1])
+					if currentline.has("start_pos"):
+						currentline.start_pos = Vector2(currentline.start_pos[0],currentline.start_pos[1])
+					if currentline.has("end_pos"):
+						currentline.end_pos = Vector2(currentline.end_pos[0],currentline.end_pos[1])
+					if currentline.has("color"):
+						if typeof(currentline.color)==TYPE_ARRAY:
+							currentline.color = Color(currentline.color[0],currentline.color[1],currentline.color[2])
+						elif typeof(currentline.color)==TYPE_STRING:
+							currentline.color = Color(currentline.color)
+					if !currentline.has("travel_time"):
+						currentline.travel_time = 0.0
+					if !currentline.has("encounters"):
+						currentline.encounters = []
+					if !currentline.has("traits"):
+						currentline.traits = []
+					terrain_data.push_back(currentline)
+		file.close()
 
 func _ready():
-	load_world("res://data/world")
-	load_world("user://data/world")
+#	load_world(get_file_paths("res://data/world"))
+	load_world(load_file_paths("res://data/world.dat"))
+	load_world(get_file_paths("user://data/world"))
