@@ -123,17 +123,14 @@ const TILES = {
 		
 		}
 }
+const WIDTH = 32
+const HEIGHT = 32
 
-var offset := 0
-var center := Vector2(384.0,384.0)
+var offset := 0.0
 var size := Vector2(768.0,768.0)
 var scale := 4.0
-var selected : String
-var grab_position : Vector2
-var drag := false
-
-var location := preload("res://scenes/gui/button_location.tscn")
-var foot := preload("res://scenes/gui/foot.tscn")
+var tiles := []
+var scroll_speed := 0.5
 
 
 func get_offset(dir : int) -> Vector2:
@@ -154,94 +151,97 @@ func get_offset(dir : int) -> Vector2:
 			ofs = Vector2(-1, 0)
 	return ofs
 
-func update(update_tilemap:=false):
-	for c in get_children():
-		if c.name=="Tooltip" || c.name=="Terrain" || c.name=="TileMap":
-			continue
-		c.queue_free()
-	rect_size = scale*size
-	rect_min_size = scale*size
-	selected = Game.location
-	for k in Map.locations.keys()+Map.cities.keys():
-		var bi = location.instance()
-		var l = Map.get_location(k)
-		add_child(bi)
-		bi.rect_position = scale*(l.position-Vector2(2,2)+center)
-		bi.name = k
-		bi.connect("mouse_entered",self,"_show_info",[k])
-		bi.connect("mouse_exited",self,"_hide_info")
-		bi.connect("pressed",self,"_select",[k])
-		if Game.location==l.name:
-			bi.get_node("Location").show()
-	if !update_tilemap:
-		return
+func update():
 	$TileMap.clear()
-	$TileMap.position = scale*center
-	for pos in Map.tiles.keys():
-		var terrain : String = Map.tiles[pos].tile
-		var rnd : int = Map.tiles[pos].rnd
-		if TILES.has(terrain):
-			if typeof(TILES[terrain])==TYPE_INT:
-				$TileMap.set_cellv(pos,TILES[terrain])
-			elif typeof(TILES[terrain])==TYPE_ARRAY:
-				$TileMap.set_cellv(pos,TILES[terrain][rnd%TILES[terrain].size()])
-			elif typeof(TILES[terrain])==TYPE_DICTIONARY:
-				var matching := []
-				for k in TILES[terrain].keys():
-					var valid := true
-					for i in range(6):
-						var t := ""
-						var f = TILES[terrain][k][i]
-						if Map.tiles.has(pos+get_offset(i)):
-							t = Map.tiles[pos+get_offset(i)].tile
-						if (f==1 && t!=terrain) || (f==-1 && t==terrain):
-							valid = false
-							break
-					if !valid:
-						continue
-					matching.push_back(k)
-				if matching.size()==0:
-					$TileMap.set_cellv(pos,TILES[terrain].keys()[0])
-				else:
-					$TileMap.set_cellv(pos,matching[rnd%matching.size()])
+	for x in range(WIDTH):
+		for y in range(HEIGHT):
+			var pos := Vector2(x-offset,y-offset)
+			var terrain : String = tiles[y][x].tile
+			var rnd : int = tiles[y][x].rnd
+			if TILES.has(terrain):
+				if typeof(TILES[terrain])==TYPE_INT:
+					$TileMap.set_cellv(pos,TILES[terrain])
+				elif typeof(TILES[terrain])==TYPE_ARRAY:
+					$TileMap.set_cellv(pos,TILES[terrain][rnd%TILES[terrain].size()])
+				elif typeof(TILES[terrain])==TYPE_DICTIONARY:
+					var matching := []
+					for k in TILES[terrain].keys():
+						var valid := true
+						for i in range(6):
+							var t := ""
+							var f = TILES[terrain][k][i]
+							var p := get_offset(i)
+							t = tiles[clamp(y+p.y,0,HEIGHT-1)][clamp(x+p.x,0,WIDTH-1)].tile
+							if (f==1 && t!=terrain) || (f==-1 && t==terrain):
+								valid = false
+								break
+						if !valid:
+							continue
+						matching.push_back(k)
+					if matching.size()==0:
+						$TileMap.set_cellv(pos,TILES[terrain].keys()[0])
+					else:
+						$TileMap.set_cellv(pos,matching[rnd%matching.size()])
 
-func _show_info(ID):
-	var c = Map.get_location(ID)
-	var dist : float = Map.get_location(Game.location).position.distance_to(c.position)
-	$Tooltip/RichTextLabel.clear()
-	if c.type=="city":
-		$Tooltip/RichTextLabel.add_text(c.name+"\n"+tr(c.faction.to_upper())+"\n"+tr("DISTANCE")+": "+str(dist).pad_decimals(1)+"km")
-	else:
-		$Tooltip/RichTextLabel.add_text(c.name+"\n"+tr("DISTANCE")+": "+str(dist).pad_decimals(1)+"km")
-	$Tooltip.rect_position = scale*(c.position+center)+Vector2(2,2)
-	$Tooltip.show()
-	$Tooltip.raise()
+func _process(delta):
+	var last_offset := int(offset)
+	offset += scroll_speed*delta
+# warning-ignore:integer_division
+	$TileMap.position = scale*Vector2(0,36*offset-HEIGHT*WIDTH/4)+Vector2(OS.window_size.x/2,0)
+	$TileMap.scale = Vector2(scale,scale)
+	if int(offset)>last_offset:
+		update_map()
 
-func _hide_info():
-	$Tooltip.hide()
+func update_map():
+# warning-ignore:integer_division
+	for ofs in range((WIDTH+HEIGHT)/2-1,0,-1):
+		for x in range(WIDTH):
+			tiles[ofs][x] = tiles[ofs-1][x]
+		for y in range(HEIGHT):
+			tiles[y][ofs] = tiles[y][ofs-1]
+	for x in range(WIDTH):
+		var array := []
+		for i in range(max(x-1,0),min(x+1,WIDTH)):
+			for j in range(0,1):
+				array.push_back(tiles[i][j].tile)
+		if array.size()>0 && randf()<0.75:
+			tiles[0][x] = {"tile":array[randi()%array.size()],"rnd":randi()}
+		else:
+			tiles[0][x] = {"tile":TILES.keys()[randi()%TILES.size()],"rnd":randi()}
+	for y in range(HEIGHT):
+		var array := []
+		for i in range(0,1):
+			for j in range(max(y-1,0),min(y+1,HEIGHT)):
+				array.push_back(tiles[i][j].tile)
+		if array.size()>0 && randf()<0.75:
+			tiles[y][0] = {"tile":array[randi()%array.size()],"rnd":randi()}
+		else:
+			tiles[y][0] = {"tile":TILES.keys()[randi()%TILES.size()],"rnd":randi()}
+	update()
 
-func _select(ID):
-	for c in get_children():
-		if c.has_method("set_pressed"):
-			c.pressed = c.name==ID
-	selected = ID
-	$"../../".set_info(Map.get_location(ID))
+func init_map():
+	tiles.resize(HEIGHT)
+	for y in range(HEIGHT):
+		tiles[y] = []
+		tiles[y].resize(WIDTH)
+		for x in range(WIDTH):
+			tiles[y][x] = {"tile":TILES.keys()[randi()%TILES.size()],"rnd":randi()}
+	for y in range(HEIGHT):
+		for x in range(WIDTH):
+			var array := []
+			for i in range(max(x-1,0),min(x+1,WIDTH)):
+				for j in range(max(y-1,0),min(y+1,HEIGHT)):
+					array.push_back(tiles[i][j].tile)
+			if array.size()>0:
+				tiles[y][x].type = array[randi()%array.size()]
+	update()
 
-func draw_footprint(pos,rot):
-	var fi := foot.instance()
-	fi.position = scale*(pos+center)+Vector2(8.0*(offset-0.5),0.0).rotated(rot)
-	fi.rotation = rot+PI/16.0*(offset-0.5)
-	add_child(fi)
-	offset = (offset+1)%2
-
-func _input(event):
-	if event is InputEventMouseButton:
-		if event.pressed:
-			grab_position = event.position+Vector2(get_parent().scroll_horizontal,get_parent().scroll_vertical)
-		drag = event.pressed
-	elif event is InputEventMouseMotion && drag:
-		get_parent().scroll_horizontal = grab_position.x-event.position.x
-		get_parent().scroll_vertical = grab_position.y-event.position.y
+func _screen_resized():
+	scale = max(OS.window_size.x/768.0, OS.window_size.y/512.0)
+	$TileMap.position = scale*Vector2(0,36*offset-HEIGHT*WIDTH/4)+Vector2(OS.window_size.x/2,0)
+	$TileMap.scale = Vector2(scale,scale)
 
 func _ready():
-	set_process_input(true)
+	get_tree().connect("screen_resized", self, "_screen_resized")
+	_screen_resized()
+	init_map()

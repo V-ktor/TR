@@ -103,6 +103,7 @@ func start():
 	Main.get_node("Panel/Map/ScrollContainer").scroll_vertical = Main.get_node("Panel/Map/ScrollContainer/Map").rect_min_size.y/2-Main.get_node("Panel/Map/ScrollContainer").rect_size.y/2
 	$Panel/VBoxContainer/Button6.show()
 	$Panel/VBoxContainer/Button7.show()
+	$BG.set_process(false)
 	Main.get_node("ButtonMenu").show()
 
 func hide():
@@ -111,7 +112,7 @@ func hide():
 			c.hide()
 
 func show():
-	$BG.show()
+	$BGT.show()
 	$Panel.show()
 	$Panel/VBoxContainer/Button7.disabled = !Game.can_save()
 
