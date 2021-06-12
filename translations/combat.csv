@@ -86,6 +86,15 @@ CAST_WILD_FIRE,"Set the battle field ablaze."
 COMBAT_WILD_FIRE,"{actor} conjures fires."
 CAST_FROST_LANCE,"Conjure a spear of ice."
 COMBAT_FROST_LANCE,"{actor} hurled a spear of ice at {target}."
+CAST_ICE_SPIKES,"Conjure ice spikes to damage all enemies."
+COMBAT_ICE_SPIKES,"{actor} summons a field of ice spikes."
+CAST_MASS_HEAL,"Heal all allies."
+COMBAT_MASS_HEAL,"{actor} prepares a healing spell."
+CAST_SAND_STORM,"Conjure a sand storm."
+COMBAT_SAND_STORM,"{actor} conjures a sand storm."
+CAST_VINE_SHIELD,"Summon protective vines that cut attackers in melee range."
+COMBAT_VINE_SHIELD,"{target} is protected by vines."
+VINE_SHIELD_CUT,"{target} was cut by {actor}'s vines."
 ARCANE,Arcane
 FIRE,Fire
 ICE,Ice

@@ -11,7 +11,7 @@
     "name":"lightweight",
     "type":"armor",
     "minor":true,
-    "weight":-1.0,
+    "weight":-2.0,
     "frequency":10,
     "price":20,
     "grade":1

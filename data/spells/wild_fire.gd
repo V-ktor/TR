@@ -3,7 +3,6 @@ extends "res://data/spells/base.gd"
 const ACTION = {
 	"name":"wild_fire",
 	"text":"CAST_WILD_FIRE",
-	"target":{},
 	"requirements":{"proficiency":{"fire_magic":2,"arcane_magic":2},"knowledge":"wild_fire"},
 	"result":{8:{"method":"cast","grade":1},0:{"method":"fail","grade":0}},
 	"primary":"intelligence",

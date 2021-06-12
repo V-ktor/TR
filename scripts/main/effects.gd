@@ -122,6 +122,46 @@ class FireShield:
 		if duration<=0:
 			owner.remove_status(name)
 
+class VineShield:
+	extends Effect
+	var amount := 0
+	
+	func _init(_actor,args={}):
+		name = "vine_shield"
+		beneficial = true
+		if !args.has("amount"):
+			args.amount = 4
+		if !args.has("duration"):
+			args.duration = 5
+		duration = args.duration
+	
+	func on_apply():
+		owner.shielding += amount
+		Main.add_text(tr("STATUS_VINE_SHIELD").format({"actor":owner.get_name()}))
+	
+	func on_remove():
+		owner.shielding = int(max(owner.shielding-amount, 0))
+		Main.add_text(tr("STATUS_VINE_SHIELD_STOP").format({"actor":owner.get_name()}))
+	
+	func merge(args={}):
+		if !args.has("amount") || !args.has("duration"):
+			return false
+		duration = int((args.duration+duration)/2)
+		amount = int((args.amount+amount)/2)
+		return true
+	
+	func on_attacked(attacker,action):
+		if action.tool_used.range!="melee":
+			return
+		Main.add_text(tr("VINE_SHIELD_CUT").format({"actor":owner.get_name(),"target":attacker.get_name()}))
+		# warning-ignore:integer_division
+		attacker.add_status(Effects.Bleeding,{"value":2,"duration":3})
+	
+	func on_turn():
+		duration -= 1
+		if duration<=0:
+			owner.remove_status(name)
+
 class Riposte:
 	extends Effect
 	

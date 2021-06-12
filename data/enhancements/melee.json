@@ -20,7 +20,7 @@
     "name":"light",
     "type":"melee",
     "minor":true,
-    "weight":-0.5,
+    "weight":-1.0,
     "frequency":10,
     "price":10,
     "grade":1

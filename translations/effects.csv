@@ -13,7 +13,6 @@ BLIND,Blind
 PINNED,Pinned
 WET,Wet
 POISONOUS_CLOUDS,Poisonous Clouds
-MAGIC_SHIELD,Magic Shield
 STATUS_HIDDEN,"{actor} blends in with the shadows."
 STATUS_HIDDEN_STOP,"{actor} was spotted!"
 STATUS_BLEEDING,"{actor} is bleeding!"
@@ -25,8 +24,8 @@ STATUS_CONFUSED,"{actor} is confused!"
 STATUS_CONFUSED_STOP,"{actor} is no longer confused."
 STATUS_STUNNED,"{actor} was stunned!"
 STATUS_DISTRACTED,"{actor} was distracted."
-STATUS_CORROSION,"{actor}'s armor corrodes."
-STATUS_CORROSION_STOP,"{actor}'s armor is no longer affected by corrosion."
+STATUS_CORROSION,"{actor}'s armour corrodes."
+STATUS_CORROSION_STOP,"{actor}'s armour is no longer affected by corrosion."
 STATUS_FROZEN,"{actor} is encased by ice!"
 STATUS_FROZEN_STOP,"{actor} is melting."
 STATUS_BURNING,"{actor} bursts into flames!"
@@ -41,6 +40,8 @@ STATUS_MAGIC_SHIELD,"{actor} is protected by a magical shield."
 STATUS_MAGIC_SHIELD_STOP,"{actor}'s magical shield crumbles."
 STATUS_FIRE_SHIELD,"{actor} is surrounded by a wall of fire."
 STATUS_FIRE_SHIELD_STOP,"{actor}'s fire barrier expired."
+STATUS_VINE_SHIELD,"{actor} is surrounded by protective vines."
+STATUS_VINE_SHIELD_STOP,"{actor}'s vines perish."
 AREA_POISONOUS_CLOUDS,"The battle field is surrounded by poisonous clouds!"
 AREA_POISONOUS_CLOUDS_STOP,"The poisonous clouds dissipate."
 AREA_WILD_FIRE,"Fires spread over the battle field!"

@@ -281,6 +281,7 @@ class Character:
 				dam -= shielding
 				shielding = 0
 				remove_status("magic_shield")
+				remove_status("vine_shield")
 			else:
 				dam = 0
 				shielding -= dam

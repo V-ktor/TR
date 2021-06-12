@@ -82,12 +82,12 @@ func do_action(actor:Characters.Character,action:Action,node=null):
 	if action.actor_override!=null:
 		actor = action.actor_override
 	if action.target!=null && action.target_primary!="":
-		var offset = get_offset(action.target, action.target_primary, action.target_secondary)
+		var offset := get_offset(action.target, action.target_primary, action.target_secondary)
 		roll = do_roll(actor, action.primary, action.secondary, -offset+action.offset, action.num, action.faces)
 	else:
 		roll = do_roll(actor, action.primary, action.secondary, action.offset, action.num, action.faces)
 	if action.ticks>0 && node!=null:
-		var timer = Timer.new()
+		var timer := Timer.new()
 		timer.wait_time = 0.2
 		add_child(timer)
 		timer.start()

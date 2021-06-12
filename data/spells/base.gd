@@ -1,5 +1,19 @@
 extends Node
 
+func get_enemies(actor,ref) -> Array:
+	if actor in ref.player:
+		return ref.enemy
+	elif actor in ref.enemy:
+		return ref.player
+	return []
+
+func get_allies(actor,ref) -> Array:
+	if actor in ref.player:
+		return ref.player
+	elif actor in ref.enemy:
+		return ref.enemy
+	return []
+
 func get_damage(actor,action,roll,min_dam,max_dam,dam_scale) -> int:
 	return int(round(min_dam+(max_dam-min_dam)*roll/float(action.faces)+dam_scale*(actor.stats.intelligence/2.0-5)))
 

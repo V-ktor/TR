@@ -20,8 +20,13 @@ OF_ENDURANCE,of Endurance
 OF_AGILITY,of Agility
 OF_STRENGTH,of Strength
 ARCANISTERS,Arcanister's
+NOVICE_PYROMANCERS,Novice Pyromancer's
 PYROMANCERS,Pyromancer's
+NOVICE_CRYOMANCERS,Novice Cryomancer's
 CRYOMANCERS,Cryomancer's
+NOVICE_GEOMANCERS,Novice Geomancer's
 GEOMANCERS,Geomancer's
+NOVICE_DRUIDS,Novice Druid's
 DRUIDS,Druid's
+HEALERS,Healer's
 

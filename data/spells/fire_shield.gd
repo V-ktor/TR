@@ -9,10 +9,10 @@ const ACTION = {
 	"primary":"wisdom",
 	"secondary":"intelligence",
 	"runes":{"shielding":1,"fire":1},
-	"min_dam":4,
-	"max_dam":8,
+	"min_dam":6,
+	"max_dam":9,
 	"dam_scale":0.5,
-	"ticks":3,
+	"ticks":4,
 	"limit":8
 }
 

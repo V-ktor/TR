@@ -8,7 +8,7 @@
     "grade":1
 }
 {
-    "name":"pyromancers",
+    "name":"novice_pyromancers",
     "type":"spellbook",
     "minor":true,
     "knowledge":["combustion","flash"],
@@ -17,7 +17,16 @@
     "grade":1
 }
 {
-    "name":"cryomancers",
+    "name":"pyromancers",
+    "type":"spellbook",
+    "minor":true,
+    "knowledge":["combustion","wild_fire"],
+    "frequency":6,
+    "price":250,
+    "grade":1
+}
+{
+    "name":"novice_cryomancers",
     "type":"spellbook",
     "minor":true,
     "knowledge":["freeze","cleansing_wind"],
@@ -26,7 +35,16 @@
     "grade":1
 }
 {
-    "name":"geomancers",
+    "name":"cryomancers",
+    "type":"spellbook",
+    "minor":true,
+    "knowledge":["freeze","frost_lance"],
+    "frequency":6,
+    "price":250,
+    "grade":1
+}
+{
+    "name":"novice_geomancers",
     "type":"spellbook",
     "minor":true,
     "knowledge":["sand_blast","vines"],
@@ -35,11 +53,38 @@
     "grade":1
 }
 {
-    "name":"druids",
+    "name":"geomancers",
+    "type":"spellbook",
+    "minor":true,
+    "knowledge":["sand_blast","sand_storm"],
+    "frequency":6,
+    "price":250,
+    "grade":1
+}
+{
+    "name":"novice_druids",
     "type":"spellbook",
     "minor":true,
     "knowledge":["vines","minor_heal"],
     "frequency":10,
     "price":100,
+    "grade":1
+}
+{
+    "name":"druids",
+    "type":"spellbook",
+    "minor":true,
+    "knowledge":["vines","vine_shield"],
+    "frequency":6,
+    "price":250,
+    "grade":1
+}
+{
+    "name":"healers",
+    "type":"spellbook",
+    "minor":true,
+    "knowledge":["minor_heal","mass_heal"],
+    "frequency":6,
+    "price":250,
     "grade":1
 }

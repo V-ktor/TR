@@ -24,7 +24,6 @@ func cast(actor,action,roll):
 		action.target.remove_status("poisoned")
 	else:
 		var damage := get_damage(actor,action,roll,ACTION.min_dam,ACTION.max_dam,ACTION.dam_scale)
-		print("damage: "+str(damage))
 		action.target.heal(damage)
 		Main.add_text(tr("COMBAT_HEAL").format({"target":action.target.get_name()}))
 	action.ref.end_turn()
