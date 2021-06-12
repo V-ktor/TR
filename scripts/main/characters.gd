@@ -280,11 +280,13 @@ class Character:
 			if dam>shielding:
 				dam -= shielding
 				shielding = 0
+				Main.add_text(tr("COMBAT_SHIELD_REDUCED_DAMAGE").format({"actor":get_name()}))
 				remove_status("magic_shield")
 				remove_status("vine_shield")
 			else:
 				dam = 0
 				shielding -= dam
+				Main.add_text(tr("COMBAT_SHIELD_ABSORBED_DAMAGE").format({"actor":get_name()}))
 				return
 		health -= dam
 		decrease_morale(1)
