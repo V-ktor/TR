@@ -763,9 +763,10 @@ func victory():
 			Items.add_item(item)
 			list += item.name
 			if i<loot.size()-1:
-				list += ", "
 				if i==loot.size()-2:
 					list += tr("AND")+" "
+				else:
+					list += ", "
 		Main.add_text(tr("LOOT_FOUND").format({"list":list}))
 	emit_signal("battle_won", true)
 	turn_timer.queue_free()

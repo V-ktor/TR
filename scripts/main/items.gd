@@ -10,7 +10,7 @@ const GRADE_COLOR = [
 	Color(1.0,1.0,0.5),
 	Color(0.5,0.5,0.2)]
 const GRADE_NAMES = [
-	"GARBAGE","NORMAL","RARE","","",
+	"GARBAGE","NORMAL","RARE","","EXCEPTIONAL",
 	"EPIC","LEGENDARY"
 ]
 

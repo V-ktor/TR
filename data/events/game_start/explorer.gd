@@ -37,7 +37,8 @@ func init(_city : Map.Location, _location : String, _class : String):
 func forest_encounter(actor,_action,_roll):
 	Main.add_text(tr("EXPLORER_RUINS_FOREST_ENCOUNTER").format({"name":tr("BOAR")}))
 	Main.add_action(Game.Action.new(tr("ATTACK_IT"),self,{0:{"method":"forest_encounter_attack","grade":1}},"","",2))
-	Main.add_action(Game.Action.new(tr("MOVE_AROUND"),self,{10:{"method":"forest_encounter_evade","grade":1},0:{"method":"forest_encounter_spotted","grade":0}},"agility","dexterity",5,10))
+	if actor.proficiency.has("survival"):
+		Main.add_action(Game.Action.new(tr("MOVE_AROUND"),self,{9:{"method":"forest_encounter_evade","grade":1},0:{"method":"forest_encounter_spotted","grade":0}},"agility","dexterity",5,10))
 	if actor.proficiency.has("arcane_magic") || actor.proficiency.has("light_magic") || actor.proficiency.has("fire_magic") || actor.proficiency.has("wind_magic"):
 		Main.add_action(Game.Action.new(tr("DISTRACT_IT_SPELL"),self,{10:{"method":"forest_encounter_spell","grade":1},0:{"method":"forest_encounter_spotted","grade":0}},"intelligence","cunning",3,10))
 	if actor.proficiency.has("bow") || actor.proficiency.has("crossbow"):
@@ -413,6 +414,7 @@ func run_slow(_actor,_action,_roll):
 	no_escape(_actor,_action,_roll)
 
 func no_escape(_actor,_action,_roll):
+	Items.add_remove("torch")
 	Main.add_text(tr("EXPLORER_RUINS_TEMPLE_NO_ESCAPE"))
 	Main.add_action(Game.Action.new(tr("READ_SCROLL"),self,{0:{"method":"read_scroll","grade":1}},"","",4,1))
 

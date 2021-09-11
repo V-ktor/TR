@@ -31,8 +31,10 @@ func set_info(selected):
 		str_fuel_c += str(ceil(fuel_consumption[fuel]*dist/8.0))+" "+tr(fuel.to_upper())
 		if i+1<fuel_consumption.size():
 			str_fuel_c += ", "
-	if str_fuel_c.length()==0:
-		str_fuel_c = tr("NONE")
+	if str_fuel_c.length()>0:
+		str_fuel_c = ", "+str_fuel_c
+#	if str_fuel_c.length()==0:
+#		str_fuel_c = tr("NONE")
 	$Info/ScrollContainer/VBoxContainer/Info.clear()
 	if selected.type=="city":
 		$Info/ScrollContainer/VBoxContainer/Info.push_color(Color(1.0,1.0,1.0))
@@ -52,7 +54,7 @@ func set_info(selected):
 				$Info/ScrollContainer/VBoxContainer/Info.push_color(Color(0.2,1.0,0.1))
 			$Info/ScrollContainer/VBoxContainer/Info.add_text(str(relation)+"\n")
 		$Info/ScrollContainer/VBoxContainer/Info.push_color(Color(1.0,1.0,1.0))
-		$Info/ScrollContainer/VBoxContainer/Info.add_text(tr("POPULATION")+": "+str(selected.population)+"\n"+tr("DISTANCE")+": "+str(dist).pad_decimals(1)+"km\n"+tr("TRAVEL_TIME")+": "+time_str+"\n"+tr("SUPPLIES_REQUIRED")+": "+str(rations).pad_decimals(1)+"\n"+tr("FUEL_CONSUMPTION")+": "+str_fuel_c+"\n"+tr("FACILITIES")+":\n")
+		$Info/ScrollContainer/VBoxContainer/Info.add_text(tr("POPULATION")+": "+str(selected.population)+"\n"+tr("DISTANCE")+": "+str(dist).pad_decimals(1)+"km\n"+tr("TRAVEL_TIME")+": "+time_str+"\n"+tr("SUPPLIES_REQUIRED")+": "+str(rations).pad_decimals(1)+str_fuel_c+"\n"+tr("FACILITIES")+":\n")
 		for s in selected.facilities:
 			$Info/ScrollContainer/VBoxContainer/Info.add_text("  "+tr(s.to_upper())+"\n")
 		$Info/ScrollContainer/VBoxContainer/Info.newline()
@@ -61,7 +63,7 @@ func set_info(selected):
 			if Items.items[k].type=="commodities":
 				$Info/ScrollContainer/VBoxContainer/Info.add_text("  "+tr(k.to_upper())+": "+str(selected.price_mods[k]*Items.items[k].price).pad_decimals(1)+"\n")
 	else:
-		$Info/ScrollContainer/VBoxContainer/Info.add_text(selected.name+"\n"+tr("DISTANCE")+": "+str(dist).pad_decimals(1)+"km\n"+tr("TRAVEL_TIME")+": "+time_str+"\n"+tr("SUPPLIES_REQUIRED")+": "+str(rations).pad_decimals(1)+"\n"+tr("FUEL_CONSUMPTION")+": "+str_fuel_c)
+		$Info/ScrollContainer/VBoxContainer/Info.add_text(selected.name+"\n"+tr("DISTANCE")+": "+str(dist).pad_decimals(1)+"km\n"+tr("TRAVEL_TIME")+": "+time_str+"\n"+tr("SUPPLIES_REQUIRED")+": "+str(rations).pad_decimals(1)+str_fuel_c)
 
 func _goto():
 	if Map.get_location($ScrollContainer/Map.selected).temporary:

@@ -35,7 +35,7 @@ func init(pos):
 		mean_level += player[i].level
 	mean_level /= player.size()
 	for i in range(num_enemy):
-		enemy[i] = Characters.create_enemy(type[i],int(max(mean_level*rand_range(0.8,1.1)+rand_range(-1.5,1.5),1)),char(KEY_A+i))
+		enemy[i] = Characters.create_enemy(type[i],int(max(mean_level*rand_range(0.8,1.1)+rand_range(-1.5,1.5),1)))
 	
 	Main.update_landscape(location.landscape)
 	

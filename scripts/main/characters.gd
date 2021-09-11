@@ -30,6 +30,8 @@ const PROFICIENCIES = [
 	"stealth",
 	"lock_picking",
 	"bargaining",
+	"survival",
+	"alchemy",
 	"arcane_magic",
 	"fire_magic",
 	"ice_magic",
