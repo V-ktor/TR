@@ -1,4 +1,4 @@
-extends "res://data/scripts/base_battle.gd"
+extends Node
 
 var ID := "take_care_of_wolfs"
 var location : Map.Location
@@ -6,44 +6,82 @@ var quest : Quests.Quest
 
 
 func init(_location,_quest):
-	var num_enemy := 3
-	var type := "wolf"
 	location = Map.get_location(_location)
 	quest = _quest
-	player.resize(Characters.party.size())
-	enemy.resize(num_enemy)
-	for i in range(player.size()):
-		player[i] = Characters.characters[Characters.party[i]]
-	for i in range(num_enemy):
-		enemy[i] = Characters.create_enemy(type,int(max(quest.data.level*rand_range(0.8,1.1)+rand_range(-1.5,1.5),1)),char(KEY_A+i))
 	
 	Main.update_landscape(location.landscape)
-	Main.add_text(tr("TAKE_CARE_OF_WOLFS_INTRO"))
-	
-	connect("battle_won",self,"won_battle")
-	init_battle()
 	Main.set_title(tr("WOODS"))
-
-
-# victory #
-
-func won_battle(victory):
-	if victory:
-		var city_name = Map.get_location(quest.data.city).name
-		quest.status = "done"
-		quest.update(tr("TAKE_CARE_OF_WOLFS_VICTORY").format({"city":city_name}))
-		quest.location = quest.data.city
-		Events.register_event({"type":"enter_city","location":quest.data.city,"script":"res://data/events/jobs/take_care_of_wolfs_return.gd","quest":quest.ID})
-		Main.add_text("\n"+tr("TAKE_CARE_OF_WOLFS_VICTORY").format({"city":city_name}))
-		Main.add_action(Game.Action.new(tr("LEAVE_CAREFULLY"),"location_general",{0:{"method":"leave","grade":1}},"","",3))
+	if Characters.player.proficiency.has("survival") || Game.do_roll(Characters.player,"agility","cunning")>=15:
+		Main.add_text(tr("TAKE_CARE_OF_WOLFS_PLAN"))
+		Main.add_action(Game.Action.new(tr("TRACK_THEM_DOWN"),self,{16:{"method":"find_wolfs","grade":2},8:{"method":"find_wolfs_spotted","grade":1},0:{"method":"surprised_by_wolfs","grade":0}},"cunning","",4,8))
+		Main.add_action(Game.Action.new(tr("LEAVE"),self,{0:{"method":"leave","grade":1}},"","",3))
 	else:
-		Main.add_text("\n"+tr("WOODS_RETREAT"))
-		for c in player:
-			c.stressed()
-		Main.add_action(Game.Action.new(tr("LEAVE_HASTILY"),"location_general",{0:{"method":"leave","grade":1}},"","",3))
-		Game.fail_quest(quest)
+		Main.add_text(tr("TAKE_CARE_OF_WOLFS_FOUND"))
+		start_battle()
+	
+
+func surprised_by_wolfs(_actor,_action,_roll):
+	Map.time += 5*60
+	Main.add_text(tr("TAKE_CARE_OF_WOLFS_SURPRISED"))
+	start_battle(0,true)
+
+func find_wolfs_spotted(_actor,_action,_roll):
+	Map.time += 10*60
+	Main.add_text(tr("TAKE_CARE_OF_WOLFS_TRACKED_SPOTTED"))
+	start_battle()
+
+func find_wolfs(_actor,_action,_roll):
+	Map.time += 10*60
+	Main.add_text(tr("TAKE_CARE_OF_WOLFS_TRACKED"))
+	Main.add_action(Game.Action.new(tr("ACTION_ATTACK"),self,{0:{"method":"start_battle","grade":0}},"","",2))
+	if Characters.player.proficiency.has("survival"):
+		Main.add_action(Game.Action.new(tr("LAY_TRAP"),self,{10:{"method":"trap_success","grade":1},0:{"method":"trap_failed","grade":0}},"cunning","",3,10))
+	if Characters.player.proficiency.has("bow") || Characters.player.proficiency.has("crossbow"):
+		Main.add_action(Game.Action.new(tr("SNIPE_THEM_DOWN_BOW"),self,{16:{"method":"kill","grade":2},8:{"method":"hit","grade":1},0:{"method":"missed","grade":0}},"dexterity","cunning",3,8))
+
+func trap_success(_actor,_action,_roll):
+	Map.time += 6*60
+	Main.add_text(tr("TAKE_CARE_OF_WOLFS_TRAP"))
+	start_battle(8)
+
+func trap_failed(_actor,_action,_roll):
+	Map.time += 6*60
+	Main.add_text(tr("TAKE_CARE_OF_WOLFS_TRAP_FAILED"))
+	start_battle()
+
+func kill(_actor,_action,_roll):
+	Map.time += 4*60
+	Main.add_text(tr("TAKE_CARE_OF_WOLFS_SNIPE_KILL"))
+	start_battle(0,false,true)
+
+func hit(_actor,_action,_roll):
+	Map.time += 4*60
+	Main.add_text(tr("TAKE_CARE_OF_WOLFS_SNIPE_HIT"))
+	start_battle(6)
+
+func missed(_actor,_action,_roll):
+	Map.time += 4*60
+	Main.add_text(tr("TAKE_CARE_OF_WOLFS_SNIPE_MISSED"))
+	start_battle()
+
+func start_battle(damage:=0,surprised:=false,kill:=false):
+	var script = load("res://data/events/jobs/take_care_of_wolfs_battle.gd").new()
+	script.init(location,quest)
+	if damage>0:
+		damage = damage*script.enemy[0].health/10
+		script.enemy[0].damaged(damage)
+	if kill:
+		script.enemy.pop_back()
+	if surprised:
+		for actor in script.enemy:
+			actor.stats.agility += 2
+		for actor in script.player:
+			actor.add_status(Effects.Distracted)
+	
+
 
 # leave #
 
 func leave(_actor,_action,_roll):
+	Game.fail_quest(quest)
 	Game.leave_location()
