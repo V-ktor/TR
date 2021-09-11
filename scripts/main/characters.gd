@@ -801,6 +801,81 @@ func create_npc(dict:={}, cl=null) -> Character:
 		actor.set(key, dict[key])
 	return actor
 
+func create_description(actor: Character) -> Dictionary:
+	var adjective:= tr("UNREMARKABLE")
+	var action:= tr("SITTING_AT_THE_COUNTER")
+	var character_type:= tr(actor.race.to_upper())
+	
+	if actor.stats.constitution>=15 && (!actor.appearance.has("body") || actor.appearance.body=="tall"):
+		adjective = tr("TOWERING")
+	elif actor.stats.strength>=15:
+		adjective = tr("MUSCULAR")
+	elif actor.appearance.has("skin") && actor.appearance.skin in ["pale","tanned","green","purple"]:
+		adjective = tr(actor.appearance.skin.to_upper())
+	elif actor.appearance.has("hair") && actor.appearance.hair in ["bald"]:
+		adjective = tr(actor.appearance.hair.to_upper())
+	elif actor.appearance.has("hair_color") && actor.appearance.hair_color in ["blond"]:
+		adjective = tr(actor.appearance.hair_color.to_upper())
+	elif actor.stats.constitution<10 && actor.appearance.has("body") && actor.appearance.body=="small":
+		adjective = tr("SMALL")
+	elif actor.appearance.has("hair_color") && actor.appearance.hair_color in ["brown","white","red"]:
+		adjective = tr("HAIRED").format({"color":tr(actor.appearance.hair_color.to_upper())})
+	elif actor.appearance.has("skin") && actor.appearance.skin in ["none","rotting"]:
+		adjective = tr("UNDEAD")
+	elif actor.personality.size()>0 && !("young" in actor.personality) && !("old" in actor.personality):
+		adjective = tr(actor.personality[randi()%actor.personality.size()].to_upper())
+	
+	if (actor.race=="human" || actor.race=="elf") && actor.gender==0:
+		character_type = tr("MAN")
+	elif (actor.race=="human" || actor.race=="elf") && actor.gender==1:
+		character_type = tr("GIRL")
+	elif (actor.race=="human" || actor.race=="elf") && actor.gender==2:
+		character_type = tr("PERSON")
+	elif actor.base_type!="":
+		character_type = tr(actor.race.to_upper())+" "+tr(actor.base_type.to_upper())
+		if adjective==character_type:
+			adjective = tr("UNREMARKABLE")
+	if "young" in actor.personality:
+		character_type = tr("YOUNG")+" "+character_type
+	if "old" in actor.personality:
+		if (actor.race=="human" || actor.race=="elf") && actor.gender==1:
+			character_type = tr("WOMAN")
+		else:
+			character_type = tr("OLD")+" "+character_type
+	
+	if has_heavy_armor(actor):
+		action = tr("CLAD_IN_HEAVY_ARMOR")
+	elif actor.stats.cunning>=15:
+		action = tr("STANDING_IN_A_CORNER")
+	elif actor.stats.intelligence>=15 || actor.stats.wisdom>=15:
+		action = tr("READING_A_BOOK")
+	elif "shy" in actor.personality:
+		action = tr("SITTING_IN_A_CORNER")
+	elif actor.appearance.has("head") && actor.appearance.head in ["elven_ears","cat_ears","wolf_ears","horns"]:
+		action = tr("WITH_SOMETHING").format({"name":tr(actor.appearance.head.to_upper())})
+	elif actor.appearance.has("skin") && actor.appearance.skin in ["fur","scales"]:
+		action = tr("WITH_SOMETHING").format({"name":tr(actor.appearance.skin.to_upper())})
+	elif actor.appearance.has("head") && actor.appearance.head=="skull":
+		action = tr("WITH_SKULL_AS_HEAD")
+	elif "claws" in actor.traits:
+		action = tr("WITH_SOMETHING").format({"name":tr("CLAWS")})
+	elif "horns" in actor.traits:
+		action = tr("WITH_SOMETHING").format({"name":tr("HORNS")})
+	elif actor.appearance.has("legs") && actor.appearance.legs=="hooves":
+		action = tr("WITH_SOMETHING").format({"name":tr("HOOVES")})
+	elif actor.appearance.has("tail") && actor.appearance.tail in ["cat_tail","wolf_tail","lizzard_tail"]:
+		action = tr("WITH_SOMETHING").format({"name":tr(actor.appearance.tail.to_upper())})
+	
+	return {"character_type":character_type, "adjective":adjective, "action":action}
+
+func has_heavy_armor(actor: Character) -> bool:
+	for equipment in actor.equipment:
+		if equipment==null:
+			continue
+		if equipment.has("proficiency") && equipment.proficiency=="heavy_armor":
+			return true
+	return false
+
 
 func _save(file : File) -> int:
 	# Add informations to save file.
