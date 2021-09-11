@@ -51,9 +51,9 @@ LOCK_PICKING_TOOLTIP,"Allows you to pick locks."
 BARGAINING,Bargaining
 BARGAINING_TOOLTIP,"Allows you to negotiate better prices when trading."
 ALCHEMY,Alchemy
-ALCHEMY_TOOLTIP,""
+ALCHEMY_TOOLTIP,"Knowledge about herbs and potions."
 SURVIVAL,Survival
-SURVIVAL_TOOLTIP,""
+SURVIVAL_TOOLTIP,"Knowledge of how to survive in the wilderness."
 ARCANE_MAGIC,"Magic: Arcane"
 ARCANE_MAGIC_TOOLTIP,"Allows you to use arcane magic."
 FIRE_MAGIC,"Magic: Fire"
