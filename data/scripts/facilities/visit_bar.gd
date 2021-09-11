@@ -10,22 +10,26 @@ var known := false
 func goto(_actor,_action,_roll):
 	var character : Characters.Character
 	var chars := []
-	var c = Map.cities[Game.location]
+	var c : Map.Location = Map.cities[Game.location]
 	Main.add_text("\n"+tr("YOU_ENTER_FACILITY").format({"location":c.name,"facility":tr("BAR")}))
 	Map.time += 60*2
 	
-	if randf()<0.2:
-		for ID in Characters.characters.keys():
-			if !(ID in Characters.party):
-				chars.push_back(Characters.characters[ID])
-	if chars.size()>0:
-		character = chars[randi()%chars.size()]
-		character.hired_until = Map.time+int(rand_range(5.0,7.0)*24*60*60)
-		character.morale = (character.morale+60.0)/2.0
-		known = true
+	if !Game.vars.has("last_bar_visit") || Map.time-Game.get_var("last_bar_visit")>60*60:
+		if randf()<0.2:
+			for ID in Characters.characters.keys():
+				if !(ID in Characters.party):
+					chars.push_back(Characters.characters[ID])
+		if chars.size()>0:
+			character = chars[randi()%chars.size()]
+			character.hired_until = Map.time+int(rand_range(5.0,10.0)*24*60*60)
+			character.morale = (character.morale+60.0)/2.0
+			known = true
+		else:
+			character = create_mercenary()
+		encounter_init(character)
+		Game.set_var("last_bar_visit", Map.time)
 	else:
-		character = create_mercenary()
-	encounter_init(character)
+		Main.add_text(tr("NOTHING_INTERESTING"))
 	
 	Main.add_action(Game.Action.new(tr("GO_BACK"),self,{0:{"method":"leave","grade":1}},"","",3))
 

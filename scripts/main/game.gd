@@ -321,6 +321,8 @@ func leave_location():
 	Main.set_title("")
 	Main.get_node("Panel/Map").enable()
 	Main._show_map()
+	if vars.has("last_bar_visit") && Map.time-get_var("last_bar_visit")>60*60:
+		vars.erase("last_bar_visit")
 
 
 func can_save() -> bool:

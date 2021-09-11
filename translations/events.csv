@@ -133,4 +133,5 @@ IMPERIAL_PALACE_REJECTED_BY_GUARDS,"The guards tell you to go away."
 IMPERIAL_PALACE_GUARD_STOP_WASTING_TIME,'"Stop wasting our time, citizen!"'
 IMPERIAL_PALACE_GUARD_OFF_LIMITS,'"This place is off limits for you, {race}."'
 IMPERIAL_PALACE_GUARD_GO_AWAY,'"Go away, {race} scum!"'
+NOTHING_INTERESTING,"There is nothing interesting here."
 

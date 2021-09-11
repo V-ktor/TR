@@ -725,10 +725,10 @@ func create_enemy(type, level:=1, ID:="") -> Character:
 	return enemy
 
 func create_npc(dict:={}, cl=null) -> Character:
-	var race
-	var actor
-	var name
-	var city = Map.cities[Game.location]
+	var race : Dictionary
+	var actor : Character
+	var name : Names.Name
+	var city : Map.Location = Map.cities[Game.location]
 	var level := int(max(player.level*rand_range(0.9,1.1)+rand_range(-2.0,2.0), 1))
 	var gender := int(2.1*randf())
 	var stat_offset := {}

@@ -9,7 +9,7 @@ func goto(_actor,_action,_roll):
 	var c = Map.cities[Game.location]
 	var total_cost := cost*Characters.party.size()
 	Main.add_text("\n"+tr("YOU_ENTER_FACILITY").format({"location":c.name,"facility":tr("INN")}))
-	node = Main.add_action(Game.Action.new(tr("REST_PRICE").format({"cost":total_cost,"currency":currency}),self,{0:{"method":"rest","grade":1}},"","",3))
+	node = Main.add_action(Game.Action.new(tr("REST_PRICE").format({"cost":str(total_cost),"currency":tr(currency.to_upper())}),self,{0:{"method":"rest","grade":1}},"","",3))
 	if Items.get_item_amount(currency)<total_cost:
 		node.get_node("Button").disabled = true
 	Main.add_action(Game.Action.new(tr("GO_BACK"),self,{0:{"method":"leave","grade":1}},"","",3))
