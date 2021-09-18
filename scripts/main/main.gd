@@ -55,7 +55,7 @@ func add_action_actor(actor,action):
 	return bi
 
 func add_action(action,proficiencies=[]):
-	var actor := Characters.get_best_character(Characters.party,action.primary,action.secondary,proficiencies)
+	var actor : Characters.Character = Characters.get_best_character(Characters.party,action.primary,action.secondary,proficiencies)
 	return add_action_actor(actor,action)
 
 func get_action_count() -> int:
@@ -103,6 +103,7 @@ func _use_item(index):
 
 func _payout():
 	Characters.payout_party()
+	update_inventory()
 
 func _select_character(index):
 	if selected_item<0:
@@ -407,8 +408,8 @@ func update_characters():
 		
 
 func update_inventory():
-	var mass := Characters.get_total_mass()
-	var capacity := Characters.get_capacity()
+	var mass = Characters.get_total_mass()
+	var capacity = Characters.get_capacity()
 	for c in $Panel/HBoxContainer/Inventory/VBoxContainer/VBoxContainer.get_children():
 		c.hide()
 	
