@@ -20,6 +20,20 @@
     "grade":0
 }
 {
+	"name":"scales",
+	"type":"misc",
+	"weight":0.25,
+	"price":8,
+    "grade":0
+}
+{
+	"name":"fangs",
+	"type":"misc",
+	"weight":0.1,
+	"price":12,
+    "grade":0
+}
+{
 	"name":"leather",
 	"type":"misc",
 	"weight":0.25,

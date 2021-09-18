@@ -1,0 +1,69 @@
+{
+	"name":"copperhead_snake",
+    "race":"snake",
+	"traits":["fangs"],
+    "expirience":9,
+	"stats":{"strength":[5,10],"constitution":[5,10],"dexterity":[10,15],"agility":[12,18],"intelligence":[5,10],"wisdom":[5,10],"cunning":[10,15],"charisma":[5,10]},
+	"appearance":{"body":"snake"},
+	"equipment":[{
+    	"name":"fangs",
+	    "type":"weapon",
+    	"proficiency":"knife",
+    	"use_stat":"strength",
+    	"min_dam":1,
+    	"max_dam":2,
+    	"afflict":["Poisoned",{"chance":0.25,"duration":4,"amount":1}]}],
+    "proficiency":{"knife":[1,3],"unarmed":[1,2],"light_armor":[1,2]},
+    "drop_rate":0.75,
+    "drops":["scales"]
+}
+{
+	"name":"rattlesnake",
+    "race":"snake",
+	"traits":["fangs"],
+    "expirience":12,
+	"stats":{"strength":[6,12],"constitution":[5,10],"dexterity":[12,18],"agility":[14,18],"intelligence":[6,12],"wisdom":[5,10],"cunning":[10,15],"charisma":[5,10]},
+	"appearance":{"body":"snake"},
+	"equipment":[{
+    	"name":"fangs",
+	    "type":"weapon",
+    	"proficiency":"knife",
+    	"use_stat":"strength",
+    	"min_dam":1,
+    	"max_dam":3,
+    	"afflict":["Poisoned",{"chance":0.5,"duration":5,"amount":1}]}],
+    "proficiency":{"knife":[1,3],"unarmed":[1,2],"light_armor":[1,2]},
+    "drop_rate":0.75,
+    "drops":["scales","fangs"]
+}
+{
+	"name":"cobra",
+    "race":"snake",
+	"traits":["fangs"],
+    "expirience":14,
+	"stats":{"strength":[6,12],"constitution":[6,12],"dexterity":[14,18],"agility":[14,20],"intelligence":[5,10],"wisdom":[5,10],"cunning":[12,18],"charisma":[6,12]},
+	"appearance":{"body":"snake"},
+	"equipment":[{
+    	"name":"fangs",
+	    "type":"weapon",
+    	"proficiency":"knife",
+    	"use_stat":"strength",
+    	"min_dam":2,
+    	"max_dam":4,
+    	"afflict":["Poisoned",{"chance":0.33,"duration":6,"amount":1}]}],
+    "proficiency":{"knife":[1,3],"unarmed":[1,2],"light_armor":[1,2]},
+    "drop_rate":0.75,
+    "drops":["scales","fangs"]
+}
+{
+	"name":"anaconda",
+    "race":"snake",
+	"traits":["claws"],
+    "expirience":12,
+	"stats":{"strength":[10,15],"constitution":[8,12],"dexterity":[10,15],"agility":[12,16],"intelligence":[5,10],"wisdom":[5,10],"cunning":[8,12],"charisma":[5,10]},
+	"appearance":{"body":"snake"},
+	"equipment":[],
+    "proficiency":{"knife":[2,3],"unarmed":[2,4],"light_armor":[2,3]},
+    "drop_rate":0.75,
+    "drops":["scales"]
+}
