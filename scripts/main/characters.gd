@@ -88,6 +88,12 @@ const BACKGROUNDS = [
 const ALIGNMENTS = [
 	"lawful","chaotic","evil"
 ]
+const RELATIONS = [
+	"friend","love_interest","rival","revenge","debt","business"
+]
+const MOTIVATIONS = [
+	"adventure","power","justice","revenge","fame"
+]
 
 const COLOR_BENEFICIAL = Color(0.2,0.7,0.1)
 const COLOR_DETRIMENTAL = Color(0.7,0.2,0.1)
@@ -841,7 +847,7 @@ func create_npc(dict:={}, cl=null) -> Character:
 		if "reckless" in personality:
 			motivations.push_back("fame")
 		if motivations.size()==0:
-			motivations.push_back(["adventure","power","justice","fame"][randi()%4])
+			motivations.push_back(MOTIVATIONS[randi()%MOTIVATIONS.size()])
 		actor.motivations = motivations
 	for key in dict.keys():
 		actor.set(key, dict[key])

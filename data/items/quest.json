@@ -1,0 +1,14 @@
+{
+	"name":"small_package",
+	"type":"quest",
+	"weight":1.0,
+	"price":5,
+    "grade":1
+}
+{
+	"name":"mysterious_package",
+	"type":"quest",
+	"weight":1.0,
+	"price":5,
+    "grade":1
+}

@@ -345,6 +345,21 @@ func get_terrains(pos) -> Array:
 				array.push_back(terrain.type)
 	return array
 
+func get_city_characters(city) -> Array:
+	var array := []
+	for c in Characters.characters.keys():
+		var character = Characters.characters[c]
+		if character.home==city || character.location==city:
+			array.push_back(c)
+	return array
+
+func get_faction_characters(faction) -> Array:
+	var array := []
+	for c in Characters.characters.keys():
+		var character = Characters.characters[c]
+		if character.faction==faction:
+			array.push_back(c)
+	return array
 
 
 func create_city(data, size:=1, traits:=[]):
@@ -506,6 +521,41 @@ func create_world():
 				var mean = (city1.price_mods[k]+city2.price_mods[k])/2.0
 				city1.price_mods[k] = (1.0-weight)*city1.price_mods[k] + weight*mean
 				city2.price_mods[k] = (1.0-weight)*city2.price_mods[k] + weight*mean
+	
+	# Add characters.
+	for location in cities.keys():
+		var city = cities[location]
+		for i in range(clamp(city.population/20000,1,10)):
+			var dict := {"location":location,"level":1+randi()%20}
+# warning-ignore:unused_variable
+			var character
+			if i==0:
+				dict.position = "mayor"
+			else:
+				dict.position = ["shopkeeper","merchant","officer","aristocrat","worker","criminal","spy"][randi()%7]
+			dict.motivations = [Characters.MOTIVATIONS[randi()%Characters.MOTIVATIONS.size()]]
+			character = Characters.create_npc(dict)
+	for character in Characters.characters.values():
+		var city_characters := get_city_characters(character.location)
+		var faction_characters := get_faction_characters(character.faction)
+		for _i in range(2+randi()%3):
+			var affected = city_characters[randi()%city_characters.size()]
+			if Characters.characters[affected]==character:
+				continue
+			character.relations[affected] = [Characters.RELATIONS[randi()%Characters.RELATIONS.size()]]
+			city_characters.erase(affected)
+		for _i in range(2+randi()%3):
+			var affected = faction_characters[randi()%faction_characters.size()]
+			if Characters.characters[affected]==character:
+				continue
+			character.relations[affected] = [Characters.RELATIONS[randi()%Characters.RELATIONS.size()]]
+			faction_characters.erase(affected)
+		for _i in range(1+randi()%3):
+			var affected = Characters.characters.keys()[randi()%Characters.characters.size()]
+			if Characters.characters[affected]==character:
+				continue
+			character.relations[affected] = [Characters.RELATIONS[randi()%Characters.RELATIONS.size()]]
+		
 	
 
 
