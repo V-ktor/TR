@@ -5,7 +5,7 @@ const ACTION = {
 	"text":"CAST_BLOOD_SPRAY",
 	"target":{},
 	"requirements":{"proficiency":{"blood_magic":1},"knowledge":"blood_spray"},
-	"result":{18:{"method":"cast_bleeding","grade":2},8:{"method":"cast","grade":1},4:{"method":"missed","grade":0},0:{"method":"fail","grade":0}},
+	"result":{18:{"method":"cast_disease","grade":2},8:{"method":"cast","grade":1},4:{"method":"missed","grade":0},0:{"method":"fail","grade":0}},
 	"primary":"cunning",
 	"secondary":"intelligence",
 	"runes":{"blood":1},
@@ -16,9 +16,9 @@ const ACTION = {
 	"limit":8
 }
 
-func cast_bleeding(actor,action,roll):
+func cast_disease(actor,action,roll):
 	cast(actor,action,roll)
-	action.target.add_status(Effects.Bleeding,{"value":1, "duration":4})
+	action.target.add_status(Effects.Diseased,{"value":1, "duration":4})
 
 func cast(actor,action,roll):
 	var dam_scale := 1.0

@@ -632,6 +632,20 @@ class Diseased:
 			Main.add_text(tr("STATUS_DISEASE_RESISTED").format({"actor":actor}))
 			failed = true
 	
+	func merge(args={}):
+		if !args.has("duration"):
+			return false
+		duration = int(max(duration, args.duration))
+		if args.has("stats_inc"):
+			for s in args.stats_inc.keys():
+				owner.stats[s] -= stats_inc[s]
+				stats_inc[s] = int((stats_inc[s]+args.stats_inc[s])/2)
+				owner.stats[s] += stats_inc[s]
+		if args.has("amount"):
+			var total_dam := amount*duration
+			amount = int(args.amount*args.duration/duration+total_dam/duration)
+		return true
+	
 	func on_apply():
 		for s in stats_inc.keys():
 			owner.stats[s] += stats_inc[s]
