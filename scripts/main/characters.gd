@@ -40,7 +40,8 @@ const PROFICIENCIES = [
 	"light_magic",
 	"nature_magic",
 	"restoration_magic",
-	"shielding_magic"
+	"shielding_magic",
+	"blood_magic"
 ]
 
 const SKIN_TYPES = {
@@ -133,6 +134,7 @@ var relations := {}
 var payment := {}
 var payment_delay := 0.0
 var rations_consumed := 0.0
+var actor_ID := 0
 
 
 class Character:
@@ -167,6 +169,10 @@ class Character:
 	var traits : Array
 	var background := []
 	var personality := []
+	var relations := {}
+	var motivations := []
+	var position : String
+	var faction : String
 	var status : Dictionary
 	var knowledge : Array
 	var drop_rate := 0.0
@@ -265,10 +271,11 @@ class Character:
 			min_prof[prof] = max(proficiency[prof]-1,0)
 		calc_max_health()
 		calc_max_exp()
-		Main.add_text(tr("ACTOR_LEVEL_UP").format({"actor":get_name(),"level":str(level)}))
-		if prof_points>0:
-			Main.add_text(tr("ACTOR_GAINED_PROF").format({"actor":get_name(),"amount":str(gained_prof_points)}))
-		increase_morale(5.0+10.0*float("curious" in personality))
+		if ID in Characters.party:
+			Main.add_text(tr("ACTOR_LEVEL_UP").format({"actor":get_name(),"level":str(level)}))
+			if prof_points>0:
+				Main.add_text(tr("ACTOR_GAINED_PROF").format({"actor":get_name(),"amount":str(gained_prof_points)}))
+		increase_morale(5.0)
 	
 	
 	func heal(value:=1):
@@ -440,7 +447,7 @@ class Character:
 	
 	func to_dict() -> Dictionary:
 		var dict := {
-			"name":name.to_dict(),"gender":gender,"race":race,"ID":ID,
+			"name":name.to_dict(),"gender":gender,"race":race,"ID":ID,"faction":faction,
 			"stats":base_stats,"min_stats":min_stats,"appearance":appearance,
 			"stat_points":stat_points,"prof_points":prof_points,
 			"proficiency":proficiency,"min_prof":min_prof,"equipment":equipment,
@@ -450,7 +457,7 @@ class Character:
 			"hired":hired,"hired_until":hired_until,"morale":morale,"home":home,
 			"location":location,"payment_cost":payment_cost,"payment_currency":payment_currency,
 			"status":status,"knowledge":knowledge,"cls_name":cls_name,"spells_used":spells_used,
-			"story":story}
+			"relations":relations,"motivations":motivations,"position":position,"story":story}
 		return dict
 
 
@@ -466,6 +473,22 @@ func payout_party() -> bool:
 			characters[ID].increase_morale(10.0*payment_delay/24.0)
 	payment_delay = 0.0
 	return true
+
+func rest(factor : float):
+	var boost : float = Items.get_pet_morale()
+	Game.set_var("last_rest_time",Map.time)
+	for k in party:
+		var c : Character = characters[k]
+		c.health = min(c.health+ceil(c.max_health*factor),c.max_health)
+		c.stamina = min(c.stamina+ceil(c.max_stamina*2.0*factor),c.max_stamina)
+		c.mana = min(c.mana+ceil(c.max_mana*2.0*factor),c.max_mana)
+		c.morale += (5.0+float(Game.do_roll(Characters.player,"charisma"))/2.0+boost)*2.0*factor
+
+func add_morale(amount : float, filter:=""):
+	for k in party:
+		var c : Character = characters[k]
+		if filter=="" || filter in c.personality || filter in c.traits:
+			c.morale += amount
 
 
 func get_stat_points_left(stats,stat_offset,extra_points:=0) -> int:
@@ -619,6 +642,21 @@ func get_worst_character(group, primary, secondary="", proficiencies=[]) -> Char
 			value = v
 	return best
 
+func has_proficiency(type:String, group:=party):
+	for c in group:
+		var character : Character = characters[c]
+		if character.proficiency.has(type):
+			return character
+	return
+
+func get_proficiency_level(type:String, group:=party) -> int:
+	var max_level := 0
+	for c in group:
+		var character : Character = characters[c]
+		if character.proficiency.has(type) && character.proficiency[type]>max_level:
+			max_level = character.proficiency[type]
+	return max_level
+
 func get_total_mass() -> float:
 	var mass := 0.0
 	for item in inventory:
@@ -730,7 +768,8 @@ func create_npc(dict:={}, cl=null) -> Character:
 	var race : Dictionary
 	var actor : Character
 	var name : Names.Name
-	var city : Map.Location = Map.cities[Game.location]
+	var location : String = Game.location
+	var city : Map.Location
 	var level := int(max(player.level*rand_range(0.9,1.1)+rand_range(-2.0,2.0), 1))
 	var gender := int(2.1*randf())
 	var stat_offset := {}
@@ -740,11 +779,19 @@ func create_npc(dict:={}, cl=null) -> Character:
 	var appearance := {}
 	var personality := []
 	var background := []
+	var motivations := []
 	var knowledge := []
 	var stats := {}
+	if dict.has("location"):
+		location = dict.location
+	city = Map.cities[location]
+	if dict.has("level"):
+		level = dict.level
 	
-	if randf()<0.5:
-		race = Menu.races[Map.cities[Game.location].faction]
+	if dict.has("race"):
+		race = Menu.races[dict.race]
+	elif randf()<0.5:
+		race = Menu.races[Map.cities[location].faction]
 	else:
 		race = Menu.races.values()[randi()%Menu.races.size()]
 	if race.has("stats"):
@@ -791,16 +838,34 @@ func create_npc(dict:={}, cl=null) -> Character:
 	personality.push_back(PERSONALITIES[randi()%PERSONALITIES.size()])
 	personality.push_back(ALIGNMENTS[randi()%ALIGNMENTS.size()])
 	actor.personality = personality
+	actor.location = location
 	if city.faction==actor.race && ("young" in personality || !("old" in personality) || randf()<0.5):
-		actor.home = Game.location
+		actor.home = location
 	else:
 		var cities : Array = Map.get_faction_cities(actor.race)
 		if cities.size()==0:
 			actor.home = Map.cities.keys()[randi()%Map.cities.size()]
 		else:
 			actor.home = cities[randi()%cities.size()]
+	if !dict.has("motivations"):
+		if "bold" in personality || "curious" in personality:
+			motivations.push_back("adventure")
+		if "evil" in personality:
+			motivations.push_back("power")
+		if "lawful" in personality:
+			motivations.push_back("justice")
+		if "reckless" in personality:
+			motivations.push_back("fame")
+		if motivations.size()==0:
+			motivations.push_back(["adventure","power","justice","fame"][randi()%4])
+		actor.motivations = motivations
 	for key in dict.keys():
 		actor.set(key, dict[key])
+	if actor.faction==null:
+		if randf()<0.5:
+			actor.faction = Map.cities[location].faction
+		else:
+			actor.faction = actor.race
 	return actor
 
 func create_description(actor: Character) -> Dictionary:
@@ -878,6 +943,8 @@ func has_heavy_armor(actor: Character) -> bool:
 			return true
 	return false
 
+
+# load / save #
 
 func _save(file : File) -> int:
 	# Add informations to save file.

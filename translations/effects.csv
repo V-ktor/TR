@@ -12,6 +12,7 @@ BLEEDING,Bleeding
 BLIND,Blind
 PINNED,Pinned
 WET,Wet
+DISEASED,Diseased
 POISONOUS_CLOUDS,Poisonous Clouds
 STATUS_HIDDEN,"{actor} blends in with the shadows."
 STATUS_HIDDEN_STOP,"{actor} was spotted!"
@@ -19,7 +20,6 @@ STATUS_BLEEDING,"{actor} is bleeding!"
 STATUS_BLEEDING_STOP,"{actor} stopped bleeding."
 STATUS_POISONED,"{actor} was poisoned!"
 STATUS_POISONED_STOP,"{actor} is no longer affected by poison."
-STATUS_POISON_RESISTED,"{actor} is immune to the poison."
 STATUS_CONFUSED,"{actor} is confused!"
 STATUS_CONFUSED_STOP,"{actor} is no longer confused."
 STATUS_STUNNED,"{actor} was stunned!"
@@ -42,8 +42,16 @@ STATUS_FIRE_SHIELD,"{actor} is surrounded by a wall of fire."
 STATUS_FIRE_SHIELD_STOP,"{actor}'s fire barrier expired."
 STATUS_VINE_SHIELD,"{actor} is surrounded by protective vines."
 STATUS_VINE_SHIELD_STOP,"{actor}'s vines perish."
+STATUS_DISEASE,"{actor} is affected by a magical disease."
+STATUS_DISEASE_STOP,"{actor} feels better."
 AREA_POISONOUS_CLOUDS,"The battle field is surrounded by poisonous clouds!"
 AREA_POISONOUS_CLOUDS_STOP,"The poisonous clouds dissipate."
 AREA_WILD_FIRE,"Fires spread over the battle field!"
 AREA_WILD_FIRE_STOP,"The fires have been extinguished."
+STATUS_BOILING,"{target} is boiling!"
+STATUS_BOILING_STOP,"{target} cooled down."
+STATUS_POISON_RESISTED,"{actor} is immune to the poison."
+STATUS_FIRE_RESISTED,"{actor} resisted the fire."
+STATUS_ICE_RESISTED,"{actor} resisted the freezing."
+STATUS_DISEASE_RESISTED,"{actor} is immune to the disease."
 

@@ -35,6 +35,7 @@ PIN_DOWN_TARGET,"Pin down {target}."
 UNARMED_ATTACK_TARGET,"Attack {target} with bare fists."
 BODY_SLAM_TARGET,"Body slam against {target}."
 CLAWS_TARGET,"Attack {target} with claws."
+FANGS_TARGET,"Bite {target} with poisonous fangs."
 HEADBUTT_TARGET,"Headbutt {target}."
 EXTINGUISH_FLAMES,"Extinguish flames."
 DRAW_ARCANE_RUNE,"Draw an arcane rune."
@@ -46,6 +47,7 @@ DRAW_LIGHT_RUNE,"Draw a light rune."
 DRAW_NATURE_RUNE,"Draw a nature rune."
 DRAW_RESTORATION_RUNE,"Draw a restoration rune."
 DRAW_SHIELDING_RUNE,"Draw a shielding rune."
+DRAW_BLOOD_RUNE,"Draw a blood rune."
 COMBAT_DRAW_RUNE,"{actor} has drawn a {type} rune."
 COMBAT_FAIL_DRAW_RUNE,"{actor} has failed to draw a {type} rune."
 COMBAT_SPELL_FAILED,"{actor} failed casting the spell."
@@ -69,7 +71,6 @@ COMBAT_FLASH,"A blinding light flash appears in front of {target}."
 CAST_HEAL,"Heal {target}."
 COMBAT_HEAL,"{target} was healed!"
 COMBAT_CLEANSE,"{target}'s afflictions have been removed."
-COMBAT_BOILING,"{target} is boiling!"
 COMBAT_FROZEN_SOLID,"{target} is frozen solid!"
 COMBAT_LITTLE_IMPACT_LIQUID_BODY,"The attack has little impact on {target}'s liquid body."
 CAST_VINES,"Entangle {target} in vines."
@@ -97,6 +98,13 @@ COMBAT_SAND_STORM,"{actor} conjures a sand storm."
 CAST_VINE_SHIELD,"Summon protective vines that cut attackers in melee range."
 COMBAT_VINE_SHIELD,"{target} is protected by vines."
 VINE_SHIELD_CUT,"{target} was cut by {actor}'s vines."
+CAST_BLOOD_SPRAY,"Blast {target} with blood needles."
+COMBAT_BLOOD_SPRAY,"{actor} blasts {target} with crimson needles."
+CAST_BLOOD_BOIL,"Increase {target}'s internal temperature above boiling point."
+COMBAT_BLOOD_BOIL,"{target}'s blood starts boiling!"
+BOILING_BURN,"{target} was burned by {actor}."
+CAST_BLIGHT_BOLT,"Attack {target} with a bolt of blight infecting it with a disease."
+COMBAT_BLIGHT_BOLT,"{actor} shoots a bolt of blight at {target}."
 ARCANE,Arcane
 FIRE,Fire
 ICE,Ice
@@ -106,4 +114,5 @@ LIGHT,Light
 NATURE,Nature
 RESTORATION,Restoration
 SHIELDING,Shielding
+BLOOD,Blood
 

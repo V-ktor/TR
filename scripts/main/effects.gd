@@ -22,16 +22,17 @@ class AreaEffect:
 
 class HealthPotion:
 	extends Effect
-	var amount := 0
+	var amount := 5
 	
 	func _init(_actor,args={}):
 		name = "healing"
 		beneficial = true
-		if !args.has("amount"):
-			args.amount = 5
-		if !args.has("duration"):
-			args.duration = 3
-		duration = args.duration
+		if args.has("amount"):
+			amount = args.amount
+		if args.has("duration"):
+			duration = args.duration
+		else:
+			duration = 3
 	
 	func merge(args={}):
 		if !args.has("amount") || !args.has("duration"):
@@ -51,16 +52,17 @@ class HealthPotion:
 
 class MagicShield:
 	extends Effect
-	var amount := 0
+	var amount := 6
 	
 	func _init(_actor,args={}):
 		name = "magic_shield"
 		beneficial = true
-		if !args.has("amount"):
-			args.amount = 6
-		if !args.has("duration"):
-			args.duration = 3
-		duration = args.duration
+		if args.has("amount"):
+			amount = args.amount
+		if args.has("duration"):
+			duration = args.duration
+		else:
+			duration = 3
 	
 	func on_apply():
 		owner.shielding += amount
@@ -86,16 +88,17 @@ class MagicShield:
 
 class FireShield:
 	extends Effect
-	var amount := 0
+	var amount := 4
 	
 	func _init(_actor,args={}):
 		name = "fire_shield"
 		beneficial = true
-		if !args.has("amount"):
-			args.amount = 4
-		if !args.has("duration"):
-			args.duration = 4
-		duration = args.duration
+		if args.has("amount"):
+			amount = args.amount
+		if args.has("duration"):
+			duration = args.duration
+		else:
+			duration = 4
 	
 	func on_apply():
 		Main.add_text(tr("STATUS_FIRE_SHIELD").format({"actor":owner.get_name()}))
@@ -124,16 +127,17 @@ class FireShield:
 
 class VineShield:
 	extends Effect
-	var amount := 0
+	var amount := 4
 	
 	func _init(_actor,args={}):
 		name = "vine_shield"
 		beneficial = true
-		if !args.has("amount"):
-			args.amount = 4
-		if !args.has("duration"):
-			args.duration = 5
-		duration = args.duration
+		if args.has("amount"):
+			amount = args.amount
+		if args.has("duration"):
+			duration = args.duration
+		else:
+			duration = 5
 	
 	func on_apply():
 		owner.shielding += amount
@@ -257,16 +261,17 @@ class Stunned:
 
 class Bleeding:
 	extends Effect
-	var amount := 0
+	var amount := 1
 	
 	func _init(_actor,args={}):
 		name = "bleeding"
 		detrimental = true
-		if !args.has("amount"):
-			args.amount = 1
-		if !args.has("duration"):
-			args.duration = 5
-		duration = args.duration
+		if args.has("amount"):
+			amount = args.amount
+		if args.has("duration"):
+			duration = args.duration
+		else:
+			duration = 5
 	
 	func merge(args={}):
 		if !args.has("amount") || !args.has("duration"):
@@ -290,19 +295,20 @@ class Bleeding:
 
 class Poisoned:
 	extends Effect
-	var amount := 0
+	var amount := 1
 	var stats_inc := {}
 	
 	func _init(actor,args={}):
 		name = "poisoned"
 		detrimental = true
-		if !args.has("amount"):
-			args.amount = 1
-		if !args.has("duration"):
-			args.duration = 5
+		if args.has("amount"):
+			amount = args.amount
+		if args.has("duration"):
+			duration = args.duration
+		else:
+			duration = 5
 		if args.has("stats_inc"):
 			stats_inc = args.stats_inc
-		duration = args.duration
 		if "poison_resistance" in actor.traits:
 			Main.add_text(tr("STATUS_POISON_RESISTED").format({"actor":actor}))
 			failed = true
@@ -337,16 +343,20 @@ class Poisoned:
 
 class Burning:
 	extends Effect
-	var amount := 0
+	var amount := 1
 	
-	func _init(_actor,args={}):
+	func _init(actor,args={}):
 		name = "burning"
 		detrimental = true
-		if !args.has("amount"):
-			args.amount = 1
-		if !args.has("duration"):
-			args.duration = 2
-		duration = args.duration
+		if args.has("amount"):
+			amount = args.amount
+		if args.has("duration"):
+			duration = args.duration
+		else:
+			duration = 2
+		if "fire_resistance" in actor.traits:
+			Main.add_text(tr("STATUS_FIRE_RESISTED").format({"actor":actor}))
+			failed = true
 	
 	func merge(args={}):
 		if !args.has("amount") || !args.has("duration"):
@@ -361,6 +371,46 @@ class Burning:
 	
 	func on_remove():
 		Main.add_text(tr("STATUS_BURNING_STOP").format({"actor":owner.get_name()}))
+	
+	func on_turn():
+		owner.damaged(amount)
+		duration -= 1
+		if duration<=0:
+			owner.remove_status(name)
+
+class Boiling:
+	extends Effect
+	var amount := 1
+	
+	func _init(_actor,args={}):
+		name = "boiling"
+		detrimental = true
+		if args.has("amount"):
+			amount = args.amount
+		if args.has("duration"):
+			duration = args.duration
+		else:
+			duration = 4
+	
+	func on_apply():
+		Main.add_text(tr("STATUS_BOILING").format({"actor":owner.get_name()}))
+	
+	func on_remove():
+		Main.add_text(tr("STATUS_BOILING_STOP").format({"actor":owner.get_name()}))
+	
+	func merge(args={}):
+		if !args.has("amount") || !args.has("duration"):
+			return false
+		duration = int((args.duration+duration)/2)
+		amount = int((args.amount+amount)/2)
+		return true
+	
+	func on_attacked(attacker,action):
+		if action.tool_used.range!="melee":
+			return
+		Main.add_text(tr("BOILING_BURN").format({"actor":owner.get_name(),"target":attacker.get_name()}))
+		attacker.damaged(amount)
+		print(owner.get_name()+"->"+attacker.get_name()+" damage: "+str(amount))
 	
 	func on_turn():
 		owner.damaged(amount)
@@ -395,7 +445,10 @@ class Corrosion:
 		detrimental = true
 		if args.has("armor_inc"):
 			armor_inc = args.armor_inc
-		duration = args.duration
+		if args.has("duration"):
+			duration = args.duration
+		else:
+			duration = 4
 	
 	func merge(args={}):
 		if !args.has("armor_inc") || !args.has("duration"):
@@ -422,12 +475,18 @@ class Frozen:
 	extends Effect
 	var stats_inc := {}
 	
-	func _init(_actor,args={}):
+	func _init(actor,args={}):
 		name = "frozen"
 		detrimental = true
 		if args.has("stats_inc"):
 			stats_inc = args.stats_inc
-		duration = args.duration
+		if args.has("duration"):
+			duration = args.duration
+		else:
+			duration = 1
+		if "ice_resistance" in actor.traits:
+			Main.add_text(tr("STATUS_ICE_RESISTED").format({"actor":actor}))
+			failed = true
 	
 	func merge(args={}):
 		if !args.has("stats_inc") || !args.has("duration"):
@@ -462,7 +521,10 @@ class Blind:
 		detrimental = true
 		if args.has("stats_inc"):
 			stats_inc = args.stats_inc
-		duration = args.duration
+		if args.has("duraiton"):
+			duration = args.duration
+		else:
+			duration = 2
 	
 	func merge(args={}):
 		if !args.has("stats_inc") || !args.has("duration"):
@@ -498,7 +560,10 @@ class Pinned:
 		detrimental = true
 		if args.has("stats_inc"):
 			stats_inc = args.stats_inc
-		duration = args.duration
+		if args.has("duration"):
+			duration = args.duration
+		else:
+			duration = 2
 	
 	func on_apply():
 		for s in stats_inc.keys():
@@ -524,7 +589,10 @@ class Wet:
 		detrimental = true
 		if args.has("amount"):
 			amount = args.amount
-		duration = args.duration
+		if args.has("duration"):
+			duration = args.duration
+		else:
+			duration = 4
 	
 	func merge(args={}):
 		if !args.has("amount") || !args.has("duration"):
@@ -544,13 +612,49 @@ class Wet:
 		if duration<=0:
 			owner.remove_status(name)
 
+class Diseased:
+	extends Effect
+	var stats_inc := {}
+	var amount := 1
+	
+	func _init(actor,args={}):
+		name = "diseased"
+		detrimental = true
+		if args.has("stats_inc"):
+			stats_inc = args.stats_inc
+		if args.has("amount"):
+			amount = args.amount
+		if args.has("duration"):
+			duration = args.duration
+		else:
+			duration = 4
+		if "disease_resistance" in actor.traits:
+			Main.add_text(tr("STATUS_DISEASE_RESISTED").format({"actor":actor}))
+			failed = true
+	
+	func on_apply():
+		for s in stats_inc.keys():
+			owner.stats[s] += stats_inc[s]
+		Main.add_text(tr("STATUS_DISEASED").format({"actor":owner.get_name()}))
+	
+	func on_remove():
+		for s in stats_inc.keys():
+			owner.stats[s] -= stats_inc[s]
+		Main.add_text(tr("STATUS_DISEASEDD_STOP").format({"actor":owner.get_name()}))
+	
+	func on_turn():
+		owner.damaged(amount)
+		duration -= 1
+		if duration<=0:
+			owner.remove_status(name)
+
 
 
 # area effects #
 
 class PoisonousClouds:
 	extends AreaEffect
-	var damage := 0
+	var damage := 1
 	
 	func _init(_game_state,actor,args={}):
 		name = "poisonous_clouds"
@@ -560,6 +664,8 @@ class PoisonousClouds:
 			damage = args.damage
 		if args.has("duration"):
 			duration = args.duration
+		else:
+			duration = 3
 	
 	func on_apply():
 		Main.add_text(tr("AREA_POISONOUS_CLOUDS"))
@@ -576,7 +682,7 @@ class PoisonousClouds:
 
 class WildFire:
 	extends AreaEffect
-	var damage := 0
+	var damage := 6
 	
 	func _init(_game_state,actor,args={}):
 		name = "wild_fire"
@@ -584,8 +690,6 @@ class WildFire:
 		caster = actor
 		if args.has("damage"):
 			damage = args.damage
-		else:
-			damage = 6
 		if args.has("duration"):
 			duration = args.duration
 		else:

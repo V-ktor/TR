@@ -33,4 +33,10 @@ SAND_STORM,Sand Storm
 SAND_STORM_TOOLTIP,"Conjure a sand storm that harms all enemies and blinds them."
 VINE_SHIELD,Shielding Vines
 VINE_SHIELD_TOOLTIP,"Summon protective vines that absorb incoming damage and cut attackers in melee range making them bleed."
+BLOOD_SPRAY,Blood Spray
+BLOOD_SPRAY_TOOLTIP,"Create tiny needles made of blood and shoot them at the target with high speed."
+BLOOD_BOIL,Blood Boil
+BLOOD_BOIL_TOOLTIP,"Increase the internal temperature of a target making its blood boil."
+BLIGHT_BOLT,Blight Bolt
+BLIGHT_BOLT_TOOLTIP,"Attack a target with a bolt of blight infecting it with a magical disease that reduces all stats by 2."
 

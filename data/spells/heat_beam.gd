@@ -35,7 +35,7 @@ func cast(actor,action,roll):
 	else:
 		var dam_scale := 1.0
 		if "liquid" in action.target.traits && action.target.has_status("burning"):
-			Main.add_text(tr("COMBAT_BOILING").format({"target":action.target.get_name()}))
+			action.target.add_status(Effects.Boiling,{"duration":duration,"amount":1})
 			dam_scale = 2.0
 		Main.add_text(tr("COMBAT_HEAT_BEAM").format({"target":action.target.get_name()}))
 # warning-ignore:integer_division
