@@ -14,33 +14,15 @@ const STATS = [
 const MAX_PROFICIENCY = 4
 const PROFICIENCIES = [
 	"unarmed",
-	"greatsword",
-	"blade",
-	"knife",
-	"axe",
-	"mace",
-	"spear",
-	"staff",
-	"shield",
-	"light_armor",
-	"heavy_armor",
-	"bow",
-	"crossbow",
-	"sling",
-	"stealth",
-	"lock_picking",
+	"greatsword","blade","knife","axe","mace","spear","staff",
+	"shield","light_armor","heavy_armor",
+	"bow","crossbow","sling",
+	"stealth","lock_picking",
 	"bargaining",
 	"survival",
 	"alchemy",
-	"arcane_magic",
-	"fire_magic",
-	"ice_magic",
-	"wind_magic",
-	"earth_magic",
-	"light_magic",
-	"nature_magic",
-	"restoration_magic",
-	"shielding_magic",
+	"arcane_magic","fire_magic","ice_magic","wind_magic","earth_magic",
+	"light_magic","nature_magic","restoration_magic","shielding_magic",
 	"blood_magic"
 ]
 
@@ -93,7 +75,8 @@ const TAIL_TYPES = {
 const APPEARANCE_TRAITS = {
 	"claws":"claws",
 	"horns":"horns",
-	"wings":"flying"
+	"wings":"flying",
+	"fangs":"fangs"
 }
 
 const PERSONALITIES = [
@@ -115,7 +98,8 @@ const TRAIT_COLOR = {
 	"intimidating":COLOR_BENEFICIAL,
 	"poison_resistance":COLOR_BENEFICIAL,
 	"claws":COLOR_BENEFICIAL,
-	"horns":COLOR_BENEFICIAL
+	"horns":COLOR_BENEFICIAL,
+	"fangs":COLOR_BENEFICIAL
 }
 
 const HE_SHE = ["HE","SHE","THEY"]
