@@ -37,6 +37,7 @@ MACE,Mace
 STAFF,Staff
 SPEAR,Spear
 CLAWS,Claws
+FANGS,Fangs
 BOW,Bow
 BUCKLER,Buckler
 LEATHER_ARMOR,Leather Armor
@@ -52,8 +53,10 @@ MEDICAL_SUPPLIES,medical supplies
 LUXURY_GOODS,luxury goods
 SMALL_HEALTH_POTION,Small Health Potion
 SMALL_MANA_POTION,Small Mana Potion
+MYSTERIOUS_POTION,Mysterious Potion
 GOO,goo
 FUR,fur
+SCALES,scales
 LEATHER,leather
 IMP_LEATHER,imp leather
 TROLL_HIDE,troll hide
@@ -67,4 +70,7 @@ MYSTERIOUS_SCROLL,mysterious scroll
 SCROLL_HANDLES,scroll handles
 LEVER,lever
 TORCH,torch
+SMALL_PACKAGE,small package
+PACKAGE,package
+MYSTERIOUS_PACKAGE,Mysterious Package
 

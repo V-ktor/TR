@@ -1,0 +1,16 @@
+{
+	"name":"cat",
+	"type":"pet",
+	"weight":4.0,
+	"morale":1.0,
+	"price":0,
+    "grade":1
+}
+{
+	"name":"baby_dragon",
+	"type":"pet",
+	"weight":6.0,
+	"morale":1.0,
+	"price":0,
+    "grade":4
+}

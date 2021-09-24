@@ -18,3 +18,13 @@
 	"price":10,
     "grade":1
 }
+{
+	"name":"mysterious_potion",
+	"type":"potion",
+	"method":"random_potion",
+	"target":"ally",
+	"args":[10],
+	"weight":0.05,
+	"price":10,
+    "grade":0
+}
