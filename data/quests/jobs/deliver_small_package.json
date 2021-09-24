@@ -8,7 +8,7 @@
     "level_random":0.5,
     "level_scale":0.0,
     "location":"random_city",
-    "events":[{"type":"enter_city", "script":"res://data/events/jobs/deliver_small_package.gd"}],
+    "script":"res://data/scripts/jobs/deliver_small_package.gd",
     "reward":{"silver_coins":40},
     "descriptions":["deliver_package_short_desc1", "deliver_package_short_desc2", "deliver_package_short_desc3", "deliver_package_short_desc4"]
 }

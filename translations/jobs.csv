@@ -5,6 +5,93 @@ DELIVER_PACKAGE_SHORT_DESC1,"Deliver a package to {location}."
 DELIVER_PACKAGE_SHORT_DESC2,"Bring a package to {location}."
 DELIVER_PACKAGE_SHORT_DESC3,"A package needs to be transported to {location}."
 DELIVER_PACKAGE_SHORT_DESC4,"Looking for someone heading to {location} to deliver a package."
+DELIVER_PACKAGE_INIT,"You look for the person to pick up the package."
+DELIVER_PACKAGE_PLEASE_DELIVER,'"Please deliver this package to {city}."'
+DELIVER_PACKAGE_DONT_OPEN,'"Listen, it's important that you don't open the package. Understood?"'
+DELIVER_PACKAGE_GLAD_TO_HEAR,'"I'm glad to hear that."'
+DELIVER_PACKAGE_NEVERMIND,'"Nevermind."'
+DELIVER_PACKAGE_TIME,'"Please make sure to deliver the package on time. This is important!"'
+DELIVER_PACKAGE_WANT_TO_OPEN,"You know that you are not supposed to open the package. Something about it is suspicious though. Maybe you should take a look?"
+DELIVER_PACKAGE_CHECK_TO_BE_SURE,"The client was unclear about the content of the package. Maybe you should take a look just to be sure?"
+DELIVER_PACKAGE_NOISE,"It is a calm evening and you're about to go to bed when you hear noises coming from the package you agreed to deliver."
+DELIVER_PACKAGE_OPEN_NO_ONE,"No one will ever find out that you opened it."
+DELIVER_PACKAGE_OPEN_PARTY,"{name} intervenes as {he/she} notices you starring at the package."
+DELIVER_PACKAGE_OPEN_CURIOUS,'"Aren't you curious what is inside?"'
+DELIVER_PACKAGE_OPEN_EVIL,'"Trying to figure out if it's more valuable than our payment?"'
+DELIVER_PACKAGE_OPEN_LAWFUL,'"You promised not to open the package."'
+DELIVER_PACKAGE_OPEN_LAWFUL_ALT,'"Maybe we should check it out just to get sure everything is right."'
+DELIVER_PACKAGE_OPEN_NEUTRAL,"{name} notices that you stare at the package but only shrugs."
+DONT_OPEN_PACKAGE,"You decide to forget about it."
+OPEN_PACKAGE_UNFAMILIAR_HERBS,"You decide to open the package. It contains unfamiliar herbs. You're not sure what to make with that information."
+OPEN_PACKAGE_REGULAR_HERBS,"You decide to open the package. The content turns out to be regular herbs. The client might was afraid you could come to wrong conclusions."
+OPEN_PACKAGE_ILLEGAL_HERBS,"You decide to open the package which turns out to be filled with herbs. You recognize them. They are used as drugs and clearly illegal."
+OPEN_PACKAGE_TOXIC_HERBS,"You decide to open the package. It is filled with herbs. You don't know all of them but you remember the others being toxic."
+OPEN_PACKAGE_ILLEGAL_HERBS_PARTY,"You decide to open the package. You don't recognize the herbs but {name} is able to help you out."
+OPEN_PACKAGE_ILLEGAL_HERBS_PARTY_ILLEGAL,'"They are illegal, if this is what you worry about."'
+OPEN_PACKAGE_ILLEGAL_HERBS_PARTY_LAWFUL,'"They are used as drugs and very dangerous. We can't just proceed delivering them!"'
+OPEN_PACKAGE_ILLEGAL_HERBS_PARTY_EVIL,'"Pretty much illegal - and expensive. I hope you have a plan how to bypass the guards."'
+OPEN_PACKAGE_WHITE_POWDER,"You decide to open the package and find out that it's filled with white powder."
+POWDER_COLOR_CHANGE,"While you wonder what this powder is you realize it's changing its colour to blue."
+POWDER_COLOR_CHANGE_PARTY,'{name} also noticed it.\n"That could be a problem."'
+THAT_COULD_BE_A_PROBLEM,"That could possibly be a problem."
+OPEN_PACKAGE_UNFAMILIAR_POWDER,"You wonder what this powder is. It is white and scentless. You don't dare to taste it."
+OPEN_PACKAGE_UNFAMILIAR_POWDER_PARTY,"You wonder if {name} has an idea but {he/she} just replies that it's hard to tell."
+OPEN_PACKAGE_MYSTERIOUS_POTIONS,"You open the package out of curiosity and find several unfamiliar potions inside the package. They look valuable - certainly more worth than your payment. However, the potions are not labelled and you don't know their effect. Stealing them might not be a good decision."
+OPEN_PACKAGE_MYSTERIOUS_POTIONS_PARTY,"{name} glances over the potions."
+OPEN_PACKAGE_MYSTERIOUS_POTIONS_ALCHEMY,'"It's impossible to tell what their effect is without trying them. I'd rather not."'
+OPEN_PACKAGE_MYSTERIOUS_POTIONS_LAWFUL,'"Do you think they're harmful?"'
+OPEN_PACKAGE_MYSTERIOUS_POTIONS_EVIL,'"I'm sure we could use them."'
+OPEN_PACKAGE_MYSTERIOUS_POTIONS_CHAOTIC,'"Stealing them is a bad idea but I don't care anyway."'
+OPEN_PACKAGE_MYSTERIOUS_POTIONS_RATIONAL,'"You wouldn't seriously steal potions with unknown effects, would you?"'
+STEAL_PACKAGE_MYSTERIOUS_POTIONS,"You decide to steal the potions and to pretend that you lost the package. However, drinking them is risky, selling them is problematic and this action could possibly damage your reputation."
+OPEN_PACKAGE_NOTE,"You decide to open the package but the only thing you tried is a note:"
+OPEN_PACKAGE_NOTE1,'"I knew I couldn't trust you!"'
+OPEN_PACKAGE_NOTE2,'"If you read this you opened the package although you were not supposed to."\nWait, it's empty?'
+OPEN_PACKAGE_NOTE3,'"Since you insist on new deliveries although you refused to pay the last two ones, here is your package. Have fun with it!"\nThe package is empty...'
+CLOSE_PACKAGE_FIRE,"While you're closing the package it suddenly catches fire. You throw it away while only being able to see it turn to ash."
+OPEN_PACKAGE_FIGURINE,"You open the package. It contains a beautiful figurine made of glass or maybe ice?"
+OPEN_PACKAGE_FIGURINE_TOUCH,"As you touch it you realize that it starts melting. Quickly you close the package."
+OPEN_PACKAGE_FIGURINE_SEAL,"As you open the package you notice that you broke a magical seal by doing so. The package reveals a beautiful figurine made of ice. The seal must keep it frozen and you damaged it."
+REPAIR_PACKAGE_FIGURINE_SEAL,"After fiddling around for almost a full hour you figure out how to repair the seal. No harm done."
+OPEN_PACKAGE_GAS,"You remove the duct tape and open the package. A {color} cloud leaks from the package. The package is otherwise empty. The gas must have been the actual content."
+PACKAGE_TRY_CAPTURE_GAS,"You try to capture the gas in the package. You fail though."
+PACKAGE_GAS_TOXIC,"Also, you inhale some of the gas while doing so. You don't feel well."
+PACKAGE_CAPTURE_GAS_MAGIC,"You try to use your knowledge of wind magic to move the gas back into the package."
+PACKAGE_CAPTURE_GAS_MAGIC_SUCCEED,"In the end, it works out."
+PACKAGE_CAPTURE_GAS_MAGIC_FAIL,"However, you just dispersed the cloud even further."
+OPEN_PACKAGE_CAT,"You decide to open the package. Just as you opened it up a small crack some furry creature jumps out of it screaming and scratches your face and arms.\nIs that a cat?"
+PACKAGE_CAT_GRASP,"You fought off worse creatures than cats with bare hands. You manage to get hold of the cat without too much troubles.\nThat was something."
+PACKAGE_CAT_FEED,"You feed the cat before putting it back into the package. You better hurry with your delivery before the cat finds a way out on their own."
+PACKAGE_CAT_CATCH,"The cat is fast and nimble but ultimately not fast enough for you. You put the cat back into the package while suffering a few additional scratches."
+PACKAGE_CAT_LOST,"You try to catch the cat but it turned out near impossible to do so. Tired you give up."
+PACKAGE_CAT_PARTY,"{name} noticed the trouble and decided to help catching the cat. In the end all of your party ended up chasing after that cat. You only managed to get it after hours."
+PACKAGE_CAT_PARTY_CHEERFUL,'"Such a cute cat."\nYou fail to understand how {he/she} can say that after all the trouble that beast caused.'
+PACKAGE_CAT_PARTY_BOLD,'"Not the most annoying beast I fought."'
+PACKAGE_CAT_PARTY_CURIOUS,'"I haven't expected our cargo to be alive..."'
+PACKAGE_CAT_PARTY_FINALLY,'"Finally... The reward better be worth it."'
+PACKAGE_CAT_PARTY_KEEP,'{name} sides with the cat.\n"Can we please keep the cat?"'
+PACKAGE_CAT_GIVE_UP,"You won't stand a chance against a furious cat anyway."
+PACKAGE_KEEP_CAT,"You decide to keep the cat even if you won't receive any payment this way."
+PACKAGE_NOT_KEEP_CAT,"You decide otherwise as you need to carry out the job and consider it a bad idea to keep a cat that just attacked you."
+OPEN_PACKAGE_SNAKES,"You decide to open the package. It turned out to be a bad idea because a couple of snakes jump out of the package!"
+PACKAGE_SNAKES_DEAD,"You managed to defeat all the snakes. However, you probably were supposed to deliver them alive."
+OPEN_PACKAGE_BIRD_EGGS,"You decide to open the package. You see a creature moving inside the package. Suddenly it raises upwards and flies away too quickly to react. The package is filled with a few eggs and egg shells."
+OPEN_PACKAGE_EGG,"You decide to open the package. You find a large egg inside that is shaking and cracks appear."
+CLOSE_PACKAGE,"You close the package. You don't know what to do with your finding, so you're still up to delivering it."
+CLOSE_PACKAGE_LEGAL,"You close the package. Maybe you were too suspicious."
+PACKAGE_IGNORE_ILLEGAL_CARGO,"You close the package, still determined to deliver it. You need the money."
+PACKAGE_GET_RID_OF_ILLEGAL_CARGO,"You decide not to to anything illegal, so you have to get rid of the package. Out here in the wilderness that should not be a problem."
+PACKAGE_GET_RID_OF_UNKNOWN_CARGO,"You decide to get rid of the package even though you don't know whether it is illegal or not. But something about it is dubious and the risk is too high. Out here in the wilderness it should not be a problem to get rid of it."
+DELIVER_PACKAGE_DAMAGED_NOT_NOTICED,"You hope no one will notice that the content of the package is damaged and luckily it works out."
+DELIVER_PACKAGE_DAMAGED,"You hope no one will notice that the content of the package is damaged. However, the guy you gave the package checks its content and complains."
+DELIVER_PACKAGE_CONVINCE,"You manage to convince the client that it was not your fault."
+DELIVER_PACKAGE_CONVINCE_PAYMENT,"They even agree to give you a fraction of the promised payment."
+DELIVER_PACKAGE_CONVINCE_FAIL,"You try to argue with the client but they demand that you compensate his loss. It would cost you {amount} {currency}."
+DELIVER_PACKAGE_PAY,"You pay them {amount} {currency}. The client does not seam to be happy but they will let you go."
+DELIVER_PACKAGE_DONT_PAY,"You decline to pay them. The client is very unhappy to say the least."
+DELIVER_PACKAGE_DONT_PAY_FACTION_HINT,"You decline to pay them. The client is very unhappy to say the least. The {faction} will probably be displeased with your actions as well."
+DELIVER_PACKAGE_RUN,"You run away from the client. He's probably going to be angry."
+DELIVER_PACKAGE_FAIL_RUN,"You try to run away but the client grabs you. You just made him even more angry. They demand that you compensate his loss. It would cost you {amount} {currency}."
 TAKE_CARE_OF_WOLFS,"Take care of wolfs."
 TAKE_CARE_OF_WOLFS_DESC,"Enter the forest near {city} and defeat the wolf pack."
 TAKE_CARE_OF_WOLFS_SHORT_DESC1,"Get rid of a wolf pack."
