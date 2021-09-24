@@ -1,4 +1,19 @@
 ,en
+CAMP,Camp
+CAMP_INTRO,"It became late so you set up a camp."
+CAMP_ALONE,"Resting alone in the wilderness is risky. Dangerous beasts roam this place."
+CAMP_SHIFTS,"You organize your party into shifts. Dangerous beasts roam this place and you don't want to be surprised."
+CAMP_TRAPS,"You set up traps to warn you from approaching beats."
+CAMP_CHARACTER_TRAPS,"{name} sets up traps to warn you from approaching beats."
+CAMP_ENCOUNTER,"Late in the night you are attacked by beasts!"
+CAMP_ENCOUNTER_SURPRISED,"They remained unnoticed and surprised you!"
+CAMP_ENCOUNTER_WON,"You managed to fend off the beasts."
+CAMP_ENCOUNTER_FLEE,"You had to give up and flee."
+CAMP_ENCOUNTER_LOST_RATIONS,"You left some rations behind during the escape. You lost {amount} {type}."
+CAMP_FEED,"You feed your {type}."
+CAMP_NO_OCCURRENCE,"The night passed without any unforeseen occurrences."
+CAMP_NO_SLEEP,"You were not able to get much sleep."
+CAMP_CONTINUE,"The next morning you continue your journey."
 WOODS,Woods
 WOODS_INTRO,"While walking through the forest you hear noises around you. Too late you realize that you are not alone..."
 WOODS_VICTORY,"After defeating all monsters you continue your journey."
@@ -13,11 +28,11 @@ SANDS_VICTORY,"You survived the ambush and continue your journey."
 SANDS_RETREAT,"You escape across the sand dunes leaving your attackers behind."
 HILLS,Hills
 HILLS_GOBLIN_INTRO,"A group of goblins jumps out of their hiding place!"
-HILLS_BAT_SWARM_INTRO,"A large swarm of bats crosse your path. Some of the herbivors behave aggressive and attack you."
+HILLS_BAT_SWARM_INTRO,"A large swarm of bats crosses your path. Some of the herbivores behave aggressive and attack you."
 HILLS_VICTORY,"After defeating the goblins you continue."
 HILLS_RETREAT,"Luckily you are faster than the goblins with their short legs."
 SWAMP,Swamp
-SWAMP_INTRO,"While traveling through a swamp you encounter an alligator."
+SWAMP_INTRO,"While travelling through a swamp you encounter an alligator."
 SWAMP_VICTORY,"You defeated the monsters and hurry to make your way out of the swamp."
 SWAMP_RETREAT,"It's not easy to navigate in the rough terrain but at last you're out of danger."
 MOUNTAINS,Mountains
@@ -26,7 +41,7 @@ MOUNTAINS_VICTORY,"You survived the fight and continue moving across the mountai
 MOUNTAINS_RETREAT,"You flee from the monsters ignoring the dangerous ground. They seem to be reluctant in following you."
 BAR_ENCOUNTER_INIT,"You notice a {adjective} {person} {action}."
 BAR_ENCOUNTER_KNOWN,"It's {name}."
-CLAD_IN_HEAVY_ARMOR,"clad in heavy armor"
+CLAD_IN_HEAVY_ARMOR,"clad in heavy armour"
 UNREMARKABLE,unremarkable
 TOWERING,towering
 MUSCULAR,muscular
@@ -67,10 +82,10 @@ ACCOMPANY_REASON_STRONG,'"It's a better job than any I could get here. Despite I
 ACCOMPANY_REASON_CURIOUS,'"I guess I'm just curious how the world outside of this city is like."'
 ACCOMPANY_REASON_ADVENTURE,'"It's a great adventure! Fighting monsters, looting treasures..."'
 ACCOMPANY_REASON_MONEY,'"Why, for the money of course! That's still the best way to obtain a decent payment."'
-ACCOMPANY_REASON_OLD_TRAVELER,'"I used to be a traveler for my whole life. I wish one last adventure."'
+ACCOMPANY_REASON_OLD_TRAVELER,'"I used to be a traveller for my whole life. I wish one last adventure."'
 ACCOMPANY_REASON_TRAVEL,'"In my whole life I never happened to travel the world. I guess I want to make up for that as long as I'm still fit enough."'
 ACCOMPANY_REASON_DECREPITUDE,'"I'm still strong enough to fight, if this is your concern. I plan to die in battle rather than due to decrepitude."'
-ACCOMPANY_REASON_GUIDANCE,'"I feel that you need my guidance. You'll never make it alife without my help."'
+ACCOMPANY_REASON_GUIDANCE,'"I feel that you need my guidance. You'll never make it alive without my help."'
 MERCENARY_PRICE,'"I want {amount} {currency} and {rate} {currency} per day."'
 MERCENARY_FAIL_HIRE,'"I'm not sure if you're the right person for this."'
 MERCENARY_FAIL_HIRE_EXP,'"I'm up for a challenge but I'd still prefer someone with more experience."'
@@ -84,7 +99,7 @@ MERCENARY_HIRE_GLAD,'"I'm glad this is settled. Now let's go!"'
 MERCENARY_EXPIRED_INIT,"The contract with {name} expired. {he/she} is free to leave."
 MERCENARY_EXPIRED_LEAVE_NEUTRAL,'"My contract has ended. I'll take my leave now. Good luck out there!"'
 MERCENARY_EXPIRED_LEAVE_GLAD,'"My contract has ended. I'll take my leave now. I'm glad this is over."'
-MERCENARY_EXPIRED_LEAVE_CURIOUS,'"Looks like my contract has ended. I'd rather continue traveling with someone else from here on."'
+MERCENARY_EXPIRED_LEAVE_CURIOUS,'"Looks like my contract has ended. I'd rather continue travelling with someone else from here on."'
 MERCENARY_EXPIRED_LEAVE_ADVENTURE,'"My contract has ended. Well, it was interesting but I'll rather look for a new adventure."'
 MERCENARY_EXPIRED_LEAVE_TOO_BAD,'"Too bad, my contract has ended. I hope we'll meet again some day."'
 MERCENARY_EXPIRED_LEAVE_ANGRY,'"My contract has finally expired so that I can finally leave. I hope we won't ever meet again!"'
@@ -107,13 +122,13 @@ MERCENARY_EXPIRED_ABANDON_MEET_AGAIN,'"I hope we'll meet again one day."'
 MERCENARY_EXPIRED_ABANDON_FAILED,"You set your mind on abandoning {name} but somehow {he/she} managed to change your mind."
 MERCENARY_EXPIRED_ABANDON_NEED,'"Don't be silly, you need me!"'
 CITY_GATE_ENCOUNTER,"Gates of {city}"
-CITY_GATE_ENCOUNTER_INTRO,"While approaching the city you are stoped by a couple of guards."
+CITY_GATE_ENCOUNTER_INTRO,"While approaching the city you are stopped by a couple of guards."
 CITY_GATE_ENCOUNTER_NOT_WELCOME,'"Stop! {race} such as you are not allowed to enter the city of {city}."'
 CITY_GATE_ENCOUNTER_CONVINCE,"Convince the guards that you mean no harm."
 CITY_GATE_ENCOUNTER_BRIBE,"Bribe the guards."
 CITY_GATE_ENCOUNTER_CONVINCING,"You try to convince the guards to let them enter the city."
 CITY_GATE_ENCOUNTER_CONVINCE_FAIL,"They don't want to listen though. You have no other choice than to leave."
-CITY_GATE_ENCOUNTER_CONVINCE_SUCCESS,"The guards reluctantly agree to let you enter the city. They suggest to leave quickly once you're done with your busines."
+CITY_GATE_ENCOUNTER_CONVINCE_SUCCESS,"The guards reluctantly agree to let you enter the city. They suggest to leave quickly once you're done with your business."
 CITY_GATE_ENCOUNTER_BRIBING,"You try to bribe the guards to let you enter."
 CITY_GATE_ENCOUNTER_BRIBING_FAIL,"Their reaction sound very unfriendly. You better leave now while you're still able to."
 CITY_GATE_ENCOUNTER_BRIBING_SUCCESS,"The guards accept your proposal. They tell you to enter quickly and make sure to leave in time."
@@ -128,4 +143,6 @@ IMPERIAL_PALACE_GUARD_STOP_WASTING_TIME,'"Stop wasting our time, citizen!"'
 IMPERIAL_PALACE_GUARD_OFF_LIMITS,'"This place is off limits for you, {race}."'
 IMPERIAL_PALACE_GUARD_GO_AWAY,'"Go away, {race} scum!"'
 NOTHING_INTERESTING,"There is nothing interesting here."
+ATTACKED_BY_SNAKES,"You are attacked by snakes!"
+SNAKES_ESCAPE,"Unable to defeat the snakes you run instead."
 

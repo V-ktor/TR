@@ -28,4 +28,5 @@ ENTER_LOCATION_QUEST_LOCATION,"You arrive at the designated location."
 ACTOR_LEARNED_SPELL,"{name} learned {spell}."
 APPROACH_CROSSROADS,"You approach the crossroads."
 ACTORS_TURN,"{actor}'s turn:"
+SIGH_GIVE_UP,"You sigh and give up."
 

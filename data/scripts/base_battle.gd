@@ -19,7 +19,7 @@ var ACTIONS = [
 		"actor_override":{"worst_stat":"agility"}, 
 		"ticks":6, 
 		"limit":12
-	}, 
+	},
 	{
 		"name":"stunning_blow", 
 		"text":"STUNNING_BLOW_TARGET", 
@@ -33,7 +33,7 @@ var ACTIONS = [
 		"stamina":1, 
 		"ticks":3, 
 		"limit":10
-	}, 
+	},
 	{
 		"name":"stunning_blow", 
 		"text":"STUNNING_BLOW_TARGET", 
@@ -47,7 +47,7 @@ var ACTIONS = [
 		"stamina":1, 
 		"ticks":3, 
 		"limit":10
-	}, 
+	},
 	{
 		"name":"cleave", 
 		"text":"CLEAVE_TARGETS", 
@@ -58,7 +58,7 @@ var ACTIONS = [
 		"stamina":1, 
 		"ticks":4, 
 		"limit":14
-	}, 
+	},
 	{
 		"name":"riposte", 
 		"text":"USE_RIPOSTE", 
@@ -69,7 +69,7 @@ var ACTIONS = [
 		"stamina":1, 
 		"ticks":2, 
 		"limit":8
-	}, 
+	},
 	{
 		"name":"backstab", 
 		"text":"BACKSTAB_TARGET", 
@@ -83,7 +83,7 @@ var ACTIONS = [
 		"stamina":1, 
 		"ticks":3, 
 		"limit":9
-	}, 
+	},
 	{
 		"name":"backstab", 
 		"text":"BACKSTAB_TARGET", 
@@ -97,7 +97,7 @@ var ACTIONS = [
 		"stamina":1, 
 		"ticks":3, 
 		"limit":9
-	}, 
+	},
 	{
 		"name":"backstab", 
 		"text":"BACKSTAB_TARGET", 
@@ -111,7 +111,7 @@ var ACTIONS = [
 		"stamina":1, 
 		"ticks":3, 
 		"limit":9
-	}, 
+	},
 	{
 		"name":"backstab", 
 		"text":"BACKSTAB_TARGET", 
@@ -125,7 +125,7 @@ var ACTIONS = [
 		"stamina":1, 
 		"ticks":3, 
 		"limit":9
-	}, 
+	},
 	{
 		"name":"pin_down", 
 		"text":"PIN_DOWN_TARGET", 
@@ -139,7 +139,7 @@ var ACTIONS = [
 		"stamina":1, 
 		"ticks":3, 
 		"limit":8
-	}, 
+	},
 	{
 		"name":"body_slam", 
 		"text":"BODY_SLAM_TARGET", 
@@ -154,21 +154,35 @@ var ACTIONS = [
 		"stamina":1, 
 		"ticks":3, 
 		"limit":12
-	}, 
+	},
 	{
 		"name":"claws", 
 		"text":"CLAWS_TARGET", 
 		"requirements":{"traits":["claws"], "proficiency":{"unarmed":1}}, 
 		"target":{}, 
 		"result":{19:{"method":"claws_bleed", "grade":2}, 7:{"method":"claws", "grade":1}, 0:{"method":"miss", "grade":0}}, 
-		"primary":"dexterity", 
-		"secondary":"agility", 
+		"primary":"agility", 
+		"secondary":"dexterity", 
 		"target_primary":"agility", 
 		"target_secondary":"", 
 		"tool_override":{"name":"claws", "use_stat":"strength", "proficiency":"unarmed", "range":"unarmed"}, 
 		"ticks":3, 
 		"limit":7
-	}, 
+	},
+	{
+		"name":"fangs", 
+		"text":"FANGS_TARGET", 
+		"requirements":{"traits":["fangs"], "proficiency":{"unarmed":1}}, 
+		"target":{}, 
+		"result":{18:{"method":"fangs_poison", "grade":2}, 8:{"method":"fangs", "grade":1}, 0:{"method":"miss", "grade":0}}, 
+		"primary":"agility", 
+		"secondary":"dexterity", 
+		"target_primary":"agility", 
+		"target_secondary":"", 
+		"tool_override":{"name":"fangs", "use_stat":"strength", "proficiency":"unarmed", "range":"unarmed"}, 
+		"ticks":3, 
+		"limit":8
+	},
 	{
 		"name":"headbutt", 
 		"text":"HEADBUTT_TARGET", 
@@ -182,7 +196,7 @@ var ACTIONS = [
 		"tool_override":{"name":"horns", "use_stat":"strength", "proficiency":"unarmed", "range":"unarmed"}, 
 		"ticks":3, 
 		"limit":7
-	}, 
+	},
 	{
 		"name":"hide", 
 		"text":"USE_HIDE", 
@@ -193,7 +207,7 @@ var ACTIONS = [
 		"stamina":1, 
 		"ticks":3, 
 		"limit":10
-	}, 
+	},
 	{
 		"name":"extinguish", 
 		"text":"EXTINGUISH_FLAMES", 
@@ -203,7 +217,7 @@ var ACTIONS = [
 		"secondary":"cunning", 
 		"ticks":4, 
 		"limit":0
-	}, 
+	},
 	# magic
 	{
 		"name":"draw_arcane_rune", 
@@ -216,7 +230,7 @@ var ACTIONS = [
 		"mana":1, 
 		"ticks":2, 
 		"limit":4
-	}, 
+	},
 	{
 		"name":"draw_fire_rune", 
 		"text":"DRAW_FIRE_RUNE", 
@@ -228,7 +242,7 @@ var ACTIONS = [
 		"mana":1, 
 		"ticks":2, 
 		"limit":4
-	}, 
+	},
 	{
 		"name":"draw_ice_rune", 
 		"text":"DRAW_ICE_RUNE", 
@@ -240,7 +254,7 @@ var ACTIONS = [
 		"mana":1, 
 		"ticks":2, 
 		"limit":4
-	}, 
+	},
 	{
 		"name":"draw_wind_rune", 
 		"text":"DRAW_WIND_RUNE", 
@@ -252,7 +266,7 @@ var ACTIONS = [
 		"mana":1, 
 		"ticks":2, 
 		"limit":4
-	}, 
+	},
 	{
 		"name":"draw_earth_rune", 
 		"text":"DRAW_EARTH_RUNE", 
@@ -264,7 +278,7 @@ var ACTIONS = [
 		"mana":1, 
 		"ticks":2, 
 		"limit":4
-	}, 
+	},
 	{
 		"name":"draw_light_rune", 
 		"text":"DRAW_LIGHT_RUNE", 
@@ -276,7 +290,7 @@ var ACTIONS = [
 		"mana":1, 
 		"ticks":2, 
 		"limit":4
-	}, 
+	},
 	{
 		"name":"draw_nature_rune", 
 		"text":"DRAW_NATURE_RUNE", 
@@ -288,7 +302,7 @@ var ACTIONS = [
 		"mana":1, 
 		"ticks":2, 
 		"limit":4
-	}, 
+	},
 	{
 		"name":"draw_restoration_rune", 
 		"text":"DRAW_RESTORATION_RUNE", 
@@ -300,7 +314,7 @@ var ACTIONS = [
 		"mana":1, 
 		"ticks":2, 
 		"limit":4
-	}, 
+	},
 	{
 		"name":"draw_shielding_rune", 
 		"text":"DRAW_SHIELDING_RUNE", 
@@ -310,6 +324,18 @@ var ACTIONS = [
 		"secondary":"intelligence", 
 		"type":"shielding", 
 		"mana":1, 
+		"ticks":2, 
+		"limit":4
+	},
+	{
+		"name":"draw_blood_rune", 
+		"text":"DRAW_BLOOD_RUNE", 
+		"requirements":{"proficiency":{"blood_magic":1}, "can_cast_spell":"blood"}, 
+		"result":{4:{"method":"draw_rune", "grade":1}, 0:{"method":"fail_rune", "grade":0}}, 
+		"primary":"constitution", 
+		"secondary":"cunning", 
+		"type":"blood", 
+		"health":1, 
 		"ticks":2, 
 		"limit":4
 	}
@@ -1053,6 +1079,17 @@ func claws_bleed(actor, action, _roll):
 	action.tool_used = {"name":"claws", "min_dam":2, "max_dam":5, "proficiency":"unarmed", "use_stat":"strength", "range":"unarmed"}
 	attack(actor, action, dam_roll)
 	action.target.add_status(Effects.Bleeding, {"value":1, "duration":5})
+
+func fangs(actor, action, _roll):
+	var dam_roll := Game.do_roll(actor, action.tool_used.use_stat, "", -int(max(action.target.armor, 0)))
+	action.tool_used = {"name":"fangs", "min_dam":2, "max_dam":4, "proficiency":"unarmed", "use_stat":"strength", "range":"unarmed"}
+	attack(actor, action, dam_roll)
+
+func fangs_poison(actor, action, _roll):
+	var dam_roll := Game.do_roll(actor, action.tool_used.use_stat, "", -int(max(action.target.armor, 0)))
+	action.tool_used = {"name":"fangs", "min_dam":2, "max_dam":4, "proficiency":"unarmed", "use_stat":"strength", "range":"unarmed"}
+	attack(actor, action, dam_roll)
+	action.target.add_status(Effects.Poisoned, {"value":1, "duration":6})
 
 func headbutt(actor, action, _roll):
 	var dam_roll := Game.do_roll(actor, action.tool_used.use_stat, "", -int(max(action.target.armor, 0)))

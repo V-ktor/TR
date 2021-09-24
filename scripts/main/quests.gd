@@ -13,9 +13,12 @@ class Quest:
 	var location : String
 	var location_data : Dictionary
 	var auto_delete_location := true
+	var faction : String
 	var reward : Dictionary
+	var items : Array
 	var data : Dictionary
 	var events : Array
+	var start_script : String
 	var status : String
 	
 	func _init(dict : Dictionary):
@@ -38,6 +41,8 @@ class Quest:
 			events = dict.events.duplicate(true)
 			for i in range(events.size()):
 				events[i].location = location
+		if dict.has("script"):
+			start_script = dict.script
 		if dict.has("updates"):
 			updates = dict.updates
 		status = "initialized"
@@ -48,7 +53,7 @@ class Quest:
 	func to_dict() -> Dictionary:
 		var dict := {"ID":ID,"name":name,"description":description,"difficulty":difficulty,
 			"timelimit":timelimit,"location":location,"auto_delete_location":auto_delete_location,
-			"reward":reward,"events":events,"status":status,"data":data,"updates":updates}
+			"reward":reward,"events":events,"script":start_script,"status":status,"data":data,"updates":updates}
 		return dict
 
 

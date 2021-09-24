@@ -84,6 +84,18 @@ func check_enter_location(location : String):
 		if randf()<dict.base_chance/length:
 			return dict
 
+func check_set_camp(location : Map.Location):
+	var array := []
+	var length : int
+	for event in events:
+		if event.type=="set_camp":
+			if !event.has("chance") || randf()<event.chance:
+				array.push_back(event)
+	length = array.size()
+	for dict in array:
+		if randf()<dict.base_chance/length:
+			return dict
+
 
 func register_event(data : Dictionary):
 	var quest := ""

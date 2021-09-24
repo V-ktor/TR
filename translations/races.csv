@@ -43,6 +43,7 @@ CURLY,curly
 LONG,long
 BLACK,black
 BROWN,brown
+BROWNISH,brownish
 BLOND,blond
 GREY,grey
 WHITE,white
@@ -53,6 +54,7 @@ PURPLE,purple
 CYAN,cyan
 BLUE,blue
 GREEN,green
+GREENISH,greenish
 YELLOW,yellow
 PALE,pale
 FAIR,fair

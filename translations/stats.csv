@@ -72,4 +72,6 @@ RESTORATION_MAGIC,"Magic: Restoration"
 RESTORATION_MAGIC_TOOLTIP,"Allows you to use restoration magic."
 SHIELDING_MAGIC,"Magic: Shielding"
 SHIELDING_MAGIC_TOOLTIP,"Allows you to use protective magic."
+BLOOD_MAGIC,"Magic: Blood",
+BLOOD_MAGIC_TOOLTIP,"Allows you to use blood magic."
 

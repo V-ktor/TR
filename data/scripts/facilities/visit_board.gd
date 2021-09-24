@@ -62,6 +62,7 @@ func create_quest() -> Quests.Quest:
 	var level_scale := 1.0
 	var level : int
 	var dfc : float
+	var script : String
 	var difficulty : String
 	var location := Game.location
 	var events := []
@@ -81,7 +82,9 @@ func create_quest() -> Quests.Quest:
 		reward[k] = int(max(reward[k]*(1.0+dfc)/2.0*rand_range(0.95,1.05),1.0))
 	if dict.has("events"):
 		events = dict.events
-	quest = Quests.Quest.new({"name":type,"description":tr(type.to_upper()+"_DESC").format({"city":Map.get_location(location).name}),"difficulty":difficulty,"timelimit":Map.time+timelimit,"location":location,"events":events,"auto_delete_location":true,"reward":reward,"data":{"city":Game.location,"level":level}})
+	if dict.has("script"):
+		script = dict.script
+	quest = Quests.Quest.new({"name":type,"description":tr(type.to_upper()+"_DESC").format({"city":Map.get_location(location).name}),"difficulty":difficulty,"timelimit":Map.time+timelimit,"location":location,"script":script,"events":events,"auto_delete_location":true,"reward":reward,"data":{"city":Game.location,"level":level}})
 	if dict.has("location"):
 		var location_data := {}
 		if typeof(dict.location)==TYPE_DICTIONARY:
@@ -116,8 +119,9 @@ func check_job(_actor,action,_roll):
 
 func accept(_actor,action,_roll):
 	Game.accept_quest(quests[action.ID])
-	Main.add_action(Game.Action.new(tr("GO_BACK"),self,{0:{"method":"leave","grade":1}},"","",3))
+	if Main.get_action_count()==0:
+		Main.add_action(Game.Action.new(tr("GO_BACK"),self,{0:{"method":"leave","grade":1}},"","",3))
 
 func leave(_actor,_action,_roll):
-	Game.enter_location(Game.location)
 	Map.time += 60*2
+	Game.enter_location(Game.location)

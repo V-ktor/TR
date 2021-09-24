@@ -66,7 +66,7 @@ func do_roll(actor,primary:String,secondary:="",offset:=0,num:=1,max_roll:=MAX_R
 	offset += get_offset(actor, primary, secondary)
 	return roll(offset, num, max_roll)
 
-func get_offset(actor:Characters.Character,primary:String,secondary:String) -> int:
+func get_offset(actor:Characters.Character,primary:String,secondary:="") -> int:
 	if primary!="":
 		if secondary!="":
 			return int((2*actor.stats[primary]+actor.stats[secondary])/3)-10
@@ -162,14 +162,25 @@ func accept_quest(quest):
 		print("Add quest event "+event.type+"("+event.location+")"+".")
 	quest.status = "started"
 	quests[quest.ID] = quest
+	if quest.script!=null && quest.start_script!="":
+		var script = load(quest.start_script).new()
+		script.init(location,quest)
 
 func finish_quest(quest):
 	quest.status = "finished"
+	for item in quest.items:
+		Items.remove_item(item)
+	if Characters.relations.has(quest.faction):
+		Characters.relations[quest.faction] += 1.0
 	Events.clear_quest_events(quest.ID)
 	quests.erase(quest.ID)
 
 func fail_quest(quest):
 	quest.status = "failed"
+	for item in quest.items:
+		Items.remove_item(item)
+	if Characters.relations.has(quest.faction):
+		Characters.relations[quest.faction] -= 1.0
 	Events.clear_quest_events(quest.ID)
 	quests.erase(quest.ID)
 
@@ -201,6 +212,7 @@ func goto(_location:String):
 	var dist = c0.position.distance_to(c1.position)
 	var num_steps = int(dist/8.0)
 	var rot = c0.position.angle_to_point(c1.position)-PI/2.0
+	var last_rest_time: int = get_var("last_rest_time")
 	var timer = Timer.new()
 	timer.wait_time = 0.5
 	add_child(timer)
@@ -212,6 +224,8 @@ func goto(_location:String):
 		var pos = c0.position.linear_interpolate(c1.position, (i+0.5)/num_steps)
 		var event = Events.check_event("travel", [pos])
 		var delay := 0
+		var date : Dictionary
+		var time_limit := 16.0
 		Main.get_node("Panel/Map").draw_footprint(pos, rot)
 		for terrain in Map.terrains:
 			if pos.distance_squared_to(terrain.position)<terrain.radius*terrain.radius:
@@ -221,6 +235,10 @@ func goto(_location:String):
 			travel_time_terrain /= num_terrains
 		delay = int((rand_range(0.95, 1.05)+travel_time_terrain)*8.0*60.0*60.0/Characters.get_travel_speed())
 		Map.time += delay
+		date = OS.get_datetime_from_unix_time(Map.time)
+		time_limit -= clamp((6.0-date.hour)/2.0, 0.0, 3.0)
+		if event==null && abs(Map.time-last_rest_time)>60*60*time_limit:
+			event = {"script":"camp/camp"}
 		Characters.rations_consumed += Characters.party.size()
 		if Characters.rations_consumed>=1.0:
 			var diff = Items.remove_items(supplies, int(Characters.rations_consumed))

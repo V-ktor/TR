@@ -87,6 +87,7 @@ func new_game():
 	else:
 		script = load("res://data/events/game_start/mercenary.gd").new()
 	Game.in_city = false
+	Game.set_var("last_rest_time", Map.time)
 	script.init(Map.cities[location], location, cl)
 	Main.update_party()
 	Main._show_log()

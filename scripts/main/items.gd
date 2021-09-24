@@ -7,12 +7,8 @@ const GRADE_COLOR = [
 	Color(0.5,1.0,0.5),
 	Color(0.5,0.5,1.0),
 	Color(1.0,0.5,1.0),
-	Color(1.0,1.0,0.5),
-	Color(0.5,0.5,0.2)]
-const GRADE_NAMES = [
-	"GARBAGE","NORMAL","RARE","","EXCEPTIONAL",
-	"EPIC","LEGENDARY"
-]
+	Color(1.0,1.0,0.5)]
+const GRADE_NAMES = ["GARBAGE","NORMAL","RARE","EXCEPTIONAL","EPIC","LEGENDARY"]
 
 var items := {}
 var commodities := []
@@ -20,13 +16,15 @@ var enhancements_minor := {}
 var enhancements_major := {}
 
 
-func add_item(item : Dictionary, amount:=1):
-	var ID := Characters.inventory.find(item)
+func add_item(item : Dictionary, amount:=1) -> Dictionary:
+	var ID = Characters.inventory.find(item)
 	if ID>=0:
 		Characters.inventory[ID].amount += amount
+		return Characters.inventory[ID]
 	else:
 		item.amount = amount
 		Characters.inventory.push_back(item)
+	return item
 
 func remove_item(item : Dictionary):
 	Characters.inventory.erase(item)
@@ -55,8 +53,9 @@ func add_items(name : String, amount:=1):
 			item.amount += amount
 		else:
 			item.amount = 1 + amount
+		return item
 	else:
-		add_item(create_item(name), amount)
+		return add_item(create_item(name), amount)
 
 func remove_items(name : String, amount:=1) -> int:
 	var removed := 0
@@ -74,6 +73,13 @@ func remove_items(name : String, amount:=1) -> int:
 			Characters.inventory.remove(i)
 	return amount-removed
 
+func get_pet_morale() -> float:
+	var ret := 0.0
+	for item in items.values():
+		if item.has("type") && item.type=="pet" && item.has("morale"):
+			ret += item.morale
+	return ret
+
 
 func health_potion(target : Characters.Character, amount : int) -> bool:
 	if target.health>=target.max_health:
@@ -87,6 +93,43 @@ func mana_potion(target : Characters.Character, amount : int) -> bool:
 	target.mana += amount
 	if target.mana>target.max_mana:
 		target.mana = target.max_mana
+	return true
+
+func stamina_potion(target : Characters.Character, amount : int) -> bool:
+	if target.stamina>=target.max_stamina:
+		return false
+	target.stamina += amount
+	if target.stamina>target.max_stamina:
+		target.stamina = target.max_stamina
+	return true
+
+func cleansing_potion(target : Characters.Character, amount : int, filter : Array) -> bool:
+	var valid_effects := []
+	for k in target.status:
+		if k in filter:
+			valid_effects.push_back(k)
+	if valid_effects.size()==0:
+		return false
+	for _i in range(amount):
+		var k = valid_effects[randi()%valid_effects.size()]
+		target.remove_status(k)
+		valid_effects.erase(k)
+	return true
+
+func random_potion(target : Characters.Character, amount : int) -> bool:
+	var type := randi()%4
+	var multiplier := 0.5+0.5*(randi()%2)
+	if randf()<0.33:
+		multiplier *= -1.0
+	match type:
+		0:
+			return health_potion(target, int(multiplier*amount))
+		1:
+			return mana_potion(target, int(multiplier*amount))
+		2:
+			return stamina_potion(target, int(multiplier*amount))
+		3:
+			return cleansing_potion(target, int(ceil(multiplier*amount/2)), [])
 	return true
 
 

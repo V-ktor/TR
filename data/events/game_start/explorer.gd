@@ -79,7 +79,7 @@ func forest_encounter_sneak(_actor,_action,_roll):
 	find_ruins(_actor,_action,_roll)
 
 func start_forest_battle(_actor,_action,_roll,damage:=false):
-	var script = load("res://data/events/game_start/explorer_forest_fight.gd").new()
+	var script = preload("res://data/events/game_start/explorer_forest_fight.gd").new()
 	script.init(self)
 	if damage:
 		script.enemy[0].damaged(5)

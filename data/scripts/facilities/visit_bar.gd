@@ -17,7 +17,7 @@ func goto(_actor,_action,_roll):
 	if !Game.vars.has("last_bar_visit") || Map.time-Game.get_var("last_bar_visit")>60*60:
 		if randf()<0.2:
 			for ID in Characters.characters.keys():
-				if !(ID in Characters.party):
+				if Characters.characters[ID].position=="adventurer" && !(ID in Characters.party):
 					chars.push_back(Characters.characters[ID])
 		if chars.size()>0:
 			character = chars[randi()%chars.size()]
@@ -34,7 +34,7 @@ func goto(_actor,_action,_roll):
 	Main.add_action(Game.Action.new(tr("GO_BACK"),self,{0:{"method":"leave","grade":1}},"","",3))
 
 func create_mercenary() -> Characters.Character:
-	var actor := Characters.create_npc()
+	var actor := Characters.create_npc({"motivations":["adventure"],"position":"adventurer"})
 	actor.payment_currency = currency
 	actor.payment_cost = int(rand_range(7,9)+actor.level-2*int("young" in actor.personality)-int("old" in actor.personality))
 	actor.morale = 50.0+10.0*float("young" in actor.personality)

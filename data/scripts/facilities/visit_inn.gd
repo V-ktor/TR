@@ -16,15 +16,15 @@ func goto(_actor,_action,_roll):
 	Map.time += 60*2
 
 func rest(_actor,_action,_roll):
+	var date:= OS.get_datetime_from_unix_time(Map.time)
+	var hour: float = date.hour+date.minute/60.0
+	var delay:= min(hour, 3.0)
+	if hour>16.0:
+		delay = -min(19.0-hour, 3.0)
 	Main.add_text("\n"+tr("STAY_INN"))
 	Items.remove_items(currency,cost*Characters.party.size())
-	Map.time += 60*60*8
-	for k in Characters.party:
-		var c = Characters.characters[k]
-		c.health = min(c.health+ceil(c.max_health/2),c.max_health)
-		c.stamina = c.max_stamina
-		c.mana = c.max_mana
-		c.morale += 5.0+float(Game.do_roll(Characters.player,"charisma"))/2.0
+	Map.time += (8.0-delay+rand_range(-0.05,0.05))*60*60
+	Characters.rest(0.5)
 	leave(_actor,_action,_roll)
 
 func leave(_actor,_action,_roll):
