@@ -1,4 +1,40 @@
 {
+	"name":"thief_dagger",
+    "race":"human",
+	"traits":[],
+    "expirience":17,
+	"stats":{"strength":[6,12],"constitution":[5,10],"dexterity":[10,15],"agility":[10,15],"intelligence":[6,12],"wisdom":[6,12],"cunning":[10,15],"charisma":[6,12]},
+	"appearance":{"body":"average"},
+	"equipment":["dagger","leather_armor"],
+    "proficiency":{"knife":[2,3],"light_armor":[1,2]},
+    "drop_rate":0.1,
+    "drops":["dagger","leather_armor"]
+}
+{
+	"name":"thief_sling",
+    "race":"human",
+	"traits":[],
+    "expirience":17,
+	"stats":{"strength":[6,12],"constitution":[5,10],"dexterity":[10,15],"agility":[10,15],"intelligence":[6,12],"wisdom":[6,12],"cunning":[10,15],"charisma":[6,12]},
+	"appearance":{"body":"average"},
+	"equipment":["sling","leather_armor"],
+    "proficiency":{"sling":[2,3],"light_armor":[1,2]},
+    "drop_rate":0.1,
+    "drops":["sling","leather_armor"]
+}
+{
+	"name":"brawler",
+    "race":"human",
+	"traits":[],
+    "expirience":17,
+	"stats":{"strength":[10,15],"constitution":[10,15],"dexterity":[8,12],"agility":[10,15],"intelligence":[6,12],"wisdom":[6,12],"cunning":[6,12],"charisma":[6,12]},
+	"appearance":{"body":"average"},
+	"equipment":["leather_armor"],
+    "proficiency":{"unarmed":[2,4],"light_armor":[2,3]},
+    "drop_rate":0.1,
+    "drops":["leather_armor"]
+}
+{
 	"name":"bandit_blade",
     "race":"human",
 	"traits":[],

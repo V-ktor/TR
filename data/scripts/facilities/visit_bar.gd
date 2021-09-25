@@ -44,7 +44,7 @@ func create_mercenary() -> Characters.Character:
 	return actor
 
 func encounter_init(actor:Characters.Character):
-	var dict:= Characters.create_description(actor)
+	var dict := Characters.create_description(actor)
 	character_type = dict.character_type
 	Main.add_text(tr("BAR_ENCOUNTER_INIT").format({"adjective":dict.adjective,"person":dict.character_type,"action":dict.action}))
 	if known:

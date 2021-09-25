@@ -23,6 +23,9 @@ GNOLL_SPEAR,"gnoll (spear)"
 GNOLL_SLINGER,gnoll slinger
 GNOLL_SHAMAN,gnoll shaman
 TROLL,troll
+THIEF_DAGGER,"thief (dagger)"
+THIEF_SLING,"thief (sling)"
+BRAWLER,brawler
 BANDIT_BLADE,"bandit (blade)"
 BANDIT_MACE,"bandit (mace)"
 BANDIT_HUNTER,"bandit (bow)"
