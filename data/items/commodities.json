@@ -6,14 +6,28 @@
     "grade":1
 }
 {
-	"name":"medical_supplies",
+	"name":"herbs",
 	"type":"commodities",
 	"weight":1.0,
-	"price":8,
+	"price":5,
+    "grade":1
+}
+{
+	"name":"salt",
+	"type":"commodities",
+	"weight":1.0,
+	"price":6,
     "grade":1
 }
 {
 	"name":"wood",
+	"type":"commodities",
+	"weight":1.0,
+	"price":6,
+    "grade":1
+}
+{
+	"name":"stone",
 	"type":"commodities",
 	"weight":1.0,
 	"price":6,

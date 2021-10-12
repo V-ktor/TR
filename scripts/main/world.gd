@@ -139,15 +139,15 @@ const BACKGROUND_IMAGES = {
 	"cold_mountains":IMAGE_COLD_MOUNTAINS
 }
 const PRICE_MODS = {
-	"farming":{"food":-0.25},
-	"mining":{"food":0.1,"wood":0.1,"metals":-0.25},
+	"farming":{"food":-0.25,"herbs":-0.1},
+	"mining":{"food":0.1,"wood":0.1,"stone":-0.1,"metals":-0.25},
 	"wood":{"wood":-0.25,"food":-0.1,"luxury_goods":-0.1},
-	"dry":{"food":0.2,"wood":0.2,"luxury_goods":-0.2},
-	"scarce":{"food":0.1,"wood":0.1,"metals":0.1,"medical_supplies":0.1,"luxury_goods":-0.1},
+	"dry":{"food":0.2,"salt":-0.2,"wood":0.2,"luxury_goods":-0.2},
+	"scarce":{"food":0.1,"herbs":0.1,"wood":0.1,"stone":0.1,"metals":0.1,"luxury_goods":-0.1},
 	"trading":{"food":0.1,"luxury_goods":0.2},
-	"manufactories":{"food":0.1,"metals":0.2,"wood":0.2,"medical_supplies":-0.1},
-	"poor":{"food":-0.1,"luxury_goods":-0.2,"medical_supplies":0.2},
-	"prosperous":{"food":0.1,"luxury_goods":0.1,"medical_supplies":-0.2}
+	"manufactories":{"food":0.1,"salt":0.1,"herbs":0.1,"metals":0.2,"wood":0.2},
+	"poor":{"food":-0.1,"herbs":-0.1,"luxury_goods":-0.2},
+	"prosperous":{"food":0.1,"herbs":0.2,"stone":0.25,"luxury_goods":0.1}
 }
 
 var city_data := []

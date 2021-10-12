@@ -47,7 +47,10 @@ BOOK_OF_CONJURATION,Book of Conjuration
 BOOK_OF_RESTORATION,Book of Restoration
 BOOK_OF_NATURE,Book of Nature
 FOOD,food
+HERBS,herbs
+SALT,salt
 WOOD,wood
+STONE,stone
 METALS,metals
 MEDICAL_SUPPLIES,medical supplies
 LUXURY_GOODS,luxury goods
