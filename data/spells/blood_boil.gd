@@ -20,13 +20,13 @@ func cast(actor,action,roll):
 	var damage := get_damage(actor,action,roll,ACTION.min_dam,ACTION.max_dam,ACTION.dam_scale)
 	var duration := 4
 	prepare_spell(actor,action,roll,"blood_boil")
-	print("damage: "+str(damage))
-	var dam_scale := 1.0
-	if "liquid" in action.target.traits:
-		action.target.add_status(Effects.Boiling,{"duration":duration,"amount":2})
-		dam_scale = 2.0
 	Main.add_text(tr("COMBAT_BLOOD_BOIL").format({"target":action.target.get_name()}))
-	action.target.damaged(int(dam_scale*damage))
+	print("damage: "+str(damage))
+	
+	var dam_scale := SpellInteractions.trigger_spell("fire", action, actor, action.target, damage)
+	damage = int(dam_scale*damage)
+	action.target.damaged(damage)
+	
 	action.ref.end_turn()
 
 func _init():

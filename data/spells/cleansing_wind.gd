@@ -24,10 +24,10 @@ func cast(actor,action,roll):
 	elif actor in action.ref.enemy:
 		set = action.ref.player
 	for target in set:
-		if "flying" in target.traits:
-			var damage := get_damage(actor,action,roll,ACTION.min_dam,ACTION.max_dam,ACTION.dam_scale)
-			target.damaged(damage)
-			target.add_status(Effects.Pinned,{"duration":2,"stats_inc":{"agility":-6}})
+		var damage := get_damage(actor,action,roll,ACTION.min_dam,ACTION.max_dam,ACTION.dam_scale)
+		var dam_scale := SpellInteractions.trigger_spell("wind", action, actor, action.target, damage)
+		damage = int(dam_scale*damage)
+		target.damaged(damage)
 	action.ref.clear_area_effects()
 	action.ref.end_turn()
 

@@ -25,17 +25,27 @@ func double_cast(actor,action,roll):
 	else:
 		target = action.ref.player[randi()%action.ref.player.size()]
 	Main.add_text(tr("COMBAT_MAGIC_MISSILE_DOUBLE").format({"actor":actor.get_name(),"target":action.target.get_name(),"secondary_target":target.get_name()}))
+	
+	var dam_scale1 := SpellInteractions.trigger_spell("arcane", action, actor, action.target, damage)
+	var dam_scale2 := SpellInteractions.trigger_spell("arcane", action, actor, target, damage)
+	
 	Main.add_text(tr("COMBAT_DAMAGED_PLURAL").format({"actors":action.target.get_name()+" "+tr("AND")+" "+target.get_name()}))
-	action.target.damaged(damage)
-	target.damaged(damage)
+	action.target.damaged(int(dam_scale1*damage))
+	target.damaged(int(dam_scale2*damage))
+	
 	action.ref.end_turn()
 
 func cast(actor,action,roll):
 	var damage := get_damage(actor,action,roll,ACTION.min_dam,ACTION.max_dam,ACTION.dam_scale)
 	prepare_spell(actor,action,roll)
 	Main.add_text(tr("COMBAT_MAGIC_MISSILE").format({"actor":actor.get_name(),"target":action.target.get_name()}))
+	
+	var dam_scale := SpellInteractions.trigger_spell("arcane", action, actor, action.target, damage)
+	damage = int(dam_scale*damage)
+	
 	Main.add_text(tr("COMBAT_DAMAGED").format({"actor":action.target.get_name()}))
 	action.target.damaged(damage)
+	
 	action.ref.end_turn()
 
 func _init():

@@ -18,18 +18,15 @@ const ACTION = {
 
 func cast(actor,action,roll):
 	var damage := get_damage(actor,action,roll,ACTION.min_dam,ACTION.max_dam,ACTION.dam_scale)
-	prepare_spell(actor,action,roll)
 	Main.add_text(tr("COMBAT_FROST_LANCE").format({"actor":actor.get_name(),"target":action.target.get_name()}))
+	prepare_spell(actor,action,roll)
+	
+	var dam_scale := SpellInteractions.trigger_spell("nature", action, actor, action.target, damage)
+	damage = int(dam_scale*damage)
+	
 	Main.add_text(tr("COMBAT_DAMAGED").format({"actor":action.target.get_name()}))
 	action.target.damaged(damage)
-	if action.target.has_status("burning"):
-		action.target.remove_status("burning")
-		action.target.add_status("wet",{"duration":5,"amount":1})
-	elif action.target.has_status("wet"):
-		action.target.remove_status("wet")
-		action.target.add_status(Effects.Frozen,{"duration":4,"stats_inc":{"agility":-4,"dexterity":-4}})
-	else:
-		action.target.add_status(Effects.Frozen,{"duration":2,"stats_inc":{"agility":-3,"dexterity":-3}})
+	
 	action.ref.end_turn()
 
 func _init():

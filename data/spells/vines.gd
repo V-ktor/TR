@@ -20,15 +20,19 @@ const ACTION = {
 
 func cast(actor,action,roll):
 	var duration := 5
-	var damage := get_damage(actor,action,roll,ACTION.min_dam,ACTION.max_dam,ACTION.dam_scale)
 	prepare_spell(actor,action,roll,"vines")
+	Main.add_text(tr("COMBAT_VINES").format({"target":action.target.get_name()}))
+	
+	var damage := get_damage(actor,action,roll,ACTION.min_dam,ACTION.max_dam,ACTION.dam_scale)
+	var dam_scale := SpellInteractions.trigger_spell("nature", action, actor, action.target, damage)
+	damage = int(dam_scale*damage)
+	
 	action.target.damaged(damage)
 	if "liquid" in action.target.traits:
 		Main.add_text(tr("COMBAT_VINES_LIQUID_BODY").format({"target":action.target.get_name()}))
 		# warning-ignore:integer_division
 		action.target.damaged(int(damage/(duration+1)))
 	else:
-		Main.add_text(tr("COMBAT_VINES").format({"target":action.target.get_name()}))
 		# warning-ignore:integer_division
 		action.target.damaged(int(damage/(duration+1)))
 		# warning-ignore:integer_division

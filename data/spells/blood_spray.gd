@@ -21,16 +21,14 @@ func cast_disease(actor,action,roll):
 	action.target.add_status(Effects.Diseased,{"value":1, "duration":4})
 
 func cast(actor,action,roll):
-	var dam_scale := 1.0
 	var damage := get_damage(actor,action,roll,ACTION.min_dam,ACTION.max_dam,ACTION.dam_scale*rand_range(0.8,1.2))
 	prepare_spell(actor,action,roll,"blood_spray")
-	if "liquid" in action.target.traits:
-		Main.add_text(tr("COMBAT_BLOOD_SPRAY").format({"actor":actor.get_name(),"target":action.target.get_name()}))
-		Main.add_text(tr("COMBAT_LITTLE_IMPACT_LIQUID_BODY").format({"target":action.target.get_name()}))
-		dam_scale = 0.25
-	else:
-		Main.add_text(tr("COMBAT_BLOOD_SPRAY").format({"actor":actor.get_name(),"target":action.target.get_name()}))
-	action.target.damaged(int(dam_scale*damage))
+	Main.add_text(tr("COMBAT_BLOOD_SPRAY").format({"actor":actor.get_name(),"target":action.target.get_name()}))
+	
+	var dam_scale := SpellInteractions.trigger_spell("blood", action, actor, action.target, damage)
+	damage = int(dam_scale*damage)
+	action.target.damaged(damage)
+	
 	action.ref.end_turn()
 
 func _init():

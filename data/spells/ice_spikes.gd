@@ -27,18 +27,12 @@ func cast(actor,action,roll):
 			continue
 		var damage := get_damage(actor,action,roll,ACTION.min_dam,ACTION.max_dam,ACTION.dam_scale)
 		Main.add_text(tr("COMBAT_DAMAGED").format({"actor":target.get_name()}))
+		var dam_scale := SpellInteractions.trigger_spell("ice", action, actor, action.target, damage)
+		damage = int(dam_scale*damage)
 		target.damaged(damage)
-		if hit_roll>11:
-			if target.has_status("burning"):
-				target.remove_status("burning")
-				target.add_status("wet",{"duration":5,"amount":1})
-			elif target.has_status("wet"):
-				target.remove_status("wet")
-				target.add_status(Effects.Frozen,{"duration":4,"stats_inc":{"agility":-4,"dexterity":-4}})
-			else:
-				target.add_status(Effects.Frozen,{"duration":2,"stats_inc":{"agility":-3,"dexterity":-3}})
-			if hit_roll>14:
-				target.add_status(Effects.Bleeding,{"value":1,"duration":3})
+		if hit_roll>14:
+			target.add_status(Effects.Bleeding,{"value":1,"duration":3})
+	
 	action.ref.end_turn()
 
 func _init():

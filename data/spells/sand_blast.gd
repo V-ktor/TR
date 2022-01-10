@@ -21,19 +21,14 @@ func cast_blinding(actor,action,roll):
 	action.target.add_status(Effects.Blind,{"duration":2,"stats_inc":{"agility":-4,"cunning":-4}})
 
 func cast(actor,action,roll):
-	var dam_scale := 1.0
 	var damage := get_damage(actor,action,roll,ACTION.min_dam,ACTION.max_dam,ACTION.dam_scale*rand_range(0.8,1.2))
 	prepare_spell(actor,action,roll,"sand_blast")
-	if "liquid" in action.target.traits:
-		Main.add_text(tr("COMBAT_SAND_BLAST").format({"actor":actor.get_name(),"target":action.target.get_name()}))
-		Main.add_text(tr("COMBAT_LITTLE_IMPACT_LIQUID_BODY").format({"target":action.target.get_name()}))
-		dam_scale = 0.5
-	else:
-		Main.add_text(tr("COMBAT_SAND_BLAST").format({"actor":actor.get_name(),"target":action.target.get_name()}))
+	Main.add_text(tr("COMBAT_SAND_BLAST").format({"actor":actor.get_name(),"target":action.target.get_name()}))
+	
+	var dam_scale := SpellInteractions.trigger_spell("nature", action, actor, action.target, damage)
+	damage = int(dam_scale*damage)
+	
 	action.target.damaged(int(dam_scale*damage))
-	if action.target.has_status("bleeding"):
-		Main.add_text(tr("COMBAT_SAND_BLAST_BLEEDING").format({"target":action.target.get_name()}))
-		action.target.add_status(Effects.Bleeding,{"value":1,"duration":action.target.status.bleeding.duration})
 	action.ref.end_turn()
 
 func _init():

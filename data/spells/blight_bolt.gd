@@ -21,14 +21,14 @@ func cast(actor,action,roll):
 	var duration := 3
 	var stat_inc := 2
 	prepare_spell(actor,action,roll,"blight_bolt")
-	print("damage: "+str(damage))
-	var dam_scale := 1.0
 	Main.add_text(tr("COMBAT_BLIGHT_BOLT").format({"target":action.target.get_name()}))
-	if "liquid" in action.target.traits:
-		Main.add_text(tr("COMBAT_LITTLE_IMPACT_LIQUID_BODY").format({"target":action.target.get_name()}))
-		dam_scale = 0.25
-	action.target.damaged(int(dam_scale*damage))
+	print("damage: "+str(damage))
+	
+	var dam_scale := SpellInteractions.trigger_spell("blood", action, actor, action.target, damage)
+	damage = int(dam_scale*damage)
+	action.target.damaged(damage)
 	action.target.add_status(Effects.Diseased,{"duration":duration,"amount":2,"stat_inc":{"strength":-stat_inc, "constitution":-stat_inc,"agility":-stat_inc, "dexterity":-stat_inc, "intelligence":-stat_inc, "wisdom":-stat_inc, "cunning":-stat_inc, "charisma":-stat_inc}})
+	
 	action.ref.end_turn()
 
 func _init():

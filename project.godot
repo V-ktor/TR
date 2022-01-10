@@ -35,6 +35,7 @@ Effects="*res://scripts/main/effects.gd"
 Spells="*res://scripts/main/spells.gd"
 Quests="*res://scripts/main/quests.gd"
 Journal="*res://scripts/main/journal.gd"
+SpellInteractions="*res://scripts/main/spell_interactions.gd"
 
 [debug]
 
